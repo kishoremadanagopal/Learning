@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>probe-ab</title>
+<script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script></head>
+<body><pre id="log"></pre><pre id="console" style="display:none"></pre>
+<script>
+const L = document.getElementById('log');
+const C = document.getElementById('console');
+const log = (...a) => { L.textContent += a.join(' ') + '\n'; };
+const BASE = '/app' + location.pathname.replace(/[^/]*$/, '');
+const CP = BASE + 'runner-v6.jar:' + BASE + 'javac17.jar';
+const enc = new TextEncoder();
+let n = 0;
+async function go(label, code, pool) {
+  n++;
+  const job = '/str/ab' + n;
+  cheerpOSAddStringFile(job + '.main', enc.encode(code));
+  C.textContent = '';
+  const t = performance.now();
+  await cheerpjRunMain('course.Runner', CP, job, '/files/w', 'run', '0', pool ? 'pool' : 'nopool');
+  const done = (C.textContent.match(/@@DONE.*/) || ['?'])[0];
+  log(`${label} ${pool ? 'POOL  ' : 'NOPOOL'} total=${Math.round(performance.now() - t)}ms ${done}`);
+}
+(async () => {
+  try {
+    await cheerpjInit({ version: 17, status: 'none' });
+    for (let i = 0; i < 6; i++) {
+      const code = `public class Main { record P(int a) {} public static void main(String[] a) { java.util.List<Integer> xs = new java.util.ArrayList<>(); for (int k = 0; k < ${i + 3}; k++) xs.add(k); System.out.println(xs + " " + new P(${i})); } }`;
+      await go('round' + i, code, i % 2 === 0);
+      await go('round' + i, code.replace('" "', '" - "'), i % 2 !== 0);
+    }
+    window.PROBE_DONE = true;
+  } catch (e) { log('ERR', e && (e.stack || e)); window.PROBE_DONE = true; }
+})();
+</script></body></html>
