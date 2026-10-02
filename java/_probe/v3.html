@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>probe3</title>
+<script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script></head>
+<body><pre id="log"></pre><pre id="console" style="display:none"></pre>
+<script>
+const L = document.getElementById('log');
+const C = document.getElementById('console');
+const log = (...a) => { L.textContent += a.join(' ') + '\n'; };
+const BASE = '/app' + location.pathname.replace(/[^/]*$/, '');
+const CP = BASE + 'runner-v4.jar:' + BASE + 'javac17.jar';
+const enc = new TextEncoder();
+let n = 0;
+async function go(label, files, mode, timeout) {
+  n++;
+  const job = '/str/job' + n;
+  const ext = { 'Main.java': '.main', 'Check.java': '.check', 'stdin.txt': '.stdin' };
+  for (const [name, text] of Object.entries(files)) cheerpOSAddStringFile(job + ext[name], enc.encode(text));
+  C.textContent = '';
+  const t = performance.now();
+  const rc = await cheerpjRunMain('course.Runner', CP, job, '/files/w', mode, String(timeout ?? 0));
+  const out = C.textContent.trim();
+  log(`== ${label}: rc=${rc} ${Math.round(performance.now() - t)}ms\n` + (out.length > 700 ? out.slice(0, 300) + '\n…\n' + out.slice(-300) : out));
+}
+const prog = (body, extra = '') => `import java.util.*;\nimport java.util.concurrent.*;\nimport java.nio.file.*;\npublic class Main {\n${extra}\n  public static void main(String[] args) throws Exception {\n${body}\n  }\n}`;
+(async () => {
+  try {
+    let t = performance.now();
+    await cheerpjInit({ version: 17, status: 'none' });
+    log('init', Math.round(performance.now() - t));
+    window.STEP = 'run1';
+    const A = prog('    Scanner sc = new Scanner(System.in);\n    String name = sc.nextLine();\n    System.out.println("Hi " + name + " " + twice(21));', '  static int twice(int x) { return 2 * x; }');
+    await go('run1 (cold)', { 'Main.java': A, 'stdin.txt': 'Ada\n' }, 'run');
+    await go('run2', { 'Main.java': A.replace('"Hi "', '"Hello "'), 'stdin.txt': 'Bob\n' }, 'run');
+    await go('run3', { 'Main.java': A.replace('"Hi "', '"Hey "'), 'stdin.txt': 'Cy\n' }, 'run');
+    await go('check', { 'Main.java': A, 'stdin.txt': 'Ada\n', 'Check.java': 'import static course.T.*;\npublic class Check { public static void run() { eq(10, call("twice", 5), "twice(5)"); check(output().contains("Hi Ada 42"), "greeting"); check(runWith("Zed\\n").contains("Zed"), "rerun"); } }' }, 'check');
+    await go('check fail', { 'Main.java': A.replace('2 * x', 'x + 2'), 'stdin.txt': 'Ada\n', 'Check.java': 'import static course.T.*;\npublic class Check { public static void run() { eq(10, call("twice", 5), "twice(5)"); } }' }, 'check');
+    await go('compile error', { 'Main.java': prog('    int x = "s";') }, 'run');
+    await go('runtime error', { 'Main.java': prog('    int[] b = new int[2];\n    System.out.println("before");\n    System.out.println(b[5]);') }, 'run');
+    await go('2000 lines', { 'Main.java': prog('    for (int i = 0; i < 2000; i++) System.out.println("line " + i);') }, 'run');
+    await go('cpu work', { 'Main.java': prog('    long s = 0; for (int i = 0; i < 50_000_000; i++) s += i % 7; System.out.println(s);') }, 'run');
+    await go('threads', { 'Main.java': prog('    ExecutorService ex = Executors.newFixedThreadPool(4);\n    List<Future<Integer>> fs = new ArrayList<>();\n    for (int i = 1; i <= 4; i++) { final int k = i; fs.add(ex.submit(() -> { Thread.sleep(50); return k * k; })); }\n    int sum = 0; for (Future<Integer> f : fs) sum += f.get();\n    ex.shutdown();\n    System.out.println("sum=" + sum);\n    Thread t = new Thread(() -> System.out.println("from thread")); t.start(); t.join();\n    java.util.concurrent.atomic.AtomicInteger c = new java.util.concurrent.atomic.AtomicInteger();\n    List<Thread> ts = new ArrayList<>(); for (int i = 0; i < 3; i++) { Thread th = new Thread(() -> { for (int j = 0; j < 1000; j++) c.incrementAndGet(); }); ts.add(th); th.start(); }\n    for (Thread th : ts) th.join();\n    System.out.println("count=" + c.get());') }, 'run');
+    await go('files', { 'Main.java': prog('    System.out.println("user.dir=" + System.getProperty("user.dir") + " tmp=" + System.getProperty("java.io.tmpdir"));\n    try { Path p = Path.of("notes.txt"); Files.writeString(p, "hello\\nworld\\n"); System.out.println("relative ok: " + Files.readAllLines(p)); } catch (Exception e) { System.out.println("relative failed: " + e); }\n    try { Path p = Path.of("/files/notes.txt"); Files.writeString(p, "a\\nb\\n"); System.out.println("/files ok: " + Files.readAllLines(p)); } catch (Exception e) { System.out.println("/files failed: " + e); }\n    try { Path p = Files.createTempFile("x", ".txt"); Files.writeString(p, "t"); System.out.println("temp ok: " + p + " " + Files.readString(p)); } catch (Exception e) { System.out.println("temp failed: " + e); }') }, 'run');
+    await go('with thread timeout', { 'Main.java': prog('    System.out.println("timed ok");') }, 'run', 10000);
+    await go('final quick', { 'Main.java': prog('    System.out.println("done");') }, 'run');
+    window.PROBE_DONE = true;
+  } catch (e) { log('ERR', e && (e.stack || e)); window.PROBE_DONE = true; }
+})();
+</script></body></html>
