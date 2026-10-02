@@ -134,7 +134,7 @@ print(search.best_params_)
 print("best CV AUC:", round(search.best_score_, 3))
 ```
 
-12 random tries out of 225 possible combinations. (This one takes a few seconds in the browser.)
+12 random tries out of 225 possible combinations. (This one takes about 10 seconds in the browser: 60 models are trained.)
 
 ## Good habits
 

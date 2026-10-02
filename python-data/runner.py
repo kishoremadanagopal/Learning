@@ -23,6 +23,7 @@ def setup(data_files=None):
     if _SETUP_DONE:
         return
     warnings.filterwarnings("ignore", message=".*non-interactive.*")
+    warnings.filterwarnings("ignore", message=".*as_object_map.*")   # Pyodide-internal notice from threadpoolctl
     warnings.filterwarnings("ignore", category=DeprecationWarning)
     try:
         import pandas as pd
