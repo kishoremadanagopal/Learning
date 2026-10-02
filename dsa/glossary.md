@@ -11,6 +11,8 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Anagram** | A word made by rearranging all the letters of another. [11] |
 | **Array** | Items stored side by side in one contiguous block of memory, each reachable by its index in O(1). [6] |
 | **Average case** | The expected work over typical inputs. [4] |
+| **Backtracking** | Building candidates one choice at a time and undoing choices that can't lead to a solution. [23] |
+| **Base case** | An input small enough to answer directly, which stops the recursion. [21] |
 | **Best case** | The input that makes the algorithm do the least work. [4] |
 | **Big-O notation** | Describes how the number of steps (or memory) grows as the input size n grows, ignoring constants. [3] |
 | **Bounds check** | Testing 0 <= r < rows and 0 <= c < cols before using a cell. [10] |
@@ -24,6 +26,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Circular (ring) buffer** | A fixed-size array used as a queue, with indexes that wrap around using `%`. [19] |
 | **Clue words** | Phrases in a problem that point to a pattern, like "contiguous subarray" → sliding window. [2] |
 | **Collision** | Two different keys landing in the same bucket. [13] |
+| **Combination** | A selection where order doesn't matter; choosing k of n gives C(n, k). [23] |
 | **Complement** | The value needed to complete a pair, such as target − x. [14] |
 | **Consecutive sequence** | Integers that follow each other without gaps, like 3, 4, 5. [14] |
 | **Constraint** | A limit given in the problem, such as the input size or value range; it hints at the Big-O you need. [2] |
@@ -31,10 +34,12 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Counter** | A dict subclass from collections that counts items; missing keys count as 0. [14] |
 | **Cycle** | A loop in the links, so following `next` never reaches None. [16] |
 | **Data structure** | A way of organising data in memory so certain operations are fast, such as a list, dict or tree. [1] |
+| **Decision tree** | The tree of all choices; backtracking explores it depth first. [23] |
 | **defaultdict** | A dict that creates a default value (like an empty list) for missing keys. [14] |
 | **deque** | A double-ended queue from `collections` with O(1) adds and removals at both ends. [5, 19] |
 | **Difference array** | Records where range updates start and stop; a prefix sum of it gives the final values. [9] |
 | **Direction list** | Offsets like (−1, 0), (1, 0), (0, −1), (0, 1) used to visit neighbours in a loop. [10] |
+| **Divide and conquer** | Split a problem into smaller independent subproblems, solve them recursively, combine the answers. [22] |
 | **Dominant term** | The fastest-growing part of a step count, the only one Big-O keeps. [3] |
 | **Doubling experiment** | Timing code at n, 2n, 4n to see how the time grows. [5] |
 | **Doubly linked list** | Nodes point both forwards (`next`) and backwards (`prev`). [15] |
@@ -44,6 +49,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Enqueue / dequeue** | Add at the back / remove from the front. [19] |
 | **Eviction** | Removing an item from a full cache to make room. [20] |
 | **Fast and slow pointers** | Two pointers moving at different speeds (usually 2 steps and 1 step) through a list. [16] |
+| **Fast (binary) exponentiation** | Computing xⁿ by squaring, in O(log n) multiplications. [22] |
 | **FIFO** | First in, first out. [19] |
 | **Fixed-size window** | A window of exactly k items; one item joins and one leaves at each step. [8] |
 | **Floyd's cycle detection** | The tortoise-and-hare method: if fast and slow ever meet, there's a cycle. [16] |
@@ -66,8 +72,11 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Infix notation** | The usual way of writing expressions, like `3 + 4`. [17] |
 | **In place** | Changing the input directly with only O(1) extra memory. [4] |
 | **In-place** | Changing the existing structure instead of building a new one, using O(1) extra memory. [16] |
+| **Inversion** | A pair of positions i < j whose values are out of order (nums[i] > nums[j]). [22] |
+| **itertools** | Python's module with fast permutations, combinations and product. [23] |
 | **join** | `sep.join(parts)` glues a list of strings together with sep between them, in one pass. [11] |
 | **KMP (Knuth–Morris–Pratt)** | A search that uses a table of the pattern's prefix-suffixes so it never re-reads the text; O(n + m). [12] |
+| **Leap of faith** | Assuming the function already works on smaller inputs while writing it. [21] |
 | **LFU (least frequently used)** | Evicts the item used the fewest times. [20] |
 | **LIFO** | Last in, first out. [17] |
 | **Linear search** | Checking items one by one until the target is found. [4] |
@@ -77,8 +86,11 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **LPS table** | For each prefix of the pattern, the length of its longest proper prefix that is also a suffix. [12] |
 | **@lru_cache / @cache** | Python decorators that memoise a function (bounded with LRU eviction / unbounded). [20] |
 | **LRU (least recently used)** | Evicts the item that hasn't been used for the longest time. [20] |
-| **Memoisation** | Caching a function's results by its arguments. [20] |
+| **Master theorem** | A rule for solving recurrences of the form T(n) = a·T(n/b) + O(nᵈ). [22] |
+| **Memoisation** | Caching a function's results by its arguments. [20, 21] |
 | **Merge** | Combining two sorted lists into one sorted list by repeatedly taking the smaller front item. [7, 16] |
+| **Merge sort** | Sort each half recursively, then merge the sorted halves. [22] |
+| **Modular arithmetic** | Working with remainders after division by a modulus, to keep numbers small. [22] |
 | **Monotonic deque** | A deque kept in increasing or decreasing order, used for sliding-window maximums or minimums. [19] |
 | **Monotonic rule** | A rule where growing an invalid window can never make it valid again; needed for variable windows. [8] |
 | **Monotonic stack** | A stack whose values stay in increasing or decreasing order; new items pop the ones that break the order. [18] |
@@ -86,6 +98,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Naive search** | Trying every start position and comparing character by character. [12] |
 | **Next greater element** | For each item, the first item to its right that is larger. [18] |
 | **Node** | One item of a linked list: a value plus a pointer to the next node (and the previous one, in a doubly linked list). [15] |
+| **N-Queens** | Placing n queens on an n × n board so none attack each other. [23] |
 | **O(1), constant time** | The work doesn't depend on n. [3] |
 | **O(2ⁿ), exponential time** | Doubles with every extra item, typical of trying every subset. [3] |
 | **Off-by-one error** | A loop that runs one step too many or too few, usually from a wrong range bound. [6] |
@@ -97,10 +110,12 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Opposite-ends pointers** | One pointer starts at each end and they move towards each other. [7] |
 | **ord / chr** | Convert a character to its code number and back. [11] |
 | **OrderedDict** | A dict that remembers order and can move a key to either end in O(1). [20] |
+| **Overlapping subproblems** | When the same subproblem is needed many times; a sign to use memoisation instead. [22] |
 | **Palindrome** | Text that reads the same forwards and backwards. [7] |
 | **Pattern** | A known technique that solves a family of problems, such as two pointers or a hash map. [2] |
 | **Pattern matching** | Finding where a pattern string occurs inside a text. [12] |
 | **perf_counter** | `time.perf_counter()`, a precise clock for timing code. [5] |
+| **Permutation** | An ordering of items; n items have n! permutations. [23] |
 | **Pivot index** | An index where the sum to the left equals the sum to the right. [9] |
 | **Pointer (reference)** | A variable that refers to an object, such as `node.next`. [15] |
 | **Precomputation** | Doing work once up front so that many later questions are cheap. [9] |
@@ -110,6 +125,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Priority queue** | A queue that always serves the smallest (or most urgent) item first. [19] |
 | **Producer / consumer** | One part of a program adds work to a queue while another takes it off. [19] |
 | **Proper prefix** | A prefix that isn't the whole string. [12] |
+| **Pruning** | Skipping a branch as soon as it can't lead to a valid answer. [23] |
 | **Pseudocode** | The steps of an algorithm in plain words, before writing real code. [2] |
 | **Push / pop / peek** | Add to the top / remove the top / look at the top without removing it. [17] |
 | **Query** | A question asked of the data, such as a range sum. [9] |
@@ -117,6 +133,12 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Rabin-Karp** | A search that compares hashes of windows, updated with a rolling hash. [12] |
 | **Range sum** | The sum of items from index i to j; prefix[j + 1] − prefix[i]. [9] |
 | **Read/write pointers** | One pointer scans every item; the other marks where the next kept item goes. [7] |
+| **Recurrence relation** | An equation for an algorithm's cost in terms of its cost on smaller inputs, like T(n) = 2T(n/2) + n. [22] |
+| **Recursion** | A function solving a problem by calling itself on smaller versions of it. [21] |
+| **Recursion depth** | How many calls are waiting on the stack at once; it decides the stack space. [21] |
+| **RecursionError** | Python's error when the call stack goes deeper than its limit (about 1,000 by default). [21] |
+| **Recursion tree** | A drawing of every call as a node, with its recursive calls as children. [21] |
+| **Recursive case** | The part that breaks the problem down and makes the recursive calls. [21] |
 | **Reference** | A pointer to an object; a Python list stores references, not the objects themselves. [6] |
 | **Resize (rehash)** | Moving every entry into a bigger table when the load factor gets too high. [13] |
 | **Return value** | What a function gives back with `return`; tests check this, not what it prints. [1] |
@@ -137,8 +159,10 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Stack frame** | The record of one function call: its local variables and where to return to. [17] |
 | **Stock span** | The number of consecutive days, ending today, with a price at most today's. [18] |
 | **Subarray** | A contiguous run of items in an array. [8] |
+| **Subset** | Any selection of items, including none and all; n items have 2ⁿ subsets. [23] |
 | **Substring** | A contiguous run of characters in a string. [8] |
 | **Tail** | The last node; its `next` is None. [15] |
+| **Tail call** | A recursive call that is the very last thing a function does; Python doesn't optimise these. [21] |
 | **Test case** | One input together with the expected output, used to check a function. [1] |
 | **Time complexity** | How an algorithm's running time grows with the input size. [3] |
 | **Trade-off** | Gaining one thing (like speed) by giving up another (like memory). [2] |

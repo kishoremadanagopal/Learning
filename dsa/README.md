@@ -1,6 +1,6 @@
 # Data Structures and Algorithms in Python
 
-A hands-on DSA course for complete beginners: 20 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
+A hands-on DSA course for complete beginners: 23 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
 
 Every exercise is checked like a coding-interview site: **hidden test cases** (including the tricky edge cases) and a **speed check** that tells you when a correct answer is too slow. When you're stuck, a help ladder takes you from a **step-by-step approach**, through **three hints**, to a full **walkthrough** with a trace table that shows the code running.
 
@@ -10,9 +10,9 @@ Data structures and algorithms are part of the shared core for both the **AI eng
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with the whole standard library: `collections`, `heapq`, `bisect`, `functools` and more. Nothing to install, no sign-up.
 
-- every lesson, with **78 examples** you can run and change
-- **41 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
-- **80 quiz questions**, with explanations
+- every lesson, with **98 examples** you can run and change
+- **49 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
+- **92 quiz questions**, with explanations
 - a diagram for every data structure and pattern
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 20 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 23 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every DSA term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | Big-O of every operation, the 6-step problem-solving method, and a "clue words → pattern" table |
 
@@ -74,6 +74,14 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 18 | [Monotonic stacks: next greater element](lessons/18-monotonic-stack.md) | monotonic stacks, next greater and next smaller element, previous greater (stock span), largest rectangle in a histogram, trapping rain water, amortised O(n) | 37–38 |
 | 19 | [Queues, circular buffers and deques](lessons/19-queues-deques.md) | first in first out, collections.deque, why not list.pop(0), bounded deques, circular buffers, a queue from two stacks, amortised O(1), the monotonic deque, other kinds of queue | 39–40 |
 | 20 | [Designing a data structure: the LRU cache](lessons/20-lru-cache.md) | caches and eviction, LRU design with a hash map and a doubly linked list, OrderedDict, functools.lru_cache and cache, LFU caches, how to approach design questions | 41 |
+
+### Part 5: Recursion (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 21 | [Recursion and recursion trees](lessons/21-recursion.md) | base and recursive cases, the call stack, the leap of faith, recursion on nested data, recursion trees, memoisation, recursion limits and when to use a loop, the Tower of Hanoi | 42–43 |
+| 22 | [Divide and conquer](lessons/22-divide-and-conquer.md) | divide, conquer and combine, fast exponentiation, modular power, merge sort, counting inversions, maximum subarray by halves, the master theorem, when divide and conquer fits | 44–45 |
+| 23 | [Backtracking: subsets, permutations, N-Queens](lessons/23-backtracking.md) | the choose-explore-unchoose template, subsets, permutations, combinations, itertools, N-Queens with sets, a Sudoku solver, word search, pruning, recognising backtracking problems | 46–49 |
 
 ## Running it on your own computer
 

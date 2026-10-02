@@ -387,4 +387,4 @@ class LRUCache:
 </details>
 
 ---
-Previous: [Lesson 19](19-queues-deques.md) · Back to the [course home](../README.md)
+Previous: [Lesson 19](19-queues-deques.md) · Next: [Lesson 21: Recursion and recursion trees](21-recursion.md)

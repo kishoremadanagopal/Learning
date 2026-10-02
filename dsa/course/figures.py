@@ -586,6 +586,146 @@ def lru_cache_fig():
     return f
 
 
+
+# ---------------------------------------------------------------- Part 5: recursion
+
+@fig("call-stack")
+def call_stack():
+    f, ax = diag.canvas(10.5, 4.2)
+    label(ax, 2.4, 3.95, "calls go down (frames pushed)", bold=True, size=10.5)
+    label(ax, 8.0, 3.95, "returns come back up (frames popped)", bold=True, size=10.5)
+    rows = [(4, "4 × factorial(3)", "= 4 × 6 = 24"), (3, "3 × factorial(2)", "= 3 × 2 = 6"),
+            (2, "2 × factorial(1)", "= 2 × 1 = 2"), (1, "base case", "returns 1")]
+    for i, (n, waiting, ret) in enumerate(rows):
+        y = 3.05 - i * 0.8
+        col = ORANGE if n == 1 else BLUE
+        sbox(ax, 0.3 + i * 0.35, y, 3.6, 0.6, f"factorial({n}):  {waiting}", color=col, mono=True, fontsize=9.5)
+        sbox(ax, 6.3, y, 3.6, 0.6, f"factorial({n}) {ret}", color=TEAL if n != 1 else ORANGE, mono=True, fontsize=9.5)
+        if i < 3:
+            arrow(ax, 2.1 + i * 0.35, y - 0.02, 2.1 + (i + 1) * 0.35, y - 0.18, lw=1.1, color=MUTED)
+            arrow(ax, 8.1, y - 0.18, 8.1, y - 0.02, lw=1.1, color=MUTED)
+    label(ax, 5.25, 0.15, "each frame waits for the answer from the frame below it", size=9.5, color=MUTED)
+    return f
+
+
+@fig("fib-tree")
+def fib_tree():
+    f, ax = diag.canvas(12, 4.6)
+    pos = {}
+
+    def leaves(n):
+        return 1 if n < 2 else leaves(n - 1) + leaves(n - 2)
+
+    def layout(n, x0, depth, path):
+        width = leaves(n) * 1.45
+        x = x0 + width / 2
+        y = 4.0 - depth * 0.95
+        pos[path] = (x, y, n)
+        if n >= 2:
+            layout(n - 1, x0, depth + 1, path + "L")
+            layout(n - 2, x0 + leaves(n - 1) * 1.45, depth + 1, path + "R")
+
+    layout(5, 0.2, 0, "")
+    for p, (x, y, n) in pos.items():
+        if p:
+            px, py, _ = pos[p[:-1]]
+            ax.plot([px, x], [py - 0.2, y + 0.2], color=GREY, linewidth=1, zorder=1)
+    colors = {3: ORANGE, 2: CRIMSON}
+    for p, (x, y, n) in pos.items():
+        c = colors.get(n, BLUE if n > 1 else GREY)
+        sbox(ax, x - 0.42, y - 0.2, 0.84, 0.42, f"fib({n})", color=c, mono=True, fontsize=8.5)
+    label(ax, 11.8, 4.3, "orange fib(3) is computed 2 times, crimson fib(2) 3 times", ha="right", size=9.5, color=MUTED)
+    return f
+
+
+@fig("divide-conquer")
+def divide_conquer():
+    f, ax = diag.canvas(12, 5.2)
+    levels_down = [[[38, 27, 43, 3, 9, 82, 10]], [[38, 27, 43, 3], [9, 82, 10]], [[38, 27], [43, 3], [9, 82], [10]],
+                   [[38], [27], [43], [3], [9], [82], [10]]]
+    levels_up = [[[27, 38], [3, 43], [9, 82], [10]], [[3, 27, 38, 43], [9, 10, 82]], [[3, 9, 10, 27, 38, 43, 82]]]
+
+    def draw(level, y, color):
+        total = sum(len(g) for g in level) + (len(level) - 1) * 0.8
+        x = 6.0 - total * 0.36 / 1.0
+        for g in level:
+            for v in g:
+                sbox(ax, x, y, 0.66, 0.42, str(v), color=color, mono=True, fontsize=9)
+                x += 0.72
+            x += 0.8 * 0.72
+    for i, lv in enumerate(levels_down):
+        draw(lv, 4.55 - i * 0.62, BLUE)
+    for i, lv in enumerate(levels_up):
+        draw(lv, 1.95 - i * 0.62, TEAL if i < 2 else ORANGE)
+    label(ax, 0.2, 3.7, "divide", ha="left", bold=True, size=10.5)
+    label(ax, 0.2, 1.3, "combine\n(merge)", ha="left", bold=True, size=10.5)
+    return f
+
+
+@fig("backtracking-tree")
+def backtracking_tree():
+    f, ax = diag.canvas(12, 4.5)
+    nodes = {}
+
+    def layout(i, x0, x1, path):
+        x = (x0 + x1) / 2
+        y = 3.9 - i * 1.15
+        nodes[tuple(path)] = (x, y)
+        if i < 3:
+            layout(i + 1, x0, x, path + [i + 1])
+            layout(i + 1, x, x1, path)
+
+    layout(0, 0.2, 11.8, [])
+    for p, (x, y) in nodes.items():
+        depth = round((3.9 - y) / 1.15)
+        for child_inc in (True, False):
+            cp = tuple(list(p) + [depth + 1]) if child_inc else p
+            key = cp
+            if depth < 3:
+                # find child positions by depth
+                pass
+    def kids(p, depth):
+        return [tuple(list(p) + [depth + 1]), p]
+    drawn = set()
+    def walk(p, depth, x0, x1):
+        x, y = (x0 + x1) / 2, 3.9 - depth * 1.15
+        if depth < 3:
+            xm = (x0 + x1) / 2
+            for k, (cx0, cx1, txt) in enumerate([(x0, xm, f"+{depth + 1}"), (xm, x1, f"skip {depth + 1}")]):
+                cx, cy = (cx0 + cx1) / 2, 3.9 - (depth + 1) * 1.15
+                ax.plot([x, cx], [y - 0.2, cy + 0.2], color=GREY, linewidth=1, zorder=1)
+                ax.text((x + cx) / 2 + (-0.12 if k == 0 else 0.12), (y + cy) / 2, txt, fontsize=8, color=MUTED,
+                        ha="right" if k == 0 else "left", va="center")
+            walk(tuple(list(p) + [depth + 1]), depth + 1, x0, xm)
+            walk(p, depth + 1, xm, x1)
+        txt = "[" + ", ".join(map(str, p)) + "]"
+        c = TEAL if depth == 3 else BLUE
+        w = max(0.62, 0.17 * len(txt) + 0.15)
+        sbox(ax, x - w / 2, y - 0.2, w, 0.4, txt, color=c, mono=True, fontsize=8.5)
+    walk((), 0, 0.2, 11.8)
+    label(ax, 0.2, 0.05, "leaves (teal) = the 8 subsets", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("n-queens")
+def n_queens():
+    f, ax = diag.canvas(5.4, 4.8)
+    sol = [1, 3, 0, 2]
+    q0r, q0c = 0, 1
+    for r in range(4):
+        for c in range(4):
+            attacked = (c == q0c or r - c == q0r - q0c or r + c == q0r + q0c) and (r, c) != (q0r, q0c)
+            fill = SOFT[CRIMSON] if attacked else ("#f4f5f7" if (r + c) % 2 else "white")
+            ax.add_patch(Rectangle((0.4 + c * 0.95, 3.6 - r * 0.95), 0.95, 0.95, facecolor=fill, edgecolor="#cbd2d9", linewidth=1))
+            if sol[r] == c:
+                ax.text(0.4 + c * 0.95 + 0.475, 3.6 - r * 0.95 + 0.475, "♛", fontsize=22, ha="center", va="center", color=INK)
+        label(ax, 0.15, 3.6 - r * 0.95 + 0.475, f"row {r}", size=8.5, color=MUTED, ha="right")
+    for c in range(4):
+        label(ax, 0.4 + c * 0.95 + 0.475, 4.75, f"col {c}", size=8.5, color=MUTED)
+    label(ax, 2.3, 0.25, "shaded: squares the row-0 queen attacks", size=9, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

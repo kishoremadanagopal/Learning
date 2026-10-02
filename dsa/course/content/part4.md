@@ -1961,7 +1961,7 @@ def _bulk(c, n):
     while not q.empty():
         total += q.peek() + q.pop()
     return total
-speed(lambda n: _bulk(cls, n), lambda n: n, lambda n: _bulk(_Ref, n), sizes=(1_000, 10_000, 100_000), what="operations",
+speed(lambda n: _bulk(cls, n), lambda n: n, lambda n: _bulk(_Ref, n), sizes=(1_000, 4_000, 100_000), what="operations",
       tip="Don't pour the stacks back and forth on every call. Move items from inbox to outbox only when the outbox is empty; each item then moves once.")
 ```
 ```python solution
@@ -2077,7 +2077,7 @@ def _ref(nums, k):
         if dq[0] <= i - k: dq.popleft()
         if i >= k - 1: out.append(nums[dq[0]])
     return out
-speed("window_max", lambda n: ([(i * 7919) % 10007 for i in range(n)], max(1, n // 4)), _ref, sizes=(1_000, 40_000, 100_000),
+speed("window_max", lambda n: ([(i * 7919) % 10007 for i in range(n)], max(1, n // 4)), _ref, sizes=(1_000, 20_000, 100_000),
       what="numbers (window = a quarter of them)",
       tip="max() over every window is O(n·k). Keep a deque of indexes with decreasing values: drop smaller ones from the back, expired ones from the front.")
 ```

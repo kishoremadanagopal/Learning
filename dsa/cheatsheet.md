@@ -257,3 +257,22 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | LRU with OrderedDict | move_to_end and popitem(last=False) | O(1) | O(capacity) | [20](lessons/20-lru-cache.md) |
 | Memoise a function | @lru_cache(maxsize) or @cache | O(1) per repeated call | O(distinct arguments) | [20](lessons/20-lru-cache.md) |
 | LFU get / put | count per key + OrderedDict per count + minimum count | O(1) | O(capacity) | [20](lessons/20-lru-cache.md) |
+| Factorial | n × factorial(n − 1), base case n ≤ 1 | O(n) | O(n) stack | [21](lessons/21-recursion.md) |
+| Sum / reverse / palindrome by recursion | handle one item, recurse on the rest | O(n) with indexes (O(n²) with slicing) | O(n) stack | [21](lessons/21-recursion.md) |
+| Nested data (folders, nested lists) | recurse into each sub-container | O(total items) | O(depth) | [21](lessons/21-recursion.md) |
+| Naive Fibonacci | fib(n − 1) + fib(n − 2) | O(2ⁿ) (about 1.6ⁿ) | O(n) | [21](lessons/21-recursion.md) |
+| Memoised Fibonacci | cache each fib(k) | O(n) | O(n) | [21](lessons/21-recursion.md) |
+| Tower of Hanoi | move n − 1, move 1, move n − 1 | O(2ⁿ) moves | O(n) stack | [21](lessons/21-recursion.md) |
+| Flatten a nested list | extend with flatten(sub-list), append numbers | O(n) | O(depth) | [21](lessons/21-recursion.md) |
+| Fast power xⁿ | square the half-power; multiply in x when n is odd | O(log n) | O(1) loop / O(log n) recursive | [22](lessons/22-divide-and-conquer.md) |
+| Merge sort | sort halves recursively, merge | O(n log n) | O(n) | [22](lessons/22-divide-and-conquer.md) |
+| Count inversions | count during merge sort's merge: add len(left) − i | O(n log n) | O(n) | [22](lessons/22-divide-and-conquer.md) |
+| Maximum subarray (D&C) | best of left, right, and crossing the middle | O(n log n) | O(log n) | [22](lessons/22-divide-and-conquer.md) |
+| Master theorem | compare a with bᵈ: same → nᵈ log n; smaller → nᵈ; larger → n^(log_b a) | — | — | [22](lessons/22-divide-and-conquer.md) |
+| Subsets | include or skip each item | O(n · 2ⁿ) | O(n) + output | [23](lessons/23-backtracking.md) |
+| Permutations | at each position try every unused item | O(n · n!) | O(n) + output | [23](lessons/23-backtracking.md) |
+| Combinations (k of n) | loop forward from a start index; prune when too few remain | O(k · C(n, k)) | O(k) + output | [23](lessons/23-backtracking.md) |
+| Combination sum (reuse allowed) | sorted candidates, recurse with the same index, break when too big | exponential | O(target / smallest) | [23](lessons/23-backtracking.md) |
+| N-Queens | one queen per row; sets of columns, row − col, row + col | O(n!) worst, heavily pruned | O(n) | [23](lessons/23-backtracking.md) |
+| Sudoku | fill an empty cell with each valid digit, undo on dead ends | exponential worst | O(81) | [23](lessons/23-backtracking.md) |
+| Word search | DFS from each cell, mark used cells, unmark after | O(r · c · 4ᴸ) | O(L) | [23](lessons/23-backtracking.md) |
