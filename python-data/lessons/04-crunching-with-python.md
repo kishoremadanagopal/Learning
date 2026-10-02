@@ -253,4 +253,4 @@ print(top3)
 </details>
 
 ---
-Previous: [Lesson 3](03-json-data.md) · Back to the [course home](../README.md)
+Previous: [Lesson 3](03-json-data.md) · Next: [Lesson 5: NumPy arrays](05-numpy-arrays.md)

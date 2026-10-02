@@ -9,11 +9,11 @@ async function start(files) {
   await py.loadPackage(["numpy", "pandas"]);
   py.FS.mkdirTree("/home/pyodide/work");
   py.FS.chdir("/home/pyodide/work");
-  const runnerSrc = await (await fetch("runner.py")).text();
+  const runnerSrc = await (await fetch("runner.py" + self.location.search)).text();
   py.FS.writeFile("/home/pyodide/runner.py", runnerSrc);
   const data = {};
   await Promise.all(files.map(async (name) => {
-    const buf = await (await fetch("data/" + name)).arrayBuffer();
+    const buf = await (await fetch("data/" + name + self.location.search)).arrayBuffer();
     data[name] = new Uint8Array(buf);
   }));
   py.globals.set("_files", py.toPy(data));
