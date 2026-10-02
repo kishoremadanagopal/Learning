@@ -1,6 +1,6 @@
 # Learn Python for Data: NumPy, pandas and charts
 
-A hands-on course that takes you from "I know a little Python" to cleaning, analysing and charting real data: 9 lessons on NumPy, pandas and matplotlib, with a practice sandbox that runs real pandas in your browser and checks your answers.
+A hands-on course that takes you from "I know a little Python" to cleaning, analysing and charting real data: 31 lessons on NumPy, pandas and matplotlib, with a practice sandbox that runs real pandas in your browser and checks your answers.
 
 This is the shared core for both the **AI engineer** and the **data / AI analyst** paths: every one of those jobs loads, cleans, summarises and charts data first.
 
@@ -8,9 +8,9 @@ This is the shared core for both the **AI engineer** and the **data / AI analyst
 
 The sandbox runs real Python 3.14 with NumPy, pandas and matplotlib inside your browser (via [Pyodide](https://pyodide.org)). Nothing to install, no sign-up.
 
-- every lesson, with **63 examples** you can run and change
-- **18 exercises**, numbered by lesson, that check your code and tell you what's off
-- **27 quiz questions**, with explanations
+- every lesson, with **227 examples** you can run and change
+- **62 exercises**, numbered by lesson, that check your code and tell you what's off
+- **93 quiz questions**, with explanations
 - **7 practice datasets** that load with one line, like `pd.read_csv("sales.csv")`
 - charts drawn right under your code
 - your progress and code saved in your own browser
@@ -21,7 +21,7 @@ The sandbox runs real Python 3.14 with NumPy, pandas and matplotlib inside your 
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 9 lessons, each with key terms, examples, common mistakes, exercises, answers and a quiz |
+| 📘 [Lessons](#lessons) | 31 lessons, each with key terms, examples, common mistakes, exercises, answers and a quiz |
 | 📖 [Glossary](glossary.md) | every data term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | NumPy, pandas and matplotlib on one page, with lesson numbers |
 | 🗂️ [Datasets](https://github.com/kishoremadanagopal/learning/tree/main/python-data/data) | the practice files, to download and use on your own computer |
@@ -53,6 +53,48 @@ The sandbox runs real Python 3.14 with NumPy, pandas and matplotlib inside your 
 | 7 | [Maths on whole arrays](lessons/07-vectorised-math.md) | array-with-array maths, broadcasting, ufuncs, `np.where`, `np.nan`, `np.isnan`, scaling | 13–14 |
 | 8 | [Summarising arrays](lessons/08-array-statistics.md) | `sum`, `mean`, `median`, `std`, `percentile`, `argmax`, `axis`, `cumsum`, `reshape`, `np.loadtxt` | 15–16 |
 | 9 | [Random numbers and simulation](lessons/09-random-and-simulation.md) | `default_rng`, seeds, `integers`, `random`, `normal`, `choice`, `permutation`, `binomial`, simulation | 17–18 |
+
+### Part 3: pandas Foundations (Beginner)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 10 | [The Series](lessons/10-pandas-series.md) | `pd.Series`, the index, label alignment, `value_counts`, `unique`, `nunique`, `idxmax` | 19–20 |
+| 11 | [DataFrames and loading data](lessons/11-dataframes.md) | `pd.DataFrame`, `read_csv`, `read_json`, `head`, `tail`, `shape`, `columns`, `dtypes`, `info`, `describe` | 21–22 |
+| 12 | [Selecting columns and rows](lessons/12-selecting-data.md) | `df["col"]`, `df[["a", "b"]]`, `loc`, `iloc`, `set_index`, `reset_index`, changing cells | 23–24 |
+| 13 | [Filtering rows](lessons/13-filtering-rows.md) | boolean masks, `&`, `\|`, `~`, `isin`, `between`, filtering text and dates, `query`, `loc` with a mask | 25–26 |
+| 14 | [Sorting and adding columns](lessons/14-sorting-and-new-columns.md) | `sort_values`, `nlargest`, new calculated columns, `np.where`, `assign`, method chains, `rename`, `drop` | 27–28 |
+| 15 | [Summarising a whole table](lessons/15-summarising-data.md) | `sum`, `mean`, `median`, `agg`, `count`, `nunique`, `value_counts(normalize=True)`, `idxmax`, formatting with `:,` and `:%` | 29–30 |
+
+### Part 4: Cleaning Data (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 16 | [Missing values](lessons/16-missing-values.md) | `isna`, `notna`, `dropna`, `fillna`, forward fill, flagging gaps, `na_values` | 31–32 |
+| 17 | [Fixing data types](lessons/17-data-types.md) | `dtypes`, `astype`, `pd.to_numeric`, `errors="coerce"`, cleaning text into numbers, `Int64`, `dtype=` on load, categories | 33–34 |
+| 18 | [Cleaning text](lessons/18-text-cleaning.md) | `.str` methods, `strip`, `lower`, `title`, `replace` vs `.str.replace`, `contains`, `split`, `extract`, `na=False` | 35–36 |
+| 19 | [Duplicates and impossible values](lessons/19-duplicates-and-outliers.md) | `duplicated`, `drop_duplicates`, `subset` and `keep`, impossible values, `mask`, `clip`, the IQR rule | 37–38 |
+| 20 | [Dates and times](lessons/20-dates-and-times.md) | `pd.to_datetime`, `parse_dates`, the `.dt` accessor, filtering by date, `Timedelta`, `DateOffset`, `strftime`, `dayfirst` | 39–40 |
+| 21 | [Project: clean an HR export](lessons/21-cleaning-project.md) | a full cleaning workflow, working on a copy, cleaning functions, `assert` checks, `to_csv` | 41–42 |
+
+### Part 5: Analysing Data (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 22 | [Grouping and aggregating](lessons/22-groupby.md) | split-apply-combine, `groupby`, `size`, named aggregation with `agg`, grouping by several columns, `reset_index`, `transform` | 43–44 |
+| 23 | [Pivot tables and crosstabs](lessons/23-pivot-tables.md) | `pivot_table`, `index`, `columns`, `values`, `aggfunc`, `margins`, `fill_value`, `pd.crosstab`, `normalize` | 45–46 |
+| 24 | [Combining tables with merge](lessons/24-merging-tables.md) | `merge`, `on`, `how` (inner, left, right, outer), `indicator`, `left_on`/`right_on`, `suffixes`, `validate` | 47–48 |
+| 25 | [Stacking and reshaping tables](lessons/25-reshaping-data.md) | `pd.concat`, `ignore_index`, wide vs long (tidy) data, `melt`, `pivot`, `unstack` | 49–50 |
+| 26 | [Mapping, applying and binning](lessons/26-map-apply-and-bins.md) | `map` with a dictionary, `apply` with functions and lambdas, `apply(axis=1)`, `np.select`, `pd.cut`, `pd.qcut` | 51–52 |
+| 27 | [Trends over time](lessons/27-time-series.md) | date index, partial-date selection, `resample`, period codes, `shift`, `pct_change`, `rolling`, `cumsum`, groupby + resample | 53–54 |
+
+### Part 6: Charts and a Final Project (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 28 | [Your first charts with matplotlib](lessons/28-matplotlib-basics.md) | figure and axes, `plt.subplots`, `ax.plot`, titles and labels, legends, `figsize`, styling, `savefig` | 55–56 |
+| 29 | [Choosing the right chart](lessons/29-chart-types.md) | bar and horizontal bar charts, `bar_label`, histograms, scatter plots, box plots, why to avoid pie charts | 57–58 |
+| 30 | [Charts straight from pandas](lessons/30-pandas-plotting.md) | `Series.plot`, `kind=` and `.plot.bar()`-style shortcuts, plotting DataFrames, `plt.subplots(rows, cols)`, `ax=`, `sharey`, chart design habits | 59–60 |
+| 31 | [Final project: a sales analysis](lessons/31-final-project.md) | turning a brief into questions, joining and checking data, headline numbers, profit analysis, a dashboard, writing up findings, saving results | 61–62 |
 
 ## The practice datasets
 

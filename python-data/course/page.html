@@ -1,8 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Python for Data</title>
 <meta name="description" content="Learn NumPy, pandas and charts from scratch with runnable lessons, real datasets, auto-checked exercises and quizzes. Runs entirely in your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -273,8 +268,7 @@ code, pre, kbd { font-family: var(--mono); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
 </style>
-</head>
-<body>
+
 <div class="app">
   <aside class="nav" id="nav" aria-label="Course contents">
     <div class="nav-head">
@@ -286,9 +280,9 @@ code, pre, kbd { font-family: var(--mono); }
     </div>
     <nav class="nav-list" id="navList"></nav>
     <div class="nav-foot">
-      <a href="../">All courses</a>
-      <a href="https://github.com/kishoremadanagopal/learning/blob/main/python-data/glossary.md">Glossary</a>
-      <a href="https://github.com/kishoremadanagopal/learning/blob/main/python-data/cheatsheet.md">Cheat sheet</a>
+      <a href="{{HOME}}">All courses</a>
+      <a href="{{REPO_BLOB}}glossary.md">Glossary</a>
+      <a href="{{REPO_BLOB}}cheatsheet.md">Cheat sheet</a>
     </div>
   </aside>
   <div class="scrim" id="scrim"></div>
@@ -334,7 +328,5 @@ code, pre, kbd { font-family: var(--mono); }
   </section>
 </div>
 
-<script src="lessons.js?v=c2c75e7b44"></script>
-<script src="app.js?v=c2c75e7b44"></script>
-</body>
-</html>
+<script src="lessons.js"></script>
+<script src="app.js"></script>

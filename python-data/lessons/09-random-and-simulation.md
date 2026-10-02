@@ -222,4 +222,4 @@ print(len(train), len(test))
 </details>
 
 ---
-Previous: [Lesson 8](08-array-statistics.md) · Back to the [course home](../README.md)
+Previous: [Lesson 8](08-array-statistics.md) · Next: [Lesson 10: The Series](10-pandas-series.md)

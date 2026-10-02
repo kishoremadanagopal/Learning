@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <img alt="Learning: learn SQL, Python and Java from scratch" src="assets/banner-light.svg" width="100%">
+    <img alt="Learning: learn SQL, Python, data analysis and Java from scratch" src="assets/banner-light.svg" width="100%">
   </picture>
 </p>
 
@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <img alt="Courses: 3" src="https://img.shields.io/badge/courses-3-0e7466">
-  <img alt="Lessons: 93" src="https://img.shields.io/badge/lessons-93-2c679c">
-  <img alt="Exercises: 198" src="https://img.shields.io/badge/auto--checked%20exercises-198-e8b417">
+  <img alt="Courses: 4" src="https://img.shields.io/badge/courses-4-0e7466">
+  <img alt="Lessons: 124" src="https://img.shields.io/badge/lessons-124-2c679c">
+  <img alt="Exercises: 260" src="https://img.shields.io/badge/auto--checked%20exercises-260-e8b417">
   <img alt="Price: free" src="https://img.shields.io/badge/price-free-2f7a45">
   <img alt="Setup: none" src="https://img.shields.io/badge/setup-none%2C%20runs%20in%20your%20browser-5b697b">
 </p>
@@ -28,7 +28,7 @@
 
 <table>
   <tr>
-    <td width="33%" valign="top">
+    <td width="50%" valign="top">
       <h3>🗄️ Learn SQL from scratch</h3>
       <p>Ask questions of a real database: filtering, grouping, joins, subqueries, CTEs, window functions and a final project.</p>
       <p><b>18</b> lessons · <b>79</b> exercises · SQLite in the browser</p>
@@ -39,7 +39,7 @@
         🧾 <a href="sql/cheatsheet.md">Cheat sheet</a>
       </p>
     </td>
-    <td width="33%" valign="top">
+    <td width="50%" valign="top">
       <h3>🐍 Learn Python from scratch</h3>
       <p>Learn to program: variables, loops, collections, functions, classes, generators, decorators and a final project.</p>
       <p><b>37</b> lessons · <b>62</b> exercises · <b>87</b> quiz questions</p>
@@ -50,7 +50,21 @@
         🧾 <a href="python/cheatsheet.md">Cheat sheet</a>
       </p>
     </td>
-    <td width="33%" valign="top">
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>📊 Python for Data</h3>
+      <p>The next step after Python basics: NumPy, pandas and charts. Load, clean, analyse and chart real data, ending with a full sales analysis.</p>
+      <p><b>31</b> lessons · <b>62</b> exercises · <b>93</b> quiz questions · real pandas in the browser</p>
+      <p>
+        <a href="https://kishoremadanagopal.github.io/learning/python-data/"><b>▶ Open the Python for Data course</b></a><br>
+        📘 <a href="python-data/README.md#lessons">Lessons</a> ·
+        📖 <a href="python-data/glossary.md">Glossary</a> ·
+        🧾 <a href="python-data/cheatsheet.md">Cheat sheet</a> ·
+        🗂️ <a href="python-data/data/">Datasets</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
       <h3>☕ Learn Java from scratch</h3>
       <p>Real Java 17 compiled in your browser: classes, inheritance, collections, generics, streams, concurrency and a final project.</p>
       <p><b>38</b> lessons · <b>57</b> exercises · <b>103</b> quiz questions · 🎮 <b>97</b> Quest challenges</p>
@@ -71,7 +85,7 @@
 |---|---|---|
 | New to programming | 🐍 **Python** | It teaches how programs think: variables, decisions, loops and functions. |
 | Working with data or reports | 🗄️ **SQL** | You'll answer real questions about data from the first lesson. |
-| Heading into data or AI work | 🐍 **Python** + 🗄️ **SQL** | They're used side by side almost everywhere. |
+| Heading into data or AI work | 🐍 **Python** → 📊 **Python for Data** + 🗄️ **SQL** | The shared core of both the AI engineer and the data/AI analyst paths. |
 | Aiming for backend, Android or enterprise jobs | ☕ **Java** | It's the language of large systems and teaches object-oriented design properly. |
 
 ## ✅ How every course works
@@ -104,6 +118,14 @@ learning/
 │   ├── cheatsheet.md       all the syntax on one page
 │   ├── playground.html     a free editor for experimenting
 │   └── course/             sources the Python course is built from
+├── python-data/            📊 Python for Data: NumPy, pandas and charts
+│   ├── README.md           course home: lesson list and how to use it
+│   ├── index.html          practice sandbox (real pandas in the browser, via Pyodide)
+│   ├── lessons/            31 lessons with exercises, answers and quizzes
+│   ├── data/               7 practice datasets
+│   ├── glossary.md         every term, A to Z
+│   ├── cheatsheet.md       all the syntax on one page
+│   └── course/             sources the course is built from
 └── java/                   ☕ Learn Java from scratch
     ├── README.md           course home: lesson list and how to use it
     ├── index.html          practice sandbox (real Java 17 compiler in the browser)
@@ -117,7 +139,7 @@ learning/
 ## 💡 Good to know
 
 - **Your progress stays with you.** Completed exercises and your code are saved in your own browser.
-- **Everything runs locally.** The SQL sandbox uses SQLite, the Python sandbox uses Brython and the Java sandbox runs the real `javac` compiler on [CheerpJ](https://cheerpj.com), all inside the page. Nothing you type is sent anywhere.
+- **Everything runs locally.** The SQL sandbox uses SQLite, the Python sandbox uses Brython, the Python for Data sandbox runs real Python with pandas on [Pyodide](https://pyodide.org), and the Java sandbox runs the real `javac` compiler on [CheerpJ](https://cheerpj.com), all inside the page. Nothing you type is sent anywhere.
 - **Read anywhere.** Every lesson is plain Markdown, so it reads well right here on GitHub, on your phone or offline.
 
 ---

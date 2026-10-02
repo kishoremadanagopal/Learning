@@ -1,0 +1,601 @@
+order_id,order_date,customer_id,region,product,category,units,unit_price
+1001,2025-01-01,C034,West,Headphones,Electronics,1,79.0
+1002,2025-01-04,C086,North,Desk Lamp,Home,3,35.0
+1003,2025-01-06,C084,East,Pen Pack,Office,7,6.0
+1004,2025-01-06,C098,East,Desk Chair,Office,4,189.0
+1005,2025-01-07,C100,East,Pen Pack,Office,3,6.0
+1006,2025-01-08,C010,South,Headphones,Electronics,2,79.0
+1007,2025-01-08,C008,North,Headphones,Electronics,3,79.0
+1008,2025-01-08,C034,South,Pen Pack,Office,1,6.0
+1009,2025-01-08,C040,North,Pen Pack,Office,8,6.0
+1010,2025-01-10,C104,North,Pen Pack,Office,2,6.0
+1011,2025-01-11,C056,East,Desk Chair,Office,2,189.0
+1012,2025-01-11,C023,South,Headphones,Electronics,3,79.0
+1013,2025-01-12,C042,West,Notebook,Office,4,4.5
+1014,2025-01-12,C007,North,Pen Pack,Office,10,6.0
+1015,2025-01-13,C057,East,Coffee Maker,Home,2,59.0
+1016,2025-01-13,C105,South,Desk Lamp,Home,1,35.0
+1017,2025-01-14,C116,East,Desk Lamp,Home,3,35.0
+1018,2025-01-14,C115,West,Headphones,Electronics,4,79.0
+1019,2025-01-15,C108,North,Coffee Maker,Home,1,59.0
+1020,2025-01-16,C106,East,Desk Lamp,Home,1,35.0
+1021,2025-01-19,C018,North,Headphones,Electronics,3,79.0
+1022,2025-01-19,C015,South,Laptop,Electronics,1,899.0
+1023,2025-01-21,C009,South,Monitor,Electronics,4,249.0
+1024,2025-01-21,C020,North,Pen Pack,Office,11,6.0
+1025,2025-01-22,C014,North,Coffee Maker,Home,2,59.0
+1026,2025-01-23,C109,East,Headphones,Electronics,2,79.0
+1027,2025-01-23,C077,West,Desk Lamp,Home,3,35.0
+1028,2025-01-23,C068,West,Headphones,Electronics,3,79.0
+1029,2025-01-24,C079,South,Pen Pack,Office,3,6.0
+1030,2025-01-25,C084,South,Headphones,Electronics,1,79.0
+1031,2025-01-25,C024,North,Pen Pack,Office,10,6.0
+1032,2025-01-26,C111,South,Laptop,Electronics,1,899.0
+1033,2025-01-27,C101,South,Notebook,Office,3,4.5
+1034,2025-01-27,C009,East,Headphones,Electronics,2,79.0
+1035,2025-01-27,C011,East,Pen Pack,Office,10,6.0
+1036,2025-01-27,C048,East,Coffee Maker,Home,3,59.0
+1037,2025-01-28,C013,North,Headphones,Electronics,2,79.0
+1038,2025-01-29,C015,West,Desk Lamp,Home,1,35.0
+1039,2025-01-29,C033,East,Notebook,Office,5,4.5
+1040,2025-01-29,C047,North,Desk Chair,Office,2,189.0
+1041,2025-01-29,C020,East,Headphones,Electronics,2,79.0
+1042,2025-01-29,C056,West,Laptop,Electronics,1,899.0
+1043,2025-01-29,C100,West,Laptop,Electronics,4,899.0
+1044,2025-01-30,C008,South,Coffee Maker,Home,2,59.0
+1045,2025-01-30,C001,West,Laptop,Electronics,3,899.0
+1046,2025-01-30,C031,South,Pen Pack,Office,5,6.0
+1047,2025-01-30,C029,North,Notebook,Office,8,4.5
+1048,2025-01-31,C116,East,Notebook,Office,8,4.5
+1049,2025-01-31,C056,East,Notebook,Office,2,4.5
+1050,2025-01-31,C059,West,Laptop,Electronics,2,899.0
+1051,2025-01-31,C098,North,Headphones,Electronics,4,79.0
+1052,2025-02-02,C059,North,Pen Pack,Office,8,6.0
+1053,2025-02-02,C047,South,Coffee Maker,Home,3,59.0
+1054,2025-02-02,C096,North,Notebook,Office,1,4.5
+1055,2025-02-03,C071,South,Desk Chair,Office,3,189.0
+1056,2025-02-04,C100,West,Coffee Maker,Home,2,59.0
+1057,2025-02-05,C008,East,Laptop,Electronics,2,899.0
+1058,2025-02-06,C018,East,Notebook,Office,9,4.5
+1059,2025-02-06,C008,North,Desk Lamp,Home,1,35.0
+1060,2025-02-06,C113,West,Notebook,Office,12,4.5
+1061,2025-02-06,C055,North,Headphones,Electronics,1,79.0
+1062,2025-02-07,C027,North,Desk Chair,Office,3,189.0
+1063,2025-02-07,C043,North,Notebook,Office,3,4.5
+1064,2025-02-07,C040,North,Coffee Maker,Home,4,59.0
+1065,2025-02-09,C007,West,Pen Pack,Office,6,6.0
+1066,2025-02-09,C082,East,Headphones,Electronics,1,79.0
+1067,2025-02-10,C082,South,Desk Chair,Office,1,189.0
+1068,2025-02-11,C080,West,Pen Pack,Office,10,6.0
+1069,2025-02-12,C112,South,Notebook,Office,3,4.5
+1070,2025-02-12,C106,East,Monitor,Electronics,1,249.0
+1071,2025-02-13,C026,East,Notebook,Office,12,4.5
+1072,2025-02-14,C034,North,Pen Pack,Office,11,6.0
+1073,2025-02-15,C060,East,Monitor,Electronics,2,249.0
+1074,2025-02-16,C004,South,Pen Pack,Office,2,6.0
+1075,2025-02-17,C047,North,Monitor,Electronics,3,249.0
+1076,2025-02-18,C087,North,Monitor,Electronics,1,249.0
+1077,2025-02-21,C071,West,Notebook,Office,8,4.5
+1078,2025-02-21,C112,North,Pen Pack,Office,11,6.0
+1079,2025-02-23,C028,North,Notebook,Office,5,4.5
+1080,2025-02-23,C041,North,Notebook,Office,12,4.5
+1081,2025-02-24,C085,South,Monitor,Electronics,1,249.0
+1082,2025-02-24,C007,North,Notebook,Office,11,4.5
+1083,2025-02-24,C030,East,Notebook,Office,3,4.5
+1084,2025-02-26,C016,North,Laptop,Electronics,3,899.0
+1085,2025-02-26,C077,North,Pen Pack,Office,3,6.0
+1086,2025-02-26,C085,North,Headphones,Electronics,1,79.0
+1087,2025-02-26,C076,South,Notebook,Office,8,4.5
+1088,2025-02-27,C010,East,Notebook,Office,1,4.5
+1089,2025-02-28,C001,East,Pen Pack,Office,8,6.0
+1090,2025-02-28,C109,North,Coffee Maker,Home,1,59.0
+1091,2025-03-01,C058,East,Pen Pack,Office,6,6.0
+1092,2025-03-01,C037,East,Headphones,Electronics,3,79.0
+1093,2025-03-01,C004,South,Headphones,Electronics,1,79.0
+1094,2025-03-02,C036,East,Desk Chair,Office,4,189.0
+1095,2025-03-03,C075,East,Desk Chair,Office,4,189.0
+1096,2025-03-03,C106,West,Pen Pack,Office,12,6.0
+1097,2025-03-03,C013,East,Notebook,Office,1,4.5
+1098,2025-03-06,C041,South,Notebook,Office,2,4.5
+1099,2025-03-06,C100,South,Notebook,Office,11,4.5
+1100,2025-03-06,C054,North,Desk Chair,Office,2,189.0
+1101,2025-03-06,C089,West,Coffee Maker,Home,2,59.0
+1102,2025-03-07,C081,East,Pen Pack,Office,1,6.0
+1103,2025-03-07,C014,South,Pen Pack,Office,8,6.0
+1104,2025-03-10,C057,East,Desk Lamp,Home,2,35.0
+1105,2025-03-11,C012,North,Pen Pack,Office,3,6.0
+1106,2025-03-11,C115,North,Pen Pack,Office,12,6.0
+1107,2025-03-14,C088,South,Pen Pack,Office,10,6.0
+1108,2025-03-15,C106,North,Pen Pack,Office,9,6.0
+1109,2025-03-16,C089,West,Desk Lamp,Home,2,35.0
+1110,2025-03-16,C085,South,Desk Chair,Office,2,189.0
+1111,2025-03-17,C117,West,Desk Chair,Office,3,189.0
+1112,2025-03-17,C082,North,Monitor,Electronics,3,249.0
+1113,2025-03-18,C091,West,Desk Lamp,Home,4,35.0
+1114,2025-03-19,C077,South,Monitor,Electronics,3,249.0
+1115,2025-03-19,C118,North,Desk Lamp,Home,4,35.0
+1116,2025-03-20,C039,West,Headphones,Electronics,1,79.0
+1117,2025-03-20,C075,North,Desk Lamp,Home,1,35.0
+1118,2025-03-20,C068,West,Monitor,Electronics,4,249.0
+1119,2025-03-21,C112,South,Headphones,Electronics,1,79.0
+1120,2025-03-23,C030,North,Pen Pack,Office,6,6.0
+1121,2025-03-23,C027,North,Desk Chair,Office,1,189.0
+1122,2025-03-23,C037,East,Notebook,Office,4,4.5
+1123,2025-03-25,C064,North,Headphones,Electronics,3,79.0
+1124,2025-03-25,C101,South,Monitor,Electronics,3,249.0
+1125,2025-03-26,C019,East,Coffee Maker,Home,4,59.0
+1126,2025-03-26,C007,North,Notebook,Office,6,4.5
+1127,2025-03-27,C094,South,Pen Pack,Office,6,6.0
+1128,2025-03-28,C075,South,Desk Chair,Office,3,189.0
+1129,2025-03-29,C120,North,Notebook,Office,9,4.5
+1130,2025-03-29,C119,East,Desk Lamp,Home,4,35.0
+1131,2025-03-29,C120,North,Desk Lamp,Home,3,35.0
+1132,2025-04-01,C036,North,Notebook,Office,6,4.5
+1133,2025-04-02,C119,North,Pen Pack,Office,2,6.0
+1134,2025-04-02,C030,South,Laptop,Electronics,2,899.0
+1135,2025-04-03,C107,South,Headphones,Electronics,3,79.0
+1136,2025-04-04,C002,South,Notebook,Office,3,4.5
+1137,2025-04-05,C076,South,Notebook,Office,3,4.5
+1138,2025-04-05,C026,South,Headphones,Electronics,3,79.0
+1139,2025-04-06,C052,North,Pen Pack,Office,5,6.0
+1140,2025-04-07,C075,West,Headphones,Electronics,2,79.0
+1141,2025-04-08,C021,East,Desk Lamp,Home,2,35.0
+1142,2025-04-08,C048,North,Headphones,Electronics,2,79.0
+1143,2025-04-08,C069,North,Pen Pack,Office,1,6.0
+1144,2025-04-09,C037,West,Notebook,Office,5,4.5
+1145,2025-04-09,C053,West,Pen Pack,Office,10,6.0
+1146,2025-04-10,C033,North,Desk Chair,Office,2,189.0
+1147,2025-04-10,C065,West,Headphones,Electronics,1,79.0
+1148,2025-04-11,C096,North,Pen Pack,Office,9,6.0
+1149,2025-04-11,C024,South,Desk Lamp,Home,3,35.0
+1150,2025-04-12,C049,North,Pen Pack,Office,5,6.0
+1151,2025-04-12,C022,East,Laptop,Electronics,4,899.0
+1152,2025-04-12,C037,West,Laptop,Electronics,4,899.0
+1153,2025-04-13,C065,North,Headphones,Electronics,2,79.0
+1154,2025-04-14,C087,North,Headphones,Electronics,3,79.0
+1155,2025-04-14,C050,South,Monitor,Electronics,4,249.0
+1156,2025-04-14,C006,West,Desk Lamp,Home,2,35.0
+1157,2025-04-15,C034,East,Headphones,Electronics,4,79.0
+1158,2025-04-15,C031,East,Notebook,Office,9,4.5
+1159,2025-04-16,C103,North,Monitor,Electronics,2,249.0
+1160,2025-04-16,C051,South,Headphones,Electronics,1,79.0
+1161,2025-04-16,C013,East,Notebook,Office,6,4.5
+1162,2025-04-17,C120,West,Desk Chair,Office,4,189.0
+1163,2025-04-17,C063,North,Monitor,Electronics,1,249.0
+1164,2025-04-18,C013,West,Pen Pack,Office,5,6.0
+1165,2025-04-19,C089,East,Desk Lamp,Home,1,35.0
+1166,2025-04-19,C057,North,Headphones,Electronics,3,79.0
+1167,2025-04-19,C069,South,Headphones,Electronics,3,79.0
+1168,2025-04-21,C006,South,Pen Pack,Office,1,6.0
+1169,2025-04-22,C078,North,Notebook,Office,5,4.5
+1170,2025-04-22,C033,North,Laptop,Electronics,3,899.0
+1171,2025-04-23,C089,South,Laptop,Electronics,3,899.0
+1172,2025-04-23,C077,South,Desk Lamp,Home,2,35.0
+1173,2025-04-24,C052,North,Pen Pack,Office,9,6.0
+1174,2025-04-26,C052,West,Notebook,Office,10,4.5
+1175,2025-04-27,C091,East,Monitor,Electronics,2,249.0
+1176,2025-04-28,C097,North,Desk Lamp,Home,2,35.0
+1177,2025-04-28,C096,East,Desk Chair,Office,4,189.0
+1178,2025-04-29,C080,West,Headphones,Electronics,1,79.0
+1179,2025-04-29,C008,North,Pen Pack,Office,5,6.0
+1180,2025-05-01,C111,South,Coffee Maker,Home,4,59.0
+1181,2025-05-01,C114,South,Laptop,Electronics,1,899.0
+1182,2025-05-02,C053,West,Notebook,Office,11,4.5
+1183,2025-05-05,C056,North,Headphones,Electronics,2,79.0
+1184,2025-05-06,C052,North,Desk Lamp,Home,3,35.0
+1185,2025-05-07,C109,West,Headphones,Electronics,2,79.0
+1186,2025-05-07,C016,South,Headphones,Electronics,3,79.0
+1187,2025-05-08,C098,North,Pen Pack,Office,3,6.0
+1188,2025-05-09,C001,North,Desk Lamp,Home,1,35.0
+1189,2025-05-09,C112,South,Pen Pack,Office,4,6.0
+1190,2025-05-09,C021,North,Notebook,Office,4,4.5
+1191,2025-05-09,C017,East,Monitor,Electronics,3,249.0
+1192,2025-05-10,C025,East,Headphones,Electronics,4,79.0
+1193,2025-05-10,C118,East,Pen Pack,Office,10,6.0
+1194,2025-05-11,C029,North,Monitor,Electronics,3,249.0
+1195,2025-05-11,C034,South,Desk Lamp,Home,4,35.0
+1196,2025-05-11,C026,North,Desk Lamp,Home,1,35.0
+1197,2025-05-12,C095,East,Pen Pack,Office,1,6.0
+1198,2025-05-12,C088,South,Headphones,Electronics,3,79.0
+1199,2025-05-13,C028,East,Desk Lamp,Home,4,35.0
+1200,2025-05-14,C051,North,Pen Pack,Office,8,6.0
+1201,2025-05-16,C103,West,Pen Pack,Office,10,6.0
+1202,2025-05-16,C095,West,Monitor,Electronics,2,249.0
+1203,2025-05-17,C072,North,Notebook,Office,12,4.5
+1204,2025-05-17,C102,East,Coffee Maker,Home,2,59.0
+1205,2025-05-18,C018,West,Headphones,Electronics,3,79.0
+1206,2025-05-19,C113,South,Headphones,Electronics,3,79.0
+1207,2025-05-20,C054,South,Notebook,Office,8,4.5
+1208,2025-05-20,C061,North,Coffee Maker,Home,4,59.0
+1209,2025-05-20,C020,West,Monitor,Electronics,3,249.0
+1210,2025-05-21,C081,West,Pen Pack,Office,2,6.0
+1211,2025-05-23,C084,South,Notebook,Office,5,4.5
+1212,2025-05-23,C097,North,Pen Pack,Office,8,6.0
+1213,2025-05-24,C120,South,Monitor,Electronics,2,249.0
+1214,2025-05-25,C050,East,Desk Lamp,Home,2,35.0
+1215,2025-05-25,C037,South,Monitor,Electronics,1,249.0
+1216,2025-05-26,C042,North,Coffee Maker,Home,1,59.0
+1217,2025-05-26,C071,East,Laptop,Electronics,4,899.0
+1218,2025-05-27,C042,South,Pen Pack,Office,12,6.0
+1219,2025-05-27,C005,South,Headphones,Electronics,4,79.0
+1220,2025-05-29,C089,South,Desk Chair,Office,3,189.0
+1221,2025-05-29,C023,North,Coffee Maker,Home,2,59.0
+1222,2025-05-29,C058,South,Desk Chair,Office,1,189.0
+1223,2025-05-30,C056,East,Notebook,Office,11,4.5
+1224,2025-05-30,C042,South,Notebook,Office,12,4.5
+1225,2025-05-31,C040,East,Laptop,Electronics,3,899.0
+1226,2025-06-01,C005,East,Pen Pack,Office,1,6.0
+1227,2025-06-01,C097,South,Desk Lamp,Home,2,35.0
+1228,2025-06-02,C004,East,Desk Chair,Office,1,189.0
+1229,2025-06-02,C077,East,Coffee Maker,Home,3,59.0
+1230,2025-06-02,C017,East,Headphones,Electronics,1,79.0
+1231,2025-06-03,C047,North,Notebook,Office,9,4.5
+1232,2025-06-04,C077,South,Headphones,Electronics,4,79.0
+1233,2025-06-05,C097,South,Headphones,Electronics,4,79.0
+1234,2025-06-06,C050,North,Pen Pack,Office,2,6.0
+1235,2025-06-06,C059,South,Laptop,Electronics,3,899.0
+1236,2025-06-07,C009,West,Desk Lamp,Home,1,35.0
+1237,2025-06-09,C099,West,Pen Pack,Office,11,6.0
+1238,2025-06-10,C059,South,Headphones,Electronics,4,79.0
+1239,2025-06-10,C087,West,Notebook,Office,4,4.5
+1240,2025-06-11,C091,North,Laptop,Electronics,2,899.0
+1241,2025-06-11,C097,South,Pen Pack,Office,9,6.0
+1242,2025-06-11,C002,North,Coffee Maker,Home,2,59.0
+1243,2025-06-13,C109,South,Coffee Maker,Home,4,59.0
+1244,2025-06-13,C090,South,Monitor,Electronics,3,249.0
+1245,2025-06-13,C001,East,Monitor,Electronics,2,249.0
+1246,2025-06-14,C034,North,Pen Pack,Office,2,6.0
+1247,2025-06-14,C083,East,Headphones,Electronics,3,79.0
+1248,2025-06-15,C030,North,Desk Lamp,Home,4,35.0
+1249,2025-06-15,C098,East,Notebook,Office,5,4.5
+1250,2025-06-15,C016,East,Notebook,Office,12,4.5
+1251,2025-06-16,C047,East,Pen Pack,Office,9,6.0
+1252,2025-06-16,C103,North,Coffee Maker,Home,4,59.0
+1253,2025-06-17,C058,East,Notebook,Office,5,4.5
+1254,2025-06-17,C115,East,Notebook,Office,6,4.5
+1255,2025-06-17,C079,West,Laptop,Electronics,4,899.0
+1256,2025-06-18,C016,East,Desk Lamp,Home,3,35.0
+1257,2025-06-18,C086,South,Coffee Maker,Home,2,59.0
+1258,2025-06-19,C071,South,Laptop,Electronics,2,899.0
+1259,2025-06-20,C009,South,Headphones,Electronics,3,79.0
+1260,2025-06-20,C001,East,Coffee Maker,Home,2,59.0
+1261,2025-06-21,C108,North,Notebook,Office,10,4.5
+1262,2025-06-23,C107,North,Headphones,Electronics,3,79.0
+1263,2025-06-24,C004,South,Headphones,Electronics,2,79.0
+1264,2025-06-25,C054,West,Pen Pack,Office,1,6.0
+1265,2025-06-26,C070,North,Pen Pack,Office,2,6.0
+1266,2025-06-26,C026,East,Monitor,Electronics,3,249.0
+1267,2025-06-27,C060,East,Notebook,Office,9,4.5
+1268,2025-06-27,C018,East,Coffee Maker,Home,4,59.0
+1269,2025-06-27,C039,North,Coffee Maker,Home,2,59.0
+1270,2025-06-29,C045,East,Pen Pack,Office,6,6.0
+1271,2025-06-30,C070,South,Coffee Maker,Home,4,59.0
+1272,2025-06-30,C055,South,Pen Pack,Office,6,6.0
+1273,2025-06-30,C057,East,Coffee Maker,Home,1,59.0
+1274,2025-07-01,C077,South,Headphones,Electronics,3,79.0
+1275,2025-07-01,C022,North,Laptop,Electronics,2,899.0
+1276,2025-07-03,C091,North,Monitor,Electronics,2,249.0
+1277,2025-07-03,C084,North,Notebook,Office,5,4.5
+1278,2025-07-04,C017,West,Laptop,Electronics,2,899.0
+1279,2025-07-04,C079,North,Coffee Maker,Home,2,59.0
+1280,2025-07-05,C109,West,Headphones,Electronics,3,79.0
+1281,2025-07-05,C067,South,Coffee Maker,Home,1,59.0
+1282,2025-07-05,C027,South,Headphones,Electronics,3,79.0
+1283,2025-07-05,C084,North,Monitor,Electronics,3,249.0
+1284,2025-07-05,C091,West,Desk Chair,Office,1,189.0
+1285,2025-07-06,C088,North,Laptop,Electronics,2,899.0
+1286,2025-07-06,C031,North,Headphones,Electronics,4,79.0
+1287,2025-07-07,C071,North,Monitor,Electronics,4,249.0
+1288,2025-07-07,C037,North,Desk Lamp,Home,4,35.0
+1289,2025-07-08,C077,East,Notebook,Office,10,4.5
+1290,2025-07-08,C068,North,Notebook,Office,10,4.5
+1291,2025-07-08,C085,West,Laptop,Electronics,4,899.0
+1292,2025-07-09,C109,West,Laptop,Electronics,4,899.0
+1293,2025-07-09,C105,East,Notebook,Office,8,4.5
+1294,2025-07-09,C022,West,Headphones,Electronics,1,79.0
+1295,2025-07-10,C027,South,Headphones,Electronics,1,79.0
+1296,2025-07-10,C113,West,Monitor,Electronics,3,249.0
+1297,2025-07-10,C038,West,Pen Pack,Office,6,6.0
+1298,2025-07-10,C020,North,Desk Lamp,Home,2,35.0
+1299,2025-07-11,C008,East,Desk Chair,Office,1,189.0
+1300,2025-07-12,C009,East,Desk Chair,Office,4,189.0
+1301,2025-07-13,C053,South,Headphones,Electronics,4,79.0
+1302,2025-07-14,C088,East,Monitor,Electronics,1,249.0
+1303,2025-07-14,C043,North,Headphones,Electronics,4,79.0
+1304,2025-07-15,C101,East,Coffee Maker,Home,2,59.0
+1305,2025-07-15,C118,North,Monitor,Electronics,4,249.0
+1306,2025-07-16,C116,West,Coffee Maker,Home,1,59.0
+1307,2025-07-17,C111,South,Laptop,Electronics,1,899.0
+1308,2025-07-17,C095,South,Notebook,Office,7,4.5
+1309,2025-07-17,C099,North,Pen Pack,Office,2,6.0
+1310,2025-07-18,C092,North,Headphones,Electronics,1,79.0
+1311,2025-07-18,C036,South,Coffee Maker,Home,4,59.0
+1312,2025-07-19,C018,North,Pen Pack,Office,7,6.0
+1313,2025-07-19,C086,East,Pen Pack,Office,6,6.0
+1314,2025-07-21,C101,West,Headphones,Electronics,2,79.0
+1315,2025-07-21,C031,East,Monitor,Electronics,1,249.0
+1316,2025-07-21,C019,East,Notebook,Office,8,4.5
+1317,2025-07-23,C003,North,Headphones,Electronics,3,79.0
+1318,2025-07-24,C101,East,Coffee Maker,Home,4,59.0
+1319,2025-07-25,C036,East,Coffee Maker,Home,1,59.0
+1320,2025-07-28,C038,East,Notebook,Office,11,4.5
+1321,2025-07-29,C093,North,Pen Pack,Office,5,6.0
+1322,2025-07-30,C044,South,Pen Pack,Office,5,6.0
+1323,2025-07-30,C081,North,Headphones,Electronics,4,79.0
+1324,2025-07-31,C075,East,Monitor,Electronics,4,249.0
+1325,2025-07-31,C028,South,Desk Chair,Office,2,189.0
+1326,2025-08-01,C006,South,Notebook,Office,5,4.5
+1327,2025-08-01,C061,East,Pen Pack,Office,1,6.0
+1328,2025-08-01,C065,West,Pen Pack,Office,12,6.0
+1329,2025-08-01,C102,North,Laptop,Electronics,1,899.0
+1330,2025-08-01,C071,East,Desk Lamp,Home,1,35.0
+1331,2025-08-02,C056,North,Headphones,Electronics,3,79.0
+1332,2025-08-02,C019,East,Headphones,Electronics,3,79.0
+1333,2025-08-03,C003,South,Monitor,Electronics,4,249.0
+1334,2025-08-03,C120,East,Notebook,Office,4,4.5
+1335,2025-08-03,C020,West,Desk Lamp,Home,3,35.0
+1336,2025-08-03,C079,East,Pen Pack,Office,4,6.0
+1337,2025-08-03,C033,West,Notebook,Office,7,4.5
+1338,2025-08-04,C082,North,Coffee Maker,Home,3,59.0
+1339,2025-08-05,C042,North,Desk Lamp,Home,1,35.0
+1340,2025-08-06,C002,North,Notebook,Office,6,4.5
+1341,2025-08-06,C019,West,Pen Pack,Office,10,6.0
+1342,2025-08-07,C074,South,Desk Lamp,Home,3,35.0
+1343,2025-08-07,C063,West,Laptop,Electronics,3,899.0
+1344,2025-08-07,C047,South,Notebook,Office,4,4.5
+1345,2025-08-07,C022,North,Pen Pack,Office,3,6.0
+1346,2025-08-08,C003,East,Notebook,Office,10,4.5
+1347,2025-08-08,C069,South,Headphones,Electronics,4,79.0
+1348,2025-08-10,C089,North,Headphones,Electronics,4,79.0
+1349,2025-08-10,C070,West,Coffee Maker,Home,3,59.0
+1350,2025-08-10,C073,East,Coffee Maker,Home,1,59.0
+1351,2025-08-11,C061,North,Monitor,Electronics,3,249.0
+1352,2025-08-11,C119,South,Pen Pack,Office,12,6.0
+1353,2025-08-11,C021,East,Pen Pack,Office,8,6.0
+1354,2025-08-11,C015,South,Notebook,Office,1,4.5
+1355,2025-08-12,C066,North,Desk Chair,Office,4,189.0
+1356,2025-08-12,C107,North,Headphones,Electronics,1,79.0
+1357,2025-08-14,C069,East,Pen Pack,Office,7,6.0
+1358,2025-08-14,C049,West,Notebook,Office,8,4.5
+1359,2025-08-16,C094,East,Pen Pack,Office,2,6.0
+1360,2025-08-16,C071,East,Pen Pack,Office,6,6.0
+1361,2025-08-16,C012,West,Desk Lamp,Home,2,35.0
+1362,2025-08-17,C040,North,Pen Pack,Office,11,6.0
+1363,2025-08-19,C044,South,Laptop,Electronics,4,899.0
+1364,2025-08-20,C120,North,Headphones,Electronics,4,79.0
+1365,2025-08-20,C042,West,Notebook,Office,3,4.5
+1366,2025-08-20,C098,South,Laptop,Electronics,4,899.0
+1367,2025-08-21,C105,North,Notebook,Office,10,4.5
+1368,2025-08-22,C087,North,Headphones,Electronics,4,79.0
+1369,2025-08-22,C021,West,Monitor,Electronics,4,249.0
+1370,2025-08-23,C119,East,Laptop,Electronics,4,899.0
+1371,2025-08-24,C054,West,Laptop,Electronics,3,899.0
+1372,2025-08-25,C050,East,Monitor,Electronics,2,249.0
+1373,2025-08-26,C014,South,Desk Lamp,Home,4,35.0
+1374,2025-08-26,C017,South,Headphones,Electronics,3,79.0
+1375,2025-08-27,C030,East,Desk Lamp,Home,3,35.0
+1376,2025-08-27,C078,West,Monitor,Electronics,1,249.0
+1377,2025-08-27,C107,North,Notebook,Office,12,4.5
+1378,2025-08-28,C119,West,Notebook,Office,10,4.5
+1379,2025-08-29,C043,East,Pen Pack,Office,7,6.0
+1380,2025-08-31,C009,North,Coffee Maker,Home,3,59.0
+1381,2025-08-31,C038,South,Desk Chair,Office,1,189.0
+1382,2025-09-02,C011,West,Pen Pack,Office,10,6.0
+1383,2025-09-02,C109,South,Headphones,Electronics,1,79.0
+1384,2025-09-03,C099,South,Pen Pack,Office,1,6.0
+1385,2025-09-03,C030,South,Notebook,Office,4,4.5
+1386,2025-09-03,C017,East,Monitor,Electronics,1,249.0
+1387,2025-09-04,C102,North,Headphones,Electronics,3,79.0
+1388,2025-09-04,C011,North,Monitor,Electronics,2,249.0
+1389,2025-09-04,C020,North,Pen Pack,Office,2,6.0
+1390,2025-09-04,C091,North,Desk Chair,Office,2,189.0
+1391,2025-09-04,C090,North,Notebook,Office,4,4.5
+1392,2025-09-05,C054,East,Notebook,Office,10,4.5
+1393,2025-09-06,C110,South,Desk Chair,Office,2,189.0
+1394,2025-09-07,C042,East,Desk Lamp,Home,2,35.0
+1395,2025-09-08,C030,North,Pen Pack,Office,10,6.0
+1396,2025-09-08,C018,North,Pen Pack,Office,11,6.0
+1397,2025-09-08,C068,East,Monitor,Electronics,4,249.0
+1398,2025-09-09,C112,North,Desk Chair,Office,2,189.0
+1399,2025-09-09,C090,East,Desk Chair,Office,2,189.0
+1400,2025-09-10,C114,West,Pen Pack,Office,5,6.0
+1401,2025-09-11,C057,South,Monitor,Electronics,4,249.0
+1402,2025-09-12,C101,North,Monitor,Electronics,2,249.0
+1403,2025-09-12,C089,West,Pen Pack,Office,5,6.0
+1404,2025-09-13,C107,North,Desk Chair,Office,2,189.0
+1405,2025-09-15,C074,South,Headphones,Electronics,4,79.0
+1406,2025-09-15,C009,East,Monitor,Electronics,1,249.0
+1407,2025-09-16,C050,East,Monitor,Electronics,3,249.0
+1408,2025-09-16,C044,North,Desk Chair,Office,2,189.0
+1409,2025-09-16,C097,West,Notebook,Office,12,4.5
+1410,2025-09-16,C018,South,Desk Lamp,Home,2,35.0
+1411,2025-09-17,C017,North,Pen Pack,Office,9,6.0
+1412,2025-09-17,C016,East,Headphones,Electronics,1,79.0
+1413,2025-09-18,C095,South,Pen Pack,Office,3,6.0
+1414,2025-09-18,C022,North,Laptop,Electronics,2,899.0
+1415,2025-09-18,C010,West,Pen Pack,Office,1,6.0
+1416,2025-09-19,C040,North,Headphones,Electronics,1,79.0
+1417,2025-09-19,C112,West,Pen Pack,Office,3,6.0
+1418,2025-09-19,C053,South,Desk Lamp,Home,1,35.0
+1419,2025-09-19,C028,East,Desk Lamp,Home,1,35.0
+1420,2025-09-20,C029,North,Notebook,Office,12,4.5
+1421,2025-09-22,C112,North,Laptop,Electronics,3,899.0
+1422,2025-09-22,C023,North,Laptop,Electronics,1,899.0
+1423,2025-09-22,C005,North,Headphones,Electronics,2,79.0
+1424,2025-09-22,C111,West,Monitor,Electronics,3,249.0
+1425,2025-09-24,C118,South,Headphones,Electronics,2,79.0
+1426,2025-09-25,C117,West,Coffee Maker,Home,3,59.0
+1427,2025-09-25,C039,East,Headphones,Electronics,2,79.0
+1428,2025-09-27,C077,North,Headphones,Electronics,1,79.0
+1429,2025-09-27,C093,East,Coffee Maker,Home,3,59.0
+1430,2025-09-29,C039,East,Pen Pack,Office,1,6.0
+1431,2025-09-29,C055,North,Headphones,Electronics,3,79.0
+1432,2025-09-29,C051,North,Notebook,Office,4,4.5
+1433,2025-09-29,C050,North,Notebook,Office,7,4.5
+1434,2025-09-30,C009,North,Pen Pack,Office,6,6.0
+1435,2025-10-01,C013,East,Monitor,Electronics,4,249.0
+1436,2025-10-01,C105,North,Pen Pack,Office,9,6.0
+1437,2025-10-01,C050,West,Monitor,Electronics,2,249.0
+1438,2025-10-01,C041,East,Notebook,Office,12,4.5
+1439,2025-10-02,C087,East,Desk Lamp,Home,4,35.0
+1440,2025-10-03,C119,North,Monitor,Electronics,4,249.0
+1441,2025-10-03,C013,West,Pen Pack,Office,5,6.0
+1442,2025-10-03,C068,South,Desk Chair,Office,1,189.0
+1443,2025-10-03,C114,West,Headphones,Electronics,2,79.0
+1444,2025-10-04,C106,North,Notebook,Office,6,4.5
+1445,2025-10-05,C049,West,Headphones,Electronics,2,79.0
+1446,2025-10-06,C051,East,Notebook,Office,3,4.5
+1447,2025-10-06,C099,East,Notebook,Office,1,4.5
+1448,2025-10-07,C034,East,Pen Pack,Office,7,6.0
+1449,2025-10-07,C114,South,Coffee Maker,Home,1,59.0
+1450,2025-10-07,C038,East,Coffee Maker,Home,1,59.0
+1451,2025-10-08,C030,South,Notebook,Office,7,4.5
+1452,2025-10-10,C045,West,Desk Lamp,Home,4,35.0
+1453,2025-10-10,C090,West,Coffee Maker,Home,1,59.0
+1454,2025-10-10,C001,North,Notebook,Office,5,4.5
+1455,2025-10-11,C110,East,Monitor,Electronics,2,249.0
+1456,2025-10-11,C114,South,Desk Chair,Office,2,189.0
+1457,2025-10-11,C025,East,Pen Pack,Office,4,6.0
+1458,2025-10-12,C025,North,Notebook,Office,11,4.5
+1459,2025-10-13,C050,East,Headphones,Electronics,2,79.0
+1460,2025-10-14,C066,East,Coffee Maker,Home,3,59.0
+1461,2025-10-14,C059,West,Pen Pack,Office,8,6.0
+1462,2025-10-14,C120,South,Monitor,Electronics,3,249.0
+1463,2025-10-15,C065,North,Coffee Maker,Home,1,59.0
+1464,2025-10-16,C092,East,Notebook,Office,6,4.5
+1465,2025-10-16,C010,North,Headphones,Electronics,4,79.0
+1466,2025-10-16,C007,South,Notebook,Office,5,4.5
+1467,2025-10-17,C069,North,Notebook,Office,6,4.5
+1468,2025-10-17,C115,North,Desk Lamp,Home,1,35.0
+1469,2025-10-18,C019,East,Pen Pack,Office,2,6.0
+1470,2025-10-18,C079,West,Headphones,Electronics,1,79.0
+1471,2025-10-19,C109,West,Desk Chair,Office,3,189.0
+1472,2025-10-19,C073,East,Monitor,Electronics,2,249.0
+1473,2025-10-20,C002,South,Headphones,Electronics,3,79.0
+1474,2025-10-21,C034,North,Coffee Maker,Home,4,59.0
+1475,2025-10-22,C075,North,Desk Chair,Office,4,189.0
+1476,2025-10-23,C076,West,Coffee Maker,Home,2,59.0
+1477,2025-10-23,C051,East,Headphones,Electronics,4,79.0
+1478,2025-10-23,C002,South,Notebook,Office,12,4.5
+1479,2025-10-24,C014,North,Laptop,Electronics,4,899.0
+1480,2025-10-24,C003,South,Monitor,Electronics,1,249.0
+1481,2025-10-24,C094,East,Desk Chair,Office,1,189.0
+1482,2025-10-25,C119,West,Desk Lamp,Home,4,35.0
+1483,2025-10-27,C085,East,Pen Pack,Office,6,6.0
+1484,2025-10-28,C070,North,Headphones,Electronics,3,79.0
+1485,2025-10-29,C092,East,Headphones,Electronics,4,79.0
+1486,2025-10-29,C112,North,Laptop,Electronics,3,899.0
+1487,2025-10-29,C112,North,Pen Pack,Office,6,6.0
+1488,2025-10-30,C008,East,Desk Lamp,Home,3,35.0
+1489,2025-10-30,C039,South,Pen Pack,Office,5,6.0
+1490,2025-10-30,C046,North,Pen Pack,Office,1,6.0
+1491,2025-11-03,C103,West,Desk Chair,Office,1,189.0
+1492,2025-11-03,C035,South,Pen Pack,Office,11,6.0
+1493,2025-11-03,C092,South,Notebook,Office,8,4.5
+1494,2025-11-03,C085,West,Pen Pack,Office,6,6.0
+1495,2025-11-04,C101,East,Headphones,Electronics,3,79.0
+1496,2025-11-04,C095,North,Pen Pack,Office,3,6.0
+1497,2025-11-04,C102,North,Headphones,Electronics,2,79.0
+1498,2025-11-06,C051,East,Headphones,Electronics,4,79.0
+1499,2025-11-06,C039,West,Headphones,Electronics,1,79.0
+1500,2025-11-06,C072,West,Notebook,Office,2,4.5
+1501,2025-11-06,C034,East,Headphones,Electronics,3,79.0
+1502,2025-11-08,C019,North,Notebook,Office,12,4.5
+1503,2025-11-09,C062,West,Pen Pack,Office,1,6.0
+1504,2025-11-10,C057,East,Headphones,Electronics,2,79.0
+1505,2025-11-11,C115,North,Pen Pack,Office,4,6.0
+1506,2025-11-11,C101,East,Pen Pack,Office,12,6.0
+1507,2025-11-11,C080,South,Desk Lamp,Home,3,35.0
+1508,2025-11-12,C104,West,Coffee Maker,Home,1,59.0
+1509,2025-11-12,C047,South,Desk Lamp,Home,4,35.0
+1510,2025-11-14,C089,South,Desk Lamp,Home,2,35.0
+1511,2025-11-14,C025,West,Desk Lamp,Home,4,35.0
+1512,2025-11-14,C082,South,Desk Lamp,Home,4,35.0
+1513,2025-11-15,C050,East,Desk Lamp,Home,3,35.0
+1514,2025-11-16,C038,East,Headphones,Electronics,1,79.0
+1515,2025-11-17,C015,South,Monitor,Electronics,1,249.0
+1516,2025-11-18,C097,North,Desk Lamp,Home,2,35.0
+1517,2025-11-18,C085,East,Headphones,Electronics,1,79.0
+1518,2025-11-18,C089,North,Coffee Maker,Home,3,59.0
+1519,2025-11-19,C100,North,Desk Lamp,Home,2,35.0
+1520,2025-11-20,C021,North,Notebook,Office,8,4.5
+1521,2025-11-22,C072,East,Headphones,Electronics,4,79.0
+1522,2025-11-23,C077,West,Pen Pack,Office,1,6.0
+1523,2025-11-23,C047,North,Coffee Maker,Home,3,59.0
+1524,2025-11-23,C036,North,Monitor,Electronics,3,249.0
+1525,2025-11-23,C087,East,Coffee Maker,Home,2,59.0
+1526,2025-11-23,C058,North,Pen Pack,Office,8,6.0
+1527,2025-11-25,C055,East,Desk Lamp,Home,1,35.0
+1528,2025-11-27,C021,South,Headphones,Electronics,1,79.0
+1529,2025-11-28,C029,East,Desk Lamp,Home,3,35.0
+1530,2025-11-28,C064,South,Headphones,Electronics,3,79.0
+1531,2025-11-29,C062,South,Pen Pack,Office,2,6.0
+1532,2025-11-29,C103,North,Desk Lamp,Home,2,35.0
+1533,2025-11-30,C033,South,Notebook,Office,8,4.5
+1534,2025-11-30,C022,East,Monitor,Electronics,2,249.0
+1535,2025-12-01,C004,East,Desk Lamp,Home,4,35.0
+1536,2025-12-01,C089,North,Notebook,Office,6,4.5
+1537,2025-12-02,C033,South,Headphones,Electronics,1,79.0
+1538,2025-12-02,C041,North,Desk Lamp,Home,2,35.0
+1539,2025-12-03,C078,North,Coffee Maker,Home,4,59.0
+1540,2025-12-03,C084,South,Desk Lamp,Home,4,35.0
+1541,2025-12-03,C102,West,Pen Pack,Office,2,6.0
+1542,2025-12-04,C089,South,Headphones,Electronics,4,79.0
+1543,2025-12-05,C073,East,Notebook,Office,7,4.5
+1544,2025-12-05,C044,South,Notebook,Office,10,4.5
+1545,2025-12-05,C015,South,Notebook,Office,3,4.5
+1546,2025-12-05,C050,North,Laptop,Electronics,4,899.0
+1547,2025-12-05,C028,North,Headphones,Electronics,4,79.0
+1548,2025-12-05,C011,North,Headphones,Electronics,4,79.0
+1549,2025-12-05,C014,West,Monitor,Electronics,1,249.0
+1550,2025-12-06,C021,South,Desk Chair,Office,3,189.0
+1551,2025-12-06,C119,South,Notebook,Office,5,4.5
+1552,2025-12-07,C104,North,Pen Pack,Office,9,6.0
+1553,2025-12-08,C115,South,Notebook,Office,10,4.5
+1554,2025-12-08,C080,South,Notebook,Office,4,4.5
+1555,2025-12-08,C025,North,Monitor,Electronics,1,249.0
+1556,2025-12-09,C029,South,Headphones,Electronics,4,79.0
+1557,2025-12-09,C068,East,Headphones,Electronics,4,79.0
+1558,2025-12-10,C048,North,Monitor,Electronics,4,249.0
+1559,2025-12-11,C075,North,Headphones,Electronics,1,79.0
+1560,2025-12-12,C114,East,Desk Chair,Office,1,189.0
+1561,2025-12-12,C069,North,Headphones,Electronics,4,79.0
+1562,2025-12-13,C057,North,Headphones,Electronics,2,79.0
+1563,2025-12-13,C118,South,Pen Pack,Office,3,6.0
+1564,2025-12-14,C079,North,Desk Chair,Office,3,189.0
+1565,2025-12-14,C052,North,Desk Chair,Office,2,189.0
+1566,2025-12-14,C070,West,Pen Pack,Office,2,6.0
+1567,2025-12-15,C053,East,Pen Pack,Office,1,6.0
+1568,2025-12-15,C011,North,Pen Pack,Office,3,6.0
+1569,2025-12-15,C016,North,Notebook,Office,12,4.5
+1570,2025-12-16,C020,East,Laptop,Electronics,3,899.0
+1571,2025-12-17,C056,East,Coffee Maker,Home,2,59.0
+1572,2025-12-18,C074,South,Notebook,Office,11,4.5
+1573,2025-12-18,C103,South,Desk Lamp,Home,1,35.0
+1574,2025-12-19,C105,East,Headphones,Electronics,4,79.0
+1575,2025-12-19,C085,South,Monitor,Electronics,1,249.0
+1576,2025-12-19,C100,East,Desk Lamp,Home,4,35.0
+1577,2025-12-21,C090,North,Headphones,Electronics,2,79.0
+1578,2025-12-23,C048,East,Desk Lamp,Home,2,35.0
+1579,2025-12-23,C009,South,Pen Pack,Office,12,6.0
+1580,2025-12-24,C065,North,Headphones,Electronics,2,79.0
+1581,2025-12-24,C036,East,Notebook,Office,8,4.5
+1582,2025-12-24,C010,North,Headphones,Electronics,2,79.0
+1583,2025-12-24,C112,East,Coffee Maker,Home,2,59.0
+1584,2025-12-24,C067,East,Pen Pack,Office,9,6.0
+1585,2025-12-24,C033,East,Pen Pack,Office,4,6.0
+1586,2025-12-25,C072,North,Headphones,Electronics,1,79.0
+1587,2025-12-25,C035,South,Laptop,Electronics,1,899.0
+1588,2025-12-26,C011,East,Desk Chair,Office,2,189.0
+1589,2025-12-26,C110,West,Pen Pack,Office,6,6.0
+1590,2025-12-26,C071,North,Desk Lamp,Home,1,35.0
+1591,2025-12-26,C002,South,Headphones,Electronics,2,79.0
+1592,2025-12-27,C030,North,Notebook,Office,5,4.5
+1593,2025-12-27,C080,North,Coffee Maker,Home,1,59.0
+1594,2025-12-27,C073,East,Headphones,Electronics,2,79.0
+1595,2025-12-28,C005,East,Pen Pack,Office,12,6.0
+1596,2025-12-28,C087,South,Coffee Maker,Home,1,59.0
+1597,2025-12-28,C037,North,Pen Pack,Office,2,6.0
+1598,2025-12-30,C115,South,Monitor,Electronics,2,249.0
+1599,2025-12-31,C024,North,Pen Pack,Office,8,6.0
+1600,2025-12-31,C029,West,Laptop,Electronics,1,899.0
