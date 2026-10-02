@@ -7,7 +7,7 @@ const L = document.getElementById('log');
 const C = document.getElementById('console');
 const log = (...a) => { L.textContent += a.join(' ') + '\n'; };
 const BASE = '/app' + location.pathname.replace(/[^/]*$/, '');
-const CP = BASE + 'runner-v4.jar:' + BASE + 'javac17.jar';
+const CP = BASE + 'runner-v5.jar:' + BASE + 'javac17.jar';
 const enc = new TextEncoder();
 let n = 0;
 async function go(label, files, mode, timeout) {
@@ -39,6 +39,7 @@ const prog = (body, extra = '') => `import java.util.*;\nimport java.util.concur
     await go('2000 lines', { 'Main.java': prog('    for (int i = 0; i < 2000; i++) System.out.println("line " + i);') }, 'run');
     await go('cpu work', { 'Main.java': prog('    long s = 0; for (int i = 0; i < 50_000_000; i++) s += i % 7; System.out.println(s);') }, 'run');
     await go('threads', { 'Main.java': prog('    ExecutorService ex = Executors.newFixedThreadPool(4);\n    List<Future<Integer>> fs = new ArrayList<>();\n    for (int i = 1; i <= 4; i++) { final int k = i; fs.add(ex.submit(() -> { Thread.sleep(50); return k * k; })); }\n    int sum = 0; for (Future<Integer> f : fs) sum += f.get();\n    ex.shutdown();\n    System.out.println("sum=" + sum);\n    Thread t = new Thread(() -> System.out.println("from thread")); t.start(); t.join();\n    java.util.concurrent.atomic.AtomicInteger c = new java.util.concurrent.atomic.AtomicInteger();\n    List<Thread> ts = new ArrayList<>(); for (int i = 0; i < 3; i++) { Thread th = new Thread(() -> { for (int j = 0; j < 1000; j++) c.incrementAndGet(); }); ts.add(th); th.start(); }\n    for (Thread th : ts) th.join();\n    System.out.println("count=" + c.get());') }, 'run');
+    await go('pool check', { 'Main.java': prog('    System.out.println("pool");') }, 'run');
     await go('files', { 'Main.java': prog('    System.out.println("user.dir=" + System.getProperty("user.dir") + " tmp=" + System.getProperty("java.io.tmpdir"));\n    try { Path p = Path.of("notes.txt"); Files.writeString(p, "hello\\nworld\\n"); System.out.println("relative ok: " + Files.readAllLines(p)); } catch (Exception e) { System.out.println("relative failed: " + e); }\n    try { Path p = Path.of("/files/notes.txt"); Files.writeString(p, "a\\nb\\n"); System.out.println("/files ok: " + Files.readAllLines(p)); } catch (Exception e) { System.out.println("/files failed: " + e); }\n    try { Path p = Files.createTempFile("x", ".txt"); Files.writeString(p, "t"); System.out.println("temp ok: " + p + " " + Files.readString(p)); } catch (Exception e) { System.out.println("temp failed: " + e); }') }, 'run');
     await go('with thread timeout', { 'Main.java': prog('    System.out.println("timed ok");') }, 'run', 10000);
     await go('final quick', { 'Main.java': prog('    System.out.println("done");') }, 'run');
