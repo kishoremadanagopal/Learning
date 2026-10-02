@@ -276,3 +276,34 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | N-Queens | one queen per row; sets of columns, row − col, row + col | O(n!) worst, heavily pruned | O(n) | [23](lessons/23-backtracking.md) |
 | Sudoku | fill an empty cell with each valid digit, undo on dead ends | exponential worst | O(81) | [23](lessons/23-backtracking.md) |
 | Word search | DFS from each cell, mark used cells, unmark after | O(r · c · 4ᴸ) | O(L) | [23](lessons/23-backtracking.md) |
+| Linear search | check each item | O(n) | O(1) | [24](lessons/24-binary-search.md) |
+| Binary search | compare with the middle; keep one half | O(log n) | O(1) | [24](lessons/24-binary-search.md) |
+| bisect_left / bisect_right | C-coded binary search for insertion points | O(log n) | O(1) | [24](lessons/24-binary-search.md) |
+| Count items in a range of a sorted list | bisect_right(hi) − bisect_left(lo) | O(log n) | O(1) | [24](lessons/24-binary-search.md) |
+| First / last occurrence | on a match, record it and keep searching left / right | O(log n) | O(1) | [24](lessons/24-binary-search.md) |
+| Search a rotated sorted array | one half is always sorted; check if the target is inside it | O(log n) | O(1) | [24](lessons/24-binary-search.md) |
+| Find a peak | move towards the bigger neighbour | O(log n) | O(1) | [24](lessons/24-binary-search.md) |
+| Search a sorted matrix (rows continue) | treat it as one list: row k // cols, column k % cols | O(log(r·c)) | O(1) | [24](lessons/24-binary-search.md) |
+| First value that works | while lo < hi: mid; works → hi = mid, else lo = mid + 1 | O(log(range) × check) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Last value that works | mid rounded up; works → lo = mid, else hi = mid − 1 | O(log(range) × check) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Integer square root | last x with x·x ≤ n | O(log n) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Minimum ship capacity | search max(w)..sum(w); greedy day count | O(n log(sum)) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Minimum eating speed | search 1..max(pile); total hours with ceiling division | O(n log(max)) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Minimum of a rotated array | compare nums[mid] with nums[hi] | O(log n) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Real-valued answer | fixed number of halvings (e.g. 100) | O(iterations × check) | O(1) | [25](lessons/25-binary-search-answer.md) |
+| Bubble sort | swap out-of-order neighbours; stop when a pass makes no swaps | O(n²), best O(n) | O(1) | [26](lessons/26-simple-sorts.md) |
+| Selection sort | swap the minimum of the rest into place | O(n²) always | O(1) | [26](lessons/26-simple-sorts.md) |
+| Insertion sort | shift bigger items right, drop the item in the gap | O(n²), best O(n) | O(1) | [26](lessons/26-simple-sorts.md) |
+| Dutch national flag (sort 0/1/2) | three pointers low / mid / high | O(n) | O(1) | [26](lessons/26-simple-sorts.md) |
+| Merge sort | split, sort halves, merge | O(n log n) always | O(n) | [27](lessons/27-efficient-sorts.md) |
+| Quicksort | random pivot, partition, recurse both sides | O(n log n) average, O(n²) worst | O(log n) | [27](lessons/27-efficient-sorts.md) |
+| Heap sort | build a max-heap, swap the max to the end, sift down | O(n log n) always | O(1) | [27](lessons/27-efficient-sorts.md) |
+| Quickselect (k-th smallest) | partition, keep only the side holding k | O(n) average, O(n²) worst | O(1) | [27](lessons/27-efficient-sorts.md) |
+| 3-way quicksort (many duplicates) | Dutch-flag partition around the pivot | O(n log n), O(n) if all equal | O(log n) | [27](lessons/27-efficient-sorts.md) |
+| Counting sort | count each value, write values in order | O(n + k) | O(n + k) | [28](lessons/28-sorting-in-practice.md) |
+| Radix sort (LSD) | stable bucket pass per digit, least significant first | O(d · (n + b)) | O(n + b) | [28](lessons/28-sorting-in-practice.md) |
+| Bucket sort | bucket by value, sort buckets, concatenate | O(n) average, O(n²) worst | O(n) | [28](lessons/28-sorting-in-practice.md) |
+| sorted() / list.sort() (Timsort) | merge natural runs; insertion sort for short runs | O(n log n), O(n) if nearly sorted | O(n) | [28](lessons/28-sorting-in-practice.md) |
+| Multi-key sort | key returns a tuple; negate numbers to reverse one key | O(n log n) | O(n) | [28](lessons/28-sorting-in-practice.md) |
+| Largest number from digits | sort strings with cmp: a + b vs b + a | O(L · n log n) | O(n · L) | [28](lessons/28-sorting-in-practice.md) |
+| Top k items | heapq.nlargest(k, items) | O(n log k) | O(k) | [28](lessons/28-sorting-in-practice.md) |

@@ -379,7 +379,7 @@ def _helpers(ns, output, source):
                 got = f(*a_you)
             except RecursionError:
                 raise AssertionError(f"With {n:,} {what}, your function hit RecursionError: the recursion is too deep for "
-                                     "Python's limit (about 1,000 calls). Use a loop instead.") from None
+                                     "Python's limit (about 1,000 nested calls).\n" + (tip or "Use a loop instead.")) from None
             t = time.perf_counter() - t0
             if not _verdict_ok(got, expected, args, valid, key):
                 raise AssertionError(f"Your function passes the small tests but gives a wrong answer on a big input ({n:,} {what}).")

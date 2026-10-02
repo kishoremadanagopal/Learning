@@ -23,6 +23,7 @@ import os
 import shutil
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 import markdown
@@ -591,7 +592,12 @@ def test(data):
                 problems += 1
                 print(f"[{l['id']}] example {i}: prints {len(out)} characters; keep examples' output short")
         for ex in l["exercises"]:
+            t_sol = time.perf_counter()
             res = runner.check(ex["solution"], ex["check"], ex["stdin"], encode_figures=False)
+            t_sol = time.perf_counter() - t_sol
+            if t_sol > 3:
+                problems += 1
+                print(f"[{l['id']}] exercise {ex['title']!r}: checking the model solution takes {t_sol:.1f} s; keep checks under a few seconds")
             if not res["verdict"]["ok"]:
                 problems += 1
                 print(f"[{l['id']}] exercise {ex['title']!r}: SOLUTION FAILS: {res['verdict']['msg']}\n{_text(res['parts'], 'err')[-600:]}")
@@ -600,8 +606,13 @@ def test(data):
                 problems += 1
                 print(f"[{l['id']}] exercise {ex['title']!r}: starter already passes")
             if ex["slow"]:
+                t_slow = time.perf_counter()
                 res = runner.check(ex["slow"], ex["check"], ex["stdin"], encode_figures=False)
-                if res["verdict"]["ok"] or "too slow" not in res["verdict"]["msg"]:
+                t_slow = time.perf_counter() - t_slow
+                if t_slow > 4:
+                    problems += 1
+                    print(f"[{l['id']}] exercise {ex['title']!r}: the slow solution takes {t_slow:.1f} s to be rejected; learners would wait even longer in the browser (shrink the speed sizes or the hidden tests)")
+                if res["verdict"]["ok"] or not any(w in res["verdict"]["msg"] for w in ("too slow", "RecursionError")):
                     problems += 1
                     print(f"[{l['id']}] exercise {ex['title']!r}: the slow solution wasn't rejected as too slow: {res['verdict']['msg'][:200]}")
             if not ex["hints"] or not ex["walkthrough"]:

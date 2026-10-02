@@ -1,6 +1,6 @@
 # Data Structures and Algorithms in Python
 
-A hands-on DSA course for complete beginners: 23 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
+A hands-on DSA course for complete beginners: 28 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
 
 Every exercise is checked like a coding-interview site: **hidden test cases** (including the tricky edge cases) and a **speed check** that tells you when a correct answer is too slow. When you're stuck, a help ladder takes you from a **step-by-step approach**, through **three hints**, to a full **walkthrough** with a trace table that shows the code running.
 
@@ -10,9 +10,9 @@ Data structures and algorithms are part of the shared core for both the **AI eng
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with the whole standard library: `collections`, `heapq`, `bisect`, `functools` and more. Nothing to install, no sign-up.
 
-- every lesson, with **98 examples** you can run and change
-- **49 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
-- **92 quiz questions**, with explanations
+- every lesson, with **125 examples** you can run and change
+- **60 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
+- **112 quiz questions**, with explanations
 - a diagram for every data structure and pattern
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 23 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 28 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every DSA term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | Big-O of every operation, the 6-step problem-solving method, and a "clue words → pattern" table |
 
@@ -82,6 +82,16 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 21 | [Recursion and recursion trees](lessons/21-recursion.md) | base and recursive cases, the call stack, the leap of faith, recursion on nested data, recursion trees, memoisation, recursion limits and when to use a loop, the Tower of Hanoi | 42–43 |
 | 22 | [Divide and conquer](lessons/22-divide-and-conquer.md) | divide, conquer and combine, fast exponentiation, modular power, merge sort, counting inversions, maximum subarray by halves, the master theorem, when divide and conquer fits | 44–45 |
 | 23 | [Backtracking: subsets, permutations, N-Queens](lessons/23-backtracking.md) | the choose-explore-unchoose template, subsets, permutations, combinations, itertools, N-Queens with sets, a Sudoku solver, word search, pruning, recognising backtracking problems | 46–49 |
+
+### Part 6: Searching and Sorting (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 24 | [Binary search](lessons/24-binary-search.md) | linear vs binary search, the exact template and its invariant, off-by-one errors, bisect, first and last occurrence, rotated arrays, peaks, sorted matrices | 50–52 |
+| 25 | [Binary search on the answer](lessons/25-binary-search-answer.md) | monotonic yes/no tests, searching for the first yes or last yes, rounding mid, integer square root, minimum ship capacity, eating speed, minimum of a rotated array, real-valued binary search | 53–54 |
+| 26 | [Simple sorts: bubble, selection, insertion](lessons/26-simple-sorts.md) | in-place and stable sorting, bubble sort with early exit, selection sort, insertion sort and nearly sorted data, comparing the simple sorts, the Dutch national flag partition | 55–56 |
+| 27 | [Efficient sorts: merge, quick and heap sort, quickselect](lessons/27-efficient-sorts.md) | merge sort's trade-offs, quicksort with Lomuto partition and random pivots, the quicksort worst case, heap sort, introsort, quickselect, choosing an O(n log n) sort | 57–58 |
+| 28 | [Non-comparison sorts and sorting in practice](lessons/28-sorting-in-practice.md) | the n log n lower bound for comparison sorts, counting sort, radix sort, bucket sort, Timsort, sorted and list.sort, key functions and multi-key sorting, stability tricks, cmp_to_key, choosing a sort | 59–60 |
 
 ## Running it on your own computer
 

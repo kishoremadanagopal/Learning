@@ -726,6 +726,128 @@ def n_queens():
     return f
 
 
+
+# ---------------------------------------------------------------- Part 6: searching and sorting
+
+@fig("binary-search")
+def binary_search_fig():
+    f, ax = diag.canvas(11.5, 4.4)
+    vals = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+    steps = [(0, 9, 4, "16 < 23: low = mid + 1"), (5, 9, 7, "56 > 23: high = mid − 1"), (5, 6, 5, "23 found at index 5")]
+    for r, (lo, hi, mid, note) in enumerate(steps):
+        y = 3.3 - r * 1.35
+        hl = {i: GREY for i in range(len(vals)) if i < lo or i > hi}
+        hl.update({mid: ORANGE if r < 2 else TEAL})
+        for i, v in enumerate(vals):
+            c = hl.get(i, BLUE)
+            sbox(ax, 0.3 + i * 0.75, y, 0.69, 0.55, str(v), color=c, mono=True, fontsize=10)
+            if r == 0:
+                label(ax, 0.3 + i * 0.75 + 0.345, y + 0.78, str(i), size=8.5, color=MUTED, mono=True)
+        for name, idx, dy in (("lo", lo, -0.25), ("hi", hi, -0.25), ("mid", mid, -0.25)):
+            if name == "mid" and idx in (lo, hi):
+                continue
+            label(ax, 0.3 + idx * 0.75 + 0.345, y + dy, name, size=8.5, color=INK, bold=name == "mid")
+        if mid in (lo, hi):
+            label(ax, 0.3 + mid * 0.75 + 0.345, y - 0.45, "mid", size=8.5, color=INK, bold=True)
+        label(ax, 8.0, y + 0.27, f"step {r + 1}: {note}", ha="left", size=9.5)
+    label(ax, 0.3, 0.05, "grey = ruled out; each step halves what's left", ha="left", size=9, color=MUTED)
+    return f
+
+
+@fig("answer-search")
+def answer_search():
+    f, ax = diag.canvas(11, 2.8)
+    caps = list(range(10, 22))
+    def days(c):
+        d, load = 1, 0
+        for w in range(1, 11):
+            if load + w > c:
+                d += 1
+                load = 0
+            load += w
+        return d
+    for i, c in enumerate(caps):
+        ok = days(c) <= 5
+        sbox(ax, 0.3 + i * 0.85, 1.25, 0.78, 0.6, str(c), color=TEAL if ok else CRIMSON, mono=True, fontsize=10)
+        label(ax, 0.3 + i * 0.85 + 0.39, 1.0, "yes" if ok else "no", size=8.5, color=INK)
+    first = next(i for i, c in enumerate(caps) if days(c) <= 5)
+    arrow(ax, 0.3 + first * 0.85 + 0.39, 2.55, 0.3 + first * 0.85 + 0.39, 1.93, lw=1.3)
+    label(ax, 0.3 + first * 0.85 + 0.6, 2.55, "first yes = the answer (15)", ha="left", size=10, bold=True)
+    label(ax, 0.3, 2.3, "candidate capacities", ha="left", size=9.5, color=MUTED)
+    label(ax, 0.3, 0.45, "test: can packages 1..10 ship within 5 days?  once yes, always yes, so binary search finds the boundary",
+          ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("insertion-sort")
+def insertion_sort_fig():
+    f, ax = diag.canvas(9.5, 5.0)
+    a = [5, 2, 4, 6, 1, 3]
+    rows = [list(a)]
+    for i in range(1, len(a)):
+        item, j = a[i], i - 1
+        while j >= 0 and a[j] > item:
+            a[j + 1] = a[j]
+            j -= 1
+        a[j + 1] = item
+        rows.append((list(a), j + 1, i))
+    cells(ax, 0.9, 4.25, rows[0], w=0.8, color=GREY)
+    label(ax, 0.1, 4.55, "start", ha="left", size=9.5, bold=True)
+    for r, (vals, placed, i) in enumerate(rows[1:]):
+        y = 3.55 - r * 0.72
+        hl = {k: TEAL for k in range(i + 1)}
+        hl[placed] = ORANGE
+        hl.update({k: GREY for k in range(i + 1, len(vals))})
+        cells(ax, 0.9, y, vals, w=0.8, color=GREY, highlight=hl)
+        label(ax, 0.1, y + 0.3, f"i = {i}", ha="left", size=9.5, bold=True)
+        label(ax, 5.9, y + 0.3, f"insert {vals[placed]} at position {placed}", ha="left", size=9.5, color=MUTED)
+    label(ax, 0.9, 0.05, "teal = sorted part, orange = the item just inserted", ha="left", size=9, color=MUTED)
+    return f
+
+
+@fig("quick-partition")
+def quick_partition():
+    f, ax = diag.canvas(10.5, 4.6)
+    a = [7, 2, 1, 8, 6, 3, 5, 4]
+    pivot = a[-1]
+    states = [(list(a), 0, None, "start: pivot = 4 (last item), i = 0")]
+    i = 0
+    for j in range(len(a) - 1):
+        if a[j] < pivot:
+            a[i], a[j] = a[j], a[i]
+            i += 1
+            states.append((list(a), i, j, f"j = {j}: {a[i - 1]} < 4 → swap into the left region, i = {i}"))
+    a[i], a[-1] = a[-1], a[i]
+    states.append((list(a), i, None, f"finally swap the pivot into position {i}"))
+    for r, (vals, iv, j, note) in enumerate(states):
+        y = 3.85 - r * 0.8
+        hl = {k: TEAL for k in range(iv if r < len(states) - 1 else iv)}
+        if r == len(states) - 1:
+            hl[iv] = ORANGE
+        else:
+            hl[len(vals) - 1] = ORANGE
+        cells(ax, 0.3, y, vals, w=0.7, color=BLUE, highlight=hl)
+        label(ax, 6.1, y + 0.3, note, ha="left", size=9)
+    label(ax, 0.3, 0.05, "teal = smaller than the pivot; orange = the pivot", ha="left", size=9, color=MUTED)
+    return f
+
+
+@fig("counting-sort")
+def counting_sort_fig():
+    f, ax = diag.canvas(10, 3.8)
+    nums = [4, 2, 2, 8, 3, 3, 1]
+    label(ax, 0.3, 3.5, "input", ha="left", size=9.5, bold=True)
+    cells(ax, 1.3, 3.2, nums, w=0.7, color=BLUE)
+    counts = [nums.count(v) for v in range(9)]
+    label(ax, 0.3, 2.15, "counts", ha="left", size=9.5, bold=True)
+    cells(ax, 1.3, 1.85, counts, w=0.7, color=TEAL, highlight={v: GREY for v in range(9) if counts[v] == 0}, idx="auto", idx_y=2.68)
+    label(ax, 7.8, 2.15, "index = value", ha="left", size=9, color=MUTED)
+    label(ax, 0.3, 0.75, "output", ha="left", size=9.5, bold=True)
+    cells(ax, 1.3, 0.45, sorted(nums), w=0.7, color=ORANGE)
+    label(ax, 7.0, 0.75, "read the counts from 0 upward", ha="left", size=9, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

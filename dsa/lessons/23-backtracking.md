@@ -653,4 +653,4 @@ print(combination_sum([2, 3, 6, 7], 7))
 </details>
 
 ---
-Previous: [Lesson 22](22-divide-and-conquer.md) · Back to the [course home](../README.md)
+Previous: [Lesson 22](22-divide-and-conquer.md) · Next: [Lesson 24: Binary search](24-binary-search.md)
