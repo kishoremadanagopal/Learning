@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="Learning: SQL and Python from scratch">
+  <defs>
+    <pattern id="g" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1c252d" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0f1418" stop-opacity="1"/>
+      <stop offset="0.55" stop-color="#0f1418" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#0f1418" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="360" rx="20" fill="#0f1418"/>
+  <rect width="1280" height="360" rx="20" fill="url(#g)"/>
+  <rect width="1280" height="360" rx="20" fill="url(#fade)"/>
+
+  <text x="64" y="92" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="3" fill="#93a0ae">FREE · HANDS-ON · RUNS IN YOUR BROWSER</text>
+  <text x="60" y="186" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-3" fill="#e8edf2">Learning</text>
+  <text x="64" y="236" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" fill="#93a0ae">Learn <tspan fill="#38bfa8" font-weight="700">SQL</tspan> and <tspan fill="#79aee0" font-weight="700">Python</tspan> from scratch.</text>
+  <g font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#93a0ae">
+    <text x="64" y="292"><tspan fill="#e8edf2" font-weight="700">55</tspan> lessons</text>
+    <text x="190" y="292"><tspan fill="#e8edf2" font-weight="700">141</tspan> auto-checked exercises</text>
+    <text x="442" y="292"><tspan fill="#e8edf2" font-weight="700">0</tspan> installs</text>
+  </g>
+
+  <g transform="translate(700 34) rotate(-3)">
+    <rect width="420" height="150" rx="14" fill="#161d23" stroke="#2a3540"/>
+    <rect width="420" height="6" rx="3" fill="#38bfa8"/>
+    <g font-family="Consolas, 'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-size="17" fill="#e8edf2">
+      <text x="24" y="50"><tspan fill="#38bfa8" font-weight="700">SELECT</tspan> name, SUM(amount)</text>
+      <text x="24" y="78"><tspan fill="#38bfa8" font-weight="700">FROM</tspan> customers c</text>
+      <text x="24" y="106"><tspan fill="#38bfa8" font-weight="700">JOIN</tspan> orders o <tspan fill="#38bfa8" font-weight="700">ON</tspan> o.customer_id = c.id</text>
+      <text x="24" y="134"><tspan fill="#38bfa8" font-weight="700">GROUP BY</tspan> name;</text>
+    </g>
+  </g>
+
+  <g transform="translate(790 200) rotate(2.5)">
+    <rect width="420" height="138" rx="14" fill="#161d23" stroke="#2a3540"/>
+    <rect width="252" height="6" rx="3" fill="#79aee0"/>
+    <rect x="252" width="168" height="6" rx="3" fill="#f2c94c"/>
+    <g font-family="Consolas, 'SF Mono', Menlo, 'DejaVu Sans Mono', monospace" font-size="17" fill="#e8edf2">
+      <text x="24" y="48"><tspan fill="#82b1ff" font-weight="700">def</tspan> greet(name):</text>
+      <text x="24" y="76" xml:space="preserve">    <tspan fill="#82b1ff" font-weight="700">return</tspan> <tspan fill="#a8d08d">f"Hello, {name}!"</tspan></text>
+      <text x="24" y="114"><tspan fill="#82b1ff" font-weight="700">print</tspan>(greet(<tspan fill="#a8d08d">"Ada"</tspan>))</text>
+    </g>
+  </g>
+</svg>

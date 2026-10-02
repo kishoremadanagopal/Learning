@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL Practice Sandbox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+[hidden]{display:none!important}
+
+:root{
+  --bg:#F3F5F3; --surface:#FFFFFF; --surface-2:#EAEFEC; --ink:#18221F; --muted:#5A6863;
+  --line:#D6DEDA; --accent:#0E7466; --accent-ink:#FFFFFF; --accent-soft:#DDF0EC;
+  --err:#B42318; --err-soft:#FCE9E7; --ok:#1C7A35; --ok-soft:#E3F3E6; --kw:#8A3FB8; --str:#9A5B00;
+  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1513; --surface:#161E1B; --surface-2:#1D2723; --ink:#E2EBE7; --muted:#92A29B;
+    --line:#2A3531; --accent:#38BFA8; --accent-ink:#06201B; --accent-soft:#16332D;
+    --err:#FF8A7E; --err-soft:#3A1C19; --ok:#6FD58A; --ok-soft:#17301E; --kw:#CFA0F2; --str:#F0B458;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1513; --surface:#161E1B; --surface-2:#1D2723; --ink:#E2EBE7; --muted:#92A29B;
+  --line:#2A3531; --accent:#38BFA8; --accent-ink:#06201B; --accent-soft:#16332D;
+  --err:#FF8A7E; --err-soft:#3A1C19; --ok:#6FD58A; --ok-soft:#17301E; --kw:#CFA0F2; --str:#F0B458;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 48px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:20px}
+h1{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1 span{font-family:var(--mono);font-weight:500;font-size:.8em;color:var(--accent)}
+.sub{color:var(--muted);margin:0;font-size:14px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+/* editor */
+.editor-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.task{font-size:13px;color:var(--muted);min-height:1.2em}
+.task b{color:var(--ink);font-weight:600}
+textarea#sql{display:block;width:100%;min-height:150px;resize:vertical;border:0;outline:0;background:var(--surface);color:var(--ink);
+  font-family:var(--mono);font-size:14px;line-height:1.6;padding:14px;tab-size:2}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);background:var(--surface-2);border-radius:0 0 10px 10px}
+button{font-family:var(--sans);font-size:14px;font-weight:600;border-radius:7px;padding:8px 14px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+button:hover{border-color:var(--accent)}
+button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.primary:hover{filter:brightness(1.08)}
+button[disabled]{opacity:.5;cursor:not-allowed}
+.kbd{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+/* output */
+.out{margin-top:16px}
+.status{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--line);font-size:14px}
+.pill{font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.err{background:var(--err-soft);color:var(--err)}
+.msg{padding:14px;font-size:14px}
+.msg.err{color:var(--err);font-family:var(--mono);font-size:13px;white-space:pre-wrap}
+.hint{margin-top:6px;font-family:var(--sans);color:var(--ink);font-size:14px}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:14px}
+th,td{text-align:left;padding:7px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-family:var(--mono);font-weight:600;font-size:12px;color:var(--muted);background:var(--surface-2)}
+td.num{text-align:right;font-family:var(--mono);font-size:13px}
+th.num{text-align:right}
+td.null{color:var(--muted);font-style:italic}
+tr:last-child td{border-bottom:0}
+.check{padding:12px 14px;border-top:1px solid var(--line);font-size:14px}
+.check.ok{background:var(--ok-soft);color:var(--ok)}
+.check.err{background:var(--err-soft);color:var(--err)}
+.check b{font-weight:700}
+/* sidebar */
+aside{display:flex;flex-direction:column;gap:16px}
+.side-h{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.schema{padding:4px 0}
+details.tbl{border-bottom:1px solid var(--line)}
+details.tbl:last-child{border-bottom:0}
+details.tbl summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+details.tbl summary::-webkit-details-marker{display:none}
+details.tbl summary code{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--accent)}
+details.tbl summary .rows{font-size:12px;color:var(--muted)}
+.cols{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px}
+.col{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:5px;background:var(--surface-2);color:var(--ink)}
+.col i{font-style:normal;color:var(--muted)}
+.mini{padding:0 14px 12px}
+.mini .tablebox{border:1px solid var(--line);border-radius:6px}
+.mini table{font-size:12px}
+.mini th,.mini td{padding:4px 8px}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);font-size:13px;font-weight:600;cursor:pointer}
+.linkbtn:hover{text-decoration:underline}
+.ex-list{list-style:none;margin:0;padding:0}
+.ex{border-bottom:1px solid var(--line)}
+.ex-list{max-height:620px;overflow-y:auto}
+.ex-group{position:sticky;top:0;z-index:1;padding:8px 14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--surface-2);border-bottom:1px solid var(--line)}
+.ex:last-child{border-bottom:0}
+.ex button.pick{width:100%;text-align:left;border:0;border-radius:0;background:none;padding:10px 14px;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:start;font-weight:400}
+.ex button.pick:hover{background:var(--surface-2)}
+.ex.active button.pick{background:var(--accent-soft)}
+.ex-n{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:2px}
+.ex-t{font-size:14px;line-height:1.4}
+.ex-tag{font-size:11px;font-weight:600;color:var(--muted);padding-top:3px;white-space:nowrap}
+.ex.done .ex-n{color:var(--ok);font-weight:700}
+.tip{padding:12px 14px;font-size:13px;color:var(--muted);line-height:1.55}
+.tip code,.msg code,.check code{font-family:var(--mono);font-size:12px;background:var(--surface-2);color:var(--ink);padding:1px 5px;border-radius:4px}
+.answer{margin:0 14px 12px;padding:10px 12px;background:var(--surface-2);border-radius:6px;font-family:var(--mono);font-size:13px;white-space:pre-wrap;color:var(--ink)}
+.loading{padding:14px;color:var(--muted)}
+.copy-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;border-top:1px solid var(--line)}
+.copy-row .note{font-size:12px;color:var(--muted)}
+#copyStatus{font-size:13px;font-weight:600;color:var(--ok)}
+#copyStatus.err{color:var(--err)}
+textarea#copyBox{display:block;width:calc(100% - 28px);margin:0 14px 12px;min-height:140px;font-family:var(--mono);font-size:12px;
+  border:1px solid var(--line);border-radius:6px;padding:8px;background:var(--surface-2);color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){button{transition:background .15s,border-color .15s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>SQL Practice Sandbox <span>SQLite</span></h1>
+    <p class="sub">Write a query, press Run, and see real results or real error messages. <a href="https://github.com/kishoremadanagopal/learning/tree/main/sql#lessons" style="color:var(--accent);font-weight:600">Read the lessons</a> · <a href="../" style="color:var(--accent);font-weight:600">All courses</a></p>
+  </header>
+
+  <div class="grid">
+    <main>
+      <section class="panel" aria-label="Query editor">
+        <div class="editor-head">
+          <span class="label">Your query</span>
+          <span class="task" id="task">Free practice: try anything on the three tables.</span>
+        </div>
+        <textarea id="sql" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="SQL query">SELECT c.name, o.product, o.amount
+FROM customers c
+JOIN orders o ON o.customer_id = c.id;</textarea>
+        <div class="bar">
+          <button class="primary" id="run" disabled>Run query</button>
+          <button id="checkBtn" hidden>Check answer</button>
+          <button id="answerBtn" hidden>Show answer</button>
+          <button id="clear">Clear</button>
+          <span class="kbd">Ctrl / ⌘ + Enter to run</span>
+        </div>
+      </section>
+
+      <section class="panel out" aria-live="polite" id="output">
+        <div class="loading">Loading the database…</div>
+      </section>
+    </main>
+
+    <aside>
+      <section class="panel">
+        <div class="side-h"><span class="label">Tables</span><button class="linkbtn" id="reset">Reset data</button></div>
+        <div class="schema" id="schema"></div>
+      </section>
+
+      <section class="panel">
+        <div class="side-h"><span class="label">Exercises</span><span class="pill" id="score">0 / 79 solved</span></div>
+        <ol class="ex-list" id="exercises"></ol>
+        <div class="copy-row">
+          <button id="copyAnswers">Copy my answers</button>
+          <span id="copyStatus" role="status"></span>
+          <span class="note" id="savedNote">Each query you get correct is saved here.</span>
+        </div>
+        <textarea id="copyBox" readonly hidden aria-label="Your saved answers"></textarea>
+      </section>
+
+      <section class="panel">
+        <div class="side-h"><span class="label">Before you run</span></div>
+        <div class="tip">
+          1. Table and column names spelled exactly (<code>customers</code>, <code>name</code>).<br>
+          2. One-row condition → <code>WHERE</code>. Group condition → <code>HAVING</code>.<br>
+          3. With <code>GROUP BY</code>, every other column sits inside <code>COUNT/SUM/AVG/MIN/MAX</code>.<br>
+          4. <code>ORDER BY</code> takes a column; <code>LIMIT</code> takes a number.<br>
+          5. Reread the question: columns, filter, order, how many.<br>
+          6. Subqueries go in parentheses. One value → <code>=</code> <code>&gt;</code> <code>&lt;</code>; a list → <code>IN</code>. Test the inner query on its own first.<br>
+          7. Dates are text like <code>'2026-01-10'</code>; <code>strftime</code> returns text, so compare to <code>'2025'</code> and <code>'01'</code> with quotes and leading zeros.<br>
+          8. <code>CASE WHEN ... THEN ... ELSE ... END</code>: the first true <code>WHEN</code> wins, and don't forget <code>END</code>.<br>
+          9. <code>UPDATE</code> and <code>DELETE</code>: always write the <code>WHERE</code>, and run a <code>SELECT</code> with the same <code>WHERE</code> first to see which rows it hits.<br>
+          10. JOINs: declare every alias after its table (<code>FROM customers c</code>) and match rows with <code>ON o.customer_id = c.id</code>.<br><br>
+          This sandbox runs SQLite, which is lenient in two places: it accepts aliases in <code>HAVING</code>, and it runs rule-3 mistakes by picking an arbitrary value instead of erroring. The answer checker still catches the wrong results, and it accepts your columns in any order.
+        </div>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-asm.js"></script>
+<script>
+const SEED = `
+CREATE TABLE customers (id INTEGER PRIMARY KEY, name TEXT, city TEXT, age INTEGER);
+INSERT INTO customers VALUES
+ (1,'Maya','Fremont',34),(2,'Leo','Oakland',27),(3,'Priya','Fremont',41),(4,'Sam','San Jose',19),(5,'Ana','Oakland',52);
+CREATE TABLE employees (id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER, years INTEGER);
+INSERT INTO employees VALUES
+ (1,'Alice','Sales',60000,3),(2,'Bob','Engineering',95000,5),(3,'Carla','Sales',55000,1),(4,'Dev','Engineering',105000,8),
+ (5,'Emma','Marketing',70000,4),(6,'Frank','Engineering',88000,2),(7,'Grace','Marketing',62000,6),(8,'Hank','Sales',72000,7);
+CREATE TABLE orders (order_id INTEGER PRIMARY KEY, customer_id INTEGER, product TEXT, amount INTEGER, order_date TEXT);
+INSERT INTO orders VALUES
+ (101,1,'Laptop',1200,'2025-11-20'),(102,1,'Mouse',25,'2025-12-02'),(103,2,'Desk',300,'2026-01-10'),(104,3,'Chair',150,'2026-01-25'),
+ (105,5,'Monitor',400,'2026-02-14'),(106,5,'Keyboard',80,'2026-02-14'),(107,3,'Lamp',45,'2026-03-03');
+`;
+
+const EXERCISES = [
+  {t:"Names of customers younger than 30.", tag:"WHERE", ordered:false,
+   a:"SELECT name FROM customers\nWHERE age < 30;"},
+  {t:"Name and city of the two youngest customers not in Fremont.", tag:"LIMIT", ordered:true,
+   a:"SELECT name, city FROM customers\nWHERE city <> 'Fremont'\nORDER BY age\nLIMIT 2;"},
+  {t:"Each city and how many customers live there.", tag:"GROUP BY", ordered:false,
+   a:"SELECT city, COUNT(*) AS num_customers\nFROM customers\nGROUP BY city;"},
+  {t:"Cities with more than 1 customer, with the count.", tag:"HAVING", ordered:false,
+   a:"SELECT city, COUNT(*) AS num_customers\nFROM customers\nGROUP BY city\nHAVING COUNT(*) > 1;"},
+  {t:"Name and salary of everyone in Engineering, highest salary first.", tag:"ORDER BY", ordered:true,
+   a:"SELECT name, salary FROM employees\nWHERE department = 'Engineering'\nORDER BY salary DESC;"},
+  {t:"Each department and its average salary.", tag:"GROUP BY", ordered:false,
+   a:"SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department;"},
+  {t:"Departments whose lowest salary is above 60000.", tag:"HAVING", ordered:false,
+   a:"SELECT department\nFROM employees\nGROUP BY department\nHAVING MIN(salary) > 60000;"},
+  {t:"Each department's total years, counting only employees earning at least 60000.", tag:"WHERE + GROUP", ordered:false,
+   a:"SELECT department, SUM(years) AS total_years\nFROM employees\nWHERE salary >= 60000\nGROUP BY department;"},
+  {t:"Departments whose average years is more than 4, with that average.", tag:"HAVING", ordered:false,
+   a:"SELECT department, AVG(years) AS average_years\nFROM employees\nGROUP BY department\nHAVING AVG(years) > 4;"},
+  {t:"For employees with at least 3 years: each department's highest salary, only above 70000, highest first.", tag:"All of it", ordered:true,
+   a:"SELECT department, MAX(salary) AS max_salary\nFROM employees\nWHERE years >= 3\nGROUP BY department\nHAVING MAX(salary) > 70000\nORDER BY max_salary DESC;"},
+  {t:"Each order's product and amount, with the name of the customer who placed it.", tag:"JOIN", ordered:false,
+   a:"SELECT o.product, o.amount, c.name\nFROM customers c\nJOIN orders o ON o.customer_id = c.id;"},
+  {t:"Products ordered by customers who live in Fremont.", tag:"JOIN", ordered:false,
+   a:"SELECT o.product\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nWHERE c.city = 'Fremont';"},
+  {t:"Each customer's name and how many orders they placed (only customers with orders).", tag:"JOIN + GROUP", ordered:false,
+   a:"SELECT c.name, COUNT(*) AS num_orders\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Every customer's name and product, including customers with no orders.", tag:"LEFT JOIN", ordered:false,
+   a:"SELECT c.name, o.product\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id;"},
+  {t:"Names of customers who have never placed an order.", tag:"LEFT JOIN", ordered:false,
+   a:"SELECT c.name\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id\nWHERE o.order_id IS NULL;"},
+  {t:"Each customer's name and total amount spent, highest first.", tag:"JOIN + GROUP", ordered:true,
+   a:"SELECT c.name, SUM(o.amount) AS total_spent\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name\nORDER BY total_spent DESC;"},
+  {t:"Names and ages of customers older than the average customer age.", tag:"Subquery", ordered:false,
+   a:"SELECT name, age\nFROM customers\nWHERE age > (SELECT AVG(age) FROM customers);"},
+  {t:"The name and salary of the employee(s) with the lowest salary.", tag:"Subquery", ordered:false,
+   a:"SELECT name, salary\nFROM employees\nWHERE salary = (SELECT MIN(salary) FROM employees);"},
+  {t:"Names of customers who have placed at least one order, using IN.", tag:"IN subquery", ordered:false,
+   a:"SELECT name\nFROM customers\nWHERE id IN (SELECT customer_id FROM orders);"},
+  {t:"Names of employees who earn more than the average salary of the Sales department.", tag:"Subquery", ordered:false,
+   a:"SELECT name\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees WHERE department = 'Sales');"},
+  {t:"Each customer's name, age, and age group: under 30 'Young', 30 to 49 'Middle', 50 and over 'Senior'.", tag:"CASE", ordered:false,
+   a:"SELECT name, age,\n  CASE\n    WHEN age < 30 THEN 'Young'\n    WHEN age < 50 THEN 'Middle'\n    ELSE 'Senior'\n  END AS age_group\nFROM customers;"},
+  {t:"Each employee's name and 'Veteran' if they have 5 or more years, otherwise 'Newer'.", tag:"CASE", ordered:false,
+   a:"SELECT name,\n  CASE WHEN years >= 5 THEN 'Veteran' ELSE 'Newer' END AS label\nFROM employees;"},
+  {t:"Each order's product, amount, and size: 'Big' if the amount is over 300, otherwise 'Small'.", tag:"CASE", ordered:false,
+   a:"SELECT product, amount,\n  CASE WHEN amount > 300 THEN 'Big' ELSE 'Small' END AS size\nFROM orders;"},
+  {t:"For each department, the number of employees with at least 5 years, using SUM(CASE ...).", tag:"CASE + GROUP", ordered:false,
+   a:"SELECT department,\n  SUM(CASE WHEN years >= 5 THEN 1 ELSE 0 END) AS veterans\nFROM employees\nGROUP BY department;"},
+  {t:"Each employee's name, salary, and 'Above 70k' if the salary is over 70000, otherwise '70k or less'.", tag:"CASE practice", ordered:false,
+   a:"SELECT name, salary,\n  CASE WHEN salary > 70000 THEN 'Above 70k' ELSE '70k or less' END AS pay_band\nFROM employees;"},
+  {t:"Each customer's name, city, and region: 'East Bay' for Fremont or Oakland, otherwise 'South Bay'.", tag:"CASE practice", ordered:false,
+   a:"SELECT name, city,\n  CASE WHEN city IN ('Fremont', 'Oakland') THEN 'East Bay' ELSE 'South Bay' END AS region\nFROM customers;"},
+  {t:"Each employee's name, years, and level: 'Senior' for at least 6 years, 'Mid' for at least 3, otherwise 'Junior'.", tag:"CASE practice", ordered:false,
+   a:"SELECT name, years,\n  CASE\n    WHEN years >= 6 THEN 'Senior'\n    WHEN years >= 3 THEN 'Mid'\n    ELSE 'Junior'\n  END AS level\nFROM employees;"},
+  {t:"Each order's product, the customer's name, and 'Big' if the amount is at least 400, otherwise 'Small'.", tag:"CASE + JOIN", ordered:false,
+   a:"SELECT o.product, c.name,\n  CASE WHEN o.amount >= 400 THEN 'Big' ELSE 'Small' END AS size\nFROM customers c\nJOIN orders o ON o.customer_id = c.id;"},
+  {t:"For each department: how many employees earn over 70000, and how many earn 70000 or less (two columns).", tag:"CASE + GROUP", ordered:false,
+   a:"SELECT department,\n  SUM(CASE WHEN salary > 70000 THEN 1 ELSE 0 END) AS above_70k,\n  SUM(CASE WHEN salary <= 70000 THEN 1 ELSE 0 END) AS at_or_below_70k\nFROM employees\nGROUP BY department;"},
+  {t:"Challenge: how many customers are in each age group ('Young' under 30, 'Middle' 30 to 49, 'Senior' 50 and over).", tag:"Challenge", ordered:false,
+   a:"SELECT\n  CASE\n    WHEN age < 30 THEN 'Young'\n    WHEN age < 50 THEN 'Middle'\n    ELSE 'Senior'\n  END AS age_group,\n  COUNT(*) AS num_customers\nFROM customers\nGROUP BY\n  CASE\n    WHEN age < 30 THEN 'Young'\n    WHEN age < 50 THEN 'Middle'\n    ELSE 'Senior'\n  END;"},
+  {t:"The list of departments, each shown only once.", tag:"DISTINCT", ordered:false,
+   a:"SELECT DISTINCT department\nFROM employees;"},
+  {t:"How many different cities do the customers who placed orders live in? (one number)", tag:"COUNT DISTINCT", ordered:false,
+   a:"SELECT COUNT(DISTINCT c.city) AS num_cities\nFROM customers c\nJOIN orders o ON o.customer_id = c.id;"},
+  {t:"Names of customers whose name ends with the letter a.", tag:"LIKE", ordered:false,
+   a:"SELECT name\nFROM customers\nWHERE name LIKE '%a';"},
+  {t:"Each product and the length of its name, only for names longer than 5 characters.", tag:"LENGTH", ordered:false,
+   a:"SELECT product, LENGTH(product) AS name_length\nFROM orders\nWHERE LENGTH(product) > 5;"},
+  {t:"Each department and its average salary, rounded to 0 decimal places.", tag:"ROUND", ordered:false,
+   a:"SELECT department, ROUND(AVG(salary)) AS avg_salary\nFROM employees\nGROUP BY department;"},
+  {t:"Every customer's name and product, showing 'No orders' instead of NULL.", tag:"COALESCE", ordered:false,
+   a:"SELECT c.name, COALESCE(o.product, 'No orders') AS product\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id;"},
+  {t:"Every customer's name and total amount spent, showing 0 for customers with no orders.", tag:"COALESCE", ordered:false,
+   a:"SELECT c.name, COALESCE(SUM(o.amount), 0) AS total_spent\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Product and order date of every order placed in January 2026.", tag:"Dates", ordered:false,
+   a:"SELECT product, order_date\nFROM orders\nWHERE order_date >= '2026-01-01'\n  AND order_date < '2026-02-01';"},
+  {t:"Products of all orders placed in the year 2025.", tag:"Dates", ordered:false,
+   a:"SELECT product\nFROM orders\nWHERE strftime('%Y', order_date) = '2025';"},
+  {t:"The number of orders in each month, shown as year-month (like 2026-01).", tag:"Dates + GROUP", ordered:false,
+   a:"SELECT strftime('%Y-%m', order_date) AS month, COUNT(*) AS num_orders\nFROM orders\nGROUP BY strftime('%Y-%m', order_date);"},
+  {t:"The total amount of orders in each year.", tag:"Dates + GROUP", ordered:false,
+   a:"SELECT strftime('%Y', order_date) AS year, SUM(amount) AS total\nFROM orders\nGROUP BY strftime('%Y', order_date);"},
+  {t:"Each customer's name and the date of their first order.", tag:"Dates + JOIN", ordered:false,
+   a:"SELECT c.name, MIN(o.order_date) AS first_order\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Each order's product and how many days before 2026-03-31 it was placed.", tag:"Date math", ordered:false,
+   a:"SELECT product,\n  julianday('2026-03-31') - julianday(order_date) AS days_before\nFROM orders;"},
+  {t:"Add a new customer: id 6, name Zoe, city Oakland, age 23.", tag:"INSERT", verify:"SELECT * FROM customers",
+   a:"INSERT INTO customers (id, name, city, age)\nVALUES (6, 'Zoe', 'Oakland', 23);"},
+  {t:"Add an order for Sam (customer id 4): order_id 108, product Headphones, amount 90, date 2026-03-15.", tag:"INSERT", verify:"SELECT * FROM orders",
+   a:"INSERT INTO orders (order_id, customer_id, product, amount, order_date)\nVALUES (108, 4, 'Headphones', 90, '2026-03-15');"},
+  {t:"Leo has moved. Change his city to Fremont.", tag:"UPDATE", verify:"SELECT * FROM customers",
+   a:"UPDATE customers\nSET city = 'Fremont'\nWHERE name = 'Leo';"},
+  {t:"Give everyone in Marketing a raise of 5000.", tag:"UPDATE", verify:"SELECT * FROM employees",
+   a:"UPDATE employees\nSET salary = salary + 5000\nWHERE department = 'Marketing';"},
+  {t:"Delete the Lamp order (order_id 107).", tag:"DELETE", verify:"SELECT * FROM orders",
+   a:"DELETE FROM orders\nWHERE order_id = 107;"},
+  {t:"Delete every order with an amount under 50.", tag:"DELETE", verify:"SELECT * FROM orders",
+   a:"DELETE FROM orders\nWHERE amount < 50;"},
+  {t:"Create a table called products with columns product_id (integer, primary key), name (text, required) and price (decimal number).", tag:"CREATE TABLE",
+   verify:"SELECT name AS column_name, pk AS is_primary_key, CASE WHEN pk = 1 THEN 1 ELSE \"notnull\" END AS required FROM pragma_table_info('products')", label:"the structure of your <code>products</code> table",
+   fail:"The columns don't match yet. Check the three column names are exactly product_id, name and price, that product_id is the <code>PRIMARY KEY</code>, and that only name has <code>NOT NULL</code>.",
+   a:"CREATE TABLE products (\n  product_id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL,\n  price REAL\n);"},
+  {t:"Create the products table again, then add two products: 1 Pen 1.50, and 2 Notebook 4.25.", tag:"CREATE + INSERT", verify:"SELECT * FROM products",
+   a:"CREATE TABLE products (\n  product_id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL,\n  price REAL\n);\n\nINSERT INTO products (product_id, name, price)\nVALUES (1, 'Pen', 1.50),\n       (2, 'Notebook', 4.25);"},
+  {t:"Add a new column called email (text) to the customers table.", tag:"ALTER TABLE",
+   verify:"SELECT name AS column_name FROM pragma_table_info('customers')", label:"the columns of <code>customers</code>",
+   fail:"The customers table doesn't have the right columns yet. Add exactly one column, named email.",
+   a:"ALTER TABLE customers\nADD COLUMN email TEXT;"},
+  {t:"Create a table called reviews: review_id (primary key), customer_id (linked to customers.id), and rating (integer that must be between 1 and 5).", tag:"Keys + CHECK",
+   verify:"SELECT (SELECT group_concat(name, ', ') FROM (SELECT name FROM pragma_table_info('reviews') ORDER BY cid)) AS columns, (SELECT name FROM pragma_table_info('reviews') WHERE pk = 1) AS primary_key, (SELECT COUNT(*) FROM pragma_foreign_key_list('reviews') WHERE lower(\"table\") = 'customers') AS links_to_customers, (SELECT sql LIKE '%CHECK%' FROM sqlite_master WHERE name = 'reviews') AS has_check",
+   label:"a summary of your <code>reviews</code> table",
+   fail:"Not all the parts are there yet. You need the three columns review_id, customer_id and rating; review_id as <code>PRIMARY KEY</code>; <code>customer_id ... REFERENCES customers(id)</code>; and a <code>CHECK</code> on rating.",
+   a:"CREATE TABLE reviews (\n  review_id INTEGER PRIMARY KEY,\n  customer_id INTEGER REFERENCES customers(id),\n  rating INTEGER CHECK (rating BETWEEN 1 AND 5)\n);"},
+  {t:"Create a table called departments: dept_id (primary key) and dept_name (text, required, no duplicates). Then add 1 Sales, 2 Engineering, 3 Marketing.", tag:"UNIQUE",
+   verify:"SELECT d.*, (SELECT sql LIKE '%UNIQUE%' FROM sqlite_master WHERE name = 'departments') AS has_unique FROM departments d",
+   label:"<code>departments</code> (with a check for <code>UNIQUE</code>)",
+   a:"CREATE TABLE departments (\n  dept_id INTEGER PRIMARY KEY,\n  dept_name TEXT NOT NULL UNIQUE\n);\n\nINSERT INTO departments (dept_id, dept_name)\nVALUES (1, 'Sales'), (2, 'Engineering'), (3, 'Marketing');"},
+  {t:"Using a CTE named customer_totals (each customer's name and total spent), show the customers who spent more than 400.", tag:"CTE",
+   a:"WITH customer_totals AS (\n  SELECT c.name, SUM(o.amount) AS total_spent\n  FROM customers c\n  JOIN orders o ON o.customer_id = c.id\n  GROUP BY c.name\n)\nSELECT name, total_spent\nFROM customer_totals\nWHERE total_spent > 400;"},
+  {t:"Using a CTE, show the departments whose average salary is above the company-wide average salary.", tag:"CTE",
+   a:"WITH dept_avg AS (\n  SELECT department, AVG(salary) AS avg_salary\n  FROM employees\n  GROUP BY department\n)\nSELECT department\nFROM dept_avg\nWHERE avg_salary > (SELECT AVG(salary) FROM employees);"},
+  {t:"Using a CTE that labels each customer 'Young' (under 30), 'Middle' (30 to 49) or 'Senior' (50 and over), count the customers in each group.", tag:"CTE",
+   a:"WITH labeled AS (\n  SELECT CASE\n    WHEN age < 30 THEN 'Young'\n    WHEN age < 50 THEN 'Middle'\n    ELSE 'Senior'\n  END AS age_group\n  FROM customers\n)\nSELECT age_group, COUNT(*) AS num_customers\nFROM labeled\nGROUP BY age_group;"},
+  {t:"Using a CTE of monthly totals (year-month and total amount), show the single month with the highest total.", tag:"CTE",
+   a:"WITH monthly AS (\n  SELECT strftime('%Y-%m', order_date) AS month, SUM(amount) AS total\n  FROM orders\n  GROUP BY strftime('%Y-%m', order_date)\n)\nSELECT month, total\nFROM monthly\nORDER BY total DESC\nLIMIT 1;"},
+  {t:"Each employee's name, department, salary, and rank within their department by salary (highest = 1), using RANK.", tag:"Window",
+   a:"SELECT name, department, salary,\n  RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS salary_rank\nFROM employees;"},
+  {t:"The top earner in each department: name, department and salary. Use ROW_NUMBER.", tag:"Window",
+   a:"WITH ranked AS (\n  SELECT name, department, salary,\n    ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) AS rn\n  FROM employees\n)\nSELECT name, department, salary\nFROM ranked\nWHERE rn = 1;"},
+  {t:"Each order's date, amount, and running total of amounts, in order of order_date then order_id.", tag:"Window",
+   a:"SELECT order_date, amount,\n  SUM(amount) OVER (ORDER BY order_date, order_id) AS running_total\nFROM orders;"},
+  {t:"Each employee's name, department, salary, and the average salary of their department on the same row.", tag:"Window",
+   a:"SELECT name, department, salary,\n  AVG(salary) OVER (PARTITION BY department) AS dept_avg\nFROM employees;"},
+  {t:"Each order's product, date, and the date of the order just before it (by order_date then order_id), using LAG.", tag:"Window",
+   a:"SELECT product, order_date,\n  LAG(order_date) OVER (ORDER BY order_date, order_id) AS previous_date\nFROM orders;"},
+  {t:"Each employee's name, department, salary, and how far below their department's highest salary they are.", tag:"Window",
+   a:"SELECT name, department, salary,\n  MAX(salary) OVER (PARTITION BY department) - salary AS below_top\nFROM employees;"},
+  {t:"One list of every name from both customers and employees, with no duplicates.", tag:"UNION",
+   a:"SELECT name FROM customers\nUNION\nSELECT name FROM employees;"},
+  {t:"One list of everyone with two columns: name, and type ('Customer' or 'Employee').", tag:"UNION ALL",
+   a:"SELECT name, 'Customer' AS type FROM customers\nUNION ALL\nSELECT name, 'Employee' FROM employees;"},
+  {t:"Products that were ordered in 2025 or have an amount over 300, each listed once.", tag:"UNION",
+   a:"SELECT product FROM orders WHERE strftime('%Y', order_date) = '2025'\nUNION\nSELECT product FROM orders WHERE amount > 300;"},
+  {t:"Create a view named customer_spending showing every customer's name and total spent (0 for no orders).", tag:"VIEW", verify:"SELECT * FROM customer_spending",
+   a:"CREATE VIEW customer_spending AS\nSELECT c.name, COALESCE(SUM(o.amount), 0) AS total_spent\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Create a view named big_orders showing product, amount and customer name for orders over 300.", tag:"VIEW", verify:"SELECT * FROM big_orders",
+   a:"CREATE VIEW big_orders AS\nSELECT o.product, o.amount, c.name\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nWHERE o.amount > 300;"},
+  {t:"Create an index named idx_orders_customer on the customer_id column of orders.", tag:"INDEX",
+   verify:"SELECT m.name AS index_name, m.tbl_name AS on_table, (SELECT group_concat(i.name) FROM pragma_index_info('idx_orders_customer') i) AS on_columns FROM sqlite_master m WHERE m.type = 'index' AND m.name = 'idx_orders_customer'",
+   label:"your index", fail:"The index isn't right yet. Name it exactly idx_orders_customer, on the orders table, on the customer_id column.",
+   a:"CREATE INDEX idx_orders_customer\nON orders (customer_id);"},
+  {t:"Inside a transaction, delete every order, then undo it with ROLLBACK so the orders table ends up unchanged.", tag:"Transaction",
+   verify:"SELECT COUNT(*) AS orders_left FROM orders", label:"how many orders are left",
+   must:/\brollback\b/i, mustMsg:"Use a transaction: <code>BEGIN TRANSACTION;</code> then the <code>DELETE</code>, then <code>ROLLBACK;</code> to undo it.",
+   fail:"All 7 orders should still be there. Did the <code>DELETE</code> run outside the transaction, or did you <code>COMMIT</code> instead of <code>ROLLBACK</code>?",
+   a:"BEGIN TRANSACTION;\nDELETE FROM orders;\nROLLBACK;"},
+  {t:"Project: each customer city and its total order amount, highest first (only cities with orders).", tag:"Project", ordered:true,
+   a:"SELECT c.city, SUM(o.amount) AS total\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.city\nORDER BY total DESC;"},
+  {t:"Project: the month in 2026 with the highest total order amount (month and total).", tag:"Project",
+   a:"SELECT strftime('%Y-%m', order_date) AS month, SUM(amount) AS total\nFROM orders\nWHERE strftime('%Y', order_date) = '2026'\nGROUP BY strftime('%Y-%m', order_date)\nORDER BY total DESC\nLIMIT 1;"},
+  {t:"Project: every customer's name, number of orders, total spent, and tier: 'No orders' if none, 'Gold' for at least 1000, 'Silver' for at least 300, otherwise 'Bronze'.", tag:"Project",
+   a:"SELECT c.name,\n  COUNT(o.order_id) AS num_orders,\n  COALESCE(SUM(o.amount), 0) AS total_spent,\n  CASE\n    WHEN COUNT(o.order_id) = 0 THEN 'No orders'\n    WHEN SUM(o.amount) >= 1000 THEN 'Gold'\n    WHEN SUM(o.amount) >= 300 THEN 'Silver'\n    ELSE 'Bronze'\n  END AS tier\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Project: each customer's most expensive order: customer name, product and amount.", tag:"Project",
+   a:"WITH ranked AS (\n  SELECT c.name, o.product, o.amount,\n    ROW_NUMBER() OVER (PARTITION BY c.id ORDER BY o.amount DESC) AS rn\n  FROM customers c\n  JOIN orders o ON o.customer_id = c.id\n)\nSELECT name, product, amount\nFROM ranked\nWHERE rn = 1;"},
+  {t:"Project: for each customer with orders, the number of days between their first and last order.", tag:"Project",
+   a:"SELECT c.name,\n  julianday(MAX(o.order_date)) - julianday(MIN(o.order_date)) AS days_between\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Project: employees who earn more than their department's average: name, department, salary, and how much above the average.", tag:"Project",
+   a:"WITH with_avg AS (\n  SELECT name, department, salary,\n    AVG(salary) OVER (PARTITION BY department) AS dept_avg\n  FROM employees\n)\nSELECT name, department, salary, salary - dept_avg AS above_avg\nFROM with_avg\nWHERE salary > dept_avg;"},
+  {t:"Project: each customer's share of total revenue as a percentage, rounded to 1 decimal place (only customers with orders).", tag:"Project",
+   a:"SELECT c.name,\n  ROUND(100.0 * SUM(o.amount) / (SELECT SUM(amount) FROM orders), 1) AS pct_of_revenue\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Project: names of customers who placed orders in more than one different month.", tag:"Project",
+   a:"SELECT c.name\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name\nHAVING COUNT(DISTINCT strftime('%Y-%m', o.order_date)) > 1;"}
+];
+
+let db = null, current = -1;
+const solved = new Set();
+try{ JSON.parse(localStorage.getItem('sqlsb-solved')||'[]').forEach(i=>solved.add(i)); }catch(e){}
+let answers = {};
+try{ answers = JSON.parse(localStorage.getItem('sqlsb-answers')||'{}') || {}; }catch(e){ answers = {}; }
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function seed(){ db = new SQL.Database(); db.run(SEED); db.run('PRAGMA foreign_keys = ON'); renderSchema(); }
+
+function renderSchema(){
+  const base = ['customers','employees','orders'];
+  const all = (db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'`)[0]||{values:[]}).values.map(v=>v[0]);
+  const tables = base.filter(t=>all.includes(t)).concat(all.filter(t=>!base.includes(t)));
+  $('schema').innerHTML = tables.map(t=>{
+    const info = (db.exec(`PRAGMA table_info("${t.replace(/"/g,'""')}")`)[0]||{values:[]}).values;
+    const data = db.exec(`SELECT * FROM "${t.replace(/"/g,'""')}"`)[0];
+    const n = data ? data.values.length : 0;
+    return `<details class="tbl"${t==='customers'?' open':''}>
+      <summary><code>${esc(t)}</code><span class="rows">${n} rows · show data</span></summary>
+      <div class="cols">${info.map(c=>`<span class="col">${esc(c[1])} <i>${esc(c[2].toLowerCase())}</i></span>`).join('')}</div>
+      ${data ? `<div class="mini">${tableHTML(data.columns, data.values)}</div>` : ''}
+    </details>`;
+  }).join('');
+}
+
+function tableHTML(cols, rows){
+  const isNum = cols.map((_,i)=>rows.length && rows.every(r=>r[i]===null || typeof r[i]==='number'));
+  const fmt = v => v===null ? 'NULL' : (typeof v==='number' && !Number.isInteger(v) ? (+v.toFixed(2)).toString() : v);
+  return `<div class="tablebox"><table><thead><tr>${cols.map((c,i)=>`<th class="${isNum[i]?'num':''}">${esc(c)}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map(r=>`<tr>${r.map((v,i)=>`<td class="${v===null?'null':''} ${isNum[i]?'num':''}">${esc(fmt(v))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+
+function friendlyHint(msg, q){
+  const m = msg.toLowerCase();
+  let x;
+  if(/limit\s+by/i.test(q)) return `<code>LIMIT</code> takes a number directly: <code>LIMIT 2</code>, with no "BY".`;
+  if(/sort\s+by/i.test(q)) return `SQL sorts with <code>ORDER BY column</code>, not <code>SORT BY</code>.`;
+  if(/no such column: (dec|des|asc?en+)$/i.test(msg)) return `The sort keywords are <code>ASC</code> (A→Z, small→big) and <code>DESC</code> (Z→A, big→small), and they come after a column: <code>ORDER BY age DESC</code>.`;
+  if(/having\s*[=<>!]/i.test(q)) return `<code>HAVING</code> needs a full condition, such as <code>HAVING COUNT(*) = 1</code>.`;
+  if((x = msg.match(/no such table: (\w+)/i))){
+    return `There's no table called <code>${esc(x[1])}</code>. The tables are <code>customers</code>, <code>employees</code> and <code>orders</code>; check the spelling and the plural "s".`;
+  }
+  if((x = msg.match(/no such column: (\w+)\.(\w+)/i))){
+    return `SQL doesn't recognize <code>${esc(x[1])}.${esc(x[2])}</code>. If <code>${esc(x[1])}</code> is an alias, declare it right after its table name, like <code>FROM customers c</code> or <code>JOIN orders o</code>. Otherwise check that the column exists in that table.`;
+  }
+  if((x = msg.match(/not null constraint failed: (\w+)\.(\w+)/i))) return `<code>${esc(x[2])}</code> is required (<code>NOT NULL</code>), so every new row needs a value for it.`;
+  if(/check constraint failed/i.test(msg)) return `A value broke one of the table's <code>CHECK</code> rules, such as a rating outside 1 to 5. The row was not saved.`;
+  if(/foreign key constraint failed/i.test(msg)) return `The value you used points to a row that doesn't exist in the linked table, such as a <code>customer_id</code> with no matching customer. The row was not saved.`;
+  if((x = msg.match(/table (\w+) already exists/i))) return `<code>${esc(x[1])}</code> already exists. Press <b>Reset data</b> to start over, or use <code>CREATE TABLE IF NOT EXISTS</code>.`;
+  if((x = msg.match(/unique constraint failed: (\w+)\.(\w+)/i))) return `A row with that <code>${esc(x[2])}</code> already exists in <code>${esc(x[1])}</code>. Each <code>${esc(x[2])}</code> must be unique (it's the primary key). Use a new value, or press <b>Reset data</b> if you already added this row.`;
+  if(/has \d+ columns but \d+ values were supplied/i.test(msg)) return `The number of values doesn't match the number of columns. List the columns you're filling, like <code>INSERT INTO customers (id, name, city, age) VALUES (...)</code>, and give one value per column in the same order.`;
+  if(/\d+ values for \d+ columns/i.test(msg)) return `You listed a different number of columns and values. Each column in the list needs exactly one value, in the same order.`;
+  if(/no such function: (year|month|day)$/i.test(msg)) return `That's the MSSQL/MySQL spelling. In SQLite use <code>strftime('%Y', order_date)</code> for the year, <code>'%m'</code> for the month, <code>'%d'</code> for the day. The result is text, so compare with quotes: <code>= '2025'</code>.`;
+  if(/no such function: (datediff|dateadd|getdate)$/i.test(msg)) return `That's MSSQL. In SQLite: today is <code>date('now')</code>, days between two dates is <code>julianday(a) - julianday(b)</code>, and adding days is <code>date(order_date, '+30 days')</code>.`;
+  if(/misuse of (aliased )?window function/i.test(msg)) return `Window functions can't go in <code>WHERE</code>, because they're calculated after filtering. Put the query in a CTE, then filter the CTE: <code>WITH ranked AS (...) SELECT ... FROM ranked WHERE rn = 1</code>.`;
+  if(/selects to the left and right of union do not have the same number/i.test(msg)) return `Both sides of a <code>UNION</code> must select the same number of columns, in the same order.`;
+  if(/no such function: len$/i.test(msg)) return `This sandbox runs SQLite, which spells it <code>LENGTH()</code>. <code>LEN()</code> is the MSSQL spelling.`;
+  if(/\bisnull\s*\(/i.test(q)) return `<code>ISNULL()</code> is MSSQL-only. Use <code>COALESCE(value, fallback)</code>, which works everywhere.`;
+  if(/no such function: (concat|getdate|top)$/i.test(msg)) return `That function is MSSQL-only. In SQLite, join text with <code>||</code>, like <code>name || ' - ' || city</code>.`;
+  if(/\bcase\b/i.test(q) && !/\bend\b/i.test(q)) return `Every <code>CASE</code> needs an <code>END</code> to close it, like <code>CASE WHEN ... THEN ... ELSE ... END AS label</code>.`;
+  if(m.includes('sub-select returns') || m.includes('row value misused')) return `The subquery returns more than one column. A subquery used with <code>=</code>, <code>&gt;</code> or <code>IN</code> should select exactly one column.`;
+  if(m.includes('ambiguous column')) return `Two tables share that column name, so say which one you mean, like <code>c.name</code> or <code>o.product</code>.`;
+  if((x = msg.match(/no such column: ([\w.]+)/i))){
+    return `There's no column called <code>${esc(x[1])}</code>. If it's text, it needs single quotes (<code>'${esc(x[1])}'</code>). Otherwise check the column names in the Tables panel. Remember aliases can't be used in <code>WHERE</code>.`;
+  }
+  if(m.includes('misuse of aggregate')) return `Aggregates like <code>AVG()</code> or <code>COUNT()</code> can't go in <code>WHERE</code>. Filter groups with <code>HAVING</code> after <code>GROUP BY</code>.`;
+  if(m.includes('having clause on a non-aggregate')) return `<code>HAVING</code> needs a <code>GROUP BY</code> before it. If you're filtering single rows, use <code>WHERE</code>.`;
+  if(m.includes('incomplete input')) return `The query ends too early. Something is unfinished, such as a missing value after <code>=</code> or an unclosed quote or bracket.`;
+  if(/near "(sort|by|dec|limit)"/i.test(msg)) return `Check the keywords: it's <code>ORDER BY column</code>, <code>ASC</code>/<code>DESC</code>, and <code>LIMIT 2</code> (no "BY" after LIMIT).`;
+  if(m.includes('syntax error')) return `Something is out of place near the word shown. Check the clause order: SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT.`;
+  return '';
+}
+
+function norm(rows, ordered){
+  const out = rows.map(r=>r.map(v=> typeof v==='number' ? String(Math.round(v*100)/100) : (v===null?'NULL':String(v))).sort());
+  const keys = out.map(r=>JSON.stringify(r));
+  return ordered ? keys : keys.slice().sort();
+}
+
+function run(){
+  if(!db) return;
+  const q = $('sql').value.trim();
+  const out = $('output');
+  if(!q){ out.innerHTML = `<div class="msg">Type a query first.</div>`; return; }
+  let res;
+  const t0 = performance.now();
+  try{ res = db.exec(q); }
+  catch(e){
+    const hint = friendlyHint(e.message, q);
+    out.innerHTML = `<div class="status"><span class="pill err">Error</span></div>
+      <div class="msg err">${esc(e.message)}${hint?`<div class="hint">${hint}</div>`:''}</div>`;
+    return null;
+  }
+  const ms = (performance.now()-t0).toFixed(1);
+  if(!res.length){
+    if(/^\s*(insert|update|delete|create|drop|alter)/im.test(q)){
+      const n = db.getRowsModified();
+      const noWhere = /^\s*(update|delete)\b/i.test(q) && !/\bwhere\b/i.test(q);
+      out.innerHTML = `<div class="status"><span class="pill ${noWhere?'err':'ok'}">Done</span><span>${n} row${n===1?'':'s'} changed · ${ms} ms</span></div>
+        <div class="msg">${noWhere ? `<b>This had no <code>WHERE</code>, so it changed every row in the table.</b> Press <b>Reset data</b> in the Tables panel to restore the original data.` : `The Tables panel now shows the new data. Press <b>Reset data</b> any time to go back to the original.`}</div>`;
+      renderSchema();
+      return {columns:[],values:[]};
+    }
+    out.innerHTML = `<div class="status"><span class="pill ok">Ran</span><span>No rows returned · ${ms} ms</span></div>
+      <div class="msg">The query ran but returned nothing. If you expected rows, check your <code>WHERE</code> values, including capital letters inside quotes.</div>`;
+    return {columns:[],values:[]};
+  }
+  const r = res[res.length-1];
+  out.innerHTML = `<div class="status"><span class="pill ok">Ran</span><span>${r.values.length} row${r.values.length===1?'':'s'} · ${ms} ms</span></div>
+    ${tableHTML(r.columns, r.values)}`;
+  if(/\b(insert|update|delete|create|drop|alter)\b/i.test(q)) renderSchema();
+  return r;
+}
+
+function checkChange(ex){
+  const q = $('sql').value.trim(), out = $('output');
+  if(!q){ out.innerHTML = `<div class="msg">Type a query first.</div>`; return null; }
+  if(ex.must && !ex.must.test(q)) return {ok:false, msg:ex.mustMsg};
+  const userDb = new SQL.Database(); userDb.run(SEED);
+  let n;
+  try{ userDb.exec(q); n = userDb.getRowsModified(); }
+  catch(e){
+    userDb.close();
+    const hint = friendlyHint(e.message, q);
+    out.innerHTML = `<div class="status"><span class="pill err">Error</span></div>
+      <div class="msg err">${esc(e.message)}${hint?`<div class="hint">${hint}</div>`:''}</div>`;
+    return null;
+  }
+  let r, missing = false;
+  try{ r = userDb.exec(ex.verify)[0] || {columns:[],values:[]}; }catch(e){ r = {columns:[],values:[]}; missing = true; }
+  userDb.close();
+  const refDb = new SQL.Database(); refDb.run(SEED); refDb.exec(ex.a);
+  const exp = refDb.exec(ex.verify)[0] || {columns:[],values:[]}; refDb.close();
+  const tbl = ex.verify.replace(/.*FROM\s+/i,'');
+  const label = ex.label || `<code>${esc(tbl)}</code>`;
+  out.innerHTML = `<div class="status"><span class="pill ok">Done</span><span>${ex.label ? 'Ran' : `${n} row${n===1?'':'s'} changed`} · checked on a fresh copy of the data</span></div>
+    ${missing ? `<div class="msg">SQL couldn't find the table this exercise asks for. Check the table name is spelled exactly as in the question.</div>` : `<div class="msg">Here is ${label} after your query:</div>${tableHTML(r.columns, r.values)}`}`;
+  let msg = '', ok = false;
+  const a = norm(r.values,false).join('|'), b = norm(exp.values,false).join('|');
+  if(a===b) ok = true;
+  else if(ex.fail) msg = ex.fail;
+  else if(r.values.length !== exp.values.length)
+    msg = `Afterwards <code>${esc(tbl)}</code> should have <b>${exp.values.length}</b> rows; yours has <b>${r.values.length}</b>. Check your <code>WHERE</code>, since it decides which rows are affected.`;
+  else msg = `The right number of rows, but some values differ. Check which rows your <code>WHERE</code> matches and the exact values you set, including capital letters.`;
+  return {ok, msg};
+}
+
+function check(){
+  if(current<0) return;
+  const ex = EXERCISES[current];
+  let msg, ok = false;
+  if(ex.verify){
+    const res = checkChange(ex); if(!res) return;
+    ok = res.ok; msg = res.msg;
+  } else {
+  const r = run();
+  if(!r) return;
+  const exp = db.exec(ex.a)[0] || {columns:[],values:[]};
+  if(r.columns.length !== exp.columns.length){
+    msg = `Expected <b>${exp.columns.length}</b> column${exp.columns.length===1?'':'s'}, you returned <b>${r.columns.length}</b>. Reread which columns the question asks to show.`;
+  } else if(r.values.length !== exp.values.length){
+    msg = `Expected <b>${exp.values.length}</b> row${exp.values.length===1?'':'s'}, you returned <b>${r.values.length}</b>. Check your filters (<code>WHERE</code> / <code>HAVING</code>) and any <code>LIMIT</code>.`;
+  } else {
+    const a = norm(r.values, ex.ordered), b = norm(exp.values, ex.ordered);
+    if(a.join('|')===b.join('|')) ok = true;
+    else if(ex.ordered && norm(r.values,false).join('|')===norm(exp.values,false).join('|'))
+      msg = `Right rows, wrong order. Check your <code>ORDER BY</code> column and <code>ASC</code>/<code>DESC</code>.`;
+    else msg = `Right shape, but some values differ. If you used <code>GROUP BY</code>, make sure every other column is inside an aggregate.`;
+  }
+  }
+  const box = document.createElement('div');
+  box.className = 'check ' + (ok?'ok':'err');
+  box.innerHTML = ok ? `<b>Correct.</b> Exercise ${current+1} solved.` : `<b>Not yet.</b> ${msg}`;
+  $('output').appendChild(box);
+  if(ok){
+    solved.add(current); answers[current] = $('sql').value.trim();
+    try{localStorage.setItem('sqlsb-solved', JSON.stringify([...solved]));}catch(e){}
+    try{localStorage.setItem('sqlsb-answers', JSON.stringify(answers));}catch(e){}
+    renderExercises();
+  }
+}
+
+const GROUPS = [[0,'Lessons 1–4 · Single-table queries'],[10,'Lesson 5 · JOINs'],[16,'Lesson 6 · Subqueries'],[20,'Lesson 7 · CASE'],
+  [30,'Lesson 8 · Handy functions'],[37,'Lesson 9 · Dates'],[43,'Lesson 10 · Changing data'],[49,'Lesson 11 · Building tables'],
+  [54,'Lesson 12 · CTEs'],[58,'Lesson 13 · Window functions'],[64,'Lesson 14 · UNION'],[67,'Lesson 15 · Views and indexes'],
+  [70,'Lesson 16 · Transactions'],[71,'Lesson 17 · Final project']];
+function renderExercises(){
+  $('exercises').innerHTML = EXERCISES.map((e,i)=>{ const g = GROUPS.find(x=>x[0]===i); return (g?`<li class="ex-group">${esc(g[1])}</li>`:'') + `<li class="ex${solved.has(i)?' done':''}${i===current?' active':''}">
+    <button class="pick" data-i="${i}"><span class="ex-n">${solved.has(i)?'✓':String(i+1).padStart(2,'0')}</span>
+    <span class="ex-t">${esc(e.t)}</span><span class="ex-tag">${esc(e.tag)}</span></button>
+    ${i===current && showAnswer ? `<div class="answer">${esc(e.a)}</div>` : ''}</li>`; }).join('');
+  $('score').textContent = `${solved.size} / ${EXERCISES.length} solved`;
+  $('score').className = 'pill' + (solved.size===EXERCISES.length?' ok':'');
+  const n = Object.keys(answers).length;
+  $('savedNote').textContent = n ? `${n} saved ${n===1?'query':'queries'} ready to copy.` : 'Each query you get correct is saved here.';
+}
+
+let showAnswer = false;
+$('exercises').addEventListener('click', e=>{
+  const b = e.target.closest('button.pick'); if(!b) return;
+  current = +b.dataset.i; showAnswer = false;
+  $('task').innerHTML = `<b>Exercise ${current+1}:</b> ${esc(EXERCISES[current].t)}`;
+  $('checkBtn').hidden = false; $('answerBtn').hidden = false; $('answerBtn').textContent = 'Show answer';
+  $('sql').value = answers[current] || ''; $('sql').focus();
+  $('output').innerHTML = EXERCISES[current].verify
+    ? `<div class="msg">Write your query, then press <b>Check answer</b>. It runs your change on a fresh copy of the data, so your tables here stay as they are, and shows the table afterwards.</div>`
+    : `<div class="msg">Write your query, then press <b>Check answer</b>. It runs your query and compares the result with the expected one.</div>`;
+  renderExercises();
+});
+$('answerBtn').addEventListener('click', ()=>{
+  showAnswer = !showAnswer; $('answerBtn').textContent = showAnswer ? 'Hide answer' : 'Show answer'; renderExercises();
+});
+function answersText(){
+  const keys = Object.keys(answers).map(Number).sort((a,b)=>a-b);
+  return keys.map(i=>`#${i+1}: ${EXERCISES[i].t}\n${answers[i]}`).join('\n\n');
+}
+$('copyAnswers').addEventListener('click', ()=>{
+  const st = $('copyStatus'); st.className = '';
+  const text = answersText();
+  if(!text){ st.className='err'; st.textContent = 'Nothing saved yet. Solve an exercise first.'; return; }
+  const fallback = ()=>{
+    const box = $('copyBox'); box.value = text; box.hidden = false; box.focus(); box.select();
+    st.textContent = 'Press Ctrl/⌘ + C to copy the selected text.';
+  };
+  try{
+    navigator.clipboard.writeText(text).then(()=>{
+      st.textContent = 'Copied. Paste it into the chat.';
+      const box = $('copyBox'); box.value = text; box.hidden = false;
+    }, fallback);
+  }catch(e){ fallback(); }
+});
+$('run').addEventListener('click', run);
+$('checkBtn').addEventListener('click', check);
+$('clear').addEventListener('click', ()=>{ $('sql').value=''; $('sql').focus(); });
+$('reset').addEventListener('click', ()=>{ if(!db) return; db.close(); seed();
+  $('output').innerHTML = `<div class="msg">Tables reset to the original data.</div>`; });
+$('sql').addEventListener('keydown', e=>{
+  if((e.ctrlKey||e.metaKey) && e.key==='Enter'){ e.preventDefault(); current>=0 ? check() : run(); }
+  if(e.key==='Tab' && !e.shiftKey){ e.preventDefault(); const t=e.target,s=t.selectionStart; t.setRangeText('  ',s,t.selectionEnd,'end'); }
+});
+
+renderExercises();
+if(typeof initSqlJs !== 'function'){
+  $('output').innerHTML = `<div class="msg err">The SQL engine didn't load. Reload the page to try again.</div>`;
+} else {
+  initSqlJs().then(S=>{ window.SQL = S; seed(); $('run').disabled = false; run(); })
+    .catch(err=>{ $('output').innerHTML = `<div class="msg err">The SQL engine didn't load: ${esc(err.message||err)}. Reload the page to try again.</div>`; });
+}
+</script>
+</body>
+</html>

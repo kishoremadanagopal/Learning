@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pocket Python</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one working screen — toolbar, then editor and output side by side (stacked on phones) */
+:root {
+  --bg: #eef1f5;
+  --surface: #ffffff;
+  --sunken: #f6f8fb;
+  --ink: #18212d;
+  --muted: #5d6b7d;
+  --line: #d6dce5;
+  --blue: #2c679c;
+  --yellow: #f2c230;
+  --on-yellow: #1d1a10;
+  --err: #b3261e;
+  --ok: #2f7a45;
+  --sx-kw: #2c5fa8;
+  --sx-str: #4b7a2e;
+  --sx-num: #b0561a;
+  --sx-com: #8592a3;
+  --sx-fn: #7b3fa3;
+  --sx-bi: #187373;
+  --sx-dec: #a1660d;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141b; --surface: #151c26; --sunken: #111821; --ink: #e2e8f0; --muted: #8f9cae; --line: #263142;
+    --blue: #79aee0; --yellow: #f2c94c; --on-yellow: #1d1a10; --err: #ff8a80; --ok: #7fd197;
+    --sx-kw: #82b1ff; --sx-str: #a8d08d; --sx-num: #f0a46c; --sx-com: #66758a; --sx-fn: #d4a5f0; --sx-bi: #6fd1d1; --sx-dec: #e8c06a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141b; --surface: #151c26; --sunken: #111821; --ink: #e2e8f0; --muted: #8f9cae; --line: #263142;
+  --blue: #79aee0; --yellow: #f2c94c; --on-yellow: #1d1a10; --err: #ff8a80; --ok: #7fd197;
+  --sx-kw: #82b1ff; --sx-str: #a8d08d; --sx-num: #f0a46c; --sx-com: #66758a; --sx-fn: #d4a5f0; --sx-bi: #6fd1d1; --sx-dec: #e8c06a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--ink);
+  font: 14px/1.5 var(--body);
+  padding-inline: 16px; padding-block: 14px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.brand { display: flex; align-items: baseline; gap: 10px; margin-right: auto; min-width: 0; }
+.brand h1 { margin: 0; font: 800 22px/1 var(--display); letter-spacing: -0.02em; }
+.brand h1 span { color: var(--blue); }
+.status { font: 500 12px/1 var(--mono); color: var(--muted); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); }
+.status.ready .dot { background: var(--ok); }
+.status.fail .dot { background: var(--err); }
+
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+select, button { font: 500 13px/1 var(--body); color: var(--ink); }
+select {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; max-width: 100%;
+}
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.run {
+  background: var(--yellow); color: var(--on-yellow); border: 0; border-radius: 6px;
+  padding: 9px 16px; font: 600 14px/1 var(--body); cursor: pointer; display: inline-flex; gap: 8px; align-items: center;
+}
+.run:disabled { opacity: .55; cursor: progress; }
+.run kbd { font: 500 11px/1 var(--mono); opacity: .7; }
+button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.work { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; }
+.panel-head { display: flex; align-items: center; gap: 4px; padding: 6px 8px; border-bottom: 1px solid var(--line); background: var(--sunken); min-height: 40px; flex-wrap: wrap; }
+.label { font: 600 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 0 6px; }
+.file { font: 500 12px/1 var(--mono); color: var(--ink); }
+.panel-head .spacer { flex: 1; }
+
+/* Editor: highlighted <pre> under a transparent textarea */
+.editor { position: relative; flex: 1; min-height: 0; display: flex; }
+.gutter {
+  flex: none; padding: 14px 10px 14px 12px; text-align: right; color: var(--sx-com);
+  font: 13px/21px var(--mono); user-select: none; overflow: hidden; border-right: 1px solid var(--line);
+  font-variant-numeric: tabular-nums; background: var(--sunken);
+}
+.code-wrap { position: relative; flex: 1; min-width: 0; }
+.code-wrap pre, .code-wrap textarea {
+  position: absolute; inset: 0; margin: 0; padding: 14px 16px; border: 0;
+  font: 13px/21px var(--mono); tab-size: 4; white-space: pre; overflow: auto; letter-spacing: 0;
+}
+.code-wrap pre { color: var(--ink); pointer-events: none; overflow: hidden; }
+.code-wrap textarea { background: transparent; color: transparent; caret-color: var(--ink); resize: none; outline: none; }
+.code-wrap textarea::selection { background: color-mix(in srgb, var(--blue) 30%, transparent); color: transparent; }
+.k { color: var(--sx-kw); font-weight: 600; }
+.s { color: var(--sx-str); }
+.n { color: var(--sx-num); }
+.c { color: var(--sx-com); font-style: italic; }
+.f { color: var(--sx-fn); }
+.b { color: var(--sx-bi); }
+.d { color: var(--sx-dec); }
+
+.stdin { border-top: 1px solid var(--line); display: flex; flex-direction: column; }
+.stdin label { padding: 8px 14px 0; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.stdin small { color: var(--muted); font-size: 12px; }
+.stdin textarea {
+  border: 0; background: transparent; color: var(--ink); resize: vertical; min-height: 54px; height: 64px;
+  padding: 6px 14px 10px; font: 13px/1.5 var(--mono); outline-offset: -2px;
+}
+
+/* Output side */
+.tabs { display: flex; gap: 2px; flex-wrap: wrap; }
+.tab { border: 0; background: transparent; padding: 7px 10px; border-radius: 5px; cursor: pointer; color: var(--muted); font: 500 13px/1 var(--body); }
+.tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.stage { font: 600 10px/1 var(--mono); color: var(--blue); margin-right: 5px; }
+.view { flex: 1; min-height: 0; overflow: auto; margin: 0; padding: 14px 16px; font: 13px/1.55 var(--mono); white-space: pre-wrap; word-break: break-word; }
+.view.code { white-space: pre; word-break: normal; }
+.view .err { color: var(--err); }
+.view .meta { color: var(--muted); font-style: italic; }
+.view .ok { color: var(--ok); }
+.explain { margin: 0; padding: 10px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; line-height: 1.5; background: var(--sunken); }
+
+.foot { color: var(--muted); font-size: 12px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+
+@media (max-width: 820px) {
+  html, body { height: auto; }
+  .work { grid-template-columns: minmax(0, 1fr); }
+  .panel.edit { height: 62vh; min-height: 340px; }
+  .panel.out { height: 48vh; min-height: 260px; }
+  .run kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Pocket <span>Python</span></h1>
+    <span class="status" id="status" role="status"><span class="dot"></span><span id="statusText">Loading Python…</span></span>
+  </div>
+  <div class="controls">
+    <a class="btn" href="index.html" style="text-decoration:none;color:var(--ink)">← Course</a>
+    <select id="examples" aria-label="Load an example">
+      <option value="">Examples…</option>
+    </select>
+    <button class="btn" id="clearBtn" type="button">Clear output</button>
+    <button class="run" id="runBtn" type="button" disabled>Run <kbd id="kbd">Ctrl ↵</kbd></button>
+  </div>
+</header>
+
+<main class="work">
+  <section class="panel edit" aria-label="Code editor">
+    <div class="panel-head"><span class="label">Editor</span><span class="file">main.py</span></div>
+    <div class="editor">
+      <div class="gutter" id="gutter" aria-hidden="true">1</div>
+      <div class="code-wrap">
+        <pre id="hl" aria-hidden="true"></pre>
+        <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="Python source code"></textarea>
+      </div>
+    </div>
+    <div class="stdin">
+      <label for="stdin"><span class="label" style="padding:0">Input</span><small>One line per <code>input()</code> call</small></label>
+      <textarea id="stdin" spellcheck="false" placeholder="Ada"></textarea>
+    </div>
+  </section>
+
+  <section class="panel out" aria-label="Results">
+    <div class="panel-head">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="t-output" aria-selected="true" data-view="output">Output</button>
+        <button class="tab" role="tab" id="t-tokens" aria-selected="false" data-view="tokens"><span class="stage">1</span>Tokens</button>
+        <button class="tab" role="tab" id="t-ast" aria-selected="false" data-view="ast"><span class="stage">2</span>AST</button>
+        <button class="tab" role="tab" id="t-js" aria-selected="false" data-view="js"><span class="stage">3</span>Compiled JS</button>
+      </div>
+      <span class="spacer"></span>
+      <span class="status" id="timing"></span>
+    </div>
+    <pre class="view" id="view" tabindex="0"></pre>
+    <p class="explain" id="explain"></p>
+  </section>
+</main>
+
+<p class="foot">
+  <span>Runs entirely in your browser with Brython 3.14 (Python compiled to JavaScript). Nothing is sent to a server.</span>
+  <span>Pure-Python standard library only; no pip packages. A loop that never ends will freeze the tab.</span>
+</p>
+
+<script>
+const EXAMPLES = {
+  "Hello + Fibonacci": `# Edit me and press Run
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+name = input("What's your name? ")
+print(f"Hi {name}! Here are 12 Fibonacci numbers:")
+print(list(fib(12)))
+`,
+  "Classes & dataclasses": `from dataclasses import dataclass, field
+
+@dataclass
+class Account:
+    owner: str
+    balance: float = 0.0
+    history: list = field(default_factory=list)
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit must be positive")
+        self.balance += amount
+        self.history.append(("deposit", amount))
+
+acct = Account("Kishore")
+for amt in (120, 45.5, 300):
+    acct.deposit(amt)
+
+print(acct)
+print(f"Balance: \${acct.balance:,.2f}")
+`,
+  "Comprehensions & collections": `from collections import Counter
+
+text = """the quick brown fox jumps over the lazy dog
+the dog sleeps and the fox runs"""
+
+words = text.split()
+counts = Counter(words)
+print("Top 3:", counts.most_common(3))
+
+lengths = {w: len(w) for w in set(words) if len(w) > 3}
+print(sorted(lengths.items(), key=lambda kv: (-kv[1], kv[0])))
+
+squares = [n * n for n in range(1, 11) if n % 2]
+print("Odd squares:", squares)
+`,
+  "Algorithms: binary search": `def binary_search(items, target):
+    lo, hi = 0, len(items) - 1
+    steps = 0
+    while lo <= hi:
+        steps += 1
+        mid = (lo + hi) // 2
+        if items[mid] == target:
+            return mid, steps
+        if items[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1, steps
+
+data = list(range(0, 1_000_000, 3))
+for t in (0, 299_997, 500_000, 999_999):
+    idx, steps = binary_search(data, t)
+    print(f"{t:>8} -> index {idx:>7}  in {steps} steps")
+`,
+  "See a traceback": `def divide(a, b):
+    return a / b
+
+def average(nums):
+    return divide(sum(nums), len(nums))
+
+print(average([4, 8, 15]))
+print(average([]))   # ZeroDivisionError
+`
+};
+
+const EXPLAIN = {
+  output: "Your program's printed output. Errors show the full Python traceback.",
+  tokens: "Stage 1, tokenizing: the source split into tokens. INDENT and DEDENT are how Python turns whitespace into structure.",
+  ast: "Stage 2, parsing: the Abstract Syntax Tree built from those tokens, the same tree CPython's ast module gives you.",
+  js: "Stage 3, code generation: CPython would emit bytecode here. Brython emits JavaScript instead, which your browser then runs."
+};
+
+const $ = (id) => document.getElementById(id);
+const code = $("code"), hl = $("hl"), gutter = $("gutter"), view = $("view");
+const runBtn = $("runBtn");
+let current = "output";
+let outputHTML = '<span class="meta">Press Run to execute main.py.</span>';
+let pyReadyFlag = false;
+
+if (/Mac|iPhone|iPad/.test(navigator.platform)) $("kbd").textContent = "⌘ ↵";
+
+/* ---------- Syntax highlighting ---------- */
+const KW = new Set("False None True and as assert async await break class continue def del elif else except finally for from global if import in is lambda nonlocal not or pass raise return try while with yield match case".split(" "));
+const BI = new Set("print len range input int str float list dict set tuple bool sum min max abs sorted enumerate zip map filter open isinstance type super object repr round any all iter next reversed format hash id ord chr divmod pow vars dir getattr setattr hasattr callable Exception ValueError TypeError KeyError IndexError ZeroDivisionError StopIteration self".split(" "));
+const TOKEN_RE = /(#[^\n]*)|([rbfuRBFU]{0,2}(?:"""[\s\S]*?(?:"""|$)|'''[\s\S]*?(?:'''|$)|"(?:\\.|[^"\\\n])*"?|'(?:\\.|[^'\\\n])*'?))|(@[A-Za-z_][\w.]*)|(\b\d[\d_]*(?:\.[\d_]*)?(?:[eE][+-]?\d+)?j?\b|\b0[xXoObB][\da-fA-F_]+\b)|([A-Za-z_]\w*)/g;
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function highlight(src) {
+  let out = "", last = 0, prevWord = "";
+  src.replace(TOKEN_RE, (m, com, str, dec, num, word, idx) => {
+    out += esc(src.slice(last, idx));
+    last = idx + m.length;
+    if (com) out += `<span class="c">${esc(m)}</span>`;
+    else if (str) out += `<span class="s">${esc(m)}</span>`;
+    else if (dec) out += `<span class="d">${esc(m)}</span>`;
+    else if (num) out += `<span class="n">${esc(m)}</span>`;
+    else if (KW.has(word)) out += `<span class="k">${m}</span>`;
+    else if (prevWord === "def" || prevWord === "class") out += `<span class="f">${m}</span>`;
+    else if (BI.has(word)) out += `<span class="b">${m}</span>`;
+    else out += esc(m);
+    if (word) prevWord = word; else if (!/^\s*$/.test(m)) prevWord = "";
+    return m;
+  });
+  out += esc(src.slice(last));
+  return out + "\n";
+}
+
+function refresh() {
+  hl.innerHTML = highlight(code.value);
+  const n = code.value.split("\n").length;
+  let g = "";
+  for (let i = 1; i <= n; i++) g += i + "\n";
+  gutter.textContent = g;
+  syncScroll();
+}
+function syncScroll() {
+  hl.scrollTop = code.scrollTop; hl.scrollLeft = code.scrollLeft;
+  gutter.scrollTop = code.scrollTop;
+}
+code.addEventListener("input", () => { refresh(); if (current !== "output") renderView(); });
+code.addEventListener("scroll", syncScroll);
+
+/* Tab = 4 spaces, Enter keeps indentation, Ctrl/Cmd+Enter runs */
+code.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); run(); return; }
+  const s = code.selectionStart, en = code.selectionEnd, v = code.value;
+  if (e.key === "Tab") {
+    e.preventDefault();
+    if (e.shiftKey) {
+      const ls = v.lastIndexOf("\n", s - 1) + 1;
+      const strip = v.slice(ls, ls + 4).match(/^ {1,4}/);
+      if (strip) { setRange(ls, ls + strip[0].length, ""); code.selectionStart = code.selectionEnd = Math.max(ls, s - strip[0].length); }
+    } else {
+      setRange(s, en, "    "); code.selectionStart = code.selectionEnd = s + 4;
+    }
+    refresh();
+  } else if (e.key === "Enter" && !e.shiftKey) {
+    const ls = v.lastIndexOf("\n", s - 1) + 1;
+    const line = v.slice(ls, s);
+    let indent = line.match(/^\s*/)[0];
+    if (/:\s*(#.*)?$/.test(line)) indent += "    ";
+    e.preventDefault();
+    setRange(s, en, "\n" + indent);
+    code.selectionStart = code.selectionEnd = s + 1 + indent.length;
+    refresh();
+  }
+});
+function setRange(a, b, text) {
+  code.setRangeText(text, a, b, "end");
+}
+
+/* ---------- Examples ---------- */
+const sel = $("examples");
+for (const name of Object.keys(EXAMPLES)) {
+  const o = document.createElement("option"); o.value = name; o.textContent = name; sel.appendChild(o);
+}
+sel.addEventListener("change", () => {
+  if (!sel.value) return;
+  code.value = EXAMPLES[sel.value];
+  $("stdin").value = sel.value === "Hello + Fibonacci" ? "Ada" : "";
+  refresh(); sel.value = "";
+  if (current !== "output") renderView();
+  code.focus();
+});
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
+  current = t.dataset.view;
+  document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", x === t ? "true" : "false"));
+  renderView();
+}));
+
+function renderView() {
+  $("explain").textContent = EXPLAIN[current];
+  view.classList.toggle("code", current !== "output");
+  if (current === "output") { view.innerHTML = outputHTML; view.scrollTop = view.scrollHeight; return; }
+  if (!pyReadyFlag) { view.innerHTML = '<span class="meta">Python is still loading…</span>'; return; }
+  let text;
+  try {
+    if (current === "tokens") text = window.pyTokens(code.value);
+    else if (current === "ast") text = window.pyAst(code.value);
+    else if (current === "js") text = __BRYTHON__.python_to_js(code.value);
+  } catch (err) {
+    const msg = (err && (err.$py_error ? __BRYTHON__.$getattr(err, "__class__").__name__ + ": " + (err.args ? err.args[0] : "") : err.message)) || String(err);
+    view.innerHTML = `<span class="err">${esc(msg)}</span>`;
+    return;
+  }
+  view.textContent = text;
+  view.scrollTop = 0;
+}
+
+/* ---------- Running ---------- */
+let buffer = "";
+window.pyEmit = (kind, s) => {
+  s = String(s);
+  buffer += kind === "err" ? `<span class="err">${esc(s)}</span>` : esc(s);
+};
+
+function run() {
+  if (!pyReadyFlag) return;
+  if (current !== "output") $("t-output").click();
+  buffer = "";
+  runBtn.disabled = true;
+  $("timing").textContent = "running…";
+  setTimeout(() => {
+    const t0 = performance.now();
+    let ok = false;
+    try { ok = window.pyRun(code.value, $("stdin").value); }
+    catch (err) { buffer += `<span class="err">${esc(String(err && err.message || err))}</span>`; }
+    const ms = performance.now() - t0;
+    if (!buffer) buffer = '<span class="meta">(no output)</span>';
+    outputHTML = buffer;
+    $("timing").innerHTML = `<span class="dot" style="background:var(${ok ? "--ok" : "--err"})"></span>${ok ? "ok" : "error"} · ${ms < 1000 ? ms.toFixed(0) + " ms" : (ms / 1000).toFixed(2) + " s"}`;
+    runBtn.disabled = false;
+    renderView();
+  }, 20);
+}
+runBtn.addEventListener("click", run);
+$("clearBtn").addEventListener("click", () => {
+  outputHTML = '<span class="meta">Output cleared.</span>'; $("timing").textContent = "";
+  if (current === "output") renderView();
+});
+
+window.pyReady = () => {
+  pyReadyFlag = true;
+  runBtn.disabled = false;
+  $("status").classList.add("ready");
+  $("statusText").textContent = "Python ready";
+  if (current !== "output") renderView();
+};
+setTimeout(() => {
+  if (!pyReadyFlag) {
+    $("status").classList.add("fail");
+    $("statusText").textContent = "Python failed to load";
+  }
+}, 30000);
+
+code.value = EXAMPLES["Hello + Fibonacci"];
+$("stdin").value = "Ada";
+refresh();
+renderView();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/brython@3.14.3/brython.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/brython@3.14.3/brython_stdlib.js"></script>
+
+<script type="text/python">
+import sys, traceback, builtins
+from browser import window
+
+class _Stream:
+    def __init__(self, kind):
+        self.kind = kind
+    def write(self, s):
+        s = str(s)
+        if self.kind == "err":
+            s = s.replace('File "<string>"', 'File "main.py"')
+        window.pyEmit(self.kind, s)
+        return len(s)
+    def flush(self):
+        pass
+
+def _report(e, src):
+    src_lines = src.splitlines()
+    tb = e.__traceback__.tb_next if e.__traceback__ else None
+    frames = traceback.extract_tb(tb) if tb else []
+    parts = []
+    if frames:
+        parts.append("Traceback (most recent call last):\n")
+        for fr in frames:
+            fname = "main.py" if fr.filename in ("<string>", "main.py") else fr.filename
+            parts.append(f'  File "{fname}", line {fr.lineno}, in {fr.name}\n')
+            line = fr.line
+            if not line and fname == "main.py" and fr.lineno and 0 < fr.lineno <= len(src_lines):
+                line = src_lines[fr.lineno - 1]
+            if line:
+                parts.append("    " + line.strip() + "\n")
+    e.__context__ = None
+    parts.extend(traceback.format_exception_only(type(e), e))
+    sys.stderr.write("".join(parts))
+
+def run(src, stdin_text):
+    lines = iter(stdin_text.split("\n")) if stdin_text else iter(())
+
+    def _input(prompt=""):
+        sys.stdout.write(str(prompt))
+        try:
+            value = next(lines)
+        except StopIteration:
+            raise EOFError("input() ran out of lines. Add one per call in the Input box.") from None
+        sys.stdout.write(value + "\n")
+        return value
+
+    saved = (sys.stdout, sys.stderr, builtins.input)
+    sys.stdout, sys.stderr = _Stream("out"), _Stream("err")
+    builtins.input = _input
+    ns = {"__name__": "__main__", "input": _input}
+    ok = True
+    try:
+        exec(src, ns)
+    except SystemExit:
+        pass
+    except BaseException as e:
+        ok = False
+        _report(e, src)
+    finally:
+        sys.stdout, sys.stderr, builtins.input = saved
+    return ok
+
+def tokens(src):
+    import tokenize, io, token
+    out = []
+    try:
+        for t in tokenize.generate_tokens(io.StringIO(src).readline):
+            pos = f"{t.start[0]}:{t.start[1]}"
+            out.append(f"{pos:<7} {token.tok_name[t.type]:<10} {t.string!r}")
+    except Exception as e:
+        out.append(f"{type(e).__name__}: {e}")
+    return "\n".join(out)
+
+def _fmt(node, level=0):
+    pad = "  " * (level + 1)
+    if hasattr(node, "_fields") and not isinstance(node, (str, list, tuple)):
+        fields = []
+        for f in node._fields:
+            v = getattr(node, f, None)
+            if v is None or v == [] or f == "type_comment":
+                continue
+            fields.append((f, v))
+        if not fields:
+            return type(node).__name__ + "()"
+        inner = ",\n".join(f"{pad}{f}={_fmt(v, level + 1)}" for f, v in fields)
+        return f"{type(node).__name__}(\n{inner})"
+    if isinstance(node, list):
+        return "[\n" + ",\n".join(pad + _fmt(x, level + 1) for x in node) + "]"
+    return repr(node)
+
+def tree(src):
+    import ast
+    try:
+        return _fmt(ast.parse(src))
+    except SyntaxError as e:
+        return f"SyntaxError: {e.msg} (line {e.lineno})"
+
+window.pyRun = run
+window.pyTokens = tokens
+window.pyAst = tree
+window.pyReady()
+</script>
+</body>
+</html>
