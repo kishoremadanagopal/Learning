@@ -2,7 +2,7 @@
 
 **You'll learn:** debugging routine, debug prints, `assert`, test functions, `unittest`, edge cases.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#testing-and-debugging)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#testing-and-debugging)**: run every example and check your exercise answers.
 
 ## Key terms
 

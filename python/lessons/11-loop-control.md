@@ -2,7 +2,7 @@
 
 **You'll learn:** `break`, `continue`, `while True`, loop `else`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#loop-control)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#loop-control)**: run every example and check your exercise answers.
 
 ## Key terms
 

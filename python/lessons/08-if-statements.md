@@ -2,7 +2,7 @@
 
 **You'll learn:** `if`, `elif`, `else`, indentation, nesting, conditional expressions, `match`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#if-statements)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#if-statements)**: run every example and check your exercise answers.
 
 ## Key terms
 

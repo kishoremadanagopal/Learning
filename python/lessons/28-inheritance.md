@@ -2,7 +2,7 @@
 
 **You'll learn:** subclasses, overriding, `super()`, polymorphism, duck typing, ABCs, composition.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#inheritance)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#inheritance)**: run every example and check your exercise answers.
 
 ## Key terms
 

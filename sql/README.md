@@ -2,7 +2,7 @@
 
 A complete, hands-on SQL course for beginners: 18 lessons from "what is a database" to window functions and a final project, with a practice sandbox that runs your queries in the browser and checks your answers.
 
-## ▶ [Open the practice sandbox](https://kishoremadanagopal.github.io/Learning/sql/)
+## ▶ [Open the practice sandbox](https://kishoremadanagopal.github.io/learning/sql/)
 
 The sandbox runs a real SQLite database in your browser. Nothing to install, no sign-up.
 

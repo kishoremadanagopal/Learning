@@ -2,7 +2,7 @@
 
 **You'll learn:** `__str__`, `__repr__`, `__eq__`, `__lt__`, `__add__`, `__len__`, `__iter__`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#special-methods)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#special-methods)**: run every example and check your exercise answers.
 
 ## Key terms
 

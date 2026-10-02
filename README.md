@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kishoremadanagopal.github.io/Learning/"><img alt="Open the course site" src="https://img.shields.io/badge/%E2%96%B6%20Open%20the%20course%20site-1f2937?style=for-the-badge"></a>
+  <a href="https://kishoremadanagopal.github.io/learning/"><img alt="Open the course site" src="https://img.shields.io/badge/%E2%96%B6%20Open%20the%20course%20site-1f2937?style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -33,7 +33,7 @@
       <p>Ask questions of a real database: filtering, grouping, joins, subqueries, CTEs, window functions and a final project.</p>
       <p><b>18</b> lessons · <b>79</b> exercises · SQLite in the browser</p>
       <p>
-        <a href="https://kishoremadanagopal.github.io/Learning/sql/"><b>▶ Open the SQL sandbox</b></a><br>
+        <a href="https://kishoremadanagopal.github.io/learning/sql/"><b>▶ Open the SQL sandbox</b></a><br>
         📘 <a href="sql/README.md#lessons">Lessons</a> ·
         📖 <a href="sql/glossary.md">Glossary</a> ·
         🧾 <a href="sql/cheatsheet.md">Cheat sheet</a>
@@ -44,7 +44,7 @@
       <p>Learn to program: variables, loops, collections, functions, classes, generators, decorators and a final project.</p>
       <p><b>37</b> lessons · <b>62</b> exercises · <b>87</b> quiz questions</p>
       <p>
-        <a href="https://kishoremadanagopal.github.io/Learning/python/"><b>▶ Open the Python course</b></a><br>
+        <a href="https://kishoremadanagopal.github.io/learning/python/"><b>▶ Open the Python course</b></a><br>
         📘 <a href="python/README.md#lessons">Lessons</a> ·
         📖 <a href="python/glossary.md">Glossary</a> ·
         🧾 <a href="python/cheatsheet.md">Cheat sheet</a>

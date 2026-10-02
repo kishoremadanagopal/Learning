@@ -2,7 +2,7 @@
 
 **You'll learn:** indexing, slicing, `len()`, `+` and `*`, immutability, f-strings and format specs.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#strings-basics)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#strings-basics)**: run every example and check your exercise answers.
 
 ## Key terms
 

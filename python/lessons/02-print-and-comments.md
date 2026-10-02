@@ -2,7 +2,7 @@
 
 **You'll learn:** `print()` with several values, `sep`, `end`, escape sequences, `#` comments.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#print-and-comments)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#print-and-comments)**: run every example and check your exercise answers.
 
 ## Key terms
 

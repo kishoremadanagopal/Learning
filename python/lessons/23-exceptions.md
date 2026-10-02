@@ -2,7 +2,7 @@
 
 **You'll learn:** tracebacks, `try`/`except`/`else`/`finally`, `raise`, custom exceptions, EAFP.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#exceptions)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#exceptions)**: run every example and check your exercise answers.
 
 ## Key terms
 

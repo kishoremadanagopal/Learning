@@ -2,7 +2,7 @@
 
 **You'll learn:** `count`, `chain`, `product`, `combinations`, `groupby`, `reduce`, `partial`, `lru_cache`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#itertools-functools)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#itertools-functools)**: run every example and check your exercise answers.
 
 ## Key terms
 

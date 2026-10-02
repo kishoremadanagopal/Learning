@@ -2,7 +2,7 @@
 
 A complete, hands-on Python course for beginners: 37 lessons from your first `print()` to generators, decorators and a final project, with a practice sandbox that runs your code in the browser and checks your answers.
 
-## ▶ [Open the practice sandbox](https://kishoremadanagopal.github.io/Learning/python/)
+## ▶ [Open the practice sandbox](https://kishoremadanagopal.github.io/learning/python/)
 
 The sandbox runs Python in your browser. Nothing to install, no sign-up.
 
@@ -10,7 +10,7 @@ The sandbox runs Python in your browser. Nothing to install, no sign-up.
 - **62 exercises**, numbered by lesson, that check your code with tests and tell you what's off
 - **87 quiz questions**, with explanations
 - a compiler view that shows your code as **tokens**, an **AST** and the **compiled JavaScript**
-- a free [playground](https://kishoremadanagopal.github.io/Learning/python/playground.html) for experimenting
+- a free [playground](https://kishoremadanagopal.github.io/learning/python/playground.html) for experimenting
 - your progress and code saved in your own browser
 
 ## Course materials

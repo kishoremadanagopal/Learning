@@ -2,7 +2,7 @@
 
 **You'll learn:** unique values, membership, union `|`, intersection `&`, difference `-`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#sets)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#sets)**: run every example and check your exercise answers.
 
 ## Key terms
 

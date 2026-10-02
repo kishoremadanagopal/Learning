@@ -2,7 +2,7 @@
 
 **You'll learn:** Big-O, lists vs sets, spotting O(n²), binary search, merge sort, operation costs.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#algorithms-and-big-o)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#algorithms-and-big-o)**: run every example and check your exercise answers.
 
 ## Key terms
 

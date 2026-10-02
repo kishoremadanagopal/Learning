@@ -2,7 +2,7 @@
 
 **You'll learn:** wrapping functions, `@` syntax, `*args, **kwargs`, `functools.wraps`, decorators with arguments.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#decorators)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#decorators)**: run every example and check your exercise answers.
 
 ## Key terms
 
