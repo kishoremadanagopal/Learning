@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="679.68pt" height="214.278019pt" viewBox="0 0 679.68 214.278019" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 214.278019 
+L 679.68 214.278019 
+L 679.68 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.1792 140.256 
+L 113.6448 140.256 
+Q 118.08 140.256 118.08 135.8208 
+L 118.08 83.7072 
+Q 118.08 79.272 113.6448 79.272 
+L 17.1792 79.272 
+Q 12.744 79.272 12.744 83.7072 
+L 12.744 135.8208 
+Q 12.744 140.256 17.1792 140.256 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 122.851819 109.764 
+Q 134.711925 109.764 144.783176 109.764 
+" clip-path="url(#pfc966666e3)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 139.183176 106.964 
+L 144.783176 109.764 
+L 139.183176 112.564 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 155.7792 181.836 
+L 390.8448 181.836 
+Q 395.28 181.836 395.28 177.4008 
+L 395.28 42.1272 
+Q 395.28 37.692 390.8448 37.692 
+L 155.7792 37.692 
+Q 151.344 37.692 151.344 42.1272 
+L 151.344 177.4008 
+Q 151.344 181.836 155.7792 181.836 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 169.6392 120.852 
+L 376.9848 120.852 
+Q 381.42 120.852 381.42 116.4168 
+L 381.42 75.3912 
+Q 381.42 70.956 376.9848 70.956 
+L 169.6392 70.956 
+Q 165.204 70.956 165.204 75.3912 
+L 165.204 116.4168 
+Q 165.204 120.852 169.6392 120.852 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #dcf3ee; stroke: #159a7f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 169.6392 173.52 
+L 376.9848 173.52 
+Q 381.42 173.52 381.42 169.0848 
+L 381.42 136.3752 
+Q 381.42 131.94 376.9848 131.94 
+L 169.6392 131.94 
+Q 165.204 131.94 165.204 136.3752 
+L 165.204 169.0848 
+Q 165.204 173.52 169.6392 173.52 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 400.051819 109.764 
+Q 411.911925 109.764 421.983176 109.764 
+" clip-path="url(#pfc966666e3)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 416.383176 106.964 
+L 421.983176 109.764 
+L 416.383176 112.564 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 432.9792 137.484 
+L 546.0768 137.484 
+Q 550.512 137.484 550.512 133.0488 
+L 550.512 86.4792 
+Q 550.512 82.044 546.0768 82.044 
+L 432.9792 82.044 
+Q 428.544 82.044 428.544 86.4792 
+L 428.544 133.0488 
+Q 428.544 137.484 432.9792 137.484 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #ece6f8; stroke: #7a5ac8; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 555.283819 109.764 
+Q 567.143925 109.764 577.215176 109.764 
+" clip-path="url(#pfc966666e3)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 571.615176 106.964 
+L 577.215176 109.764 
+L 571.615176 112.564 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 588.2112 134.712 
+L 662.5008 134.712 
+Q 666.936 134.712 666.936 130.2768 
+L 666.936 89.2512 
+Q 666.936 84.816 662.5008 84.816 
+L 588.2112 84.816 
+Q 583.776 84.816 583.776 89.2512 
+L 583.776 130.2768 
+Q 583.776 134.712 588.2112 134.712 
+z
+" clip-path="url(#pfc966666e3)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(44.042938 101.747484)">raw rows</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(40.091531 112.385406)">text, gaps,</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(37.677938 123.023328)">mixed units</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="273.312" y="54.311375" transform="rotate(-0 273.312 54.311375)">ColumnTransformer ("prep")</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(233.026453 93.348422)">numeric columns:</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(199.081688 103.426453)">SimpleImputer → StandardScaler</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="273.312" y="155.213437" transform="rotate(-0 273.312 155.213437)">text columns: OneHotEncoder</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(445.476203 107.066445)">LogisticRegression</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(466.660461 117.704367)">("model")</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(612.554906 107.208422)">churn</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(597.647953 117.286453)">probabilities</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="339.84" y="204.838097" transform="rotate(-0 339.84 204.838097)">pipe.fit(X_train, y_train): every step learns from training rows only  ·  pipe.predict(new_rows): same steps, then predict</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfc966666e3">
+   <rect x="7.2" y="7.2" width="665.28" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Learning</title>
-<meta name="description" content="Free, hands-on courses: Learn SQL, Python, data analysis with pandas, statistics and Java from scratch, with in-browser practice sandboxes.">
+<meta name="description" content="Free, hands-on courses: Learn SQL, Python, data analysis with pandas, statistics, machine learning and Java from scratch, with in-browser practice sandboxes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -24,6 +24,8 @@
   --data-soft: #ebe8f8;
   --stats: #0f766e;
   --stats-soft: #dcf1ee;
+  --ml: #b42357;
+  --ml-soft: #fbe4ec;
   --java: #c25e0a;
   --java-soft: #fbeadb;
   --java-blue: #3a6d96;
@@ -35,13 +37,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1418; --surface: #161d23; --ink: #e2e8ee; --muted: #93a0ae; --line: #27313b;
-    --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --stats: #5fd3c4; --stats-soft: #15302d; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
+    --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --stats: #5fd3c4; --stats-soft: #15302d; --ml: #f08bb0; --ml-soft: #3a1a26; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1418; --surface: #161d23; --ink: #e2e8ee; --muted: #93a0ae; --line: #27313b;
-  --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --stats: #5fd3c4; --stats-soft: #15302d; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
+  --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --stats: #5fd3c4; --stats-soft: #15302d; --ml: #f08bb0; --ml-soft: #3a1a26; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -60,6 +62,7 @@ header p { margin: 0; font-size: 18px; color: var(--muted); }
 .course.py { --accent: var(--py); --soft: var(--py-soft); }
 .course.data { --accent: var(--data); --soft: var(--data-soft); }
 .course.stats { --accent: var(--stats); --soft: var(--stats-soft); }
+.course.ml { --accent: var(--ml); --soft: var(--ml-soft); }
 .course.java { --accent: var(--java); --soft: var(--java-soft); }
 .course.java::before { background: linear-gradient(90deg, var(--java) 0 60%, var(--java-blue) 60%); }
 .course.py::before { background: linear-gradient(90deg, var(--py) 0 60%, var(--py-yellow) 60%); }
@@ -150,6 +153,20 @@ stats.<b>ttest_ind</b>(a, b)
       </div>
     </article>
 
+    <article class="course ml">
+      <pre class="sample" aria-hidden="true">model = <b>RandomForestClassifier</b>()
+model.<b>fit</b>(X_train, y_train)
+model.<b>score</b>(X_test, y_test)
+<span>→ 0.80 on customers it never saw</span></pre>
+      <h2>Machine Learning with scikit-learn</h2>
+      <p>Teach a computer from examples: regression, classification, trees, random forests, gradient boosting, pipelines, cross-validation, clustering, text and an end-to-end project.</p>
+      <div class="facts"><span><b>24</b> lessons</span><span><b>48</b> exercises</span><span><b>96</b> quiz questions</span><span>scikit-learn in the browser</span></div>
+      <div class="actions">
+        <a class="primary" href="ml/">Open the Machine Learning course</a>
+        <a class="secondary" href="https://github.com/kishoremadanagopal/learning/tree/main/ml#lessons">Read the lessons</a>
+      </div>
+    </article>
+
     <article class="course java">
       <pre class="sample" aria-hidden="true"><b>record</b> Point(<b>int</b> x, <b>int</b> y) {}
 
@@ -167,7 +184,7 @@ System.out.println(p);</pre>
 
   <section class="order" aria-label="Where to start">
     <div><b>New to programming?</b><span>Start with Python. It teaches how programs think: variables, decisions, loops and functions.</span></div>
-    <div><b>Working with data or AI?</b><span>Learn SQL and Python, then Python for Data: the shared core of analyst and AI engineer roles.</span></div>
+    <div><b>Working with data or AI?</b><span>Learn SQL and Python, then Python for Data, Statistics and Machine Learning: the shared core of analyst and AI engineer roles.</span></div>
     <div><b>Aiming for software jobs?</b><span>Add Java. It powers backends, Android and enterprise systems, and teaches object-oriented design properly.</span></div>
   </section>
 

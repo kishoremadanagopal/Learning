@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="435.744pt" height="258.336pt" viewBox="0 0 435.744 258.336" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 258.336 
+L 435.744 258.336 
+L 435.744 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 133.6032 145.8 
+L 268.8768 145.8 
+Q 273.312 145.8 273.312 141.3648 
+L 273.312 61.5312 
+Q 273.312 57.096 268.8768 57.096 
+L 133.6032 57.096 
+Q 129.168 57.096 129.168 61.5312 
+L 129.168 141.3648 
+Q 129.168 145.8 133.6032 145.8 
+z
+" clip-path="url(#p1d451a778e)" style="fill: #dcf3ee; stroke: #159a7f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 283.2912 145.8 
+L 418.5648 145.8 
+Q 423 145.8 423 141.3648 
+L 423 61.5312 
+Q 423 57.096 418.5648 57.096 
+L 283.2912 57.096 
+Q 278.856 57.096 278.856 61.5312 
+L 278.856 141.3648 
+Q 278.856 145.8 283.2912 145.8 
+z
+" clip-path="url(#p1d451a778e)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 133.6032 240.048 
+L 268.8768 240.048 
+Q 273.312 240.048 273.312 235.6128 
+L 273.312 155.7792 
+Q 273.312 151.344 268.8768 151.344 
+L 133.6032 151.344 
+Q 129.168 151.344 129.168 155.7792 
+L 129.168 235.6128 
+Q 129.168 240.048 133.6032 240.048 
+z
+" clip-path="url(#p1d451a778e)" style="fill: #f8e1e8; stroke: #b42357; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 283.2912 240.048 
+L 418.5648 240.048 
+Q 423 240.048 423 235.6128 
+L 423 155.7792 
+Q 423 151.344 418.5648 151.344 
+L 283.2912 151.344 
+Q 278.856 151.344 278.856 155.7792 
+L 278.856 235.6128 
+Q 278.856 240.048 283.2912 240.048 
+z
+" clip-path="url(#p1d451a778e)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="201.24" y="75.475528" transform="rotate(-0 201.24 75.475528)">True negative</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="201.24" y="103.642875" transform="rotate(-0 201.24 103.642875)">167</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="201.24" y="128.879438" transform="rotate(-0 201.24 128.879438)">stayed, predicted stay</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="350.928" y="75.516544" transform="rotate(-0 350.928 75.516544)">False positive</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="350.928" y="103.642875" transform="rotate(-0 350.928 103.642875)">14</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(297.927844 123.840422)">stayed, predicted leave</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(322.361438 133.918453)">(false alarm)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="201.24" y="169.723528" transform="rotate(-0 201.24 169.723528)">False negative</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="201.24" y="197.890875" transform="rotate(-0 201.24 197.890875)">46</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(158.786016 218.088422)">left, predicted stay</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(181.781016 228.166453)">(missed)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="350.928" y="169.764544" transform="rotate(-0 350.928 169.764544)">True positive</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="350.928" y="197.890875" transform="rotate(-0 350.928 197.890875)">23</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(305.794406 218.088422)">left, predicted leave</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(331.859953 228.166453)">(caught)</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="201.24" y="45.956313" transform="rotate(-0 201.24 45.956313)">predicted: stay (0)</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="350.928" y="45.995375" transform="rotate(-0 350.928 45.995375)">predicted: leave (1)</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(83.4705 98.530344)">really</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(58.10175 109.806281)">stayed (0)</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(83.4705 192.817406)">really</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(76.387687 204.093344)">left (1)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1d451a778e">
+   <rect x="7.2" y="7.2" width="421.344" height="243.936"/>
+  </clipPath>
+ </defs>
+</svg>

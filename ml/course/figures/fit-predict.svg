@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="568.8pt" height="147.456pt" viewBox="0 0 568.8 147.456" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 147.456 
+L 568.8 147.456 
+L 568.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.1792 109.764 
+L 169.0848 109.764 
+Q 173.52 109.764 173.52 105.3288 
+L 173.52 33.8112 
+Q 173.52 29.376 169.0848 29.376 
+L 17.1792 29.376 
+Q 12.744 29.376 12.744 33.8112 
+L 12.744 105.3288 
+Q 12.744 109.764 17.1792 109.764 
+z
+" clip-path="url(#pfae9f4df6b)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 178.292496 69.8472 
+Q 187.377876 69.8472 194.674402 69.8472 
+" clip-path="url(#pfae9f4df6b)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 189.074402 67.0472 
+L 194.674402 69.8472 
+L 189.074402 72.6472 
+z
+" clip-path="url(#pfae9f4df6b)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 205.6752 109.764 
+L 357.5808 109.764 
+Q 362.016 109.764 362.016 105.3288 
+L 362.016 33.8112 
+Q 362.016 29.376 357.5808 29.376 
+L 205.6752 29.376 
+Q 201.24 29.376 201.24 33.8112 
+L 201.24 105.3288 
+Q 201.24 109.764 205.6752 109.764 
+z
+" clip-path="url(#pfae9f4df6b)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 366.788496 69.8472 
+Q 375.873876 69.8472 383.170402 69.8472 
+" clip-path="url(#pfae9f4df6b)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 377.570402 67.0472 
+L 383.170402 69.8472 
+L 377.570402 72.6472 
+z
+" clip-path="url(#pfae9f4df6b)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 394.1712 109.764 
+L 546.0768 109.764 
+Q 550.512 109.764 550.512 105.3288 
+L 550.512 33.8112 
+Q 550.512 29.376 546.0768 29.376 
+L 394.1712 29.376 
+Q 389.736 29.376 389.736 33.8112 
+L 389.736 105.3288 
+Q 389.736 109.764 394.1712 109.764 
+z
+" clip-path="url(#pfae9f4df6b)" style="fill: #dcf3ee; stroke: #159a7f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="93.132" y="50.290081" transform="rotate(-0 93.132 50.290081)">1. create</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="93.132" y="75.233184" transform="rotate(-0 93.132 75.233184)">model = LinearRegression()</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="93.132" y="97.416606" transform="rotate(-0 93.132 97.416606)">an empty model</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="281.628" y="50.290081" transform="rotate(-0 281.628 50.290081)">2. fit</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="281.628" y="75.265841" transform="rotate(-0 281.628 75.265841)">model.fit(X, y)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="281.628" y="97.416606" transform="rotate(-0 281.628 97.416606)">learns the rule from examples</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="470.124" y="50.290081" transform="rotate(-0 470.124 50.290081)">3. predict</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="470.124" y="75.133731" transform="rotate(-0 470.124 75.133731)">model.predict(new_X)</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="470.124" y="97.416606" transform="rotate(-0 470.124 97.416606)">uses the rule on new rows</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="284.4" y="133.036175" transform="rotate(-0 284.4 133.036175)">Every scikit-learn model works this way.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfae9f4df6b">
+   <rect x="7.2" y="7.2" width="554.4" height="133.056"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -15,10 +15,10 @@
 
   <text x="64" y="92" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="3" fill="#5b697b">FREE · HANDS-ON · RUNS IN YOUR BROWSER</text>
   <text x="60" y="186" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-3" fill="#16202b">Learning</text>
-  <text x="64" y="236" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" fill="#5b697b">Learn <tspan fill="#0e7466" font-weight="700">SQL</tspan>, <tspan fill="#2c679c" font-weight="700">Python</tspan>, <tspan fill="#4b3ca8" font-weight="700">pandas</tspan> and <tspan fill="#e8730c" font-weight="700">Java</tspan> from scratch.</text>
+  <text x="64" y="236" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" fill="#5b697b">Learn <tspan fill="#0e7466" font-weight="700">SQL</tspan>, <tspan fill="#2c679c" font-weight="700">Python</tspan>, <tspan fill="#4b3ca8" font-weight="700">pandas</tspan>, <tspan fill="#b42357" font-weight="700">ML</tspan> and <tspan fill="#e8730c" font-weight="700">Java</tspan> from scratch.</text>
   <g font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#5b697b">
-    <text x="64" y="292"><tspan fill="#16202b" font-weight="700">149</tspan> lessons</text>
-    <text x="190" y="292"><tspan fill="#16202b" font-weight="700">340</tspan> auto-checked exercises</text>
+    <text x="64" y="292"><tspan fill="#16202b" font-weight="700">173</tspan> lessons</text>
+    <text x="190" y="292"><tspan fill="#16202b" font-weight="700">388</tspan> auto-checked exercises</text>
     <text x="442" y="292"><tspan fill="#16202b" font-weight="700">0</tspan> installs</text>
   </g>
 

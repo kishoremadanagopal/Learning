@@ -1,0 +1,401 @@
+message_id,text,label
+1,"Hi, it's your bank. We noticed a problem, please confirm your details at bit.ly/claim-now",spam
+2,"Congratulations, you've been selected for a FREE laptop. Reply YES",spam
+3,"Your parcel is waiting, pay the $250 fee at tinyurl.com/x9win",spam
+4,"Hey Sam, I found a way to make $1,000 fast, message me at 0800 123 456",spam
+5,"Hey Ella, I found a way to make $1.99 fast, message me at 09061 111 222",spam
+6,"Call me when you're free, it's about Wednesday",ham
+7,Great game last night! Same time on Thursday?,ham
+8,Happy birthday! Hope you have a great day,ham
+9,"Hi, it's your bank. We noticed a problem, please confirm your details at tinyurl.com/x9win",spam
+10,"Get cheap followers today only, 70% off! Visit tinyurl.com/x9win",spam
+11,"Got the draft, thanks Sam!",ham
+12,"Hi Tom, sorry I missed you, call me back on 09061 111 222",spam
+13,Congratulations on the new job Sam!,ham
+14,"Earn $1.99 a week from home, no experience needed. Call 87121",spam
+15,Your appointment is confirmed for Friday at noon,ham
+16,"Last chance to get sunglasses for 50% less, offer ends Sunday",spam
+17,Great game last night! Same time on Wednesday?,ham
+18,"Your parcel is waiting, pay the $500 fee at secure-verify.info",spam
+19,"Free tickets from work for Tuesday, want to come?",ham
+20,"Get cheap loans today only, 50% off! Visit tinyurl.com/x9win",spam
+21,Did you finish the photos for Wednesday?,ham
+22,"Congratulations, you've been selected for a FREE holiday. Reply YES",spam
+23,"Last chance to get meds for 50% less, offer ends Thursday",spam
+24,Your appointment is confirmed for Saturday at noon,ham
+25,Are we still meeting for coffee at noon?,ham
+26,Your appointment is confirmed for Saturday at 6pm,ham
+27,Can you send me the spreadsheet before the meeting tomorrow?,ham
+28,Shall we watch a film on Wednesday?,ham
+29,"Your order has shipped, track it at www.free-prize.biz",ham
+30,URGENT: your account will be closed. Click secure-verify.info to verify,spam
+31,"Free tickets from work for Wednesday, want to come?",ham
+32,Reminder: your 50% discount voucher from the gym ends Wednesday,ham
+33,You are owed a refund of $250. Claim now at www.free-prize.biz,spam
+34,"Hi Ella, can you call me back after noon?",ham
+35,"Is this still your number? Message me on 80082, it's Priya",spam
+36,"Call me when you're free, it's about Tuesday",ham
+37,"Last chance to get meds for 50% less, offer ends Tuesday",spam
+38,Reminder: your 80% discount voucher from the gym ends Tuesday,ham
+39,"You are owed a refund of $1,000. Claim now at secure-verify.info",spam
+40,"Get cheap followers today only, 80% off! Visit tinyurl.com/x9win",spam
+41,Shall we watch a film on Sunday?,ham
+42,Did you finish the slides for Thursday?,ham
+43,"Is this still your number? Message me on 87121, it's Raj",spam
+44,"Running 20 minutes late, sorry!",ham
+45,Your appointment is confirmed for Thursday at noon,ham
+46,"Hi Mei, can you call me back after 1pm?",ham
+47,"Hi Raj, sorry I missed you, call me back on 87121",spam
+48,Congratulations on the new job Mei!,ham
+49,Can you send me the report before the meeting tomorrow?,ham
+50,"Free tickets from work for Sunday, want to come?",ham
+51,Congratulations on the new job Tom!,ham
+52,Congratulations on the new job Raj!,ham
+53,"Got the slides, thanks Ana!",ham
+54,Reminder: your 50% discount voucher from the gym ends Sunday,ham
+55,"Exclusive offer: free laptop for the first 100 customers, click bit.ly/claim-now",spam
+56,Great game last night! Same time on Monday?,ham
+57,"Got the spreadsheet, thanks Tom!",ham
+58,"Hi Leo, can you call me back after 8?",ham
+59,Shall we watch a film on Thursday?,ham
+60,"Your parcel is waiting, pay the $2.99 fee at secure-verify.info",spam
+61,Reminder: your 90% discount voucher from the gym ends Tuesday,ham
+62,"Running 10 minutes late, sorry!",ham
+63,"Hi Mei, sorry I missed you, call me back on 80082",spam
+64,"Exclusive offer: free cruise for the first 100 customers, click secure-verify.info",spam
+65,"I sent you the link to the spreadsheet, click it when you can",ham
+66,"Your parcel is waiting, pay the $250 fee at secure-verify.info",spam
+67,Can you send me the notes before the meeting tomorrow?,ham
+68,"Omar is bringing rice, can you bring drinks?",ham
+69,"The spreadsheet looks good, just one small change on page 5",ham
+70,"I sent you the link to the report, click it when you can",ham
+71,"Ella is bringing bread, can you bring drinks?",ham
+72,You are owed a refund of $2.99. Claim now at bit.ly/claim-now,spam
+73,Reminder: your 50% discount voucher from the gym ends Monday,ham
+74,Are you free for breakfast on Friday?,ham
+75,Mum says breakfast is ready at 6pm,ham
+76,Are we still meeting for lunch at noon?,ham
+77,Reminder: your 50% discount voucher from the gym ends Saturday,ham
+78,We won the quiz on Friday! Ella knew every answer,ham
+79,"I sent you the link to the draft, click it when you can",ham
+80,"I'm at the station, see you in 5 minutes",ham
+81,"Your parcel is waiting, pay the $1.99 fee at www.free-prize.biz",spam
+82,Don't forget to buy eggs on the way home,ham
+83,We won the quiz on Tuesday! Leo knew every answer,ham
+84,Great game last night! Same time on Friday?,ham
+85,"Call me when you're free, it's about Sunday",ham
+86,Reminder: your 70% discount voucher from the gym ends Saturday,ham
+87,"Priya is bringing apples, can you bring drinks?",ham
+88,"Hi Ella, sorry I missed you, call me back on 09061 111 222",spam
+89,You are owed a refund of $1.99. Claim now at www.free-prize.biz,spam
+90,"Exclusive offer: free laptop for the first 100 customers, click secure-verify.info",spam
+91,"Running 5 minutes late, sorry!",ham
+92,"Hi Tom, can you call me back after 1pm?",ham
+93,"Exclusive offer: free cruise for the first 100 customers, click tinyurl.com/x9win",spam
+94,Congratulations on the new job Omar!,ham
+95,"Hey Ana, I found a way to make $1.99 fast, message me at 09061 111 222",spam
+96,"Congratulations, you've been selected for a FREE cash prize. Reply YES",spam
+97,"I sent you the link to the slides, click it when you can",ham
+98,Don't forget to buy milk on the way home,ham
+99,WINNER! You have won a laptop. Call 80082 now to claim,spam
+100,"The report looks good, just one small change on page 7",ham
+101,"Thanks for the photos, I'll read it tonight",ham
+102,"Get cheap watches today only, 80% off! Visit tinyurl.com/x9win",spam
+103,"Your parcel is waiting, pay the $1,000 fee at bit.ly/claim-now",spam
+104,Are we still meeting for lunch at 7:30?,ham
+105,"Got the spreadsheet, thanks Ella!",ham
+106,"Free tickets from work for Monday, want to come?",ham
+107,Can you send me the draft before the meeting tomorrow?,ham
+108,We won the quiz on Tuesday! Priya knew every answer,ham
+109,Great game last night! Same time on Saturday?,ham
+110,Are we still meeting for coffee at 8?,ham
+111,"Earn $2.99 a week from home, no experience needed. Call 0800 123 456",spam
+112,"Get cheap watches today only, 90% off! Visit bit.ly/claim-now",spam
+113,"The slides looks good, just one small change on page 2",ham
+114,Mum says lunch is ready at 1pm,ham
+115,"Call me when you're free, it's about Saturday",ham
+116,Mum says breakfast is ready at 1pm,ham
+117,"Call me now, I can't find the draft",ham
+118,Mum says coffee is ready at 1pm,ham
+119,"Free tickets from work for Thursday, want to come?",ham
+120,"Last chance to get loans for 50% less, offer ends Saturday",spam
+121,"Raj is bringing milk, can you bring drinks?",ham
+122,Shall we watch a film on Saturday?,ham
+123,Are we still meeting for dinner at 8?,ham
+124,WINNER! You have won a holiday. Call 80082 now to claim,spam
+125,"Hot deal!!! watches at 90% discount, limited offer, buy now",spam
+126,"Earn $2.99 a week from home, no experience needed. Call 87121",spam
+127,"Hot deal!!! meds at 80% discount, limited offer, buy now",spam
+128,Shall we watch a film on Tuesday?,ham
+129,"You are owed a refund of $1,000. Claim now at www.free-prize.biz",spam
+130,"Hot deal!!! sunglasses at 80% discount, limited offer, buy now",spam
+131,"Leo is bringing bread, can you bring drinks?",ham
+132,"Hi Omar, can you call me back after noon?",ham
+133,Your appointment is confirmed for Sunday at 6pm,ham
+134,"Hot deal!!! followers at 50% discount, limited offer, buy now",spam
+135,"Tom is bringing apples, can you bring drinks?",ham
+136,"The photos looks good, just one small change on page 7",ham
+137,Reminder: your 90% discount voucher from the gym ends Sunday,ham
+138,"Thanks for the notes, I'll read it tonight",ham
+139,"Exclusive offer: free iPhone for the first 100 customers, click bit.ly/claim-now",spam
+140,WINNER! You have won a laptop. Call 0800 123 456 now to claim,spam
+141,"Hey Tom, I found a way to make $500 fast, message me at 0800 123 456",spam
+142,"Hi, it's your bank. We noticed a problem, please confirm your details at www.free-prize.biz",spam
+143,"Hot deal!!! watches at 70% discount, limited offer, buy now",spam
+144,Don't forget to buy apples on the way home,ham
+145,You are owed a refund of $500. Claim now at bit.ly/claim-now,spam
+146,"Raj is bringing apples, can you bring drinks?",ham
+147,Are you free for coffee on Thursday?,ham
+148,"Hey Ella, I found a way to make $250 fast, message me at 0800 123 456",spam
+149,Final notice: claim your gift card before midnight. Text WIN to 87121,spam
+150,We won the quiz on Friday! Ana knew every answer,ham
+151,We won the quiz on Saturday! Leo knew every answer,ham
+152,"Get cheap meds today only, 70% off! Visit secure-verify.info",spam
+153,"Earn $2.99 a week from home, no experience needed. Call 80082",spam
+154,Reminder: your 80% discount voucher from the gym ends Thursday,ham
+155,"Free tickets from work for Friday, want to come?",ham
+156,Congratulations on the new job Leo!,ham
+157,"Congratulations, you've been selected for a FREE iPhone. Reply YES",spam
+158,"The notes looks good, just one small change on page 2",ham
+159,Mum says lunch is ready at 6pm,ham
+160,Are we still meeting for breakfast at 8?,ham
+161,"Hi Leo, can you call me back after 1pm?",ham
+162,Are we still meeting for lunch at 1pm?,ham
+163,Final notice: claim your iPhone before midnight. Text WIN to 80082,spam
+164,"Hot deal!!! followers at 70% discount, limited offer, buy now",spam
+165,"Congratulations, you've been selected for a FREE cruise. Reply YES",spam
+166,"Call me now, I can't find the notes",ham
+167,"Thanks for the draft, I'll read it tonight",ham
+168,"Call me now, I can't find the slides",ham
+169,"Got the draft, thanks Priya!",ham
+170,"Your parcel is waiting, pay the $1,000 fee at secure-verify.info",spam
+171,"I'm at the station, see you in 10 minutes",ham
+172,"Is this still your number? Message me on 09061 111 222, it's Ella",spam
+173,"The photos looks good, just one small change on page 3",ham
+174,"Hi Leo, sorry I missed you, call me back on 80082",spam
+175,"I'm at the station, see you in 15 minutes",ham
+176,WINNER! You have won a gift card. Call 80082 now to claim,spam
+177,"Mei is bringing apples, can you bring drinks?",ham
+178,"Hi Zoe, can you call me back after 1pm?",ham
+179,"Is this still your number? Message me on 09061 111 222, it's Sam",spam
+180,"Hey Zoe, I found a way to make $2.99 fast, message me at 0800 123 456",spam
+181,"Get cheap loans today only, 50% off! Visit bit.ly/claim-now",spam
+182,"Leo is bringing eggs, can you bring drinks?",ham
+183,Great game last night! Same time on Sunday?,ham
+184,Mum says breakfast is ready at 7:30,ham
+185,Don't forget to buy rice on the way home,ham
+186,"Got the slides, thanks Zoe!",ham
+187,Did you finish the draft for Saturday?,ham
+188,"Thanks for the slides, I'll read it tonight",ham
+189,Reminder: your 80% discount voucher from the gym ends Monday,ham
+190,"I sent you the link to the notes, click it when you can",ham
+191,"Last chance to get sunglasses for 70% less, offer ends Thursday",spam
+192,"Your order has shipped, track it at tinyurl.com/x9win",ham
+193,"Call me when you're free, it's about Thursday",ham
+194,"Hey Ana, I found a way to make $1,000 fast, message me at 0800 123 456",spam
+195,"Get cheap loans today only, 90% off! Visit secure-verify.info",spam
+196,"Running 15 minutes late, sorry!",ham
+197,Are you free for lunch on Monday?,ham
+198,"Hey Ana, I found a way to make $1,000 fast, message me at 80082",spam
+199,"Your parcel is waiting, pay the $500 fee at bit.ly/claim-now",spam
+200,Are you free for dinner on Saturday?,ham
+201,Your appointment is confirmed for Tuesday at 1pm,ham
+202,Final notice: claim your laptop before midnight. Text WIN to 80082,spam
+203,Reminder: your 70% discount voucher from the gym ends Sunday,ham
+204,"Hi Ella, can you call me back after 8?",ham
+205,"Got the notes, thanks Leo!",ham
+206,Reminder: your 80% discount voucher from the gym ends Friday,ham
+207,"Get cheap loans today only, 90% off! Visit www.free-prize.biz",spam
+208,"Call me now, I can't find the spreadsheet",ham
+209,"The report looks good, just one small change on page 5",ham
+210,"Mei is bringing eggs, can you bring drinks?",ham
+211,"Hi, it's your bank. We noticed a problem, please confirm your details at secure-verify.info",spam
+212,"Thanks for the report, I'll read it tonight",ham
+213,"Hi Priya, can you call me back after 7:30?",ham
+214,"Is this still your number? Message me on 0800 123 456, it's Priya",spam
+215,WINNER! You have won a cash prize. Call 80082 now to claim,spam
+216,"Zoe is bringing rice, can you bring drinks?",ham
+217,Final notice: claim your cash prize before midnight. Text WIN to 0800 123 456,spam
+218,"Got the photos, thanks Priya!",ham
+219,"Hi Mei, can you call me back after 7:30?",ham
+220,Are we still meeting for coffee at 7:30?,ham
+221,"Get cheap watches today only, 80% off! Visit www.free-prize.biz",spam
+222,"Tom is bringing eggs, can you bring drinks?",ham
+223,Did you finish the photos for Thursday?,ham
+224,Are you free for coffee on Monday?,ham
+225,URGENT: your account will be closed. Click bit.ly/claim-now to verify,spam
+226,Reminder: your 90% discount voucher from the gym ends Monday,ham
+227,"Thanks for the spreadsheet, I'll read it tonight",ham
+228,"Congratulations, you've been selected for a FREE gift card. Reply YES",spam
+229,"I'm at the station, see you in 20 minutes",ham
+230,Reminder: your 90% discount voucher from the gym ends Saturday,ham
+231,"Hi Ana, sorry I missed you, call me back on 80082",spam
+232,"You are owed a refund of $1,000. Claim now at bit.ly/claim-now",spam
+233,"Is this still your number? Message me on 0800 123 456, it's Tom",spam
+234,Final notice: claim your laptop before midnight. Text WIN to 87121,spam
+235,Are we still meeting for lunch at 6pm?,ham
+236,"Call me now, I can't find the photos",ham
+237,"Got the photos, thanks Zoe!",ham
+238,"Call me when you're free, it's about Monday",ham
+239,"You are owed a refund of $1,000. Claim now at tinyurl.com/x9win",spam
+240,"Exclusive offer: free laptop for the first 100 customers, click tinyurl.com/x9win",spam
+241,Are we still meeting for breakfast at 7:30?,ham
+242,"Got the photos, thanks Ella!",ham
+243,"Hey Mei, I found a way to make $2.99 fast, message me at 09061 111 222",spam
+244,Shall we watch a film on Monday?,ham
+245,We won the quiz on Friday! Leo knew every answer,ham
+246,We won the quiz on Saturday! Mei knew every answer,ham
+247,Did you finish the photos for Monday?,ham
+248,"Hot deal!!! watches at 50% discount, limited offer, buy now",spam
+249,Mum says dinner is ready at 7:30,ham
+250,"Exclusive offer: free cruise for the first 100 customers, click bit.ly/claim-now",spam
+251,URGENT: your account will be closed. Click www.free-prize.biz to verify,spam
+252,Did you finish the draft for Thursday?,ham
+253,Mum says coffee is ready at noon,ham
+254,"Hi Raj, can you call me back after 7:30?",ham
+255,"Hey Leo, I found a way to make $250 fast, message me at 09061 111 222",spam
+256,Are we still meeting for breakfast at 1pm?,ham
+257,"Get cheap watches today only, 50% off! Visit tinyurl.com/x9win",spam
+258,Congratulations on the new job Ella!,ham
+259,Are you free for coffee on Sunday?,ham
+260,"Exclusive offer: free cruise for the first 100 customers, click www.free-prize.biz",spam
+261,Reminder: your 70% discount voucher from the gym ends Monday,ham
+262,"Last chance to get sunglasses for 50% less, offer ends Tuesday",spam
+263,Your appointment is confirmed for Friday at 7:30,ham
+264,"Last chance to get loans for 80% less, offer ends Tuesday",spam
+265,WINNER! You have won a iPhone. Call 0800 123 456 now to claim,spam
+266,Don't forget to buy bread on the way home,ham
+267,"Is this still your number? Message me on 87121, it's Leo",spam
+268,"I sent you the link to the photos, click it when you can",ham
+269,Are you free for lunch on Saturday?,ham
+270,"Your parcel is waiting, pay the $1.99 fee at tinyurl.com/x9win",spam
+271,"Free tickets from work for Saturday, want to come?",ham
+272,"Last chance to get meds for 90% less, offer ends Tuesday",spam
+273,Final notice: claim your cruise before midnight. Text WIN to 0800 123 456,spam
+274,"The report looks good, just one small change on page 3",ham
+275,"The spreadsheet looks good, just one small change on page 3",ham
+276,Are you free for lunch on Friday?,ham
+277,Did you finish the draft for Tuesday?,ham
+278,"Got the notes, thanks Mei!",ham
+279,Your appointment is confirmed for Monday at 8,ham
+280,"Hi Ella, can you call me back after 7:30?",ham
+281,Congratulations on the new job Ana!,ham
+282,"Last chance to get followers for 50% less, offer ends Monday",spam
+283,We won the quiz on Friday! Mei knew every answer,ham
+284,"Is this still your number? Message me on 80082, it's Leo",spam
+285,Can you send me the slides before the meeting tomorrow?,ham
+286,"Ella is bringing apples, can you bring drinks?",ham
+287,"Hi Omar, can you call me back after 6pm?",ham
+288,"Last chance to get watches for 70% less, offer ends Sunday",spam
+289,"Sam is bringing rice, can you bring drinks?",ham
+290,"Got the draft, thanks Zoe!",ham
+291,Did you finish the report for Friday?,ham
+292,"Your order has shipped, track it at bit.ly/claim-now",ham
+293,"Call me when you're free, it's about Friday",ham
+294,"Got the spreadsheet, thanks Priya!",ham
+295,"Earn $500 a week from home, no experience needed. Call 0800 123 456",spam
+296,"Zoe is bringing eggs, can you bring drinks?",ham
+297,"Raj is bringing rice, can you bring drinks?",ham
+298,"Hot deal!!! sunglasses at 50% discount, limited offer, buy now",spam
+299,We won the quiz on Thursday! Tom knew every answer,ham
+300,"Your order has shipped, track it at secure-verify.info",ham
+301,Your appointment is confirmed for Thursday at 6pm,ham
+302,"Got the photos, thanks Ana!",ham
+303,You are owed a refund of $250. Claim now at tinyurl.com/x9win,spam
+304,"Your parcel is waiting, pay the $250 fee at www.free-prize.biz",spam
+305,"Sam is bringing eggs, can you bring drinks?",ham
+306,WINNER! You have won a iPhone. Call 87121 now to claim,spam
+307,"Call me now, I can't find the report",ham
+308,WINNER! You have won a holiday. Call 0800 123 456 now to claim,spam
+309,"Tom is bringing rice, can you bring drinks?",ham
+310,Did you finish the draft for Friday?,ham
+311,WINNER! You have won a gift card. Call 0800 123 456 now to claim,spam
+312,Are we still meeting for breakfast at noon?,ham
+313,Are you free for dinner on Wednesday?,ham
+314,"Mei is bringing milk, can you bring drinks?",ham
+315,Final notice: claim your cash prize before midnight. Text WIN to 80082,spam
+316,We won the quiz on Thursday! Raj knew every answer,ham
+317,You are owed a refund of $250. Claim now at bit.ly/claim-now,spam
+318,"Hi Sam, can you call me back after noon?",ham
+319,WINNER! You have won a cruise. Call 80082 now to claim,spam
+320,"Earn $1,000 a week from home, no experience needed. Call 87121",spam
+321,WINNER! You have won a cruise. Call 87121 now to claim,spam
+322,"Hi Tom, can you call me back after 6pm?",ham
+323,Are you free for breakfast on Thursday?,ham
+324,"Hi Mei, can you call me back after 8?",ham
+325,Final notice: claim your cruise before midnight. Text WIN to 09061 111 222,spam
+326,Your appointment is confirmed for Friday at 6pm,ham
+327,"Hi Raj, sorry I missed you, call me back on 0800 123 456",spam
+328,"Last chance to get watches for 90% less, offer ends Monday",spam
+329,Are you free for lunch on Sunday?,ham
+330,"Hi Sam, can you call me back after 1pm?",ham
+331,We won the quiz on Wednesday! Zoe knew every answer,ham
+332,"Is this still your number? Message me on 80082, it's Omar",spam
+333,"The slides looks good, just one small change on page 7",ham
+334,Shall we watch a film on Friday?,ham
+335,"Hey Leo, I found a way to make $500 fast, message me at 0800 123 456",spam
+336,Your appointment is confirmed for Tuesday at noon,ham
+337,"Hi Zoe, can you call me back after 8?",ham
+338,"Hi Sam, sorry I missed you, call me back on 0800 123 456",spam
+339,"Hot deal!!! meds at 70% discount, limited offer, buy now",spam
+340,We won the quiz on Wednesday! Leo knew every answer,ham
+341,We won the quiz on Thursday! Leo knew every answer,ham
+342,"Got the slides, thanks Mei!",ham
+343,Did you finish the slides for Friday?,ham
+344,We won the quiz on Tuesday! Raj knew every answer,ham
+345,Did you finish the report for Thursday?,ham
+346,Mum says coffee is ready at 6pm,ham
+347,"The draft looks good, just one small change on page 5",ham
+348,Reminder: your 70% discount voucher from the gym ends Wednesday,ham
+349,We won the quiz on Saturday! Raj knew every answer,ham
+350,Did you finish the slides for Sunday?,ham
+351,"Hi Ana, can you call me back after 8?",ham
+352,WINNER! You have won a gift card. Call 09061 111 222 now to claim,spam
+353,"Got the notes, thanks Zoe!",ham
+354,"Last chance to get followers for 70% less, offer ends Sunday",spam
+355,Mum says breakfast is ready at 8,ham
+356,We won the quiz on Friday! Zoe knew every answer,ham
+357,"Is this still your number? Message me on 87121, it's Tom",spam
+358,Your appointment is confirmed for Monday at 1pm,ham
+359,"Priya is bringing rice, can you bring drinks?",ham
+360,Reminder: your 50% discount voucher from the gym ends Friday,ham
+361,URGENT: your account will be closed. Click tinyurl.com/x9win to verify,spam
+362,"Last chance to get loans for 90% less, offer ends Friday",spam
+363,"Last chance to get meds for 80% less, offer ends Tuesday",spam
+364,Congratulations on the new job Priya!,ham
+365,Great game last night! Same time on Tuesday?,ham
+366,"Your parcel is waiting, pay the $2.99 fee at tinyurl.com/x9win",spam
+367,"Got the photos, thanks Mei!",ham
+368,"Hey Mei, I found a way to make $500 fast, message me at 87121",spam
+369,"The notes looks good, just one small change on page 3",ham
+370,Your appointment is confirmed for Sunday at 8,ham
+371,"Hot deal!!! sunglasses at 70% discount, limited offer, buy now",spam
+372,"Your parcel is waiting, pay the $1,000 fee at tinyurl.com/x9win",spam
+373,"Hey Ana, I found a way to make $250 fast, message me at 80082",spam
+374,"Got the slides, thanks Raj!",ham
+375,"Hi Ella, can you call me back after 6pm?",ham
+376,Are we still meeting for dinner at 1pm?,ham
+377,WINNER! You have won a cruise. Call 0800 123 456 now to claim,spam
+378,You are owed a refund of $500. Claim now at secure-verify.info,spam
+379,"Earn $250 a week from home, no experience needed. Call 80082",spam
+380,Are we still meeting for lunch at 8?,ham
+381,"Ana is bringing milk, can you bring drinks?",ham
+382,Are you free for breakfast on Saturday?,ham
+383,"Is this still your number? Message me on 87121, it's Ella",spam
+384,"Hi Zoe, can you call me back after noon?",ham
+385,We won the quiz on Thursday! Ana knew every answer,ham
+386,"Hot deal!!! followers at 80% discount, limited offer, buy now",spam
+387,"Last chance to get loans for 90% less, offer ends Monday",spam
+388,We won the quiz on Sunday! Omar knew every answer,ham
+389,"Got the spreadsheet, thanks Ana!",ham
+390,"Hey Ella, I found a way to make $1,000 fast, message me at 87121",spam
+391,Did you finish the photos for Tuesday?,ham
+392,Final notice: claim your gift card before midnight. Text WIN to 09061 111 222,spam
+393,"Exclusive offer: free gift card for the first 100 customers, click tinyurl.com/x9win",spam
+394,Your appointment is confirmed for Monday at 6pm,ham
+395,"The draft looks good, just one small change on page 2",ham
+396,Are we still meeting for breakfast at 6pm?,ham
+397,Mum says breakfast is ready at noon,ham
+398,Congratulations on the new job Zoe!,ham
+399,Are we still meeting for dinner at 6pm?,ham
+400,Are you free for coffee on Wednesday?,ham
