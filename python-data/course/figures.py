@@ -17,18 +17,18 @@ DATA = HERE / "data"
 
 
 def workflow():
-    fig, ax = canvas(11, 1.9, xlim=(0, 11), ylim=(0, 1.9))
+    fig, ax = canvas(12.4, 1.9, xlim=(0, 12.4), ylim=(0, 1.9))
     steps = [("1. Ask", "a clear question"), ("2. Load", "files, databases"), ("3. Clean", "gaps, types, typos"),
              ("4. Analyse", "filter, group, join"), ("5. Show", "charts"), ("6. Share", "results, report")]
     cols = [GREY, BLUE, ORANGE, TEAL, PURPLE, GREEN]
     for i, ((t, sub), c) in enumerate(zip(steps, cols)):
-        x = 0.1 + i * 1.82
-        box(ax, x, 0.55, 1.5, 0.95, "", color=c)
-        label(ax, x + 0.75, 1.18, t, bold=True)
-        label(ax, x + 0.75, 0.82, sub, size=9.5)
+        x = 0.1 + i * 2.05
+        box(ax, x, 0.55, 1.75, 0.95, "", color=c)
+        label(ax, x + 0.875, 1.18, t, bold=True)
+        label(ax, x + 0.875, 0.82, sub, size=9.5)
         if i < 5:
-            arrow(ax, x + 1.52, 1.02, x + 1.8, 1.02)
-    label(ax, 5.5, 0.2, "Cleaning usually takes the most time. Every step is in this course.", size=9.5, color=GREY)
+            arrow(ax, x + 1.77, 1.02, x + 2.03, 1.02)
+    label(ax, 6.2, 0.2, "Cleaning usually takes the most time. Every step is in this course.", size=9.5, color=GREY)
     return fig
 
 
@@ -169,9 +169,9 @@ def split_apply_combine():
 
 
 def merge_joins():
-    fig, ax = canvas(9, 2.5, xlim=(0, 9), ylim=(0, 2.5))
+    fig, ax = canvas(10, 2.7, xlim=(0, 10), ylim=(0, 2.7))
     for i, (how, shade) in enumerate([("inner", ("middle",)), ("left", ("left", "middle")), ("right", ("middle", "right")), ("outer", ("left", "middle", "right"))]):
-        venn(ax, 1.1 + i * 2.25, 1.4, r=0.6, gap=0.6, shade=shade, color=PURPLE, title=f'how="{how}"', labels=("left", "right"))
+        venn(ax, 1.3 + i * 2.47, 1.5, r=0.7, gap=0.75, shade=shade, color=PURPLE, title=f'how="{how}"', labels=("left", "right"))
     return fig
 
 

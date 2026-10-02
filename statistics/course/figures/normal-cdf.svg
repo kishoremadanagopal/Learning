@@ -872,9 +872,18 @@ L 487.44 180.839648
 " style="fill: none; stroke: #52606d; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_11">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif" transform="translate(152.981648 115.049868)">P(height ≤ 180)</text>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif" transform="translate(132.102741 127.052602)">= norm.cdf(180, 170, 8)</text>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif" transform="translate(172.654304 139.054555)">= 0.894</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif" transform="translate(54.750739 65.517429)">P(height ≤ 180)</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif" transform="translate(33.871832 77.520163)">= norm.cdf(180, 170, 8)</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif" transform="translate(74.423395 89.522117)">= 0.894</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 140.101445 96.356649 
+Q 173.647711 105.899505 205.903534 115.075271 
+" style="fill: none; stroke: #1f2933; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 202.273387 111.755326 
+L 205.903534 115.075271 
+L 201.069489 115.987421 
+" style="fill: none; stroke: #1f2933; stroke-width: 1.2; stroke-linecap: round"/>
    </g>
    <g id="text_12">
     <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="247.32" y="16.698047" transform="rotate(-0 247.32 16.698047)">cdf = the area to the left of a value</text>

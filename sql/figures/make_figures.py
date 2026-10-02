@@ -43,29 +43,29 @@ def group_by():
 
 
 def execution_order():
-    fig, ax = canvas(10, 2.6, xlim=(0, 10), ylim=(0, 2.6))
+    fig, ax = canvas(11, 2.6, xlim=(0, 11), ylim=(0, 2.6))
     written = ["SELECT", "FROM", "WHERE", "GROUP BY", "HAVING", "ORDER BY", "LIMIT"]
     run = ["FROM", "WHERE", "GROUP BY", "HAVING", "SELECT", "ORDER BY", "LIMIT"]
     label(ax, 0.05, 2.15, "You write:", ha="left", bold=True)
     label(ax, 0.05, 0.75, "SQL runs:", ha="left", bold=True)
     for i, (w, r) in enumerate(zip(written, run)):
-        x = 1.55 + i * 1.18
-        box(ax, x, 1.9, 1.05, 0.5, w, color=GREY, fontsize=9.5, mono=True)
+        x = 1.45 + i * 1.35
+        box(ax, x, 1.9, 1.12, 0.5, w, color=GREY, fontsize=9.5, mono=True)
         col = ORANGE if r == "SELECT" else TEAL
-        box(ax, x, 0.5, 1.05, 0.5, r, color=col, fontsize=9.5, mono=True, bold=r == "SELECT")
+        box(ax, x, 0.5, 1.12, 0.5, r, color=col, fontsize=9.5, mono=True, bold=r == "SELECT")
         if i:
-            arrow(ax, x - 0.13, 0.75, x - 0.01, 0.75, lw=1.2)
-    label(ax, 6.4, 0.18, "SELECT runs after WHERE and HAVING: that's why aliases and aggregates can't be used in WHERE", size=9.5, color=RED)
+            arrow(ax, x - 0.21, 0.75, x - 0.02, 0.75, lw=1.2)
+    label(ax, 5.8, 0.18, "SELECT runs after WHERE and HAVING: that's why aliases and aggregates can't be used in WHERE", size=9.5, color=RED)
     return fig
 
 
 def join_types():
-    fig, ax = canvas(11, 2.6, xlim=(0, 11), ylim=(0, 2.6))
+    fig, ax = canvas(12.5, 2.6, xlim=(0, 12.5), ylim=(0, 2.6))
     specs = [("INNER JOIN", ("middle",)), ("LEFT JOIN", ("left", "middle")), ("RIGHT JOIN", ("middle", "right")),
              ("FULL OUTER JOIN", ("left", "middle", "right")), ("LEFT JOIN … IS NULL", ("left",))]
     for i, (t, shade) in enumerate(specs):
-        venn(ax, 1.1 + i * 2.2, 1.45, r=0.6, gap=0.6, shade=shade, color=TEAL if i < 4 else ORANGE, title=t, labels=("c", "o"))
-    label(ax, 5.5, 0.12, "c = customers (left table), o = orders (right table); shaded = rows kept", size=9.5, color=GREY)
+        venn(ax, 1.25 + i * 2.5, 1.45, r=0.6, gap=0.6, shade=shade, color=TEAL if i < 4 else ORANGE, title=t, labels=("c", "o"))
+    label(ax, 6.25, 0.12, "c = customers (left table), o = orders (right table); shaded = rows kept", size=9.5, color=GREY)
     return fig
 
 

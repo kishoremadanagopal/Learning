@@ -299,7 +299,7 @@ def big_o():
     fig, ax = plt.subplots(figsize=(8, 4.2))
     curves = [("O(n²)", n ** 2, RED), ("O(n log n)", n * np.log2(n), ORANGE), ("O(n)", n, BLUE),
               ("O(log n)", np.log2(n), TEAL), ("O(1)", np.ones_like(n), GREEN)]
-    where = {"O(n²)": (11.4, 112), "O(n log n)": (25.5, 100), "O(n)": (32.6, 32), "O(log n)": (32.6, 11), "O(1)": (32.6, 1)}
+    where = {"O(n²)": (11.4, 112), "O(n log n)": (25.5, 100), "O(n)": (32.6, 32), "O(log n)": (32.6, 14), "O(1)": (32.6, 4)}
     for name, y, c in curves:
         ax.plot(n, y, color=c, linewidth=2.2)
         ax.text(*where[name], name, color=c, va="center", fontsize=10.5, fontweight="bold")

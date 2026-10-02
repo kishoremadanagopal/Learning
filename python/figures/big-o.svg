@@ -313,10 +313,10 @@ L 496.59625 255.546047
     <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #2c679c" x="431.44598" y="196.180786" transform="rotate(-0 431.44598 196.180786)">O(n)</text>
    </g>
    <g id="text_20">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #0f766e" x="431.44598" y="236.929596" transform="rotate(-0 431.44598 236.929596)">O(log n)</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #0f766e" x="431.44598" y="231.108396" transform="rotate(-0 431.44598 231.108396)">O(log n)</text>
    </g>
    <g id="text_21">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #2f7a45" x="431.44598" y="256.333186" transform="rotate(-0 431.44598 256.333186)">O(1)</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #2f7a45" x="431.44598" y="250.511986" transform="rotate(-0 431.44598 250.511986)">O(1)</text>
    </g>
    <g id="text_22">
     <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="273.39625" y="16.698047" transform="rotate(-0 273.39625 16.698047)">How the work grows as the input grows</text>

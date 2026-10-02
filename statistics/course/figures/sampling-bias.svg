@@ -263,7 +263,7 @@ L 487.431563 152.039648
 " style="fill: none; stroke: #52606d; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_10">
-    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="182.720531" y="37.395956" transform="rotate(-0 182.720531 37.395956)">true average</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start" x="187.522305" y="37.395956" transform="rotate(-0 187.522305 37.395956)">true average</text>
    </g>
    <g id="text_11">
     <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="272.147187" y="16.698047" transform="rotate(-0 272.147187 16.698047)">A biased sample misses in the same direction every time</text>

@@ -253,7 +253,8 @@ def _():
     ax.plot(x, y, color=INK, linewidth=2)
     m = x <= 180
     ax.fill_between(x[m], y[m], color=TEAL, alpha=0.4)
-    ax.text(160, 0.012, f"P(height ≤ 180)\n= norm.cdf(180, 170, 8)\n= {stats.norm.cdf(180, 170, 8):.3f}", ha="center", fontsize=10)
+    ax.text(142, 0.028, f"P(height ≤ 180)\n= norm.cdf(180, 170, 8)\n= {stats.norm.cdf(180, 170, 8):.3f}", ha="center", va="bottom", fontsize=10)
+    ax.annotate("", xy=(163, 0.02), xytext=(150, 0.027), arrowprops=dict(arrowstyle="->", color=INK, lw=1.2))
     ax.axvline(180, color=ORANGE, linewidth=2)
     ax.set_yticks([]); ax.spines["left"].set_visible(False)
     ax.set_xlabel("Height (cm), mean 170, std 8")
@@ -273,7 +274,7 @@ def _():
     ax.scatter(random_means, np.full(40, 1) + rng.normal(0, 0.05, 40), color=TEAL, alpha=0.8, label="random samples")
     ax.scatter(biased_means, np.full(40, 0) + rng.normal(0, 0.05, 40), color=ORANGE, alpha=0.8, label="biased samples (e.g. only online)")
     ax.axvline(true, color=INK, linestyle="--")
-    ax.text(true, 1.45, "true average", ha="center")
+    ax.text(true + 0.15, 1.45, "true average", ha="left")
     ax.set_yticks([0, 1]); ax.set_yticklabels(["biased", "random"]); ax.set_ylim(-0.5, 1.7)
     ax.set_xlabel("average age found by each sample of 25")
     ax.set_title("A biased sample misses in the same direction every time")
