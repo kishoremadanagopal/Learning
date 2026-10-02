@@ -37,6 +37,11 @@ def setup(data_files=None):
 
 
 def _restore_data():
+    """Start every run from a clean folder: remove files earlier runs created, restore the practice files."""
+    if DATA:
+        for name in os.listdir("."):
+            if name not in DATA and os.path.isfile(name):
+                os.remove(name)
     for name, blob in DATA.items():
         with open(name, "wb") as f:
             f.write(blob)

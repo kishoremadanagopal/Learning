@@ -1,6 +1,6 @@
 # Learn Python for Data: NumPy, pandas and charts
 
-A hands-on course that takes you from "I know a little Python" to cleaning, analysing and charting real data: 1 lessons on NumPy, pandas and matplotlib, with a practice sandbox that runs real pandas in your browser and checks your answers.
+A hands-on course that takes you from "I know a little Python" to cleaning, analysing and charting real data: 4 lessons on NumPy, pandas and matplotlib, with a practice sandbox that runs real pandas in your browser and checks your answers.
 
 This is the shared core for both the **AI engineer** and the **data / AI analyst** paths: every one of those jobs loads, cleans, summarises and charts data first.
 
@@ -8,9 +8,9 @@ This is the shared core for both the **AI engineer** and the **data / AI analyst
 
 The sandbox runs real Python 3.14 with NumPy, pandas and matplotlib inside your browser (via [Pyodide](https://pyodide.org)). Nothing to install, no sign-up.
 
-- every lesson, with **3 examples** you can run and change
-- **2 exercises**, numbered by lesson, that check your code and tell you what's off
-- **1 quiz questions**, with explanations
+- every lesson, with **26 examples** you can run and change
+- **8 exercises**, numbered by lesson, that check your code and tell you what's off
+- **12 quiz questions**, with explanations
 - **7 practice datasets** that load with one line, like `pd.read_csv("sales.csv")`
 - charts drawn right under your code
 - your progress and code saved in your own browser
@@ -21,7 +21,7 @@ The sandbox runs real Python 3.14 with NumPy, pandas and matplotlib inside your 
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 1 lessons, each with key terms, examples, common mistakes, exercises, answers and a quiz |
+| 📘 [Lessons](#lessons) | 4 lessons, each with key terms, examples, common mistakes, exercises, answers and a quiz |
 | 📖 [Glossary](glossary.md) | every data term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | NumPy, pandas and matplotlib on one page, with lesson numbers |
 | 🗂️ [Datasets](https://github.com/kishoremadanagopal/learning/tree/main/python-data/data) | the practice files, to download and use on your own computer |
@@ -35,11 +35,14 @@ The sandbox runs real Python 3.14 with NumPy, pandas and matplotlib inside your 
 
 ## Lessons
 
-### Part 0: Smoke (Beginner)
+### Part 1: Data with Plain Python (Beginner)
 
 | # | Lesson | Topics | Sandbox |
 |---|---|---|---|
-| 1 | [Smoke test](lessons/01-smoke.md) | test | 1–2 |
+| 1 | [What data analysis is](lessons/01-what-is-data-analysis.md) | the analysis workflow, rows and columns, CSV files, NumPy, pandas and matplotlib | 1–2 |
+| 2 | [Reading and writing files](lessons/02-files-and-csv.md) | `open()`, `with`, reading lines, `csv.DictReader`, writing text and CSV files | 3–4 |
+| 3 | [JSON data](lessons/03-json-data.md) | JSON syntax, `json.loads`, `json.dumps`, `json.load`, `json.dump`, nested data, `.get()` | 5–6 |
+| 4 | [Crunching data with plain Python](lessons/04-crunching-with-python.md) | filtering with comprehensions, `sum()`, `Counter`, grouping with a dictionary, ranking with `sorted(key=...)` | 7–8 |
 
 ## The practice datasets
 
