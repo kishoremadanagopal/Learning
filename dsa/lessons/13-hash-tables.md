@@ -113,6 +113,15 @@ Need a list-like key? Convert it: `tuple(my_list)`. Need a set-like key? Use `fr
 
 Since Python 3.7, a `dict` remembers **insertion order** (sets don't promise any order).
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Hash table | hash(key) % size picks a bucket | O(1) average per operation | O(n) |
+| Collisions (chaining) | each bucket holds a small list of pairs | O(1) average, O(n) worst | O(n) |
+| Resizing | grow and re-insert when the load factor is high | O(n) per resize, amortised O(1) | O(n) |
+| Your own hash map | buckets of [key, value] pairs with put / get / remove | O(1) average | O(n) |
+
 ## Common mistakes
 
 - Assuming hash tables are always O(1). It's the average; the worst case is O(n).

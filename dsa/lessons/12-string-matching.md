@@ -118,6 +118,15 @@ Two different strings can have the same hash (a **collision**), so a hash match 
 
 (Other famous ones: the **Z-algorithm**, similar to KMP; **Boyer–Moore**, which skips ahead using the pattern's last character, used in `grep`; and **Aho–Corasick** for searching many patterns at once.)
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Naive matching | try the pattern at every position | O(n·m) | O(1) |
+| KMP | prefix (failure) table lets the scan never move backwards | O(n + m) | O(m) |
+| Rabin-Karp | rolling hash of each window; compare text only when hashes match | O(n + m) average, O(n·m) worst | O(1) |
+| Python `in` / `str.find` | optimised built-in search | about O(n) in practice | O(1) |
+
 ## Common mistakes
 
 - Skipping overlapping matches by jumping ahead by the pattern length after a hit.

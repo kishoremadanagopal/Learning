@@ -87,6 +87,16 @@ for i in range(40):
 
 (The exact sizes depend on the Python version; the pattern is what matters.)
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Space complexity | count the extra memory that grows with the input | — | O(1), O(n)… |
+| Best / average / worst case | analyse the input that is fastest, typical and slowest | e.g. linear search O(1) / O(n) / O(n) | — |
+| Amortised cost | average over a long run of operations (list append) | amortised O(1) per append | O(n) total |
+| Reverse in place | swap the ends and move two pointers inwards | O(n) | O(1) |
+| Linear search | check each item until found | O(n) worst, O(1) best | O(1) |
+
 ## Common mistakes
 
 - Forgetting that building a new list, set or dict costs O(n) extra space.

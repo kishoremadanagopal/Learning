@@ -106,6 +106,15 @@ def merge(a, b):
 print(merge([1, 4, 9], [2, 3, 10, 11]))
 ```
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Pair sum in a sorted array | pointers at both ends; move the one that fixes the sum | O(n) | O(1) |
+| Palindrome check | compare from both ends towards the middle | O(n) | O(1) |
+| Remove duplicates in place | write pointer + read pointer | O(n) | O(1) |
+| Merge two sorted lists | one pointer per list, take the smaller | O(n + m) | O(n + m) for the result |
+
 ## Common mistakes
 
 - Using opposite-ends pointers on unsorted data.

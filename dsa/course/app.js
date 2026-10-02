@@ -364,6 +364,7 @@
       </header>
       <section class="terms" aria-label="Key terms"><h2>Key terms</h2><ul>${lesson.terms.map((t) => `<li>${t}</li>`).join("")}</ul></section>
       <div class="prose">${lesson.html}</div>
+      <section class="glance"><h2 class="section-title">At a glance</h2><div class="table-wrap"><table><thead><tr><th>Concept</th><th>Approach</th><th>Time</th><th>Space</th></tr></thead><tbody>${lesson.glance.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
       <section class="mistakes"><h2 class="section-title">Common mistakes</h2><ul>${lesson.mistakes.map((m) => `<li>${m}</li>`).join("")}</ul></section>`;
 
     if (lesson.exercises.length) {

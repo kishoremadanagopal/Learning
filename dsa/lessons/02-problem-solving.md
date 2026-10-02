@@ -90,6 +90,15 @@ There's a third option: sort first, then duplicates sit next to each other. That
 
 You'll meet every one of these in the course; the cheat sheet has the full table.
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| 6-step method | understand → examples → brute force → pattern → plan → code and test | (thinking, not running) | — |
+| Contains duplicate | add to a set; stop when an item is already in it | O(n) | O(n) |
+| Contains duplicate (low memory) | sort, then compare neighbours | O(n log n) | O(1) extra (in place) |
+| Second largest | one pass tracking the largest and second largest distinct values | O(n) | O(1) |
+
 ## Common mistakes
 
 - Typing code before understanding the problem and working an example by hand.

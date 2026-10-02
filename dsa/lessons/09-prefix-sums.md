@@ -96,6 +96,15 @@ def rect_sum(r1, c1, r2, c2):        # inclusive corners
 print(rect_sum(1, 1, 2, 2))          # 5 + 6 + 8 + 9
 ```
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Prefix sums | prefix[i] = sum of the first i items; a range sum is a difference | O(n) build, O(1) per query | O(n) |
+| Pivot index | left sum vs total − left − current | O(n) | O(1) |
+| Difference array | +v at start, −v after end; prefix-sum once at the end | O(1) per update, O(n) to finish | O(n) |
+| 2-D prefix sums | inclusion–exclusion on a grid | O(r·c) build, O(1) per query | O(r·c) |
+
 ## Common mistakes
 
 - Off-by-one errors from leaving out the leading 0, or using prefix[j] instead of prefix[j + 1].

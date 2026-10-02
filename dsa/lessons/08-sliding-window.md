@@ -90,6 +90,14 @@ for right in range(len(data)):
 
 Sliding windows need the rule to be **monotonic**: once a window is invalid, growing it can't make it valid again. With negative numbers, "sum at least target" breaks that, and you need prefix sums (Lesson 9) instead.
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Fixed-size window (best k in a row) | add the new item, subtract the one leaving | O(n) | O(1) |
+| Variable window (longest substring without repeats) | grow the right edge; shrink the left until valid | O(n) | O(k) distinct items |
+| Window template | expand → while invalid: shrink → record answer | O(n) (each item enters and leaves once) | depends on the window state |
+
 ## Common mistakes
 
 - Recomputing the whole window at every step, which makes it O(n·k).

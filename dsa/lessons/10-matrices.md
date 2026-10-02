@@ -104,6 +104,16 @@ m = [[1, 4, 7, 11],
 print(search_sorted_matrix(m, 9), search_sorted_matrix(m, 15))
 ```
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Grid neighbours | loop over a list of (dr, dc) directions with bounds checks | O(1) per cell | O(1) |
+| Transpose | swap m[r][c] with m[c][r] above the diagonal | O(n²) | O(1) in place |
+| Rotate 90° clockwise | transpose, then reverse each row | O(n²) | O(1) in place |
+| Spiral order | shrink four boundaries: top, right, bottom, left | O(r·c) | O(1) extra |
+| Search a sorted matrix | start top-right; go left or down | O(r + c) | O(1) |
+
 ## Common mistakes
 
 - Creating grids with `[[0] * cols] * rows`, which repeats one row object.

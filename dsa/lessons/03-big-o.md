@@ -102,6 +102,18 @@ print(slow_unique([3, 1, 3, 2, 1]))
 
 Lesson 5 lists the real cost of every common Python operation.
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| O(1) constant | same work whatever the size: indexing, dict lookup | O(1) | — |
+| O(log n) logarithmic | halve the problem each step: binary search | O(log n) | — |
+| O(n) linear | touch each item once: one loop | O(n) | — |
+| O(n log n) | sort, or split in halves and do linear work per level | O(n log n) | — |
+| O(n²) quadratic | a loop inside a loop over the same data | O(n²) | — |
+| O(2ⁿ), O(n!) | try every subset or every ordering | O(2ⁿ), O(n!) | — |
+| Sum 1..n | formula n(n+1)/2 instead of a loop | O(1) | O(1) |
+
 ## Common mistakes
 
 - Keeping constants or smaller terms, like writing O(2n) or O(n² + n).

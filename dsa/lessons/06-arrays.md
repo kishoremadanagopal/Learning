@@ -85,6 +85,15 @@ reverse(nums, 0, k - 1);          print(nums)   # [5, 6, 7, 4, 3, 2, 1]
 reverse(nums, k, len(nums) - 1);  print(nums)   # [5, 6, 7, 1, 2, 3, 4]
 ```
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Index access | address = start + index × size | O(1) | — |
+| Insert / delete in the middle | shift the items after it | O(n) | O(1) |
+| Best time to buy and sell | track the cheapest price so far and today's profit | O(n) | O(1) |
+| Rotate by k in place | reverse all, then reverse the first k and the rest | O(n) | O(1) |
+
 ## Common mistakes
 
 - Using `nums[i + 1]` in a loop that runs to `len(nums)`, which reads past the end.

@@ -150,3 +150,110 @@ for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
 ## Edge cases to always test
 
 Empty input · one item · two items · all the same · already sorted / reverse sorted · negatives and zero · duplicates · the answer at the very start or end · no valid answer · very large input (speed).
+
+## Every concept at a glance
+
+Generated from the **At a glance** table at the end of each lesson. The number in brackets links to the lesson.
+
+| Concept | Approach | Time | Space | Lesson |
+|---|---|---|---|---|
+| Data structure | a way to organise data so the operations you need are fast | depends on the structure | O(n) to store n items | [1](lessons/01-what-is-dsa.md) |
+| Algorithm | exact steps that turn an input into the right output | measured with Big-O | extra memory it needs | [1](lessons/01-what-is-dsa.md) |
+| Smallest number | one pass, remembering the smallest so far | O(n) | O(1) | [1](lessons/01-what-is-dsa.md) |
+| Duplicate check (brute force vs set) | compare every pair, or remember seen items in a set | O(n²) vs O(n) | O(1) vs O(n) | [1](lessons/01-what-is-dsa.md) |
+| 6-step method | understand → examples → brute force → pattern → plan → code and test | (thinking, not running) | — | [2](lessons/02-problem-solving.md) |
+| Contains duplicate | add to a set; stop when an item is already in it | O(n) | O(n) | [2](lessons/02-problem-solving.md) |
+| Contains duplicate (low memory) | sort, then compare neighbours | O(n log n) | O(1) extra (in place) | [2](lessons/02-problem-solving.md) |
+| Second largest | one pass tracking the largest and second largest distinct values | O(n) | O(1) | [2](lessons/02-problem-solving.md) |
+| O(1) constant | same work whatever the size: indexing, dict lookup | O(1) | — | [3](lessons/03-big-o.md) |
+| O(log n) logarithmic | halve the problem each step: binary search | O(log n) | — | [3](lessons/03-big-o.md) |
+| O(n) linear | touch each item once: one loop | O(n) | — | [3](lessons/03-big-o.md) |
+| O(n log n) | sort, or split in halves and do linear work per level | O(n log n) | — | [3](lessons/03-big-o.md) |
+| O(n²) quadratic | a loop inside a loop over the same data | O(n²) | — | [3](lessons/03-big-o.md) |
+| O(2ⁿ), O(n!) | try every subset or every ordering | O(2ⁿ), O(n!) | — | [3](lessons/03-big-o.md) |
+| Sum 1..n | formula n(n+1)/2 instead of a loop | O(1) | O(1) | [3](lessons/03-big-o.md) |
+| Space complexity | count the extra memory that grows with the input | — | O(1), O(n)… | [4](lessons/04-space-and-cases.md) |
+| Best / average / worst case | analyse the input that is fastest, typical and slowest | e.g. linear search O(1) / O(n) / O(n) | — | [4](lessons/04-space-and-cases.md) |
+| Amortised cost | average over a long run of operations (list append) | amortised O(1) per append | O(n) total | [4](lessons/04-space-and-cases.md) |
+| Reverse in place | swap the ends and move two pointers inwards | O(n) | O(1) | [4](lessons/04-space-and-cases.md) |
+| Linear search | check each item until found | O(n) worst, O(1) best | O(1) | [4](lessons/04-space-and-cases.md) |
+| list index, append, pop() | direct access at the end | O(1) (append amortised) | — | [5](lessons/05-python-costs.md) |
+| list insert(0), pop(0), `in`, remove | shift items or scan | O(n) | — | [5](lessons/05-python-costs.md) |
+| dict / set lookup, insert, delete | hash table | O(1) average, O(n) worst | O(n) | [5](lessons/05-python-costs.md) |
+| String concatenation in a loop | build a list and `''.join` it once | O(n) with join, O(n²) with += | O(n) | [5](lessons/05-python-costs.md) |
+| deque appendleft / popleft | double-ended queue | O(1) | O(n) | [5](lessons/05-python-costs.md) |
+| sorted(), list.sort() | Timsort | O(n log n) | O(n) | [5](lessons/05-python-costs.md) |
+| Items in both lists | turn one list into a set, then filter the other | O(n + m) | O(n) | [5](lessons/05-python-costs.md) |
+| Index access | address = start + index × size | O(1) | — | [6](lessons/06-arrays.md) |
+| Insert / delete in the middle | shift the items after it | O(n) | O(1) | [6](lessons/06-arrays.md) |
+| Best time to buy and sell | track the cheapest price so far and today's profit | O(n) | O(1) | [6](lessons/06-arrays.md) |
+| Rotate by k in place | reverse all, then reverse the first k and the rest | O(n) | O(1) | [6](lessons/06-arrays.md) |
+| Pair sum in a sorted array | pointers at both ends; move the one that fixes the sum | O(n) | O(1) | [7](lessons/07-two-pointers.md) |
+| Palindrome check | compare from both ends towards the middle | O(n) | O(1) | [7](lessons/07-two-pointers.md) |
+| Remove duplicates in place | write pointer + read pointer | O(n) | O(1) | [7](lessons/07-two-pointers.md) |
+| Merge two sorted lists | one pointer per list, take the smaller | O(n + m) | O(n + m) for the result | [7](lessons/07-two-pointers.md) |
+| Fixed-size window (best k in a row) | add the new item, subtract the one leaving | O(n) | O(1) | [8](lessons/08-sliding-window.md) |
+| Variable window (longest substring without repeats) | grow the right edge; shrink the left until valid | O(n) | O(k) distinct items | [8](lessons/08-sliding-window.md) |
+| Window template | expand → while invalid: shrink → record answer | O(n) (each item enters and leaves once) | depends on the window state | [8](lessons/08-sliding-window.md) |
+| Prefix sums | prefix[i] = sum of the first i items; a range sum is a difference | O(n) build, O(1) per query | O(n) | [9](lessons/09-prefix-sums.md) |
+| Pivot index | left sum vs total − left − current | O(n) | O(1) | [9](lessons/09-prefix-sums.md) |
+| Difference array | +v at start, −v after end; prefix-sum once at the end | O(1) per update, O(n) to finish | O(n) | [9](lessons/09-prefix-sums.md) |
+| 2-D prefix sums | inclusion–exclusion on a grid | O(r·c) build, O(1) per query | O(r·c) | [9](lessons/09-prefix-sums.md) |
+| Grid neighbours | loop over a list of (dr, dc) directions with bounds checks | O(1) per cell | O(1) | [10](lessons/10-matrices.md) |
+| Transpose | swap m[r][c] with m[c][r] above the diagonal | O(n²) | O(1) in place | [10](lessons/10-matrices.md) |
+| Rotate 90° clockwise | transpose, then reverse each row | O(n²) | O(1) in place | [10](lessons/10-matrices.md) |
+| Spiral order | shrink four boundaries: top, right, bottom, left | O(r·c) | O(1) extra | [10](lessons/10-matrices.md) |
+| Search a sorted matrix | start top-right; go left or down | O(r + c) | O(1) | [10](lessons/10-matrices.md) |
+| Build a string | append pieces to a list, `''.join` once | O(n) | O(n) | [11](lessons/11-strings.md) |
+| Characters as numbers | `ord`/`chr`, counts in an array of 26 | O(1) per char | O(1) for a fixed alphabet | [11](lessons/11-strings.md) |
+| Anagram check | sort both, or compare Counters | O(n log n) or O(n) | O(n) | [11](lessons/11-strings.md) |
+| Run-length encoding | count runs of equal characters in one pass | O(n) | O(n) | [11](lessons/11-strings.md) |
+| Reverse the words | split, reverse the list, join | O(n) | O(n) | [11](lessons/11-strings.md) |
+| Naive matching | try the pattern at every position | O(n·m) | O(1) | [12](lessons/12-string-matching.md) |
+| KMP | prefix (failure) table lets the scan never move backwards | O(n + m) | O(m) | [12](lessons/12-string-matching.md) |
+| Rabin-Karp | rolling hash of each window; compare text only when hashes match | O(n + m) average, O(n·m) worst | O(1) | [12](lessons/12-string-matching.md) |
+| Python `in` / `str.find` | optimised built-in search | about O(n) in practice | O(1) | [12](lessons/12-string-matching.md) |
+| Hash table | hash(key) % size picks a bucket | O(1) average per operation | O(n) | [13](lessons/13-hash-tables.md) |
+| Collisions (chaining) | each bucket holds a small list of pairs | O(1) average, O(n) worst | O(n) | [13](lessons/13-hash-tables.md) |
+| Resizing | grow and re-insert when the load factor is high | O(n) per resize, amortised O(1) | O(n) | [13](lessons/13-hash-tables.md) |
+| Your own hash map | buckets of [key, value] pairs with put / get / remove | O(1) average | O(n) | [13](lessons/13-hash-tables.md) |
+| Counting | Counter or dict.get(x, 0) + 1 | O(n) | O(k) distinct items | [14](lessons/14-hashing-patterns.md) |
+| Two Sum | for each x, look up target − x among numbers already seen | O(n) | O(n) | [14](lessons/14-hashing-patterns.md) |
+| Group anagrams | key = sorted letters; dict of lists | O(n·k log k) | O(n·k) | [14](lessons/14-hashing-patterns.md) |
+| Subarray sum equals k | count earlier prefix sums equal to current − k | O(n) | O(n) | [14](lessons/14-hashing-patterns.md) |
+| Longest consecutive sequence | set; start counting only at numbers whose x − 1 is missing | O(n) | O(n) | [14](lessons/14-hashing-patterns.md) |
+| Traverse / search | follow next from the head | O(n) | O(1) | [15](lessons/15-linked-lists.md) |
+| Access item i | walk i steps | O(n) | O(1) | [15](lessons/15-linked-lists.md) |
+| Insert / delete at the front | new node points to the old head | O(1) | O(1) | [15](lessons/15-linked-lists.md) |
+| Append with a tail pointer | link after the tail, move the tail | O(1) | O(1) | [15](lessons/15-linked-lists.md) |
+| Delete by value | dummy + prev pointer; prev.next = prev.next.next | O(n) | O(1) | [15](lessons/15-linked-lists.md) |
+| Delete a node you hold (doubly linked) | reconnect its prev and next | O(1) | O(1) | [15](lessons/15-linked-lists.md) |
+| Insert into a sorted list | walk to the last smaller node, splice | O(n) | O(1) | [15](lessons/15-linked-lists.md) |
+| Josephus circle | circular list, unlink every k-th node | O(n·k) | O(n) | [15](lessons/15-linked-lists.md) |
+| Reverse a list | prev / cur / next, turn each arrow around | O(n) | O(1) (recursive: O(n) stack) | [16](lessons/16-linked-list-patterns.md) |
+| Middle node | slow 1 step, fast 2 steps | O(n) | O(1) | [16](lessons/16-linked-list-patterns.md) |
+| Detect a cycle (Floyd) | fast and slow meet if there's a loop | O(n) | O(1) | [16](lessons/16-linked-list-patterns.md) |
+| Find the cycle's start | after meeting, restart one pointer at the head; step both by 1 | O(n) | O(1) | [16](lessons/16-linked-list-patterns.md) |
+| Merge two sorted lists | dummy + tail; attach the smaller front | O(n + m) | O(1) | [16](lessons/16-linked-list-patterns.md) |
+| Remove k-th from the end | lead k steps ahead, then move both | O(n) | O(1) | [16](lessons/16-linked-list-patterns.md) |
+| Palindrome list | middle, reverse the second half, compare | O(n) | O(1) | [16](lessons/16-linked-list-patterns.md) |
+| Push / pop / peek | list.append / list.pop() / list[-1] | O(1) | O(n) for n items | [17](lessons/17-stacks.md) |
+| Valid brackets | push openers; a closer must match the popped top | O(n) | O(n) | [17](lessons/17-stacks.md) |
+| Min stack | store (value, min so far) pairs | O(1) per operation | O(n) | [17](lessons/17-stacks.md) |
+| Evaluate RPN | push numbers; on an operator pop b, pop a, push a op b | O(n) | O(n) | [17](lessons/17-stacks.md) |
+| Infix → RPN (shunting-yard) | operator stack ordered by precedence | O(n) | O(n) | [17](lessons/17-stacks.md) |
+| Recursion → loop | replace the call stack with your own list | same as the recursion | O(depth) | [17](lessons/17-stacks.md) |
+| Next greater element | decreasing stack of indexes; a bigger value pops and answers them | O(n) | O(n) | [18](lessons/18-monotonic-stack.md) |
+| Daily temperatures | next greater, answer = index distance | O(n) | O(n) | [18](lessons/18-monotonic-stack.md) |
+| Stock span (previous greater) | pop smaller or equal, distance to the new top | O(n) | O(n) | [18](lessons/18-monotonic-stack.md) |
+| Largest rectangle in a histogram | increasing stack; a popped bar's width runs from the bar below it to i | O(n) | O(n) | [18](lessons/18-monotonic-stack.md) |
+| Trapping rain water | two pointers, move the lower wall | O(n) | O(1) | [18](lessons/18-monotonic-stack.md) |
+| Enqueue / dequeue | deque.append / deque.popleft | O(1) | O(n) | [19](lessons/19-queues-deques.md) |
+| Keep only the last k items | deque(maxlen=k) | O(1) per append | O(k) | [19](lessons/19-queues-deques.md) |
+| Circular buffer | array + head + size, indexes wrap with % | O(1) per operation | O(capacity) | [19](lessons/19-queues-deques.md) |
+| Queue from two stacks | push to inbox; pour into outbox only when it's empty | amortised O(1) | O(n) | [19](lessons/19-queues-deques.md) |
+| Sliding window maximum | deque of indexes with decreasing values | O(n) | O(k) | [19](lessons/19-queues-deques.md) |
+| LRU get / put | dict of key → node + doubly linked list in recency order | O(1) | O(capacity) | [20](lessons/20-lru-cache.md) |
+| LRU with OrderedDict | move_to_end and popitem(last=False) | O(1) | O(capacity) | [20](lessons/20-lru-cache.md) |
+| Memoise a function | @lru_cache(maxsize) or @cache | O(1) per repeated call | O(distinct arguments) | [20](lessons/20-lru-cache.md) |
+| LFU get / put | count per key + OrderedDict per count + minimum count | O(1) | O(capacity) | [20](lessons/20-lru-cache.md) |

@@ -15,6 +15,11 @@ mistakes:
 - Using a list or dict as a key; convert to a tuple or frozenset.
 - In your own hash map, appending a new pair without first checking whether the key exists.
 - Relying on set order; only dicts keep insertion order.
+glance:
+- Hash table | hash(key) % size picks a bucket | O(1) average per operation | O(n)
+- Collisions (chaining) | each bucket holds a small list of pairs | O(1) average, O(n) worst | O(n)
+- Resizing | grow and re-insert when the load factor is high | O(n) per resize, amortised O(1) | O(n)
+- Your own hash map | buckets of [key, value] pairs with put / get / remove | O(1) average | O(n)
 
 @@ hashing-patterns
 topics: counting with Counter and dict.get, first unique character, Two Sum with complements, grouping with defaultdict, choosing a key, prefix sums with a hash map, longest consecutive sequence, pattern summary
@@ -31,3 +36,9 @@ mistakes:
 - Forgetting `counts = {0: 1}` when counting subarray sums.
 - Starting a run count from every number in "longest consecutive", which makes it O(n²).
 - Using a sliding window for subarray sums when numbers can be negative.
+glance:
+- Counting | Counter or dict.get(x, 0) + 1 | O(n) | O(k) distinct items
+- Two Sum | for each x, look up target − x among numbers already seen | O(n) | O(n)
+- Group anagrams | key = sorted letters; dict of lists | O(n·k log k) | O(n·k)
+- Subarray sum equals k | count earlier prefix sums equal to current − k | O(n) | O(n)
+- Longest consecutive sequence | set; start counting only at numbers whose x − 1 is missing | O(n) | O(n)

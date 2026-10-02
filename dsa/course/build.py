@@ -149,12 +149,12 @@ def parse_extras(path):
     for chunk in re.split(r"^@@ ", path.read_text(), flags=re.M)[1:]:
         lines = chunk.splitlines()
         lid = lines[0].strip()
-        item = {"topics": "", "terms": [], "mistakes": []}
+        item = {"topics": "", "terms": [], "mistakes": [], "glance": []}
         section = None
         for ln in lines[1:]:
             if ln.startswith("topics:"):
                 item["topics"] = ln.split(":", 1)[1].strip()
-            elif ln.strip() in ("terms:", "mistakes:"):
+            elif ln.strip() in ("terms:", "mistakes:", "glance:"):
                 section = ln.strip()[:-1]
             elif ln.startswith("- ") and section:
                 item[section].append(ln[2:].strip())
@@ -219,6 +219,16 @@ def build(only=None):
         l["_terms"], l["_mistakes"] = e["terms"], e["mistakes"]
         l["terms"] = [inline_md(t) for t in e["terms"]]
         l["mistakes"] = [inline_md(m) for m in e["mistakes"]]
+        rows = []
+        for g in e["glance"]:
+            cells = [c.strip() for c in re.split(r"(?<!\\)\|", g)]
+            if len(cells) != 4:
+                raise ValueError(f"[{l['id']}] glance rows need 4 cells (concept | approach | time | space): {g}")
+            rows.append(cells)
+        if not rows:
+            raise ValueError(f"[{l['id']}] needs a glance: table (concept | approach | time | space)")
+        l["_glance"] = rows
+        l["glance"] = [[inline_md(c.replace("\\|", "|")) for c in r] for r in rows]
         for ex in l["exercises"]:
             number += 1
             ex["number"] = number
@@ -280,6 +290,12 @@ def lesson_markdown(l, lessons):
         "",
         gh_fences(l["_md"]).replace("\n### ", "\n## ").replace("](figures/", "](../figures/"),
         "",
+        "## At a glance",
+        "",
+        "| Concept | Approach | Time | Space |",
+        "|---|---|---|---|",
+        *[f"| {' | '.join(r)} |" for r in l["_glance"]],
+        "",
         "## Common mistakes",
         "",
         *[f"- {m}" for m in l["_mistakes"]],
@@ -320,6 +336,17 @@ def lesson_markdown(l, lessons):
     lines += ["---", " · ".join(nav), ""]
     text = "\n".join(lines)
     return re.sub(r"\n{3,}", "\n\n", text)
+
+
+def concept_index(lessons):
+    """Every concept in the course with its approach and cost, generated from the lessons' At-a-glance tables."""
+    out = ["## Every concept at a glance", "",
+           "Generated from the **At a glance** table at the end of each lesson. The number in brackets links to the lesson.", "",
+           "| Concept | Approach | Time | Space | Lesson |", "|---|---|---|---|---|"]
+    for l in lessons:
+        for r in l["_glance"]:
+            out.append(f"| {' | '.join(r)} | [{l['n']}]({l['file']}) |")
+    return "\n".join(out) + "\n"
 
 
 def glossary_markdown(lessons):
@@ -512,7 +539,7 @@ def assemble(data):
         (SITE / l["file"]).write_text(lesson_markdown(l, data["lessons"]))
     (SITE / "glossary.md").write_text(glossary_markdown(data["lessons"]))
     if (CONTENT / "cheatsheet.md").exists():
-        shutil.copy(CONTENT / "cheatsheet.md", SITE / "cheatsheet.md")
+        (SITE / "cheatsheet.md").write_text((CONTENT / "cheatsheet.md").read_text().rstrip() + "\n\n" + concept_index(data["lessons"]))
     (SITE / "README.md").write_text(readme_markdown(data, datasets))
     if not REPO_MODE:
         (SITE / ".nojekyll").write_text("")

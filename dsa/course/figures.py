@@ -349,6 +349,243 @@ def two_sum():
     return f
 
 
+
+# ---------------------------------------------------------------- Part 4: linked lists, stacks, queues
+
+def lnode(ax, x, y, val, color=BLUE, w=0.95, h=0.6, fontsize=11):
+    """A linked-list node: value cell plus a small pointer cell with a dot. Returns (left, right, mid_y)."""
+    sbox(ax, x, y, w * 0.66, h, str(val), color=color, mono=True, fontsize=fontsize)
+    sbox(ax, x + w * 0.66, y, w * 0.34, h, "", color=color)
+    ax.add_patch(Circle((x + w * 0.83, y + h / 2), 0.05, color=INK, zorder=5))
+    return x, x + w, y + h / 2
+
+
+def chain(ax, x, y, vals, colors=None, gap=0.5, w=0.95, end="None"):
+    colors = colors or {}
+    lefts = []
+    for i, v in enumerate(vals):
+        left, right, my = lnode(ax, x, y, v, color=colors.get(i, BLUE), w=w)
+        lefts.append(left)
+        nxt = x + w + gap
+        if i < len(vals) - 1:
+            arrow(ax, right - w * 0.17, my, nxt - 0.02, my, lw=1.3)
+        elif end:
+            arrow(ax, right - w * 0.17, my, nxt - 0.02, my, lw=1.3)
+            label(ax, nxt + 0.25, my, end, mono=True, size=10, color=MUTED, ha="left")
+        x = nxt
+    return lefts
+
+
+@fig("linked-list")
+def linked_list_fig():
+    f, ax = diag.canvas(10, 3.4)
+    label(ax, 0.2, 3.05, "A singly linked list", bold=True, ha="left", size=11)
+    lefts = chain(ax, 1.4, 2.0, [3, 7, 1, 9])
+    label(ax, 0.55, 2.3, "head", bold=True, size=10)
+    arrow(ax, 0.85, 2.3, 1.38, 2.3, lw=1.3)
+    label(ax, 0.2, 1.3, "push_front(5): O(1)", bold=True, ha="left", size=11)
+    chain(ax, 1.4, 0.25, [5, 3, 7, 1, 9], colors={0: ORANGE})
+    label(ax, 0.55, 0.55, "head", bold=True, size=10)
+    arrow(ax, 0.85, 0.55, 1.38, 0.55, lw=1.3)
+    label(ax, 7.6, 1.32, "one new node, one pointer change:\nnothing shifts", size=9.5, color=MUTED, ha="left")
+    return f
+
+
+@fig("doubly-linked")
+def doubly_linked():
+    f, ax = diag.canvas(10, 3.6)
+
+    def row(y, vals, faded=None):
+        xs = [0.3 + i * 1.75 for i in range(len(vals))]
+        for i, (x, v) in enumerate(zip(xs, vals)):
+            sent = v in ("head", "tail")
+            sbox(ax, x, y, 1.05, 0.6, v, color=GREY if sent else (GREY if faded == i else BLUE), mono=not sent, fontsize=10 if sent else 11)
+        for a, b in zip(xs, xs[1:]):
+            arrow(ax, a + 1.07, y + 0.42, b - 0.02, y + 0.42, lw=1.2)
+            arrow(ax, b - 0.02, y + 0.18, a + 1.07, y + 0.18, lw=1.2, color=MUTED)
+        return xs
+
+    label(ax, 0.3, 3.3, "next →  (top arrows)      ← prev  (bottom arrows, grey)", ha="left", size=9.5, color=MUTED)
+    row(2.2, ["head", "a", "b", "c", "tail"])
+    label(ax, 0.3, 1.45, "remove(b): b.prev.next = b.next;  b.next.prev = b.prev   (O(1))", ha="left", size=10, mono=True)
+    row(0.3, ["head", "a", "c", "tail"])
+    return f
+
+
+@fig("reverse-list")
+def reverse_list_fig():
+    f, ax = diag.canvas(10.5, 4.6)
+    states = [
+        ("start", [], [1, 2, 3], "prev = None, cur = 1"),
+        ("step 1", [1], [2, 3], "1 now points back to None"),
+        ("step 2", [2, 1], [3], "2 points back to 1"),
+        ("step 3", [3, 2, 1], [], "prev = 3 is the new head"),
+    ]
+    for r, (title, done, rest, note) in enumerate(states):
+        y = 3.75 - r * 1.15
+        label(ax, 0.1, y + 0.3, title, ha="left", bold=True, size=10)
+        x = 1.2
+        if done:
+            for i, v in enumerate(done):
+                lnode(ax, x, y, v, color=TEAL)
+                if i < len(done) - 1:
+                    arrow(ax, x + 0.8, y + 0.3, x + 1.43, y + 0.3, lw=1.2)
+                x += 1.45
+            label(ax, x - 0.5 + 0.35, y + 0.3, "→ None", mono=True, size=9.5, color=MUTED, ha="left")
+            x += 0.9
+        else:
+            label(ax, x + 0.2, y + 0.3, "None", mono=True, size=9.5, color=MUTED)
+            x += 0.9
+        if rest:
+            chain(ax, x, y, rest, colors={0: ORANGE}, gap=0.45, w=0.95)
+        label(ax, 10.4, y + 0.3, note, ha="right", size=9.5, color=MUTED)
+    label(ax, 1.2, 0.05, "teal = already reversed (read left to right: head of the reversed part first)   orange = cur", ha="left", size=9, color=MUTED)
+    return f
+
+
+@fig("fast-slow")
+def fast_slow():
+    f, ax = diag.canvas(10.5, 4.1)
+    xs = [0.4 + i * 1.6 for i in range(6)]
+    y = 1.9
+    for i, (x, v) in enumerate(zip(xs, range(1, 7))):
+        col = ORANGE if v == 3 else (CRIMSON if v == 5 else BLUE)
+        lnode(ax, x, y, v, color=col)
+        if i < 5:
+            arrow(ax, x + 0.8, y + 0.3, xs[i + 1] - 0.02, y + 0.3, lw=1.2)
+    ax.add_patch(FancyArrowPatch((xs[5] + 0.8, y + 0.62), (xs[2] + 0.4, y + 0.64), connectionstyle="arc3,rad=0.35",
+                                 arrowstyle="-|>", mutation_scale=14, color=INK, linewidth=1.3))
+    label(ax, 9.9, 3.75, "6 links back to 3: a cycle", size=9.5, color=MUTED, ha="right")
+    label(ax, xs[4] + 0.47, y - 0.3, "slow and fast\nmeet at 5", size=9.5, color=INK)
+    label(ax, xs[2] + 0.47, y - 0.3, "cycle start", size=9.5, color=INK)
+    rows = [("slow (1 step):", "1 → 2 → 3 → 4 → 5"), ("fast (2 steps):", "1 → 3 → 5 → 3 → 5"),
+            ("then from head and from 5, 1 step each:", "1 → 2 → 3  and  5 → 6 → 3: meet at the start")]
+    for k, (a, b) in enumerate(rows):
+        label(ax, 0.4, 0.95 - k * 0.38, a, ha="left", size=9.5, bold=True)
+        label(ax, 4.6 if k == 2 else 2.2, 0.95 - k * 0.38, b, ha="left", size=9.5, mono=True)
+    return f
+
+
+@fig("stack-queue")
+def stack_queue():
+    f, ax = diag.canvas(10.5, 4.0)
+    label(ax, 1.9, 3.75, "Stack: last in, first out", bold=True, size=11)
+    for i, v in enumerate(["a", "b", "c"]):
+        sbox(ax, 1.2, 0.4 + i * 0.75, 1.4, 0.65, v, color=ORANGE if v == "c" else BLUE, mono=True)
+    arrow(ax, 3.3, 3.25, 2.7, 2.55, color=INK, lw=1.3)
+    label(ax, 3.45, 3.3, "push", ha="left", size=10)
+    arrow(ax, 2.7, 2.15, 3.3, 1.55, color=INK, lw=1.3)
+    label(ax, 3.45, 1.5, "pop (c first)", ha="left", size=10)
+    label(ax, 1.9, 0.1, "top = end of a Python list", size=9.5, color=MUTED)
+    ax.plot([5.0, 5.0], [0.2, 3.8], color="#d0d6dd", linewidth=1)
+    label(ax, 7.8, 3.75, "Queue: first in, first out", bold=True, size=11)
+    for i, v in enumerate(["a", "b", "c"]):
+        sbox(ax, 6.5 + i * 1.05, 1.6, 0.95, 0.65, v, color=ORANGE if v == "a" else BLUE, mono=True)
+    arrow(ax, 6.4, 1.92, 5.6, 1.92, color=INK, lw=1.3)
+    label(ax, 6.0, 1.25, "leaves\nfirst: a", size=9.5)
+    arrow(ax, 10.3, 1.92, 9.7, 1.92, color=INK, lw=1.3)
+    label(ax, 10.0, 1.25, "joins\nhere", size=9.5)
+    label(ax, 7.9, 0.4, "use collections.deque: append + popleft", size=9.5, color=MUTED)
+    return f
+
+
+@fig("monotonic-stack")
+def monotonic_stack_fig():
+    f, ax = diag.canvas(11, 4.3)
+    temps = [73, 74, 75, 71, 69, 72, 76, 73]
+    cells(ax, 0.6, 3.2, temps, w=0.8, color=GREY, highlight={5: ORANGE, 3: TEAL, 4: TEAL, 2: BLUE}, idx="auto")
+    label(ax, 0.1, 3.5, "day", ha="left", size=9, color=MUTED)
+    label(ax, 7.4, 3.5, "temperatures", ha="left", size=9.5, color=MUTED)
+
+    def stack(x, items, title, colors):
+        label(ax, x + 0.55, 2.55, title, bold=True, size=10)
+        for i, (d, t) in enumerate(items):
+            sbox(ax, x, 0.35 + i * 0.6, 1.1, 0.52, f"{t} (d{d})", color=colors[i], mono=True, fontsize=9.5)
+        label(ax, x + 0.55, 0.1, "bottom", size=8.5, color=MUTED)
+
+    stack(0.8, [(2, 75), (3, 71), (4, 69)], "before day 5", [BLUE, TEAL, TEAL])
+    arrow(ax, 2.3, 1.2, 3.4, 1.2, text="72 arrives", fontsize=9.5)
+    label(ax, 5.9, 1.95, "pops 69 (day 4): answer 5 − 4 = 1 day", ha="left", size=9.5)
+    label(ax, 5.9, 1.55, "pops 71 (day 3): answer 5 − 3 = 2 days", ha="left", size=9.5)
+    label(ax, 5.9, 1.15, "stops at 75: warmer than 72", ha="left", size=9.5)
+    label(ax, 5.9, 0.75, "pushes 72 (day 5)", ha="left", size=9.5)
+    stack(3.7, [(2, 75), (5, 72)], "after", [BLUE, ORANGE])
+    label(ax, 5.9, 0.3, "values always decrease from bottom to top", ha="left", size=9, color=MUTED)
+    return f
+
+
+@fig("circular-buffer")
+def circular_buffer():
+    f, ax = diag.canvas(9.0, 5.0)
+    cx, cy, r = 3.0, 2.45, 1.7
+    vals = {0: "4", 1: "5", 2: "·", 3: "·", 4: "2", 5: "3"}
+    for i in range(6):
+        ang = math.radians(90 - i * 60)
+        x, y = cx + r * math.cos(ang), cy + r * math.sin(ang)
+        col = ORANGE if i == 4 else (TEAL if vals[i] != "·" else GREY)
+        sbox(ax, x - 0.4, y - 0.3, 0.8, 0.6, vals[i], color=col, mono=True)
+        label(ax, cx + (r + 0.75) * math.cos(ang), cy + (r + 0.75) * math.sin(ang), f"[{i}]", size=9, color=MUTED, mono=True)
+    ax.add_patch(FancyArrowPatch((cx + 0.5, cy + 0.9), (cx + 0.9, cy - 0.5), connectionstyle="arc3,rad=-0.4",
+                                 arrowstyle="-|>", mutation_scale=14, color=MUTED, linewidth=1.3))
+    label(ax, cx, cy, "items move\nclockwise", size=9, color=MUTED)
+    label(ax, 5.9, 4.1, "capacity 6, holding 2, 3, 4, 5", ha="left", size=9.5)
+    label(ax, 5.9, 3.6, "head = 4 (oldest: 2)", ha="left", size=9.5)
+    label(ax, 5.9, 3.1, "tail = (4 + 4) % 6 = 2", ha="left", size=9.5)
+    label(ax, 5.9, 2.6, "4 and 5 wrapped round", ha="left", size=9.5)
+    label(ax, 5.9, 2.1, "to slots 0 and 1", ha="left", size=9.5)
+    return f
+
+
+@fig("sliding-max")
+def sliding_max():
+    from collections import deque
+    f, ax = diag.canvas(11, 4.6)
+    nums = [1, 3, -1, -3, 5, 3, 6, 7]
+    cells(ax, 0.3, 3.75, nums, w=0.8, color=GREY, idx="auto", idx_y=3.55 + 0.9)
+    k, dq, row = 3, deque(), 0
+    for i, x in enumerate(nums):
+        while dq and nums[dq[-1]] <= x:
+            dq.pop()
+        dq.append(i)
+        if dq[0] <= i - k:
+            dq.popleft()
+        if i >= k - 1:
+            y = 3.05 - row * 0.5
+            ax.add_patch(Rectangle((0.3 + (i - k + 1) * 0.8 - 0.03, y), k * 0.8 - 0.03, 0.36, facecolor=SOFT[BLUE], edgecolor=BLUE, linewidth=1))
+            label(ax, 0.3 + (i - k + 1) * 0.8 + k * 0.4, y + 0.18, "window", size=8, color=MUTED)
+            label(ax, 7.0, y + 0.18, "deque: " + ", ".join(str(nums[j]) for j in dq), ha="left", size=9.5, mono=True)
+            label(ax, 10.9, y + 0.18, f"max {nums[dq[0]]}", ha="right", size=9.5, bold=True)
+            row += 1
+    return f
+
+
+@fig("lru-cache")
+def lru_cache_fig():
+    f, ax = diag.canvas(11.5, 4.4)
+    label(ax, 0.3, 4.1, "dict: key → node", bold=True, size=10, ha="left")
+    for i, k in enumerate(["a", "b", "c"]):
+        sbox(ax, 0.3, 3.15 - i * 0.6, 0.6, 0.48, k, color=GREY, mono=True)
+    def dll(y, order, hl):
+        xs = [2.6 + i * 1.7 for i in range(len(order))]
+        for x, v in zip(xs, order):
+            sent = v in ("head", "tail")
+            sbox(ax, x, y, 1.1, 0.55, v, color=GREY if sent else (ORANGE if v == hl else BLUE), mono=not sent, fontsize=9.5 if sent else 11)
+        for a, b in zip(xs, xs[1:]):
+            arrow(ax, a + 1.12, y + 0.38, b - 0.02, y + 0.38, lw=1.1)
+            arrow(ax, b - 0.02, y + 0.17, a + 1.12, y + 0.17, lw=1.1, color=MUTED)
+        return xs
+    xs = dll(2.6, ["head", "a", "b", "c", "tail"], None)
+    for i, k in enumerate(["a", "b", "c"]):
+        ax.add_patch(FancyArrowPatch((0.92, 3.39 - i * 0.6), (xs[i + 1] + 0.55, 3.18), connectionstyle="arc3,rad=-0.15",
+                                     arrowstyle="-|>", mutation_scale=11, color=GREY, linewidth=1))
+    label(ax, xs[1] + 0.55, 2.3, "least recent\n(evicted first)", size=9, color=MUTED)
+    label(ax, xs[3] + 0.55, 2.3, "most recent", size=9, color=MUTED)
+    label(ax, 0.3, 1.35, "after get(a):", bold=True, size=10, ha="left")
+    dll(0.75, ["head", "b", "c", "a", "tail"], "a")
+    label(ax, 2.6, 0.25, "unlink a's node, re-insert it before tail: a few pointer changes, O(1)", ha="left", size=9.5, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

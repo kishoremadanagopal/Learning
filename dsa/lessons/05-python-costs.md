@@ -95,6 +95,18 @@ for n in [1_000, 2_000, 4_000]:
 
 The list version roughly quadruples each time n doubles (O(n²) overall); the set version roughly doubles (O(n)). Timings bounce around a bit from run to run; the trend is what counts. For careful measurements, the `timeit` module repeats a statement many times and reports the best.
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| list index, append, pop() | direct access at the end | O(1) (append amortised) | — |
+| list insert(0), pop(0), `in`, remove | shift items or scan | O(n) | — |
+| dict / set lookup, insert, delete | hash table | O(1) average, O(n) worst | O(n) |
+| String concatenation in a loop | build a list and `''.join` it once | O(n) with join, O(n²) with += | O(n) |
+| deque appendleft / popleft | double-ended queue | O(1) | O(n) |
+| sorted(), list.sort() | Timsort | O(n log n) | O(n) |
+| Items in both lists | turn one list into a set, then filter the other | O(n + m) | O(n) |
+
 ## Common mistakes
 
 - Using `pop(0)` or `insert(0, x)` on a big list in a loop. Use a deque.

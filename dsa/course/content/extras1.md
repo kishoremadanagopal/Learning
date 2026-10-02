@@ -13,6 +13,11 @@ mistakes:
 - Printing the answer instead of returning it. Tests see None.
 - Starting a "smallest so far" at 0 instead of the first item, which breaks on lists without 0.
 - Testing only the example in the question and forgetting edge cases like an empty list.
+glance:
+- Data structure | a way to organise data so the operations you need are fast | depends on the structure | O(n) to store n items
+- Algorithm | exact steps that turn an input into the right output | measured with Big-O | extra memory it needs
+- Smallest number | one pass, remembering the smallest so far | O(n) | O(1)
+- Duplicate check (brute force vs set) | compare every pair, or remember seen items in a set | O(n²) vs O(n) | O(1) vs O(n)
 
 @@ problem-solving
 topics: the 6-step method, understanding the problem, examples and edge cases, brute force first, spotting the pattern, planning in pseudocode, testing, clue words
@@ -28,6 +33,11 @@ mistakes:
 - Skipping the brute force and getting stuck chasing a clever solution.
 - Not stating the time and space cost at the end; interviewers expect it.
 - Staying silent in an interview. Say your reasoning out loud.
+glance:
+- 6-step method | understand → examples → brute force → pattern → plan → code and test | (thinking, not running) | —
+- Contains duplicate | add to a set; stop when an item is already in it | O(n) | O(n)
+- Contains duplicate (low memory) | sort, then compare neighbours | O(n log n) | O(1) extra (in place)
+- Second largest | one pass tracking the largest and second largest distinct values | O(n) | O(1)
 
 @@ big-o
 topics: Big-O notation, counting steps, dropping constants and lower terms, O(1) O(log n) O(n) O(n log n) O(n²) O(2ⁿ), loops that add vs multiply, halving, hidden loops
@@ -47,6 +57,14 @@ mistakes:
 - Keeping constants or smaller terms, like writing O(2n) or O(n² + n).
 - Calling two loops one after the other O(n²). Only nested loops multiply.
 - Missing hidden loops such as `in`, `index`, `min`, slicing or sorting inside a loop.
+glance:
+- O(1) constant | same work whatever the size: indexing, dict lookup | O(1) | —
+- O(log n) logarithmic | halve the problem each step: binary search | O(log n) | —
+- O(n) linear | touch each item once: one loop | O(n) | —
+- O(n log n) | sort, or split in halves and do linear work per level | O(n log n) | —
+- O(n²) quadratic | a loop inside a loop over the same data | O(n²) | —
+- O(2ⁿ), O(n!) | try every subset or every ordering | O(2ⁿ), O(n!) | —
+- Sum 1..n | formula n(n+1)/2 instead of a loop | O(1) | O(1)
 
 @@ space-and-cases
 topics: space complexity, extra vs input memory, in-place algorithms, the call stack, best/average/worst case, amortised analysis, list growth
@@ -64,6 +82,12 @@ mistakes:
 - Forgetting that building a new list, set or dict costs O(n) extra space.
 - Assigning `nums = ...` inside a function and expecting the caller's list to change.
 - Quoting only the best case. Give the worst case unless asked otherwise.
+glance:
+- Space complexity | count the extra memory that grows with the input | — | O(1), O(n)…
+- Best / average / worst case | analyse the input that is fastest, typical and slowest | e.g. linear search O(1) / O(n) / O(n) | —
+- Amortised cost | average over a long run of operations (list append) | amortised O(1) per append | O(n) total
+- Reverse in place | swap the ends and move two pointers inwards | O(n) | O(1)
+- Linear search | check each item until found | O(n) worst, O(1) best | O(1)
 
 @@ python-costs
 topics: cost of list, dict, set and string operations, insert/pop at the front, slicing copies, hashable keys, deque, timing with perf_counter, doubling experiments
@@ -79,3 +103,11 @@ mistakes:
 - Checking `x in some_list` inside a loop instead of using a set.
 - Deleting items from a list one by one in a loop instead of building a filtered list.
 - Building a big string with + in a loop instead of collecting parts and joining.
+glance:
+- list index, append, pop() | direct access at the end | O(1) (append amortised) | —
+- list insert(0), pop(0), `in`, remove | shift items or scan | O(n) | —
+- dict / set lookup, insert, delete | hash table | O(1) average, O(n) worst | O(n)
+- String concatenation in a loop | build a list and `''.join` it once | O(n) with join, O(n²) with += | O(n)
+- deque appendleft / popleft | double-ended queue | O(1) | O(n)
+- sorted(), list.sort() | Timsort | O(n log n) | O(n)
+- Items in both lists | turn one list into a set, then filter the other | O(n + m) | O(n)

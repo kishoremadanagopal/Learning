@@ -77,6 +77,15 @@ print(find_max([3, 8, 2, 8, 5]))
 print(find_max([-7, -3, -9]))
 ```
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Data structure | a way to organise data so the operations you need are fast | depends on the structure | O(n) to store n items |
+| Algorithm | exact steps that turn an input into the right output | measured with Big-O | extra memory it needs |
+| Smallest number | one pass, remembering the smallest so far | O(n) | O(1) |
+| Duplicate check (brute force vs set) | compare every pair, or remember seen items in a set | O(n²) vs O(n) | O(1) vs O(n) |
+
 ## Common mistakes
 
 - Printing the answer instead of returning it. Tests see None.

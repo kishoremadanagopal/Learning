@@ -1,6 +1,6 @@
 # Data Structures and Algorithms in Python
 
-A hands-on DSA course for complete beginners: 14 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
+A hands-on DSA course for complete beginners: 20 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
 
 Every exercise is checked like a coding-interview site: **hidden test cases** (including the tricky edge cases) and a **speed check** that tells you when a correct answer is too slow. When you're stuck, a help ladder takes you from a **step-by-step approach**, through **three hints**, to a full **walkthrough** with a trace table that shows the code running.
 
@@ -10,9 +10,9 @@ Data structures and algorithms are part of the shared core for both the **AI eng
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with the whole standard library: `collections`, `heapq`, `bisect`, `functools` and more. Nothing to install, no sign-up.
 
-- every lesson, with **47 examples** you can run and change
-- **28 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
-- **56 quiz questions**, with explanations
+- every lesson, with **78 examples** you can run and change
+- **41 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
+- **80 quiz questions**, with explanations
 - a diagram for every data structure and pattern
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 14 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 20 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every DSA term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | Big-O of every operation, the 6-step problem-solving method, and a "clue words → pattern" table |
 
@@ -63,6 +63,17 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 |---|---|---|---|
 | 13 | [How hash tables work](lessons/13-hash-tables.md) | hash functions, buckets, collisions, separate chaining vs open addressing, load factor and resizing, average O(1) vs worst O(n), hash randomisation, hashable keys, building a hash map | 25 |
 | 14 | [Hashing patterns: counting, Two Sum, grouping](lessons/14-hashing-patterns.md) | counting with Counter and dict.get, first unique character, Two Sum with complements, grouping with defaultdict, choosing a key, prefix sums with a hash map, longest consecutive sequence, pattern summary | 26–28 |
+
+### Part 4: Linked Lists, Stacks and Queues (Beginner)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 15 | [Linked lists](lessons/15-linked-lists.md) | nodes and pointers, traversal, insert and delete, the dummy (sentinel) node, tail pointers, doubly and circular linked lists, linked list vs array | 29–30 |
+| 16 | [Linked list patterns: reverse, fast and slow pointers, merge](lessons/16-linked-list-patterns.md) | reversing in place, recursion vs iteration, fast and slow pointers, the middle node, Floyd's cycle detection and cycle start, merging sorted lists, a gap of k, palindrome lists | 31–33 |
+| 17 | [Stacks](lessons/17-stacks.md) | last in first out, lists as stacks, matching brackets, a min stack, reverse Polish notation, shunting-yard, the call stack and recursion | 34–36 |
+| 18 | [Monotonic stacks: next greater element](lessons/18-monotonic-stack.md) | monotonic stacks, next greater and next smaller element, previous greater (stock span), largest rectangle in a histogram, trapping rain water, amortised O(n) | 37–38 |
+| 19 | [Queues, circular buffers and deques](lessons/19-queues-deques.md) | first in first out, collections.deque, why not list.pop(0), bounded deques, circular buffers, a queue from two stacks, amortised O(1), the monotonic deque, other kinds of queue | 39–40 |
+| 20 | [Designing a data structure: the LRU cache](lessons/20-lru-cache.md) | caches and eviction, LRU design with a hash map and a doubly linked list, OrderedDict, functools.lru_cache and cache, LFU caches, how to approach design questions | 41 |
 
 ## Running it on your own computer
 

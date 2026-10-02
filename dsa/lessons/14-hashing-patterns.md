@@ -138,6 +138,16 @@ print(longest_consecutive([100, 4, 200, 1, 3, 2]))    # 1, 2, 3, 4
 | "consecutive", "is it present" | set membership | value (set) |
 | "first unique", "first repeated" | count, then scan in order | item → count |
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Counting | Counter or dict.get(x, 0) + 1 | O(n) | O(k) distinct items |
+| Two Sum | for each x, look up target − x among numbers already seen | O(n) | O(n) |
+| Group anagrams | key = sorted letters; dict of lists | O(n·k log k) | O(n·k) |
+| Subarray sum equals k | count earlier prefix sums equal to current − k | O(n) | O(n) |
+| Longest consecutive sequence | set; start counting only at numbers whose x − 1 is missing | O(n) | O(n) |
+
 ## Common mistakes
 
 - Storing a number before checking its complement, so it pairs with itself.
@@ -423,4 +433,4 @@ def count_subarrays(nums, k):
 </details>
 
 ---
-Previous: [Lesson 13](13-hash-tables.md) · Back to the [course home](../README.md)
+Previous: [Lesson 13](13-hash-tables.md) · Next: [Lesson 15: Linked lists](15-linked-lists.md)

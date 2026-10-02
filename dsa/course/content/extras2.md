@@ -13,6 +13,11 @@ mistakes:
 - Using `nums[i + 1]` in a loop that runs to `len(nums)`, which reads past the end.
 - Forgetting `k %= n` when rotating, so k larger than the length breaks the code.
 - Using `max(prices) - min(prices)` when order matters (buy before sell).
+glance:
+- Index access | address = start + index × size | O(1) | —
+- Insert / delete in the middle | shift the items after it | O(n) | O(1)
+- Best time to buy and sell | track the cheapest price so far and today's profit | O(n) | O(1)
+- Rotate by k in place | reverse all, then reverse the first k and the rest | O(n) | O(1)
 
 @@ two-pointers
 topics: opposite-ends pointers, pair sum in a sorted array, palindromes, read/write pointers, removing duplicates and zeros in place, merging sorted lists, why each move is safe
@@ -28,6 +33,11 @@ mistakes:
 - Letting the two pointers meet and pairing an item with itself (`while left <= right` instead of `<`).
 - Comparing with the previous item instead of the last kept item when removing duplicates.
 - Forgetting to add the leftovers after one list runs out while merging.
+glance:
+- Pair sum in a sorted array | pointers at both ends; move the one that fixes the sum | O(n) | O(1)
+- Palindrome check | compare from both ends towards the middle | O(n) | O(1)
+- Remove duplicates in place | write pointer + read pointer | O(n) | O(1)
+- Merge two sorted lists | one pointer per list, take the smaller | O(n + m) | O(n + m) for the result
 
 @@ sliding-window
 topics: fixed-size windows, variable windows that grow and shrink, the template, why it's O(n), longest substring without repeats, shortest subarray with a target sum, when windows don't work
@@ -44,6 +54,10 @@ mistakes:
 - Starting the best value at 0 when all values could be negative.
 - Moving the left pointer backwards (the "abba" bug).
 - Using a sliding window with negative numbers for "sum at least target"; use prefix sums instead.
+glance:
+- Fixed-size window (best k in a row) | add the new item, subtract the one leaving | O(n) | O(1)
+- Variable window (longest substring without repeats) | grow the right edge; shrink the left until valid | O(n) | O(k) distinct items
+- Window template | expand → while invalid: shrink → record answer | O(n) (each item enters and leaves once) | depends on the window state
 
 @@ prefix-sums
 topics: prefix-sum arrays, O(1) range sums, the leading zero, running left sums, pivot index, difference arrays for range updates, 2-D prefix sums
@@ -59,6 +73,11 @@ mistakes:
 - Off-by-one errors from leaving out the leading 0, or using prefix[j] instead of prefix[j + 1].
 - Rebuilding the prefix array for every query.
 - Comparing the pivot after adding the current number to the left sum.
+glance:
+- Prefix sums | prefix[i] = sum of the first i items; a range sum is a difference | O(n) build, O(1) per query | O(n)
+- Pivot index | left sum vs total − left − current | O(n) | O(1)
+- Difference array | +v at start, −v after end; prefix-sum once at the end | O(1) per update, O(n) to finish | O(n)
+- 2-D prefix sums | inclusion–exclusion on a grid | O(r·c) build, O(1) per query | O(r·c)
 
 @@ matrices
 topics: grids as lists of lists, rows and columns, the aliasing trap, direction lists and bounds checks, transpose and rotate, zip(*grid), spiral order, searching a sorted matrix
@@ -74,6 +93,12 @@ mistakes:
 - Mixing up rows and columns (grid[c][r]) or the lengths (len(grid) is the number of rows).
 - Code that only works for square grids.
 - Forgetting the bounds check when visiting neighbours.
+glance:
+- Grid neighbours | loop over a list of (dr, dc) directions with bounds checks | O(1) per cell | O(1)
+- Transpose | swap m[r][c] with m[c][r] above the diagonal | O(n²) | O(1) in place
+- Rotate 90° clockwise | transpose, then reverse each row | O(n²) | O(1) in place
+- Spiral order | shrink four boundaries: top, right, bottom, left | O(r·c) | O(1) extra
+- Search a sorted matrix | start top-right; go left or down | O(r + c) | O(1)
 
 @@ strings
 topics: immutability, building strings with join, characters and ord/chr, counting letters, anagrams by sorting or counting, split and join, run-length encoding, reversing words
@@ -89,6 +114,12 @@ mistakes:
 - Building a big string with + in a loop instead of collecting parts and joining.
 - Using `split(" ")`, which keeps empty strings between double spaces; `split()` handles any whitespace.
 - Forgetting to output the last run when encoding runs.
+glance:
+- Build a string | append pieces to a list, `''.join` once | O(n) | O(n)
+- Characters as numbers | `ord`/`chr`, counts in an array of 26 | O(1) per char | O(1) for a fixed alphabet
+- Anagram check | sort both, or compare Counters | O(n log n) or O(n) | O(n)
+- Run-length encoding | count runs of equal characters in one pass | O(n) | O(n)
+- Reverse the words | split, reverse the list, join | O(n) | O(n)
 
 @@ string-matching
 topics: substring search, naive O(n·m) matching, KMP and the LPS failure table, Rabin-Karp and rolling hashes, collisions, choosing a method, other algorithms
@@ -106,3 +137,8 @@ mistakes:
 - Trusting a Rabin-Karp hash match without comparing the strings.
 - Restarting the LPS length at 0 after a mismatch instead of falling back to lps[length − 1].
 - Writing your own search in production code when `in` and `find` already do it fast.
+glance:
+- Naive matching | try the pattern at every position | O(n·m) | O(1)
+- KMP | prefix (failure) table lets the scan never move backwards | O(n + m) | O(m)
+- Rabin-Karp | rolling hash of each window; compare text only when hashes match | O(n + m) average, O(n·m) worst | O(1)
+- Python `in` / `str.find` | optimised built-in search | about O(n) in practice | O(1)

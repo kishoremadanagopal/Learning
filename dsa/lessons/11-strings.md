@@ -83,6 +83,16 @@ print(is_anagram_sort("listen", "silent"), is_anagram_count("rat", "car"))
 
 All of these are O(n): they look at the whole string.
 
+## At a glance
+
+| Concept | Approach | Time | Space |
+|---|---|---|---|
+| Build a string | append pieces to a list, `''.join` once | O(n) | O(n) |
+| Characters as numbers | `ord`/`chr`, counts in an array of 26 | O(1) per char | O(1) for a fixed alphabet |
+| Anagram check | sort both, or compare Counters | O(n log n) or O(n) | O(n) |
+| Run-length encoding | count runs of equal characters in one pass | O(n) | O(n) |
+| Reverse the words | split, reverse the list, join | O(n) | O(n) |
+
 ## Common mistakes
 
 - Trying to assign to a character, like `s[0] = "x"`.
