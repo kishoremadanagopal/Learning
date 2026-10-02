@@ -161,7 +161,7 @@ JOIN orders o ON o.customer_id = c.id;</textarea>
       </section>
 
       <section class="panel">
-        <div class="side-h"><span class="label">Exercises</span><span class="pill" id="score">0 / 79 solved</span></div>
+        <div class="side-h"><span class="label">Exercises</span><span class="pill" id="score">0 / 113 solved</span></div>
         <ol class="ex-list" id="exercises"></ol>
         <div class="copy-row">
           <button id="copyAnswers">Copy my answers</button>
@@ -191,7 +191,7 @@ JOIN orders o ON o.customer_id = c.id;</textarea>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-asm.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.14.2/sql-asm.js"></script>
 <script>
 const SEED = `
 CREATE TABLE customers (id INTEGER PRIMARY KEY, name TEXT, city TEXT, age INTEGER);
@@ -379,7 +379,87 @@ const EXERCISES = [
   {t:"Project: each customer's share of total revenue as a percentage, rounded to 1 decimal place (only customers with orders).", tag:"Project",
    a:"SELECT c.name,\n  ROUND(100.0 * SUM(o.amount) / (SELECT SUM(amount) FROM orders), 1) AS pct_of_revenue\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
   {t:"Project: names of customers who placed orders in more than one different month.", tag:"Project",
-   a:"SELECT c.name\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name\nHAVING COUNT(DISTINCT strftime('%Y-%m', o.order_date)) > 1;"}
+   a:"SELECT c.name\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name\nHAVING COUNT(DISTINCT strftime('%Y-%m', o.order_date)) > 1;"},
+  {t:"The customer with the longest name: name and its length.", tag:"ORDER BY expression",
+   a:"SELECT name, LENGTH(name) AS name_length\nFROM customers\nORDER BY LENGTH(name) DESC, name\nLIMIT 1;"},
+  {t:"The name and age of the second-oldest customer, using LIMIT with OFFSET.", tag:"OFFSET",
+   must:/\boffset\b/i, mustMsg:"Use <code>LIMIT 1 OFFSET 1</code> to skip the oldest customer and take the next one.",
+   a:"SELECT name, age\nFROM customers\nORDER BY age DESC\nLIMIT 1 OFFSET 1;"},
+  {t:"Name and salary of employees earning between 60000 and 75000 (both included), lowest salary first.", tag:"BETWEEN", ordered:true,
+   a:"SELECT name, salary\nFROM employees\nWHERE salary BETWEEN 60000 AND 75000\nORDER BY salary;"},
+  {t:"Every pair of employees in the same department where the first earns more than the second: higher_paid, lower_paid, department.", tag:"Self join",
+   a:"SELECT a.name AS higher_paid, b.name AS lower_paid, a.department\nFROM employees a\nJOIN employees b\n  ON a.department = b.department\n AND a.salary > b.salary;"},
+  {t:"Give every employee a pay band using this CTE and a JOIN ... ON salary BETWEEN low AND high: WITH bands(band, low, high) AS (VALUES ('A', 90000, 999999), ('B', 70000, 89999), ('C', 0, 69999)). Show name, salary, band.", tag:"Non-equi join",
+   a:"WITH bands(band, low, high) AS (\n  VALUES ('A', 90000, 999999), ('B', 70000, 89999), ('C', 0, 69999)\n)\nSELECT e.name, e.salary, b.band\nFROM employees e\nJOIN bands b ON e.salary BETWEEN b.low AND b.high;"},
+  {t:"Names of customers who have placed an order over 200, using EXISTS.", tag:"EXISTS",
+   must:/\bexists\b/i, mustMsg:"Use <code>WHERE EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id AND ...)</code>.",
+   a:"SELECT c.name\nFROM customers c\nWHERE EXISTS (\n  SELECT 1 FROM orders o\n  WHERE o.customer_id = c.id AND o.amount > 200\n);"},
+  {t:"The top earner in each department (name, department, salary), using a correlated subquery instead of a window function.", tag:"Correlated subquery",
+   a:"SELECT e.name, e.department, e.salary\nFROM employees e\nWHERE e.salary = (\n  SELECT MAX(e2.salary)\n  FROM employees e2\n  WHERE e2.department = e.department\n);"},
+  {t:"Names of customers who have never placed an order, using NOT EXISTS.", tag:"NOT EXISTS",
+   must:/\bnot\s+exists\b/i, mustMsg:"Use <code>WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)</code>.",
+   a:"SELECT c.name\nFROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders o WHERE o.customer_id = c.id\n);"},
+  {t:"Each employee's name and salary in thousands, rounded DOWN to a whole number (60000 → 60), as salary_k.", tag:"FLOOR",
+   must:/\bfloor\s*\(/i, mustMsg:"Round down with <code>FLOOR(...)</code>.",
+   a:"SELECT name, FLOOR(salary / 1000.0) AS salary_k\nFROM employees;"},
+  {t:"Each department and its average salary rounded UP to the next whole thousand (62333.33 → 63000).", tag:"CEIL",
+   must:/\bceil(ing)?\s*\(/i, mustMsg:"Round up with <code>CEIL(...)</code>: divide by 1000, round up, then multiply by 1000.",
+   a:"SELECT department, CEIL(AVG(salary) / 1000.0) * 1000 AS avg_salary_rounded_up\nFROM employees\nGROUP BY department;"},
+  {t:"Name and years of employees with an even number of years.", tag:"% (modulo)",
+   a:"SELECT name, years\nFROM employees\nWHERE years % 2 = 0;"},
+  {t:"Each employee's name and how far their salary is from 70000, always as a positive number.", tag:"ABS",
+   must:/\babs\s*\(/i, mustMsg:"Use <code>ABS(salary - 70000)</code> to drop the minus sign.",
+   a:"SELECT name, ABS(salary - 70000) AS distance_from_70k\nFROM employees;"},
+  {t:"Each customer's name and a city code: the first three letters of their city in capitals (Fremont → FRE).", tag:"SUBSTR",
+   a:"SELECT name, UPPER(SUBSTR(city, 1, 3)) AS city_code\nFROM customers;"},
+  {t:"Each customer's name and their city with spaces replaced by underscores (San Jose → San_Jose).", tag:"REPLACE",
+   a:"SELECT name, REPLACE(city, ' ', '_') AS city_slug\nFROM customers;"},
+  {t:"Every customer's name and average order amount (total ÷ number of orders), using NULLIF so customers with no orders show NULL.", tag:"NULLIF",
+   must:/\bnullif\s*\(/i, mustMsg:"Divide by <code>NULLIF(COUNT(o.order_id), 0)</code>, which turns a zero count into NULL.",
+   a:"SELECT c.name,\n  SUM(o.amount) * 1.0 / NULLIF(COUNT(o.order_id), 0) AS avg_order\nFROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id\nGROUP BY c.name;"},
+  {t:"Each department and its employees' names in one text value, alphabetical and separated by a comma and a space (Alice, Carla, Hank).", tag:"GROUP_CONCAT",
+   a:"SELECT department, GROUP_CONCAT(name, ', ' ORDER BY name) AS names\nFROM employees\nGROUP BY department;"},
+  {t:"Each employee's name and half of their years as a decimal (3 years → 1.5).", tag:"Integer division",
+   a:"SELECT name, years / 2.0 AS half_years\nFROM employees;"},
+  {t:"Each order's product, order date, and the first day of that month (2026-01-25 → 2026-01-01).", tag:"Start of month",
+   a:"SELECT product, order_date, date(order_date, 'start of month') AS month_start\nFROM orders;"},
+  {t:"Product and date of orders placed on a weekend (Saturday or Sunday).", tag:"Day of week",
+   a:"SELECT product, order_date\nFROM orders\nWHERE strftime('%w', order_date) IN ('0', '6');"},
+  {t:"Upsert: add customer id 2 as Leo, Berkeley, 28, or if id 2 already exists, update the city and age instead. Use INSERT ... ON CONFLICT.", tag:"UPSERT", verify:"SELECT * FROM customers",
+   must:/on\s+conflict/i, mustMsg:"Use <code>INSERT ... ON CONFLICT (id) DO UPDATE SET ...</code>.",
+   a:"INSERT INTO customers (id, name, city, age)\nVALUES (2, 'Leo', 'Berkeley', 28)\nON CONFLICT (id) DO UPDATE\nSET city = excluded.city, age = excluded.age;"},
+  {t:"Create a table fremont_customers (id INTEGER PRIMARY KEY, name TEXT) and fill it with the customers who live in Fremont, using INSERT INTO ... SELECT.", tag:"INSERT SELECT", verify:"SELECT * FROM fremont_customers",
+   must:/insert\s+into\s+fremont_customers[\s\S]*select/i, mustMsg:"Fill the table with <code>INSERT INTO fremont_customers (id, name) SELECT ...</code>.",
+   a:"CREATE TABLE fremont_customers (id INTEGER PRIMARY KEY, name TEXT);\n\nINSERT INTO fremont_customers (id, name)\nSELECT id, name FROM customers WHERE city = 'Fremont';"},
+  {t:"The numbers 1 to 10, one per row, in a column called n, using a recursive CTE.", tag:"Recursive CTE", ordered:true,
+   must:/\brecursive\b/i, mustMsg:"Use <code>WITH RECURSIVE nums(n) AS (SELECT 1 UNION ALL SELECT n + 1 FROM nums WHERE n &lt; 10)</code>.",
+   a:"WITH RECURSIVE nums(n) AS (\n  SELECT 1\n  UNION ALL\n  SELECT n + 1 FROM nums WHERE n < 10\n)\nSELECT n FROM nums;"},
+  {t:"Every month from 2025-10 to 2026-03 (as year-month) with its total order amount, showing 0 for months with no orders, in month order.", tag:"Recursive CTE", ordered:true,
+   a:"WITH RECURSIVE months(m) AS (\n  SELECT '2025-10-01'\n  UNION ALL\n  SELECT date(m, '+1 month') FROM months WHERE m < '2026-03-01'\n)\nSELECT strftime('%Y-%m', m) AS month, COALESCE(SUM(o.amount), 0) AS total\nFROM months\nLEFT JOIN orders o ON strftime('%Y-%m', o.order_date) = strftime('%Y-%m', m)\nGROUP BY m\nORDER BY m;"},
+  {t:"Each employee's name, salary, and which half of the company they're in by salary (1 = top half, 2 = bottom half), using NTILE.", tag:"NTILE",
+   a:"SELECT name, salary,\n  NTILE(2) OVER (ORDER BY salary DESC) AS half\nFROM employees;"},
+  {t:"Each order's date, amount, and the average amount of that order and the two before it (by order_date, then order_id).", tag:"Window frame", ordered:true,
+   a:"SELECT order_date, amount,\n  AVG(amount) OVER (\n    ORDER BY order_date, order_id\n    ROWS BETWEEN 2 PRECEDING AND CURRENT ROW\n  ) AS moving_avg\nFROM orders\nORDER BY order_date, order_id;"},
+  {t:"Each employee's name, department, and salary as a percentage of their department's total salary, rounded to 1 decimal place.", tag:"Window %",
+   a:"SELECT name, department,\n  ROUND(100.0 * salary / SUM(salary) OVER (PARTITION BY department), 1) AS pct_of_dept\nFROM employees;"},
+  {t:"Each employee's name, department, and the name of the top earner in their department, using FIRST_VALUE.", tag:"FIRST_VALUE",
+   a:"SELECT name, department,\n  FIRST_VALUE(name) OVER (PARTITION BY department ORDER BY salary DESC) AS top_earner\nFROM employees;"},
+  {t:"The second-highest salary in the company, as one value called second_highest.", tag:"Interview",
+   a:"SELECT MAX(salary) AS second_highest\nFROM employees\nWHERE salary < (SELECT MAX(salary) FROM employees);"},
+  {t:"The third-highest distinct salary, using DENSE_RANK.", tag:"Interview",
+   must:/dense_rank/i, mustMsg:"Rank salaries with <code>DENSE_RANK() OVER (ORDER BY salary DESC)</code> in a CTE, then keep rank 3.",
+   a:"WITH ranked AS (\n  SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rnk\n  FROM employees\n)\nSELECT DISTINCT salary\nFROM ranked\nWHERE rnk = 3;"},
+  {t:"Order dates that appear more than once, with how many orders were placed that day.", tag:"Duplicates",
+   a:"SELECT order_date, COUNT(*) AS num_orders\nFROM orders\nGROUP BY order_date\nHAVING COUNT(*) > 1;"},
+  {t:"Pivot: list employee names in three columns, Engineering, Marketing and Sales, each sorted alphabetically, one name per department on each row (empty cells NULL).", tag:"Pivot", ordered:true,
+   a:"WITH numbered AS (\n  SELECT name, department,\n    ROW_NUMBER() OVER (PARTITION BY department ORDER BY name) AS rn\n  FROM employees\n)\nSELECT\n  MAX(CASE WHEN department = 'Engineering' THEN name END) AS Engineering,\n  MAX(CASE WHEN department = 'Marketing' THEN name END) AS Marketing,\n  MAX(CASE WHEN department = 'Sales' THEN name END) AS Sales\nFROM numbered\nGROUP BY rn\nORDER BY rn;"},
+  {t:"The median salary, without using a MEDIAN function.", tag:"Median",
+   must:/^(?![\s\S]*\bmedian\s*\()/i, mustMsg:"Work it out without <code>MEDIAN()</code>: number the salaries in order and average the middle one or two.",
+   a:"WITH ordered AS (\n  SELECT salary,\n    ROW_NUMBER() OVER (ORDER BY salary) AS rn,\n    COUNT(*) OVER () AS n\n  FROM employees\n)\nSELECT AVG(salary) AS median_salary\nFROM ordered\nWHERE rn IN ((n + 1) / 2, (n + 2) / 2);"},
+  {t:"Each month (year-month), its total order amount, and the change from the previous month, in month order.", tag:"Month over month", ordered:true,
+   a:"WITH monthly AS (\n  SELECT strftime('%Y-%m', order_date) AS month, SUM(amount) AS total\n  FROM orders\n  GROUP BY strftime('%Y-%m', order_date)\n)\nSELECT month, total,\n  total - LAG(total) OVER (ORDER BY month) AS change\nFROM monthly\nORDER BY month;"},
+  {t:"Names of customers who have orders and whose every order is under 500.", tag:"Every row",
+   a:"SELECT c.name\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name\nHAVING MAX(o.amount) < 500;"}
 ];
 
 let db = null, current = -1;
@@ -442,7 +522,17 @@ function friendlyHint(msg, q){
   if(/selects to the left and right of union do not have the same number/i.test(msg)) return `Both sides of a <code>UNION</code> must select the same number of columns, in the same order.`;
   if(/no such function: len$/i.test(msg)) return `This sandbox runs SQLite, which spells it <code>LENGTH()</code>. <code>LEN()</code> is the MSSQL spelling.`;
   if(/\bisnull\s*\(/i.test(q)) return `<code>ISNULL()</code> is MSSQL-only. Use <code>COALESCE(value, fallback)</code>, which works everywhere.`;
-  if(/no such function: (concat|getdate|top)$/i.test(msg)) return `That function is MSSQL-only. In SQLite, join text with <code>||</code>, like <code>name || ' - ' || city</code>.`;
+  if(/\bselect\s+top\s+\d/i.test(q)) return `<code>TOP</code> is MSSQL. In SQLite (and MySQL and PostgreSQL), put <code>LIMIT n</code> at the end of the query.`;
+  if(/no such function: ceiling$/i.test(msg)) return `This sandbox's SQLite spells it <code>CEIL(x)</code>. <code>CEILING</code> is the MSSQL spelling; MySQL, PostgreSQL and Oracle accept <code>CEIL</code> too.`;
+  if(/no such function: mod$/i.test(msg)) return `This sandbox's SQLite has no <code>MOD()</code>. Use the <code>%</code> operator instead: <code>years % 2</code> is the remainder after dividing by 2.`;
+  if(/no such function: (trunc|truncate)$/i.test(msg)) return `To cut off decimals here, use <code>CAST(x AS INTEGER)</code> (or <code>FLOOR(x)</code> for positive numbers). <code>TRUNCATE(x, d)</code> is MySQL and <code>TRUNC(x, d)</code> is Oracle and PostgreSQL.`;
+  if(/no such function: (left|right)$/i.test(msg)) return `SQLite has no <code>LEFT</code>/<code>RIGHT</code>. Use <code>SUBSTR(x, 1, n)</code> for the first n characters and <code>SUBSTR(x, -n)</code> for the last n.`;
+  if(/no such function: (lpad|rpad)$/i.test(msg)) return `SQLite has no <code>LPAD</code>/<code>RPAD</code>. Pad with <code>printf('%05d', x)</code>, or <code>SUBSTR('00000' || x, -5)</code>.`;
+  if(/no such function: (greatest|least)$/i.test(msg)) return `In SQLite, <code>MAX(a, b)</code> and <code>MIN(a, b)</code> with two or more values work like <code>GREATEST</code> and <code>LEAST</code>.`;
+  if(/no such function: ln$/i.test(msg)) return `This sandbox has no <code>LN()</code>: here <code>LOG(x)</code> is the natural log and <code>LOG10(x)</code> is base 10. Other databases differ, so check yours.`;
+  if(/no such function: regexp$/i.test(msg)) return `This sandbox's SQLite has no <code>REGEXP</code>. Use <code>LIKE</code>, or <code>GLOB</code> for character sets: <code>city GLOB '[AEIOU]*'</code> means "starts with a capital vowel".`;
+  if(/no such function: (date_trunc|extract|to_char|date_format|now|curdate|date_add|date_sub)$/i.test(msg)) return `That's another database's date function. In SQLite use <code>date('now')</code>, <code>strftime('%Y-%m', d)</code>, <code>date(d, 'start of month')</code> and <code>date(d, '+7 days')</code>.`;
+  if(/no such function: (nvl|isnull)$/i.test(msg)) return `Use <code>COALESCE(value, fallback)</code>, which works in every database. (<code>NVL</code> is Oracle and <code>ISNULL</code> is MSSQL.)`;
   if(/\bcase\b/i.test(q) && !/\bend\b/i.test(q)) return `Every <code>CASE</code> needs an <code>END</code> to close it, like <code>CASE WHEN ... THEN ... ELSE ... END AS label</code>.`;
   if(m.includes('sub-select returns') || m.includes('row value misused')) return `The subquery returns more than one column. A subquery used with <code>=</code>, <code>&gt;</code> or <code>IN</code> should select exactly one column.`;
   if(m.includes('ambiguous column')) return `Two tables share that column name, so say which one you mean, like <code>c.name</code> or <code>o.product</code>.`;
@@ -569,7 +659,12 @@ function check(){
 const GROUPS = [[0,'Lessons 1–4 · Single-table queries'],[10,'Lesson 5 · JOINs'],[16,'Lesson 6 · Subqueries'],[20,'Lesson 7 · CASE'],
   [30,'Lesson 8 · Handy functions'],[37,'Lesson 9 · Dates'],[43,'Lesson 10 · Changing data'],[49,'Lesson 11 · Building tables'],
   [54,'Lesson 12 · CTEs'],[58,'Lesson 13 · Window functions'],[64,'Lesson 14 · UNION'],[67,'Lesson 15 · Views and indexes'],
-  [70,'Lesson 16 · Transactions'],[71,'Lesson 17 · Final project']];
+  [70,'Lesson 16 · Transactions'],[71,'Lesson 17 · Final project'],
+  [79,'More practice · Lesson 2 · Sorting and filtering'],[82,'More practice · Lesson 5 · Self and non-equi joins'],
+  [84,'More practice · Lesson 6 · EXISTS and correlated subqueries'],[87,'More practice · Lesson 8 · Number, text and NULL functions'],
+  [96,'More practice · Lesson 9 · Dates'],[98,'More practice · Lesson 10 · Upsert and INSERT … SELECT'],
+  [100,'More practice · Lesson 12 · Recursive CTEs'],[102,'More practice · Lesson 13 · Window functions'],
+  [106,'Lesson 18 · Interview patterns']];
 function renderExercises(){
   $('exercises').innerHTML = EXERCISES.map((e,i)=>{ const g = GROUPS.find(x=>x[0]===i); return (g?`<li class="ex-group">${esc(g[1])}</li>`:'') + `<li class="ex${solved.has(i)?' done':''}${i===current?' active':''}">
     <button class="pick" data-i="${i}"><span class="ex-n">${solved.has(i)?'✓':String(i+1).padStart(2,'0')}</span>

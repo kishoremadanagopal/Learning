@@ -91,6 +91,21 @@ DROP TABLE reviews;                            -- structure and data, gone
 | `ALTER TABLE t ADD COLUMN email TEXT` | `ALTER TABLE t ADD email VARCHAR(100)` |
 | foreign keys need `PRAGMA foreign_keys = ON` (the sandbox has it on) | always enforced |
 
+## Data types and auto-numbering in every database
+
+| Kind | SQLite | MySQL | PostgreSQL | MSSQL | Oracle |
+|---|---|---|---|---|---|
+| whole number | `INTEGER` | `INT`, `BIGINT` | `INTEGER`, `BIGINT` | `INT`, `BIGINT` | `NUMBER(10)` |
+| exact decimal (money) | `REAL` (approximate!) | `DECIMAL(10,2)` | `NUMERIC(10,2)` | `DECIMAL(10,2)` | `NUMBER(10,2)` |
+| text | `TEXT` | `VARCHAR(n)`, `TEXT` | `VARCHAR(n)`, `TEXT` | `VARCHAR(n)`, `NVARCHAR(n)` | `VARCHAR2(n)` |
+| date / date and time | `TEXT` | `DATE`, `DATETIME` | `DATE`, `TIMESTAMP` | `DATE`, `DATETIME2` | `DATE` (includes time), `TIMESTAMP` |
+| true/false | `INTEGER` 0/1 | `BOOLEAN` (stored as 0/1) | `BOOLEAN` | `BIT` | `BOOLEAN` (26ai), `NUMBER(1)` before |
+| auto-numbered id | `INTEGER PRIMARY KEY` | `INT AUTO_INCREMENT PRIMARY KEY` | `INT GENERATED ALWAYS AS IDENTITY` (older: `SERIAL`) | `INT IDENTITY(1,1)` | `NUMBER GENERATED ALWAYS AS IDENTITY` |
+
+- `CREATE TABLE IF NOT EXISTS` and `DROP TABLE IF EXISTS` avoid errors when you re-run a script. They work in SQLite, MySQL and PostgreSQL, in MSSQL 2016+ (`DROP ... IF EXISTS` only) and in Oracle from 23ai.
+- SQLite normally lets you store text in an `INTEGER` column. Add `STRICT` after the closing bracket (`CREATE TABLE t (...) STRICT;`, SQLite 3.37+) to make it reject the wrong type, as other databases do.
+- `GENERATED ALWAYS AS IDENTITY` is the SQL-standard way to auto-number, and the one to learn for PostgreSQL and Oracle today.
+
 ## Exercises
 
 1. Create a table `products`: `product_id` (integer, primary key), `name` (text, required), `price` (decimal number).

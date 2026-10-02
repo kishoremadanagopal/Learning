@@ -144,9 +144,10 @@ HAVING COUNT(DISTINCT strftime('%Y-%m', o.order_date)) > 1;
 
 You've finished the course. Some ways to keep going:
 
+- **Learn the interview patterns.** [Lesson 18](18-interview-patterns.md) covers the questions HackerRank, LeetCode and interviewers ask most, and [Lesson 19](19-sql-dialects-2026.md) the differences between today's databases.
 - **Practice on bigger data.** Sites like SQLZoo, LeetCode (Database problems), and HackerRank (SQL) have hundreds of graded exercises.
 - **Install a real database.** SQL Server Express and SQL Server Management Studio (SSMS) are free, and the [Lesson 16 cheat sheet](16-mssql-transactions.md) covers the differences you'll hit.
 - **Use your own data.** Import a spreadsheet you care about into a database and ask it questions.
 
 ---
-Previous: [Lesson 16](16-mssql-transactions.md) · Back to the [course home](../README.md)
+Previous: [Lesson 16](16-mssql-transactions.md) · Next: [Lesson 18: Interview and HackerRank patterns](18-interview-patterns.md)

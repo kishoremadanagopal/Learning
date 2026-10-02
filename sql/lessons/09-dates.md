@@ -1,6 +1,6 @@
 # Lesson 9: Dates
 
-**You'll learn:** date formats, filtering by date, pulling out the year and month, grouping by month, and date math, in SQLite and MSSQL.
+**You'll learn:** date formats, filtering by date, pulling out the year, month and weekday, grouping by month, the start of a month, today's date, and date math, in SQLite with MySQL, PostgreSQL, MSSQL and Oracle side by side.
 
 ## Key terms
 
@@ -91,6 +91,58 @@ GROUP BY c.name;
 
 To format the result, wrap the format *around* the `MIN`: `FORMAT(MIN(o.order_date), 'yyyy-MM-dd')` in MSSQL, `TO_CHAR(MIN(o.order_date), 'YYYY-MM-DD')` in Oracle.
 
+## More date tools
+
+| Want | SQLite | Example → Result |
+|---|---|---|
+| today | `date('now')` or `CURRENT_DATE` | `2026-10-02` |
+| now (date and time, UTC) | `datetime('now')` or `CURRENT_TIMESTAMP` | `2026-10-02 11:30:00` |
+| first day of the month | `date(d, 'start of month')` | `2026-01-25` → `2026-01-01` |
+| last day of the month | `date(d, 'start of month', '+1 month', '-1 day')` | `2026-02-14` → `2026-02-28` |
+| day of the week | `strftime('%w', d)` (0 = Sunday … 6 = Saturday) | `2026-01-10` → `'6'` |
+| day of the year | `strftime('%j', d)` | `2026-03-01` → `'060'` |
+| week of the year | `strftime('%W', d)` | |
+| add a month | `date(d, '+1 month')` | |
+
+Grouping by `date(order_date, 'start of month')` gives a real date for each month, which sorts and joins better than the text `'2026-01'`.
+
+Weekend orders:
+
+```sql
+SELECT product, order_date FROM orders
+WHERE strftime('%w', order_date) IN ('0', '6');      -- Desk, Chair, Monitor, Keyboard
+```
+
+### Someone's age in whole years
+
+Subtracting years isn't enough: someone born in December isn't a year older in January. Compare the month and day too:
+
+```sql
+SELECT strftime('%Y', 'now') - strftime('%Y', '1990-12-15')
+     - (strftime('%m-%d', 'now') < '12-15') AS age;
+```
+
+The last part is 1 (true) when this year's birthday hasn't happened yet, so it subtracts one year.
+
+## Dates in every database
+
+This is where databases differ most, so look up your database's version when you switch.
+
+| Want | SQLite | MySQL | PostgreSQL | MSSQL | Oracle |
+|---|---|---|---|---|---|
+| today | `date('now')` | `CURDATE()` | `CURRENT_DATE` | `CAST(GETDATE() AS DATE)` | `TRUNC(SYSDATE)` |
+| year (number) | `CAST(strftime('%Y', d) AS INTEGER)` | `YEAR(d)` | `EXTRACT(YEAR FROM d)` | `YEAR(d)` | `EXTRACT(YEAR FROM d)` |
+| month start | `date(d, 'start of month')` | `DATE_FORMAT(d, '%Y-%m-01')` | `DATE_TRUNC('month', d)` | `DATETRUNC(month, d)` (2022+) | `TRUNC(d, 'MM')` |
+| year-month text | `strftime('%Y-%m', d)` | `DATE_FORMAT(d, '%Y-%m')` | `TO_CHAR(d, 'YYYY-MM')` | `FORMAT(d, 'yyyy-MM')` | `TO_CHAR(d, 'YYYY-MM')` |
+| add 30 days | `date(d, '+30 days')` | `DATE_ADD(d, INTERVAL 30 DAY)` | `d + INTERVAL '30 days'` | `DATEADD(day, 30, d)` | `d + 30` |
+| days between | `julianday(b) - julianday(a)` | `DATEDIFF(b, a)` | `b - a` (dates) | `DATEDIFF(day, a, b)` | `b - a` |
+| weekday name | `CASE strftime('%w', d) ...` | `DAYNAME(d)` | `TO_CHAR(d, 'Day')` | `DATENAME(weekday, d)` | `TO_CHAR(d, 'Day')` |
+| last day of month | see above | `LAST_DAY(d)` | `DATE_TRUNC('month', d) + INTERVAL '1 month - 1 day'` | `EOMONTH(d)` | `LAST_DAY(d)` |
+
+⚠️ **The order of `DATEDIFF`'s arguments flips:** MySQL is `DATEDIFF(end, start)`, MSSQL is `DATEDIFF(unit, start, end)`. Getting it backwards makes every answer negative.
+
+Oracle AI Database 26ai adds MSSQL-style `DATEADD` and `DATEDIFF`, so the spellings are slowly converging.
+
 ## Debugging tip
 
 When a query runs but returns nothing, put the expression in `SELECT` to see what it actually produces:
@@ -109,6 +161,13 @@ SELECT order_date, strftime('%Y-%M', order_date) FROM orders;   -- shows 2026-00
 6. Each order's product and how many days before 2026-03-31 it was placed.
 
 **In the sandbox:** exercises 38–43.
+
+### More practice
+
+7. Each order's product, order date, and the first day of that month.
+8. Product and date of orders placed on a weekend (Saturday or Sunday).
+
+**In the sandbox:** exercises 97–98.
 
 <details>
 <summary>Answers</summary>
@@ -141,6 +200,15 @@ GROUP BY c.name;
 -- 6  → Laptop 131, Mouse 119, …
 SELECT product, julianday('2026-03-31') - julianday(order_date) AS days_before
 FROM orders;
+
+-- 7  → Chair 2026-01-25 → 2026-01-01, ...
+SELECT product, order_date, date(order_date, 'start of month') AS month_start
+FROM orders;
+
+-- 8  → Desk, Chair, Monitor, Keyboard
+SELECT product, order_date
+FROM orders
+WHERE strftime('%w', order_date) IN ('0', '6');
 ```
 </details>
 

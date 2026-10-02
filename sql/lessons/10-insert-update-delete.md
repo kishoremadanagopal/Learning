@@ -1,6 +1,6 @@
 # Lesson 10: Changing data with INSERT, UPDATE and DELETE
 
-**You'll learn:** adding, changing, and removing rows, and the safety habits that go with them.
+**You'll learn:** adding, changing, and removing rows, the safety habits that go with them, copying rows with `INSERT ... SELECT`, "insert or update" (upsert), `RETURNING`, and `DELETE` vs `TRUNCATE` vs `DROP`.
 
 ## Key terms
 
@@ -9,6 +9,8 @@
 - **DELETE:** removes rows.
 - **SET:** the part of `UPDATE` that says what to change.
 - **Rows affected:** how many rows a change touched. Always check it.
+- **Upsert:** insert a row, or update it if it already exists.
+- **TRUNCATE:** empties a whole table in one fast step.
 
 ## Syntax
 
@@ -98,6 +100,73 @@ WHERE department = 'Marketing';
 
 Target rows by their **id** when you can (`WHERE order_id = 107`), since names can repeat.
 
+## INSERT ... SELECT: copy rows from a query
+
+Instead of `VALUES`, an `INSERT` can take the rows a `SELECT` returns. It's how you fill summary tables, archive old rows or copy data between tables:
+
+```sql
+CREATE TABLE fremont_customers (id INTEGER PRIMARY KEY, name TEXT);
+
+INSERT INTO fremont_customers (id, name)
+SELECT id, name FROM customers WHERE city = 'Fremont';      -- Maya, Priya
+```
+
+The `SELECT` must return the same number of columns, in the same order, as the column list.
+
+## Upsert: insert, or update if it's already there
+
+Inserting a row whose primary key already exists fails with a UNIQUE error. An **upsert** says what to do instead:
+
+```sql
+INSERT INTO customers (id, name, city, age)
+VALUES (2, 'Leo', 'Berkeley', 28)
+ON CONFLICT (id) DO UPDATE
+SET city = excluded.city, age = excluded.age;      -- Leo exists, so he's updated
+```
+
+`excluded` means "the row you tried to insert". `ON CONFLICT (id) DO NOTHING` skips the row instead. Every database has a version:
+
+| Database | Upsert |
+|---|---|
+| SQLite, PostgreSQL | `INSERT ... ON CONFLICT (id) DO UPDATE SET col = excluded.col` |
+| MySQL | `INSERT ... ON DUPLICATE KEY UPDATE col = VALUES(col)` (8.0.20+: `AS new ... col = new.col`) |
+| MSSQL, Oracle (also PostgreSQL 15+) | `MERGE INTO target USING source ON (...) WHEN MATCHED THEN UPDATE ... WHEN NOT MATCHED THEN INSERT ...` |
+
+## RETURNING: see what you changed
+
+`RETURNING` makes an `INSERT`, `UPDATE` or `DELETE` hand back the rows it touched, so you don't need a second `SELECT`:
+
+```sql
+UPDATE employees SET salary = salary + 5000
+WHERE department = 'Marketing'
+RETURNING name, salary;                 -- Emma 75000, Grace 67000
+```
+
+It works in SQLite, PostgreSQL and MariaDB; Oracle uses `RETURNING ... INTO`, and MSSQL uses `OUTPUT inserted.col` (or `deleted.col`). MySQL doesn't have it.
+
+## Changing rows based on another table
+
+Use a subquery in the `WHERE` (this works everywhere):
+
+```sql
+-- give a raise to employees whose department's average is under 65000
+UPDATE employees
+SET salary = salary + 1000
+WHERE department IN (
+  SELECT department FROM employees GROUP BY department HAVING AVG(salary) < 65000
+);
+```
+
+Most databases also allow a join in the update itself, but the spelling differs: `UPDATE ... FROM other WHERE ...` (SQLite 3.33+, PostgreSQL, MSSQL, Oracle 26ai), `UPDATE t JOIN other ON ... SET ...` (MySQL).
+
+## DELETE vs TRUNCATE vs DROP
+
+| Statement | Removes | Can use `WHERE` | Notes |
+|---|---|---|---|
+| `DELETE FROM t WHERE ...` | the matching rows | yes | slowest; can be rolled back |
+| `TRUNCATE TABLE t` | every row, keeps the table | no | fast; resets auto-numbering; not in SQLite (use `DELETE FROM t`) |
+| `DROP TABLE t` | the table itself, structure and all | no | Lesson 11 |
+
 ## In MSSQL
 
 - MSSQL reports **"(N rows affected)"** after each change. Always glance at that number.
@@ -114,6 +183,13 @@ Target rows by their **id** when you can (`WHERE order_id = 107`), since names c
 6. Delete every order with an amount under 50.
 
 **In the sandbox:** exercises 44–49. These are checked on a fresh copy of the data, so you can check as often as you like. In free practice your changes are real; press **Reset data** to undo them.
+
+### More practice
+
+7. Upsert: add customer id 2 as Leo, Berkeley, 28, or update his city and age if id 2 already exists. Use `INSERT ... ON CONFLICT`.
+8. Create a table `fremont_customers (id INTEGER PRIMARY KEY, name TEXT)` and fill it with the Fremont customers using `INSERT INTO ... SELECT`.
+
+**In the sandbox:** exercises 99–100.
 
 <details>
 <summary>Answers</summary>
@@ -138,6 +214,18 @@ DELETE FROM orders WHERE order_id = 107;
 
 -- 6  → removes Mouse (25) and Lamp (45)
 DELETE FROM orders WHERE amount < 50;
+
+-- 7  → Leo now lives in Berkeley and is 28; no new row
+INSERT INTO customers (id, name, city, age)
+VALUES (2, 'Leo', 'Berkeley', 28)
+ON CONFLICT (id) DO UPDATE
+SET city = excluded.city, age = excluded.age;
+
+-- 8  → Maya, Priya
+CREATE TABLE fremont_customers (id INTEGER PRIMARY KEY, name TEXT);
+
+INSERT INTO fremont_customers (id, name)
+SELECT id, name FROM customers WHERE city = 'Fremont';
 ```
 </details>
 

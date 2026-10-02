@@ -11,8 +11,8 @@
 
 <p align="center">
   <img alt="Courses: 4" src="https://img.shields.io/badge/courses-4-0e7466">
-  <img alt="Lessons: 124" src="https://img.shields.io/badge/lessons-124-2c679c">
-  <img alt="Exercises: 260" src="https://img.shields.io/badge/auto--checked%20exercises-260-e8b417">
+  <img alt="Lessons: 126" src="https://img.shields.io/badge/lessons-126-2c679c">
+  <img alt="Exercises: 294" src="https://img.shields.io/badge/auto--checked%20exercises-294-e8b417">
   <img alt="Price: free" src="https://img.shields.io/badge/price-free-2f7a45">
   <img alt="Setup: none" src="https://img.shields.io/badge/setup-none%2C%20runs%20in%20your%20browser-5b697b">
 </p>
@@ -30,8 +30,8 @@
   <tr>
     <td width="50%" valign="top">
       <h3>🗄️ Learn SQL from scratch</h3>
-      <p>Ask questions of a real database: filtering, grouping, joins, subqueries, CTEs, window functions and a final project.</p>
-      <p><b>18</b> lessons · <b>79</b> exercises · SQLite in the browser</p>
+      <p>Ask questions of a real database: filtering, grouping, joins, subqueries, CTEs, window functions, a final project, interview patterns and the differences between MySQL, PostgreSQL, MSSQL and Oracle.</p>
+      <p><b>20</b> lessons · <b>113</b> exercises · SQLite in the browser</p>
       <p>
         <a href="https://kishoremadanagopal.github.io/learning/sql/"><b>▶ Open the SQL sandbox</b></a><br>
         📘 <a href="sql/README.md#lessons">Lessons</a> ·
@@ -107,7 +107,7 @@ learning/
 ├── sql/                    🗄️ Learn SQL from scratch
 │   ├── README.md           course home: lesson list and how to use it
 │   ├── index.html          practice sandbox (real SQLite in the browser)
-│   ├── lessons/            18 lessons with exercises and answers
+│   ├── lessons/            20 lessons with exercises and answers
 │   ├── glossary.md         every term, A to Z
 │   └── cheatsheet.md       all the syntax on one page
 ├── python/                 🐍 Learn Python from scratch

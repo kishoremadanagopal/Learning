@@ -1,6 +1,6 @@
 # Lesson 5: JOINs, combining tables
 
-**You'll learn:** `JOIN ... ON`, table aliases, `LEFT`/`RIGHT`/`FULL OUTER`/`CROSS JOIN`, and `NULL`.
+**You'll learn:** `JOIN ... ON`, table aliases, `LEFT`/`RIGHT`/`FULL OUTER`/`CROSS JOIN`, `NULL`, self joins, joins on a range (non-equi joins) and `USING`.
 
 ## Key terms
 
@@ -12,6 +12,8 @@
 - **LEFT JOIN:** keeps every row of the first table, with NULL where nothing matches.
 - **Table alias:** a short name for a table, like `c` for `customers`.
 - **NULL:** "no value." Test for it with `IS NULL`, never `= NULL`.
+- **Self join:** a table joined to itself, using two different aliases.
+- **Non-equi join:** a join whose `ON` uses something other than `=`, like `BETWEEN`.
 
 ## Syntax
 
@@ -106,6 +108,47 @@ Clause order:
 SELECT → FROM → JOIN ... ON → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT
 ```
 
+## Self joins: a table joined to itself
+
+Sometimes the rows you need to compare are in the **same** table: pairs of employees in the same department, customers in the same city, a manager and the people who report to them. Join the table to itself, giving it two different aliases:
+
+```sql
+SELECT a.name AS higher_paid, b.name AS lower_paid, a.department
+FROM employees a
+JOIN employees b
+  ON a.department = b.department     -- same department
+ AND a.salary > b.salary;            -- a earns more than b
+```
+
+| higher_paid | lower_paid | department |
+|---|---|---|
+| Dev | Bob | Engineering |
+| Dev | Frank | Engineering |
+| Bob | Frank | Engineering |
+| Emma | Grace | Marketing |
+| … | … | … |
+
+`a.salary > b.salary` also stops each person being paired with themselves, and stops every pair appearing twice. To list pairs without comparing values, use `a.id < b.id` for the same effect. Classic uses: an `employees` table with a `manager_id` column (`JOIN employees m ON e.manager_id = m.id`), and HackerRank's *Symmetric Pairs*.
+
+## Non-equi joins: matching on a range
+
+`ON` doesn't have to use `=`. Any condition works, such as `BETWEEN`, which matches each row to a range in another table (a grade band, a tax bracket, a price tier):
+
+```sql
+WITH bands(band, low, high) AS (
+  VALUES ('A', 90000, 999999), ('B', 70000, 89999), ('C', 0, 69999)
+)
+SELECT e.name, e.salary, b.band
+FROM employees e
+JOIN bands b ON e.salary BETWEEN b.low AND b.high;     -- Dev A, Frank B, Alice C, ...
+```
+
+The `WITH bands(...) AS (VALUES ...)` part builds a small table on the fly (CTEs are Lesson 12). HackerRank's *The Report* is exactly this pattern: students joined to grades with `marks BETWEEN min_mark AND max_mark`.
+
+## USING and NATURAL JOIN
+
+When the key column has the **same name** in both tables, `JOIN orders USING (customer_id)` is a shorter `ON`. It works in SQLite, MySQL, PostgreSQL and Oracle (not MSSQL). Avoid `NATURAL JOIN`, which silently joins on every column with a matching name, so adding a column can change your results.
+
 ## In Oracle
 
 Oracle doesn't allow `AS` before a **table** alias: write `FROM customers c`, not `FROM customers AS c`. Writing aliases without `AS` works in every database.
@@ -120,6 +163,13 @@ Oracle doesn't allow `AS` before a **table** alias: write `FROM customers c`, no
 6. Each customer's name and total spent, highest first.
 
 **In the sandbox:** exercises 11–16.
+
+### More practice
+
+7. Every pair of employees in the same department where the first earns more than the second: higher_paid, lower_paid, department.
+8. Each employee's pay band, using the `bands` CTE above and `JOIN ... ON salary BETWEEN low AND high`.
+
+**In the sandbox:** exercises 83–84.
 
 <details>
 <summary>Answers</summary>
@@ -159,6 +209,21 @@ FROM customers c
 JOIN orders o ON o.customer_id = c.id
 GROUP BY c.name
 ORDER BY total_spent DESC;
+
+-- 7  → 7 pairs: Dev>Bob, Dev>Frank, Bob>Frank, Emma>Grace, Hank>Alice, Hank>Carla, Alice>Carla
+SELECT a.name AS higher_paid, b.name AS lower_paid, a.department
+FROM employees a
+JOIN employees b
+  ON a.department = b.department
+ AND a.salary > b.salary;
+
+-- 8  → A: Bob, Dev · B: Emma, Frank, Hank · C: Alice, Carla, Grace
+WITH bands(band, low, high) AS (
+  VALUES ('A', 90000, 999999), ('B', 70000, 89999), ('C', 0, 69999)
+)
+SELECT e.name, e.salary, b.band
+FROM employees e
+JOIN bands b ON e.salary BETWEEN b.low AND b.high;
 ```
 </details>
 

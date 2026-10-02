@@ -17,8 +17,8 @@
   <text x="60" y="186" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-3" fill="#e8edf2">Learning</text>
   <text x="64" y="236" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" fill="#93a0ae">Learn <tspan fill="#38bfa8" font-weight="700">SQL</tspan>, <tspan fill="#79aee0" font-weight="700">Python</tspan>, <tspan fill="#a99cf0" font-weight="700">pandas</tspan> and <tspan fill="#f5a25d" font-weight="700">Java</tspan> from scratch.</text>
   <g font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" fill="#93a0ae">
-    <text x="64" y="292"><tspan fill="#e8edf2" font-weight="700">124</tspan> lessons</text>
-    <text x="190" y="292"><tspan fill="#e8edf2" font-weight="700">260</tspan> auto-checked exercises</text>
+    <text x="64" y="292"><tspan fill="#e8edf2" font-weight="700">126</tspan> lessons</text>
+    <text x="190" y="292"><tspan fill="#e8edf2" font-weight="700">294</tspan> auto-checked exercises</text>
     <text x="442" y="292"><tspan fill="#e8edf2" font-weight="700">0</tspan> installs</text>
   </g>
 

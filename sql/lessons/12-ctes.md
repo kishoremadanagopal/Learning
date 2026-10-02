@@ -1,11 +1,12 @@
 # Lesson 12: CTEs, breaking big queries into steps
 
-**You'll learn:** `WITH`, chaining several CTEs, and when a CTE beats a subquery.
+**You'll learn:** `WITH`, chaining several CTEs, when a CTE beats a subquery, and recursive CTEs that generate rows (number lists, calendars, hierarchies).
 
 ## Key terms
 
 - **CTE (Common Table Expression):** a named, temporary result set defined at the start of a query with `WITH`. It exists only while that one query runs.
 - **Intermediate result:** a step's output that a later step builds on.
+- **Recursive CTE:** a CTE that refers to itself, adding rows step by step until a condition stops it.
 
 ## Syntax
 
@@ -104,6 +105,46 @@ They can often do the same job. Use a CTE when:
 - you'd otherwise repeat the same subquery twice
 - someone else (or future you) needs to read it
 
+## Recursive CTEs: generating rows
+
+A **recursive** CTE refers to itself. It starts with an **anchor** row, then a second query keeps adding rows based on the previous ones, until its `WHERE` stops it:
+
+```sql
+WITH RECURSIVE nums(n) AS (
+  SELECT 1                              -- anchor: the first row
+  UNION ALL
+  SELECT n + 1 FROM nums WHERE n < 10   -- recursive step: the next row, until 10
+)
+SELECT n FROM nums;                     -- 1, 2, 3, ..., 10
+```
+
+How it runs: start with `1`; apply the step to get `2`; apply it to `2` to get `3`; … at `10`, `n < 10` is false, so no new row appears and it stops. **Always include the stopping condition**, or it runs forever (most databases cap it and raise an error).
+
+### A calendar that fills the gaps
+
+`GROUP BY month` only shows months that have orders. To show every month, including empty ones, generate the months first and `LEFT JOIN` the data onto them:
+
+```sql
+WITH RECURSIVE months(m) AS (
+  SELECT '2025-10-01'
+  UNION ALL
+  SELECT date(m, '+1 month') FROM months WHERE m < '2026-03-01'
+)
+SELECT strftime('%Y-%m', m) AS month, COALESCE(SUM(o.amount), 0) AS total
+FROM months
+LEFT JOIN orders o ON strftime('%Y-%m', o.order_date) = strftime('%Y-%m', m)
+GROUP BY m
+ORDER BY m;                             -- 2025-10 now appears, with 0
+```
+
+### Hierarchies
+
+The other classic use is walking a tree, such as an org chart where each employee has a `manager_id`: the anchor selects the boss (`WHERE manager_id IS NULL`), and the recursive step joins each level's employees to the previous level (`JOIN chain c ON e.manager_id = c.id`), adding `level + 1` as it goes.
+
+### In other databases
+
+`WITH RECURSIVE` works in SQLite, MySQL 8+ and PostgreSQL. MSSQL and Oracle write just `WITH` (no `RECURSIVE`), and MSSQL stops after 100 levels unless you add `OPTION (MAXRECURSION 1000)`. PostgreSQL also has `generate_series(1, 10)`, which makes number and date lists without recursion.
+
 ## In MSSQL
 
 CTEs work the same way. One catch: if the statement before `WITH` doesn't end with a semicolon, MSSQL gets confused. That's why you often see `;WITH` in MSSQL code. Ending every statement with `;` avoids it.
@@ -122,6 +163,13 @@ CTEs work the same way. One catch: if the statement before `WITH` doesn't end wi
 4. Using a CTE of monthly totals, show the single month with the highest total.
 
 **In the sandbox:** exercises 55–58.
+
+### More practice
+
+5. The numbers 1 to 10, one per row, in a column called `n`, using a recursive CTE.
+6. Every month from 2025-10 to 2026-03 with its total order amount, showing 0 for months with no orders, in month order.
+
+**In the sandbox:** exercises 101–102.
 
 <details>
 <summary>Answers</summary>
@@ -151,6 +199,26 @@ SELECT month, total
 FROM monthly
 ORDER BY total DESC
 LIMIT 1;
+
+-- 5  → 1 to 10
+WITH RECURSIVE nums(n) AS (
+  SELECT 1
+  UNION ALL
+  SELECT n + 1 FROM nums WHERE n < 10
+)
+SELECT n FROM nums;
+
+-- 6  → 2025-10 0, 2025-11 1200, 2025-12 25, 2026-01 450, 2026-02 480, 2026-03 45
+WITH RECURSIVE months(m) AS (
+  SELECT '2025-10-01'
+  UNION ALL
+  SELECT date(m, '+1 month') FROM months WHERE m < '2026-03-01'
+)
+SELECT strftime('%Y-%m', m) AS month, COALESCE(SUM(o.amount), 0) AS total
+FROM months
+LEFT JOIN orders o ON strftime('%Y-%m', o.order_date) = strftime('%Y-%m', m)
+GROUP BY m
+ORDER BY m;
 ```
 </details>
 
