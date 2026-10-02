@@ -81,6 +81,9 @@ WHERE o.order_id IS NULL;          -- → Sam
 
 ## The whole join family
 
+
+![Five pairs of overlapping circles showing which rows each join keeps: INNER keeps the overlap, LEFT keeps the left circle, RIGHT the right circle, FULL both, and LEFT JOIN with IS NULL only the left-only part](../figures/join-types.svg)
+
 | Join | Matched rows | Left-only rows | Right-only rows |
 |---|---|---|---|
 | `INNER JOIN` | ✓ | dropped | dropped |

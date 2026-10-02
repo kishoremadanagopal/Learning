@@ -502,6 +502,8 @@ Two programs can produce the same answer while one takes milliseconds and the ot
 | O(n log n) | linearithmic | `Collections.sort`, merge sort | ~2,000× slower |
 | O(n²) | quadratic | nested loops over the same data | 1,000,000× slower |
 
+![Line chart of steps against number of items: O(1) and O(log n) stay almost flat, O(n) grows steadily, O(n log n) faster, and O(n squared) shoots up](figures/big-o.svg)
+
 ### The right data structure is the biggest win
 
 `list.contains(x)` checks elements one by one: O(n). `set.contains(x)` uses hashing: O(1) on average. Watch the difference:

@@ -25,6 +25,8 @@ for fruit in ["apple", "banana", "cherry"]:
 
 The loop variable (`letter`, `fruit`) is created for you and refers to the current item.
 
+![A for loop runs its body once for each item: round 1 with apple, round 2 with banana, round 3 with cherry](../figures/for-loop.svg)
+
 ## range(): looping over numbers
 
 `range` generates a sequence of numbers. Like slicing, the stop value is **not included**.

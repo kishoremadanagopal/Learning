@@ -24,6 +24,7 @@ import markdown
 
 ROOT = Path(__file__).resolve().parent
 CONTENT = ROOT / "content"
+FIGURES = ROOT / "figures"
 REPO_MODE = ROOT.name == "course"                  # inside the published repository
 SITE = ROOT.parent if REPO_MODE else ROOT / "site"
 SITE_URL = "https://kishoremadanagopal.github.io/learning/python/"
@@ -253,7 +254,7 @@ def lesson_markdown(l, lessons):
         "",
         *[f"- {t}" for t in l["_terms"]],
         "",
-        gh_fences(l["_md"]).replace("\n### ", "\n## "),
+        gh_fences(l["_md"]).replace("\n### ", "\n## ").replace("](figures/", "](../figures/"),
         "",
         "## Common mistakes",
         "",
@@ -423,6 +424,7 @@ python course/build.py --test
 | `content/cheatsheet.md` | the syntax cheat sheet |
 | `page.html`, `app.js` | the sandbox page and its logic |
 | `playground.html` | the standalone playground |
+| `figures.py` | draws the lesson diagrams in `figures/` (run it after changing a diagram) |
 | `build.py` | builds everything and tests the lesson code |
 
 ## Lesson format
@@ -512,6 +514,10 @@ def assemble(data):
         (out / "lessons.js").write_text(lessons_js)
         if (ROOT / "app.js").resolve() != (out / "app.js").resolve():
             shutil.copy(ROOT / "app.js", out / "app.js")
+        if FIGURES.exists() and FIGURES.resolve() != (out / "figures").resolve():
+            if (out / "figures").exists():
+                shutil.rmtree(out / "figures")
+            shutil.copytree(FIGURES, out / "figures")
 
     lessons_dir = SITE / "lessons"
     if lessons_dir.exists():

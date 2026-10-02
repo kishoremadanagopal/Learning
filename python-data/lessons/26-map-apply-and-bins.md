@@ -106,6 +106,8 @@ print(students["grade"].value_counts().sort_index())
 
 `pd.cut` sorts numbers into **bins** (bands) you define. Each bin includes its right edge, so with the edges below a score of 60 is a "C":
 
+![pd.cut splits 0 to 100 into bands at the edges 40, 60 and 80, labelled D, C, B and A; a score of exactly 60 falls in C because the right edge is included](../figures/cut-bins.svg)
+
 ```python
 import pandas as pd
 

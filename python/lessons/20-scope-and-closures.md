@@ -33,6 +33,8 @@ When Python looks up a name, it searches four places in order:
 3. **G**lobal: at the top level of the file
 4. **B**uilt-in: names like `print` and `len`
 
+![Four nested scopes: local inside enclosing inside global inside built-in. Python searches for a name from the inside out](../figures/legb.svg)
+
 ```python
 x = "global"
 

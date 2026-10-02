@@ -26,6 +26,8 @@ print(person["name"])
 print(person["languages"][1])
 ```
 
+![A dictionary pairs each key with a value: "name" with "Ada", "age" with 36, and "languages" with a list](../figures/dict-keys-values.svg)
+
 ## Adding, changing and removing
 
 ```python

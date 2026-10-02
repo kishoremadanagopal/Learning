@@ -31,6 +31,8 @@ Every analysis, whether you're an analyst making a dashboard or an AI engineer p
 | 5. Show | draw charts that make the answer obvious | Part 6 |
 | 6. Share | save results and explain what they mean | Part 6 |
 
+![The data analysis workflow in six steps: ask a question, load the data, clean it, analyse it, show it in charts, share the results](../figures/workflow.svg)
+
 ## Data comes in tables
 
 Most data you'll meet is **tabular**: a table where each **row** is one thing (one order, one customer, one day) and each **column** is one fact about it (the date, the price, the city). Here's the start of `sales.csv`, one of this course's practice files:

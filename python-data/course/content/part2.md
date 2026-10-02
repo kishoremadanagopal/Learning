@@ -76,6 +76,8 @@ The exact number changes each run and from computer to computer, but NumPy usual
 
 Every array knows its **shape** (how many items along each direction), its **size** (total items) and its **dtype** (the type of every item):
 
+![A 1-D array is a single row of 5 values with shape (5,); a 2-D array is a grid of 3 rows and 4 columns with shape (3, 4)](figures/array-shapes.svg)
+
 ```python
 import numpy as np
 
@@ -230,6 +232,8 @@ print(scores[1:3, :2])  # rows 1-2, first two columns
 ### Boolean masks: filtering
 
 Comparing an array with a value gives an array of `True`/`False`, one per item. That's a **mask**:
+
+![A comparison makes a True/False array; using it inside the brackets keeps only the values at the True positions](figures/boolean-mask.svg)
 
 ```python
 import numpy as np
@@ -426,6 +430,8 @@ print(np.array([1, 2, 3]) + np.array([10, 20]))
 ### Broadcasting
 
 NumPy will stretch a smaller array to fit a bigger one when it can. This is called **broadcasting**. A single number broadcasts to every item, and a row broadcasts down every row of a table:
+
+![A (3, 4) array of units times a row of 4 prices: the prices row is reused for every row, giving a (3, 4) array of revenue](figures/broadcasting.svg)
 
 ```python
 import numpy as np
@@ -627,6 +633,8 @@ print("90% of requests took under", np.percentile(times, 90), "seconds")
 ### axis: rows or columns
 
 On a 2-D array, `axis=0` summarises **down the columns** (one answer per column) and `axis=1` summarises **across the rows** (one answer per row):
+
+![mean(axis=0) gives one answer per column, down the rows; mean(axis=1) gives one answer per row, across the columns](figures/axis.svg)
 
 ```python
 import numpy as np

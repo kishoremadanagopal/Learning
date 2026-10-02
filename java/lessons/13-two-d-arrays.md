@@ -28,6 +28,8 @@ public class Main {
 
 `grid[row][col]`: the first index picks the row, the second picks the column.
 
+![A grid of 2 rows and 3 columns holding 1 to 6: grid[1][2] is row 1, column 2, which is 6](../figures/two-d-array.svg)
+
 ## Looping over a grid
 
 ```java

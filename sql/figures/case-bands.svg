@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="655.510937pt" height="134.094281pt" viewBox="0 0 655.510937 134.094281" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 134.094281 
+L 655.510937 134.094281 
+L 655.510937 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 76.655469 90.026681 
+L 244.055469 90.026681 
+L 244.055469 58.425881 
+L 76.655469 58.425881 
+z
+" clip-path="url(#p656e4f2f30)" style="fill: #0f766e; opacity: 0.35; stroke: #0f766e; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 244.055469 90.026681 
+L 411.455469 90.026681 
+L 411.455469 58.425881 
+L 244.055469 58.425881 
+z
+" clip-path="url(#p656e4f2f30)" style="fill: #e8730c; opacity: 0.35; stroke: #e8730c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 411.455469 90.026681 
+L 578.855469 90.026681 
+L 578.855469 58.425881 
+L 411.455469 58.425881 
+z
+" clip-path="url(#p656e4f2f30)" style="fill: #2c679c; opacity: 0.35; stroke: #2c679c; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 244.055469 100.560281 
+L 244.055469 47.892281 
+" clip-path="url(#p656e4f2f30)" style="fill: none; stroke: #1f2933; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 411.455469 100.560281 
+L 411.455469 47.892281 
+" clip-path="url(#p656e4f2f30)" style="fill: none; stroke: #1f2933; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <defs>
+     <path id="me9c56d47ee" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #1f2933"/>
+    </defs>
+    <g clip-path="url(#p656e4f2f30)">
+     <use xlink:href="#me9c56d47ee" x="151.985469" y="42.625481" style="fill: #1f2933; stroke: #1f2933"/>
+    </g>
+   </g>
+   <g id="line2d_4">
+    <g clip-path="url(#p656e4f2f30)">
+     <use xlink:href="#me9c56d47ee" x="218.945469" y="42.625481" style="fill: #1f2933; stroke: #1f2933"/>
+    </g>
+   </g>
+   <g id="line2d_5">
+    <g clip-path="url(#p656e4f2f30)">
+     <use xlink:href="#me9c56d47ee" x="277.535469" y="42.625481" style="fill: #1f2933; stroke: #1f2933"/>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <g clip-path="url(#p656e4f2f30)">
+     <use xlink:href="#me9c56d47ee" x="336.125469" y="42.625481" style="fill: #1f2933; stroke: #1f2933"/>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <g clip-path="url(#p656e4f2f30)">
+     <use xlink:href="#me9c56d47ee" x="428.195469" y="42.625481" style="fill: #1f2933; stroke: #1f2933"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="160.355469" y="76.95382" transform="rotate(-0 160.355469 76.95382)">'Young'  (age &lt; 30)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="327.755469" y="76.982121" transform="rotate(-0 327.755469 76.982121)">'Middle'  (age &lt; 50)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="495.155469" y="76.95423" transform="rotate(-0 495.155469 76.95423)">'Senior'  (ELSE)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="244.055469" y="114.253961" transform="rotate(-0 244.055469 114.253961)">30 → Middle</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="411.455469" y="114.253961" transform="rotate(-0 411.455469 114.253961)">50 → Senior</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="151.985469" y="32.091881" transform="rotate(-0 151.985469 32.091881)">Sam</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="218.945469" y="32.091881" transform="rotate(-0 218.945469 32.091881)">Leo</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="277.535469" y="32.091881" transform="rotate(-0 277.535469 32.091881)">Maya</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="336.125469" y="32.091881" transform="rotate(-0 336.125469 32.091881)">Priya</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="428.195469" y="32.091881" transform="rotate(-0 428.195469 32.091881)">Ana</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="327.755469" y="15.558281" transform="rotate(-0 327.755469 15.558281)">CASE checks WHENs top to bottom: the first true one wins, so each boundary belongs to the next band</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p656e4f2f30">
+   <rect x="76.655469" y="21.558281" width="502.2" height="105.336"/>
+  </clipPath>
+ </defs>
+</svg>

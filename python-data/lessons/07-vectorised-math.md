@@ -43,6 +43,8 @@ print(np.array([1, 2, 3]) + np.array([10, 20]))
 
 NumPy will stretch a smaller array to fit a bigger one when it can. This is called **broadcasting**. A single number broadcasts to every item, and a row broadcasts down every row of a table:
 
+![A (3, 4) array of units times a row of 4 prices: the prices row is reused for every row, giving a (3, 4) array of revenue](../figures/broadcasting.svg)
+
 ```python
 import numpy as np
 

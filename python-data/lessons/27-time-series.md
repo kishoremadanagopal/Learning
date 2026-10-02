@@ -88,6 +88,8 @@ The first month has no previous month, so its change is missing.
 
 Daily numbers are noisy. A **rolling average** (moving average) replaces each day with the average of the last few days, smoothing out the noise so the trend shows:
 
+![London's noisy daily temperatures with a smoother 7-day rolling average and an even smoother 30-day average drawn through them](../figures/rolling-average.svg)
+
 ```python
 import pandas as pd
 

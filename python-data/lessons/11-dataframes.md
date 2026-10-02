@@ -17,6 +17,8 @@
 
 A **DataFrame** is a table: rows and named columns, where each column is a Series. It's the object you'll use in almost every line of pandas.
 
+![A DataFrame has column names along the top, an index down the left side, and each column on its own is a Series](../figures/dataframe-anatomy.svg)
+
 ## Making a DataFrame
 
 From a dictionary of lists (each key becomes a column):

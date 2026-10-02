@@ -41,6 +41,8 @@ Each character has a position (an **index**), starting at **0**. The last index 
 
 `substring(start, end)` returns the characters from `start` up to, but **not including**, `end`. `substring(start)` goes to the end.
 
+![The characters of "Hello, World" at indexes 0 to 11: substring(0, 5) gives "Hello" and substring(7) gives "World"](../figures/string-index.svg)
+
 ```java
 public class Main {
     public static void main(String[] args) {

@@ -152,6 +152,8 @@ Two things to notice:
 
 `else` runs when the condition is false. `elif` ("else if") checks another condition. Python checks the branches from top to bottom and runs **only the first** one that matches.
 
+![A flowchart for score = 82: the test score >= 90 is false, score >= 80 is true, so grade becomes B and the remaining tests are skipped](figures/if-elif.svg)
+
 ```python
 score = 82
 if score >= 90:
@@ -418,6 +420,8 @@ for fruit in ["apple", "banana", "cherry"]:
 ```
 
 The loop variable (`letter`, `fruit`) is created for you and refers to the current item.
+
+![A for loop runs its body once for each item: round 1 with apple, round 2 with banana, round 3 with cherry](figures/for-loop.svg)
 
 ### range(): looping over numbers
 

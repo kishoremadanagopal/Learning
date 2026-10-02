@@ -41,6 +41,8 @@ Java runs your code in two steps:
 1. **Compile.** The Java compiler (`javac`) reads your source code, checks it for mistakes, and translates it into **bytecode**: compact instructions stored in a `.class` file.
 2. **Run.** The **Java Virtual Machine (JVM)** loads the bytecode and runs it. The JVM translates bytecode into instructions for the real processor, and speeds up frequently used code with a **just-in-time (JIT) compiler**.
 
+![Step 1, compile: javac turns Main.java into Main.class bytecode and catches compile errors. Step 2, run: the JVM runs the bytecode, where runtime exceptions can happen](../figures/compile-and-run.svg)
+
 Because the bytecode targets the JVM rather than a particular processor, the same compiled program runs on Windows, macOS, Linux or, as in this course, inside your web browser. This idea is often summarised as "write once, run anywhere".
 
 Open the **Bytecode** tab after running a program to see the bytecode the compiler produced for it. You won't need to read bytecode to write Java, but it's good to know it's there.

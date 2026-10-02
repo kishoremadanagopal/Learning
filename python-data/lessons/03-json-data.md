@@ -88,6 +88,8 @@ for m in movies[:3]:
 
 Real JSON is often nested several levels deep. You reach inside one step at a time, chaining `[...]`:
 
+![A CSV file is a flat table of rows and columns; a JSON file can put values inside values, like a customer inside an order and a list of items](../figures/csv-vs-json.svg)
+
 ```python
 import json
 

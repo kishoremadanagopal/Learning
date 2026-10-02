@@ -71,6 +71,9 @@ GROUP BY city;
 
 Think of it as sorting rows into piles by city, then counting each pile. A question that says **"for each ___"** or **"per ___"** puts that ___ in `GROUP BY` and in `SELECT`.
 
+![Five customer rows sorted into three piles by city, then counted into one row per city](../figures/group-by.svg)
+
+
 ## ⚠️ The GROUP BY rule
 
 > Once you write `GROUP BY`, every other column in `SELECT`, `HAVING`, and `ORDER BY` must either be the grouped column or be inside an aggregate.

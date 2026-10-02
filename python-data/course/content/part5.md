@@ -16,6 +16,8 @@ summary: Split a table into groups, summarise each one, and combine the results,
 
 `groupby` works in three steps:
 
+![Split the rows into one group per region, apply sum to each group, then combine the answers into one small table](figures/split-apply-combine.svg)
+
 1. **split** the rows into groups by a column's values;
 2. **apply** a summary (sum, mean, count…) to each group;
 3. **combine** the answers into one result.
@@ -422,6 +424,8 @@ print(joined.groupby("city")["revenue"].sum().sort_values(ascending=False).round
 
 When some keys don't match, the `how` argument decides what happens:
 
+![Inner, left, right and outer joins as overlapping circles: the shaded part shows which rows each join keeps](figures/merge-joins.svg)
+
 | `how=` | Keeps | SQL |
 |---|---|---|
 | `"inner"` (default) | only rows with a match in both tables | `INNER JOIN` |
@@ -630,6 +634,8 @@ print(len(parts[0]), len(parts[1]), len(north_south))
 ### Wide and long
 
 The same data can be laid out two ways:
+
+![The same scores in two layouts: wide has one column per subject; long has one row per student and subject. melt goes wide to long, pivot goes back](figures/wide-long.svg)
 
 - **wide**: one row per thing, one column per measurement (easy for people to read);
 - **long** (also called **tidy**): one row per thing *per measurement*, with a column saying which measurement it is (easy for computers to group, filter and chart).
@@ -864,6 +870,8 @@ print(students["grade"].value_counts().sort_index())
 
 `pd.cut` sorts numbers into **bins** (bands) you define. Each bin includes its right edge, so with the edges below a score of 60 is a "C":
 
+![pd.cut splits 0 to 100 into bands at the edges 40, 60 and 80, labelled D, C, B and A; a score of exactly 60 falls in C because the right edge is included](figures/cut-bins.svg)
+
 ```python
 import pandas as pd
 
@@ -1061,6 +1069,8 @@ The first month has no previous month, so its change is missing.
 ### Rolling averages
 
 Daily numbers are noisy. A **rolling average** (moving average) replaces each day with the average of the last few days, smoothing out the noise so the trend shows:
+
+![London's noisy daily temperatures with a smoother 7-day rolling average and an even smoother 30-day average drawn through them](figures/rolling-average.svg)
 
 ```python
 import pandas as pd

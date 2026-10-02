@@ -39,6 +39,8 @@ public class Main {
 
 `n! = n × (n-1) × … × 1`, and `n! = n × (n-1)!`, a recursive definition:
 
+![factorial(4) calls factorial(3), which calls factorial(2), which calls factorial(1); then the answers 1, 2, 6 and 24 come back up](../figures/recursion-stack.svg)
+
 ```java
 public class Main {
     static long factorial(int n) {

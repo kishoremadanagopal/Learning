@@ -39,6 +39,9 @@ Every lesson uses these three tables. They're already loaded in the [practice sa
 
 `orders.customer_id` points to `customers.id`. Order 101 has `customer_id` 1, so Maya placed it. Sam (id 4) has no orders, which matters in Lesson 5.
 
+![The customers and orders tables side by side, with an arrow from orders.customer_id to customers.id](../figures/tables-keys.svg)
+
+
 ## Watch the table names
 
 All three table names are **plural**: `customers`, `employees`, `orders`. Writing `customer` or `employee` is the single most common typo in this course, and SQL answers it with `no such table`.

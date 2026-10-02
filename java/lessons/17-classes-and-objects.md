@@ -93,6 +93,8 @@ public class Main {
 }
 ```
 
+![A primitive variable holds its value directly; the variables first and second both hold arrows to the same Box object](../figures/references.svg)
+
 ## null
 
 A reference that points at nothing is `null`. Calling a method on `null` throws the most famous exception in Java, `NullPointerException`:

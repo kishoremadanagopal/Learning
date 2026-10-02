@@ -42,6 +42,8 @@ for pet in [Dog("Rex"), Cat("Tom"), Animal("Generic")]:
 
 `Dog` and `Cat` didn't define `__init__` or `introduce`; they inherited them. They only changed what's different.
 
+![Dog and Cat inherit from Animal: they get name and introduce() from Animal and replace speak() with their own](../figures/inheritance-tree.svg)
+
 ## super(): extending the parent's behaviour
 
 When a child needs extra setup, call the parent's version with `super()` and then add to it:

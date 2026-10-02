@@ -51,6 +51,8 @@ print(scores[1:3, :2])  # rows 1-2, first two columns
 
 Comparing an array with a value gives an array of `True`/`False`, one per item. That's a **mask**:
 
+![A comparison makes a True/False array; using it inside the brackets keeps only the values at the True positions](../figures/boolean-mask.svg)
+
 ```python
 import numpy as np
 

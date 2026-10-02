@@ -64,21 +64,13 @@ public class Main {
 }
 ```
 
+![Three paths through try: no exception returns the answer, NumberFormatException and ArithmeticException each go to their own catch, and finally runs on every path](../figures/try-catch-finally.svg)
+
 You can also catch several types in one block: `catch (NumberFormatException | ArithmeticException e)`.
 
 ## The exception hierarchy
 
-```text
-Throwable
-├── Error                      serious JVM problems (OutOfMemoryError); don't catch
-└── Exception
-    ├── IOException, ...       checked: must be handled or declared
-    └── RuntimeException       unchecked: usually programming bugs
-        ├── NullPointerException
-        ├── IllegalArgumentException
-        ├── IndexOutOfBoundsException
-        └── ArithmeticException
-```
+![Throwable splits into Error and Exception; Exception splits into checked exceptions like IOException and unchecked RuntimeExceptions like NullPointerException](../figures/exception-hierarchy.svg)
 
 ## Checked vs unchecked
 

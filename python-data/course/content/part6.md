@@ -229,6 +229,8 @@ Every chart type answers a particular kind of question. Pick the question first,
 | Are two numbers related? | scatter | `ax.scatter` |
 | How do spreads compare between groups? | box plot | `ax.boxplot` |
 
+![Which chart to use: line for change over time, bar to compare categories, histogram for how values spread, scatter for whether two things are related, box plot to compare spreads](figures/chart-chooser.svg)
+
 ### Bar charts: comparing categories
 
 ```python

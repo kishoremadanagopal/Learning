@@ -949,6 +949,8 @@ Two programs can give the same answer while one takes a second and the other tak
 | O(n log n) | linearithmic | good sorting (`sorted`) | ~2,000× slower |
 | O(n²) | quadratic | nested loops over the same data | 1,000,000× slower |
 
+![Line chart of steps against number of items: O(1) and O(log n) stay almost flat, O(n) grows steadily, O(n log n) faster, and O(n squared) shoots up](figures/big-o.svg)
+
 Big-O ignores constants and focuses on the shape of growth. For small inputs, anything is fast. For big inputs, the shape is all that matters.
 
 ### The right data structure is the biggest win

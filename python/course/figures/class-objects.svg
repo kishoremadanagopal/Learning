@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="513.36pt" height="191.808pt" viewBox="0 0 513.36 191.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 191.808 
+L 513.36 191.808 
+L 513.36 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.2672 151.344 
+L 174.6288 151.344 
+Q 179.064 151.344 179.064 146.9088 
+L 179.064 39.3552 
+Q 179.064 34.92 174.6288 34.92 
+L 28.2672 34.92 
+Q 23.832 34.92 23.832 39.3552 
+L 23.832 146.9088 
+Q 23.832 151.344 28.2672 151.344 
+z
+" clip-path="url(#p9ba27d367b)" style="fill: #fde8d6; stroke: #e8730c; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 183.727453 92.479775 
+Q 222.030692 79.271761 258.642797 66.646898 
+" clip-path="url(#p9ba27d367b)" style="fill: none; stroke: #9aa5b1; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 252.435934 65.825401 
+L 258.642797 66.646898 
+L 254.261482 71.11949 
+z
+" clip-path="url(#p9ba27d367b)" style="fill: #9aa5b1; stroke: #9aa5b1; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 269.4312 87.588 
+L 437.9688 87.588 
+Q 442.404 87.588 442.404 83.1528 
+L 442.404 44.8992 
+Q 442.404 40.464 437.9688 40.464 
+L 269.4312 40.464 
+Q 264.996 40.464 264.996 44.8992 
+L 264.996 83.1528 
+Q 264.996 87.588 269.4312 87.588 
+z
+" clip-path="url(#p9ba27d367b)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 183.614604 94.051968 
+Q 222.030484 113.92225 258.857472 132.970693 
+" clip-path="url(#p9ba27d367b)" style="fill: none; stroke: #9aa5b1; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 255.169838 127.910915 
+L 258.857472 132.970693 
+L 252.597069 132.884934 
+z
+" clip-path="url(#p9ba27d367b)" style="fill: #9aa5b1; stroke: #9aa5b1; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 269.4312 156.888 
+L 437.9688 156.888 
+Q 442.404 156.888 442.404 152.4528 
+L 442.404 114.1992 
+Q 442.404 109.764 437.9688 109.764 
+L 269.4312 109.764 
+Q 264.996 109.764 264.996 114.1992 
+L 264.996 152.4528 
+Q 264.996 156.888 269.4312 156.888 
+z
+" clip-path="url(#p9ba27d367b)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="101.448" y="54.279949" transform="rotate(-0 101.448 54.279949)">class Dog</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="101.448" y="84.641656" transform="rotate(-0 101.448 84.641656)">name</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="101.448" y="104.045656" transform="rotate(-0 101.448 104.045656)">age</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #e8730c" x="101.448" y="128.994047" transform="rotate(-0 101.448 128.994047)">bark()</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #9aa5b1" x="101.448" y="170.444145" transform="rotate(-0 101.448 170.444145)">the blueprint</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #9aa5b1" x="215.1" y="59.433891" transform="rotate(-0 215.1 59.433891)">Dog("Rex", 3)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #1f2933" x="284.4" y="57.051539" transform="rotate(-0 284.4 57.051539)">rex</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #1f2933" x="284.4" y="76.195773" transform="rotate(-0 284.4 76.195773)">name="Rex"   age=3</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #9aa5b1" x="228.96" y="142.594242" transform="rotate(-0 228.96 142.594242)">Dog("Fido", 7)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #1f2933" x="284.4" y="126.630855" transform="rotate(-0 284.4 126.630855)">fido</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #1f2933" x="284.4" y="145.496145" transform="rotate(-0 284.4 145.496145)">name="Fido"   age=7</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #9aa5b1" x="353.7" y="181.532145" transform="rotate(-0 353.7 181.532145)">objects: each keeps its own values</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9ba27d367b">
+   <rect x="7.2" y="7.2" width="498.96" height="177.408"/>
+  </clipPath>
+ </defs>
+</svg>

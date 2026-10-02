@@ -34,6 +34,8 @@ public class Main {
 
 Note `scores.length` has no parentheses: for arrays it's a field, while for strings it's a method, `s.length()`.
 
+![The array scores holds 90, 72 and 85 at indexes 0, 1 and 2; its length is 3, so scores[3] is out of bounds](../figures/array.svg)
+
 ## Creating an empty array
 
 `new int[5]` makes an array of 5 elements filled with default values: `0` for numbers, `false` for booleans, `'\u0000'` for chars and `null` for objects like strings.

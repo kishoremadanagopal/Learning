@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="485.64pt" height="236.16pt" viewBox="0 0 485.64 236.16" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 236.16 
+L 485.64 236.16 
+L 485.64 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.832 217.872 
+L 334.296 217.872 
+Q 339.84 217.872 339.84 212.328 
+L 339.84 23.832 
+Q 339.84 18.288 334.296 18.288 
+L 23.832 18.288 
+Q 18.288 18.288 18.288 23.832 
+L 18.288 212.328 
+Q 18.288 217.872 23.832 217.872 
+z
+" clip-path="url(#p9e36845ffd)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 43.236 205.6752 
+L 314.892 205.6752 
+Q 320.436 205.6752 320.436 200.1312 
+L 320.436 51.552 
+Q 320.436 46.008 314.892 46.008 
+L 43.236 46.008 
+Q 37.692 46.008 37.692 51.552 
+L 37.692 200.1312 
+Q 37.692 205.6752 43.236 205.6752 
+z
+" clip-path="url(#p9e36845ffd)" style="fill: #e3edf7; stroke: #2c679c; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 62.64 193.4784 
+L 295.488 193.4784 
+Q 301.032 193.4784 301.032 187.9344 
+L 301.032 79.272 
+Q 301.032 73.728 295.488 73.728 
+L 62.64 73.728 
+Q 57.096 73.728 57.096 79.272 
+L 57.096 187.9344 
+Q 57.096 193.4784 62.64 193.4784 
+z
+" clip-path="url(#p9e36845ffd)" style="fill: #fde8d6; stroke: #e8730c; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 82.044 181.2816 
+L 276.084 181.2816 
+Q 281.628 181.2816 281.628 175.7376 
+L 281.628 106.992 
+Q 281.628 101.448 276.084 101.448 
+L 82.044 101.448 
+Q 76.5 101.448 76.5 106.992 
+L 76.5 175.7376 
+Q 76.5 181.2816 82.044 181.2816 
+z
+" clip-path="url(#p9e36845ffd)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 362.016 138.257027 
+Q 362.016 93.133323 362.016 49.798474 
+" clip-path="url(#p9e36845ffd)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 359.216 55.398474 
+L 362.016 49.798474 
+L 364.816 55.398474 
+z
+" clip-path="url(#p9e36845ffd)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #9aa5b1" x="26.604" y="31.844145" transform="rotate(-0 26.604 31.844145)">B  built-in</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="331.524" y="31.738148" transform="rotate(-0 331.524 31.738148)">print, len, range ...</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #2c679c" x="46.008" y="59.564145" transform="rotate(-0 46.008 59.564145)">G  global (module)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="312.12" y="59.458148" transform="rotate(-0 312.12 59.458148)">x = "global"</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #e8730c" x="65.412" y="87.284145" transform="rotate(-0 65.412 87.284145)">E  enclosing: outer()</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="292.716" y="87.178148" transform="rotate(-0 292.716 87.178148)">x = "enclosing"</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #0f766e" x="84.816" y="115.004145" transform="rotate(-0 84.816 115.004145)">L  local: inner()</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="273.312" y="114.898148" transform="rotate(-0 273.312 114.898148)">x = "local"</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #0f766e" transform="translate(113.292086 159.173611)">print(x) inside inner()</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #0f766e" transform="translate(141.88857 170.626678)">shows "local"</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(373.104 72.79532)">Python looks for a</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(373.104 84.197918)">name from the inside</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(373.104 95.599773)">out: L → E → G → B</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(373.104 107.002371)">and stops at the</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #1f2933" transform="translate(373.104 118.404969)">first match</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9e36845ffd">
+   <rect x="7.2" y="7.2" width="471.24" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>

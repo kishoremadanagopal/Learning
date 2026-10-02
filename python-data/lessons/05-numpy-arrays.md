@@ -80,6 +80,8 @@ The exact number changes each run and from computer to computer, but NumPy usual
 
 Every array knows its **shape** (how many items along each direction), its **size** (total items) and its **dtype** (the type of every item):
 
+![A 1-D array is a single row of 5 values with shape (5,); a 2-D array is a grid of 3 rows and 4 columns with shape (3, 4)](../figures/array-shapes.svg)
+
 ```python
 import numpy as np
 

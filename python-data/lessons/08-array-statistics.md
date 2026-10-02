@@ -68,6 +68,8 @@ print("90% of requests took under", np.percentile(times, 90), "seconds")
 
 On a 2-D array, `axis=0` summarises **down the columns** (one answer per column) and `axis=1` summarises **across the rows** (one answer per row):
 
+![mean(axis=0) gives one answer per column, down the rows; mean(axis=1) gives one answer per row, across the columns](../figures/axis.svg)
+
 ```python
 import numpy as np
 

@@ -33,6 +33,9 @@ function_name(...) OVER (
 
 ## GROUP BY vs window functions
 
+
+![Eight employee rows: GROUP BY collapses them into three department rows, while a window function keeps all eight and adds the department average to each](../figures/window-vs-group-by.svg)
+
 `GROUP BY` squashes each department into one row. A window function keeps all 8 employees and adds the group value next to each one:
 
 ```sql
@@ -148,6 +151,8 @@ FROM orders;
 | 2025-12-02 | 25 | 612.5 |
 | 2026-01-10 | 300 | 508.33 |
 | 2026-01-25 | 150 | 158.33 |
+
+![A table of orders where the current row and the two rows above it are highlighted, showing which rows the moving average uses](../figures/window-frame.svg)
 
 Other frames: `ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` (running total), `ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING` (centred), `ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING` (the whole partition).
 

@@ -34,6 +34,8 @@ print(rex.bark())
 print(fido.name, fido.age)
 ```
 
+![The class Dog is a blueprint; Dog("Rex", 3) and Dog("Fido", 7) build two objects, each with its own name and age](../figures/class-objects.svg)
+
 ## What's going on
 
 - `class Dog:` defines a new type. Class names use **CamelCase**.

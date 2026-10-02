@@ -30,6 +30,8 @@ public class Main {
 
 Note `scores.length` has no parentheses: for arrays it's a field, while for strings it's a method, `s.length()`.
 
+![The array scores holds 90, 72 and 85 at indexes 0, 1 and 2; its length is 3, so scores[3] is out of bounds](figures/array.svg)
+
 ### Creating an empty array
 
 `new int[5]` makes an array of 5 elements filled with default values: `0` for numbers, `false` for booleans, `'\u0000'` for chars and `null` for objects like strings.
@@ -293,6 +295,8 @@ public class Main {
 ```
 
 `grid[row][col]`: the first index picks the row, the second picks the column.
+
+![A grid of 2 rows and 3 columns holding 1 to 6: grid[1][2] is row 1, column 2, which is 6](figures/two-d-array.svg)
 
 ### Looping over a grid
 
@@ -862,6 +866,8 @@ public class Main {
 ### Factorial
 
 `n! = n × (n-1) × … × 1`, and `n! = n × (n-1)!`, a recursive definition:
+
+![factorial(4) calls factorial(3), which calls factorial(2), which calls factorial(1); then the answers 1, 2, 6 and 24 come back up](figures/recursion-stack.svg)
 
 ```java
 public class Main {

@@ -67,6 +67,9 @@ FROM orders
 GROUP BY strftime('%Y-%m', order_date);
 ```
 
+![A bar chart of the total order amount for each month from 2025-11 to 2026-03](../figures/monthly-totals.svg)
+
+
 ## Date math
 
 | Want | SQLite | MSSQL |

@@ -18,6 +18,7 @@ python course/build.py --test
 | `page.html`, `app.js` | the sandbox page and its logic |
 | `game.html` | the Java Quest game |
 | `runner/` | the Java program that compiles, runs and checks code in the browser |
+| `figures.py` | draws the lesson diagrams in `figures/` (run it after changing a diagram) |
 | `build.py` | builds everything and tests the lesson code |
 
 ## Lesson format

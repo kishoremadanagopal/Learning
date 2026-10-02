@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="430.2pt" height="141.912pt" viewBox="0 0 430.2 141.912" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 141.912 
+L 430.2 141.912 
+L 430.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 81.272834 61.5312 
+Q 91.747801 61.5312 100.433913 61.5312 
+" clip-path="url(#p6210bb062f)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 94.833913 58.7312 
+L 100.433913 61.5312 
+L 94.833913 64.3312 
+z
+" clip-path="url(#p6210bb062f)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 108.1008 76.5 
+L 153.5616 76.5 
+Q 154.6704 76.5 154.6704 75.3912 
+L 154.6704 47.1168 
+Q 154.6704 46.008 153.5616 46.008 
+L 108.1008 46.008 
+Q 106.992 46.008 106.992 47.1168 
+L 106.992 75.3912 
+Q 106.992 76.5 108.1008 76.5 
+z
+" clip-path="url(#p6210bb062f)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 157.9968 76.5 
+L 203.4576 76.5 
+Q 204.5664 76.5 204.5664 75.3912 
+L 204.5664 47.1168 
+Q 204.5664 46.008 203.4576 46.008 
+L 157.9968 46.008 
+Q 156.888 46.008 156.888 47.1168 
+L 156.888 75.3912 
+Q 156.888 76.5 157.9968 76.5 
+z
+" clip-path="url(#p6210bb062f)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 207.8928 76.5 
+L 253.3536 76.5 
+Q 254.4624 76.5 254.4624 75.3912 
+L 254.4624 47.1168 
+Q 254.4624 46.008 253.3536 46.008 
+L 207.8928 46.008 
+Q 206.784 46.008 206.784 47.1168 
+L 206.784 75.3912 
+Q 206.784 76.5 207.8928 76.5 
+z
+" clip-path="url(#p6210bb062f)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="73.728" y="64.258739" transform="rotate(-0 73.728 64.258739)">scores</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="130.8312" y="64.371187" transform="rotate(-0 130.8312 64.371187)">90</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="180.7272" y="64.371187" transform="rotate(-0 180.7272 64.371187)">72</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="230.6232" y="64.371187" transform="rotate(-0 230.6232 64.371187)">85</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #9aa5b1" x="130.8312" y="34.746047" transform="rotate(-0 130.8312 34.746047)">[0]</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #9aa5b1" x="180.7272" y="34.746047" transform="rotate(-0 180.7272 34.746047)">[1]</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #9aa5b1" x="230.6232" y="34.746047" transform="rotate(-0 230.6232 34.746047)">[2]</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="181.836" y="101.169379" transform="rotate(-0 181.836 101.169379)">scores.length is 3   ·   scores[3] is out of bounds</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #9aa5b1" transform="translate(339.84 58.298046)">fixed size,</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #9aa5b1" transform="translate(339.84 69.700643)">one type (int)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6210bb062f">
+   <rect x="7.2" y="7.2" width="415.8" height="127.512"/>
+  </clipPath>
+ </defs>
+</svg>

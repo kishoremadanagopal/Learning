@@ -39,6 +39,8 @@ print("ha" * 3)
 
 Each character has a position called an **index**. Counting starts at **0**. Negative indexes count from the end.
 
+![The letters of "Python" with their positions: 0 to 5 counting from the front, and -6 to -1 counting from the end](../figures/string-index.svg)
+
 ```text
  P  y  t  h  o  n
  0  1  2  3  4  5
@@ -57,6 +59,8 @@ Asking for `word[6]` causes an `IndexError` because there is no position 6.
 ## Slicing: getting part of a string
 
 `word[start:stop]` gives the characters from `start` up to, but **not including**, `stop`. Leave a side empty to mean "from the beginning" or "to the end". An optional third number is the step.
+
+![Slice positions sit between the characters: word[0:2] cuts before P and after y, giving "Py"](../figures/string-slice.svg)
 
 ```python
 word = "Python"

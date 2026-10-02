@@ -221,21 +221,13 @@ public class Main {
 }
 ```
 
+![Three paths through try: no exception returns the answer, NumberFormatException and ArithmeticException each go to their own catch, and finally runs on every path](figures/try-catch-finally.svg)
+
 You can also catch several types in one block: `catch (NumberFormatException | ArithmeticException e)`.
 
 ### The exception hierarchy
 
-```output
-Throwable
-├── Error                      serious JVM problems (OutOfMemoryError); don't catch
-└── Exception
-    ├── IOException, ...       checked: must be handled or declared
-    └── RuntimeException       unchecked: usually programming bugs
-        ├── NullPointerException
-        ├── IllegalArgumentException
-        ├── IndexOutOfBoundsException
-        └── ArithmeticException
-```
+![Throwable splits into Error and Exception; Exception splits into checked exceptions like IOException and unchecked RuntimeExceptions like NullPointerException](figures/exception-hierarchy.svg)
 
 ### Checked vs unchecked
 
@@ -906,6 +898,8 @@ title: Sets and maps
 minutes: 15
 summary: Keep unique values in sets, look things up by key in maps, count with merge and getOrDefault, and know why equals and hashCode matter.
 ---
+![List and Set are kinds of Collection, with ArrayList, LinkedList, HashSet and TreeSet below them; Map with HashMap and TreeMap stands on its own](figures/collections.svg)
+
 ### Sets
 
 A **Set** holds unique values: adding a duplicate does nothing. Membership tests (`contains`) are very fast.

@@ -19,6 +19,8 @@
 
 `groupby` works in three steps:
 
+![Split the rows into one group per region, apply sum to each group, then combine the answers into one small table](../figures/split-apply-combine.svg)
+
 1. **split** the rows into groups by a column's values;
 2. **apply** a summary (sum, mean, count…) to each group;
 3. **combine** the answers into one result.

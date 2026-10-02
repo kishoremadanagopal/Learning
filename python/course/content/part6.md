@@ -29,6 +29,8 @@ print(rex.bark())
 print(fido.name, fido.age)
 ```
 
+![The class Dog is a blueprint; Dog("Rex", 3) and Dog("Fido", 7) build two objects, each with its own name and age](figures/class-objects.svg)
+
 ### What's going on
 
 - `class Dog:` defines a new type. Class names use **CamelCase**.
@@ -248,6 +250,8 @@ for pet in [Dog("Rex"), Cat("Tom"), Animal("Generic")]:
 ```
 
 `Dog` and `Cat` didn't define `__init__` or `introduce`; they inherited them. They only changed what's different.
+
+![Dog and Cat inherit from Animal: they get name and introduce() from Animal and replace speak() with their own](figures/inheritance-tree.svg)
 
 ### super(): extending the parent's behaviour
 

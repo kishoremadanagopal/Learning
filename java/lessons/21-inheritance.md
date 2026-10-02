@@ -65,6 +65,8 @@ public class Main {
 
 `Dog` didn't write `introduce()`; it **inherited** it. It only **overrode** `speak()`, the part that differs.
 
+![Dog and Cat extend Animal, and Animal extends Object: children inherit name and introduce() and override speak()](../figures/inheritance-tree.svg)
+
 ## super
 
 - `super(...)` calls the parent's constructor. It must be the first line of the child's constructor.

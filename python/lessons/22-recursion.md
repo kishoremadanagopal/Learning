@@ -33,6 +33,8 @@ countdown(3)
 
 The factorial of `n` (written `n!`) is `n × (n-1) × ... × 1`. Notice that `n! = n × (n-1)!`, which is a recursive definition:
 
+![factorial(4) calls factorial(3), which calls factorial(2), which calls factorial(1); then the answers 1, 2, 6 and 24 come back up](../figures/recursion-stack.svg)
+
 ```python
 def factorial(n):
     if n <= 1:

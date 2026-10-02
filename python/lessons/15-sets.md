@@ -50,6 +50,8 @@ print(python_devs - java_devs)   # difference: only Python
 print(python_devs ^ java_devs)   # symmetric difference: in exactly one
 ```
 
+![Four Venn diagrams of python_devs and java_devs: union shades everything, intersection only Ben, difference only Ana and Cy, symmetric difference everyone except Ben](../figures/set-operations.svg)
+
 ## Adding and removing
 
 ```python

@@ -73,6 +73,9 @@ SQL *runs* them in this order:
 FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
 ```
 
+![The written order of clauses compared with the order SQL runs them, with SELECT running fifth](../figures/execution-order.svg)
+
+
 This explains three rules at once:
 - Aggregates can't go in `WHERE`, because grouping hasn't happened yet.
 - Aliases (names made with `AS`) can't be used in `WHERE` or `HAVING`, because `SELECT` hasn't run yet.

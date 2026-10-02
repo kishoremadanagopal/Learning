@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="624.24pt" height="175.176pt" viewBox="0 0 624.24 175.176" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 175.176 
+L 624.24 175.176 
+L 624.24 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.1792 101.448 
+L 113.6448 101.448 
+Q 118.08 101.448 118.08 97.0128 
+L 118.08 55.9872 
+Q 118.08 51.552 113.6448 51.552 
+L 17.1792 51.552 
+Q 12.744 51.552 12.744 55.9872 
+L 12.744 97.0128 
+Q 12.744 101.448 17.1792 101.448 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 122.85385 76.5 
+Q 137.483177 76.5 150.323651 76.5 
+" clip-path="url(#p264bcccb05)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 144.723651 73.7 
+L 150.323651 76.5 
+L 144.723651 79.3 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 161.3232 101.448 
+L 246.7008 101.448 
+Q 251.136 101.448 251.136 97.0128 
+L 251.136 55.9872 
+Q 251.136 51.552 246.7008 51.552 
+L 161.3232 51.552 
+Q 156.888 51.552 156.888 55.9872 
+L 156.888 97.0128 
+Q 156.888 101.448 161.3232 101.448 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #fde8d6; stroke: #e8730c; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 255.90985 76.5 
+Q 270.539177 76.5 283.379651 76.5 
+" clip-path="url(#p264bcccb05)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 277.779651 73.7 
+L 283.379651 76.5 
+L 277.779651 79.3 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 294.3792 101.448 
+L 390.8448 101.448 
+Q 395.28 101.448 395.28 97.0128 
+L 395.28 55.9872 
+Q 395.28 51.552 390.8448 51.552 
+L 294.3792 51.552 
+Q 289.944 51.552 289.944 55.9872 
+L 289.944 97.0128 
+Q 289.944 101.448 294.3792 101.448 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #e3edf7; stroke: #2c679c; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 400.05385 76.5 
+Q 414.683177 76.5 427.523651 76.5 
+" clip-path="url(#p264bcccb05)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 421.923651 73.7 
+L 427.523651 76.5 
+L 421.923651 79.3 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 438.5232 101.448 
+L 512.8128 101.448 
+Q 517.248 101.448 517.248 97.0128 
+L 517.248 55.9872 
+Q 517.248 51.552 512.8128 51.552 
+L 438.5232 51.552 
+Q 434.088 51.552 434.088 55.9872 
+L 434.088 97.0128 
+Q 434.088 101.448 438.5232 101.448 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #dcf1ee; stroke: #0f766e; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 522.020496 76.5 
+Q 531.105876 76.5 538.402402 76.5 
+" clip-path="url(#p264bcccb05)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 532.802402 73.7 
+L 538.402402 76.5 
+L 532.802402 79.3 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 549.4032 101.448 
+L 601.5168 101.448 
+Q 605.952 101.448 605.952 97.0128 
+L 605.952 55.9872 
+Q 605.952 51.552 601.5168 51.552 
+L 549.4032 51.552 
+Q 544.968 51.552 544.968 55.9872 
+L 544.968 97.0128 
+Q 544.968 101.448 549.4032 101.448 
+z
+" clip-path="url(#p264bcccb05)" style="fill: #ece7fa; stroke: #6d4fc2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 12.744 43.236 
+L 395.28 43.236 
+" clip-path="url(#p264bcccb05)" style="fill: none; stroke: #e8730c; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 434.088 43.236 
+L 605.952 43.236 
+" clip-path="url(#p264bcccb05)" style="fill: none; stroke: #0f766e; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(39.675164 73.266846)">Main.java</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(33.955867 84.669443)">source code</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(188.961219 73.09668)">javac</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(179.93075 85.630664)">compiler</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(314.015516 73.29208)">Main.class</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(319.734812 84.694678)">bytecode</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(466.637531 72.830664)">JVM</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(454.596906 85.364648)">runs it</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="575.46" y="79.38707" transform="rotate(-0 575.46 79.38707)">Hello</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #e8730c" x="65.412" y="37.518047" transform="rotate(-0 65.412 37.518047)">step 1: compile</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #0f766e" x="483.984" y="37.517656" transform="rotate(-0 483.984 37.517656)">step 2: run</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #c2410c" transform="translate(142.250203 123.333012)">compile errors (a missing ;)</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #c2410c" transform="translate(132.039422 134.135473)">are caught here, before running</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #c2410c" transform="translate(407.990109 123.333012)">runtime exceptions (like 1 / 0)</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #c2410c" transform="translate(413.697375 134.135473)">happen here, while running</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #2c679c" transform="translate(280.763719 123.333012)">same file runs on Windows,</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #2c679c" transform="translate(286.560281 134.135473)">macOS, Linux, a browser</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p264bcccb05">
+   <rect x="7.2" y="7.2" width="609.84" height="160.776"/>
+  </clipPath>
+ </defs>
+</svg>

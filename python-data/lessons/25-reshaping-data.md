@@ -53,6 +53,8 @@ print(len(parts[0]), len(parts[1]), len(north_south))
 
 The same data can be laid out two ways:
 
+![The same scores in two layouts: wide has one column per subject; long has one row per student and subject. melt goes wide to long, pivot goes back](../figures/wide-long.svg)
+
 - **wide**: one row per thing, one column per measurement (easy for people to read);
 - **long** (also called **tidy**): one row per thing *per measurement*, with a column saying which measurement it is (easy for computers to group, filter and chart).
 

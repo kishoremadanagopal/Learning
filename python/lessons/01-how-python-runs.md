@@ -36,6 +36,8 @@ Python does not understand your text directly. It processes it in stages, and th
 3. **Compile**: the tree is turned into low-level instructions. Regular Python (CPython) produces *bytecode*. This course runs Python inside your browser with Brython, which produces JavaScript instead.
 4. **Run**: the instructions execute and you see the result.
 
+![Your code goes through four stages: tokens, then a tree called the AST where syntax errors are caught, then compiling, then running, where runtime errors like dividing by zero are found](../figures/run-stages.svg)
+
 You don't need to memorise these stages now. Just remember that a typo is caught *before* anything runs, while a mistake like dividing by zero is only found *while* the program runs.
 
 ## Your first error

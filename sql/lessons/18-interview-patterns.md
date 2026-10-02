@@ -123,6 +123,8 @@ ORDER BY rn;
 | Dev | Grace | Carla |
 | Frank | NULL | Hank |
 
+![Long rows of name, department and row number turned into a wide table with one column per department](../figures/pivot.svg)
+
 `MAX` is only there because `GROUP BY` needs an aggregate: each cell has at most one name, and `MAX` of one value is that value. MSSQL and Oracle also have a `PIVOT` keyword, but the `CASE` version works everywhere.
 
 ## 4. The median
@@ -171,6 +173,8 @@ ORDER BY month;
 ## 6. Consecutive days: gaps and islands
 
 "Users who logged in on 3 or more consecutive days" is a favourite hard question. The trick: within a run of consecutive dates, **the date minus its row number is the same** for every row. That constant labels each run (island):
+
+![Ten days in a row, with three coloured streaks of logins separated by grey days without logins](../figures/gaps-and-islands.svg)
 
 ```sql
 WITH logins(user_id, day) AS (

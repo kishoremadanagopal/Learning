@@ -35,6 +35,7 @@ SITE_URL = "https://kishoremadanagopal.github.io/learning/python-data/"
 REPO_BLOB = "https://github.com/kishoremadanagopal/learning/blob/main/python-data/"
 REPO_TREE = "https://github.com/kishoremadanagopal/learning/tree/main/python-data/"
 DATA = ROOT / "data"
+FIGURES = ROOT / "figures"
 sys.path.insert(0, str(ROOT))
 import runner  # noqa: E402
 
@@ -266,7 +267,7 @@ def lesson_markdown(l, lessons):
         "",
         *[f"- {t}" for t in l["_terms"]],
         "",
-        gh_fences(l["_md"]).replace("\n### ", "\n## "),
+        gh_fences(l["_md"]).replace("\n### ", "\n## ").replace("](figures/", "](../figures/"),
         "",
         "## Common mistakes",
         "",
@@ -517,6 +518,11 @@ def assemble(data):
         if (SITE / "data").exists():
             shutil.rmtree(SITE / "data")
         shutil.copytree(DATA, SITE / "data")
+
+    if FIGURES.exists() and FIGURES.resolve() != (SITE / "figures").resolve():
+        if (SITE / "figures").exists():
+            shutil.rmtree(SITE / "figures")
+        shutil.copytree(FIGURES, SITE / "figures")
 
     lessons_dir = SITE / "lessons"
     if lessons_dir.exists():

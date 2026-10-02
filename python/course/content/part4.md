@@ -29,6 +29,8 @@ print(greet("Alan"))
 
 The values you pass in when calling (`"Ada"`) are called **arguments**.
 
+![A function is like a machine: the argument "Ada" goes into greet(name) and the return value "Hello, Ada!" comes out](figures/function-machine.svg)
+
 ### Why functions?
 
 - **Reuse**: write once, call many times.
@@ -366,6 +368,8 @@ When Python looks up a name, it searches four places in order:
 3. **G**lobal: at the top level of the file
 4. **B**uilt-in: names like `print` and `len`
 
+![Four nested scopes: local inside enclosing inside global inside built-in. Python searches for a name from the inside out](figures/legb.svg)
+
 ```python
 x = "global"
 
@@ -660,6 +664,8 @@ countdown(3)
 ### Factorial
 
 The factorial of `n` (written `n!`) is `n × (n-1) × ... × 1`. Notice that `n! = n × (n-1)!`, which is a recursive definition:
+
+![factorial(4) calls factorial(3), which calls factorial(2), which calls factorial(1); then the answers 1, 2, 6 and 24 come back up](figures/recursion-stack.svg)
 
 ```python
 def factorial(n):

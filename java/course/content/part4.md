@@ -88,6 +88,8 @@ public class Main {
 }
 ```
 
+![A primitive variable holds its value directly; the variables first and second both hold arrows to the same Box object](figures/references.svg)
+
 ### null
 
 A reference that points at nothing is `null`. Calling a method on `null` throws the most famous exception in Java, `NullPointerException`:
@@ -803,6 +805,8 @@ public class Main {
 ```
 
 `Dog` didn't write `introduce()`; it **inherited** it. It only **overrode** `speak()`, the part that differs.
+
+![Dog and Cat extend Animal, and Animal extends Object: children inherit name and introduce() and override speak()](figures/inheritance-tree.svg)
 
 ### super
 

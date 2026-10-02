@@ -94,6 +94,8 @@ A classic bug is `nums = nums.sort()`, which sets `nums` to `None`.
 
 Assigning a list to another variable does **not** copy it. Both names refer to the same list:
 
+![b = a gives the same list two names, so appending through b changes a; a.copy() makes a separate list](figures/list-references.svg)
+
 ```python
 a = [1, 2, 3]
 b = a
@@ -319,6 +321,8 @@ print(person["name"])
 print(person["languages"][1])
 ```
 
+![A dictionary pairs each key with a value: "name" with "Ada", "age" with 36, and "languages" with a list](figures/dict-keys-values.svg)
+
 ### Adding, changing and removing
 
 ```python
@@ -509,6 +513,8 @@ print(python_devs - java_devs)   # difference: only Python
 print(python_devs ^ java_devs)   # symmetric difference: in exactly one
 ```
 
+![Four Venn diagrams of python_devs and java_devs: union shades everything, intersection only Ben, difference only Ana and Cy, symmetric difference everyone except Ben](figures/set-operations.svg)
+
 ### Adding and removing
 
 ```python
@@ -574,6 +580,8 @@ print(squares)
 ```
 
 Read it as: "**n * n** for each **n** in **range(1, 6)**".
+
+![The parts of a list comprehension: n * n is what to keep and for n in range(1, 6) is where the values come from, turning 1 to 5 into 1, 4, 9, 16, 25](figures/comprehension.svg)
 
 ### Filtering with if
 

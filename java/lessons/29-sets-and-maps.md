@@ -14,7 +14,9 @@
 - **getOrDefault / merge:** read with a fallback / combine a new value with an existing one.
 - **hashCode:** a number used by hash collections to locate objects quickly.
 
-### Sets
+![List and Set are kinds of Collection, with ArrayList, LinkedList, HashSet and TreeSet below them; Map with HashMap and TreeMap stands on its own](../figures/collections.svg)
+
+## Sets
 
 A **Set** holds unique values: adding a duplicate does nothing. Membership tests (`contains`) are very fast.
 

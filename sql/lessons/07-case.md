@@ -54,6 +54,9 @@ END
 
 ## Boundaries: read the word before the number
 
+
+![A number line of ages split into Young, Middle and Senior bands, with the customers placed on it](../figures/case-bands.svg)
+
 | Question says | Use |
 |---|---|
 | "over", "more than", "above" | `>` |

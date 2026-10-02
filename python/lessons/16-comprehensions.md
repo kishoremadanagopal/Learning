@@ -26,6 +26,8 @@ print(squares)
 
 Read it as: "**n * n** for each **n** in **range(1, 6)**".
 
+![The parts of a list comprehension: n * n is what to keep and for n in range(1, 6) is where the values come from, turning 1 to 5 into 1, 4, 9, 16, 25](../figures/comprehension.svg)
+
 ## Filtering with if
 
 Add an `if` at the end to keep only some items:

@@ -19,6 +19,9 @@ ORDER BY col1;   -- optional, once, at the very end
 
 ## JOIN vs UNION
 
+
+![JOIN puts two tables side by side to add columns; UNION stacks two query results to add rows](../figures/union-vs-join.svg)
+
 - A **JOIN** puts tables **side by side** (more columns).
 - A **UNION** puts results **on top of each other** (more rows).
 

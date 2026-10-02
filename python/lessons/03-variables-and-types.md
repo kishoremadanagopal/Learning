@@ -35,6 +35,8 @@ print(score)
 
 Read `score = score + 5` from right to left: Python works out `score + 5` first (15), then stores it in `score`.
 
+![A variable is a name that points to a value: name points to the string "Ada" and age points to the integer 36](../figures/variables.svg)
+
 ## Naming rules
 
 - Names can contain letters, digits and underscores, but can't start with a digit: `total_2` is fine, `2total` is not.

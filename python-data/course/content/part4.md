@@ -16,6 +16,8 @@ Almost every real dataset has gaps: a sensor that didn't report, a form field le
 
 `isna()` gives True where a value is missing. Add `.sum()` to count per column:
 
+![A map of employees_messy.csv with every missing value shaded orange, showing which columns have gaps](figures/missing-map.svg)
+
 ```python
 import pandas as pd
 

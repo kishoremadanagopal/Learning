@@ -37,6 +37,8 @@ public class Main {
 
 Compare the loop version: a new list, a `for`, an `if`, an `add`, then a sort. The stream says **what** you want, not **how** to step through it.
 
+![A stream pipeline: 5, 12, 7, 20, 3, 18 is filtered to values over 6, doubled, sorted to 14, 24, 36, 40, then collected into a List](../figures/stream-pipeline.svg)
+
 ## Laziness
 
 Intermediate operations don't run until a terminal operation asks for results, and then each element flows through the whole pipeline. A stream can be used only **once**.

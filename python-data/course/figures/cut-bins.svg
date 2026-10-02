@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="488.7pt" height="134.272172pt" viewBox="0 0 488.7 134.272172" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 134.272172 
+L 488.7 134.272172 
+L 488.7 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 16.321154 91.960172 
+L 198.744231 91.960172 
+L 198.744231 61.864172 
+L 16.321154 61.864172 
+z
+" clip-path="url(#pec87904874)" style="fill: #c2410c; opacity: 0.35; stroke: #c2410c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 198.744231 91.960172 
+L 289.955769 91.960172 
+L 289.955769 61.864172 
+L 198.744231 61.864172 
+z
+" clip-path="url(#pec87904874)" style="fill: #e8730c; opacity: 0.35; stroke: #e8730c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 289.955769 91.960172 
+L 381.167308 91.960172 
+L 381.167308 61.864172 
+L 289.955769 61.864172 
+z
+" clip-path="url(#pec87904874)" style="fill: #2c679c; opacity: 0.35; stroke: #2c679c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 381.167308 91.960172 
+L 472.378846 91.960172 
+L 472.378846 61.864172 
+L 381.167308 61.864172 
+z
+" clip-path="url(#pec87904874)" style="fill: #0f766e; opacity: 0.35; stroke: #0f766e; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <defs>
+     <path id="me9c56d47ee" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #1f2933"/>
+    </defs>
+    <g clip-path="url(#pec87904874)">
+     <use xlink:href="#me9c56d47ee" x="289.955769" y="46.816172" style="fill: #1f2933; stroke: #1f2933"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="107.532692" y="79.510219" transform="rotate(-0 107.532692 79.510219)">D: (0, 40]</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="244.35" y="79.510219" transform="rotate(-0 244.35 79.510219)">C: (40, 60]</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="335.561538" y="79.510219" transform="rotate(-0 335.561538 79.510219)">B: (60, 80]</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="426.773077" y="79.510219" transform="rotate(-0 426.773077 79.510219)">A: (80, 100]</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="16.321154" y="115.033772" transform="rotate(-0 16.321154 115.033772)">0</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="198.744231" y="115.033772" transform="rotate(-0 198.744231 115.033772)">40</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="289.955769" y="115.033772" transform="rotate(-0 289.955769 115.033772)">60</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="381.167308" y="115.033772" transform="rotate(-0 381.167308 115.033772)">80</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="472.378846" y="115.033772" transform="rotate(-0 472.378846 115.033772)">100</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle" x="289.955769" y="36.784172" transform="rotate(-0 289.955769 36.784172)">60 → C (right edge included)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle" x="244.35" y="15.736172" transform="rotate(-0 244.35 15.736172)">pd.cut(scores, bins=[0, 40, 60, 80, 100], labels=["D", "C", "B", "A"])</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pec87904874">
+   <rect x="7.2" y="21.736172" width="474.3" height="105.336"/>
+  </clipPath>
+ </defs>
+</svg>

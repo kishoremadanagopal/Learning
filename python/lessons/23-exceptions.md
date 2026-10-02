@@ -83,6 +83,8 @@ print(safe_divide(1, 0))
 print(safe_divide("a", 2))
 ```
 
+![try runs the risky code; with no error the else block runs, with an error the matching except runs; finally runs either way](../figures/try-except-flow.svg)
+
 `finally` is for cleanup that must always happen, like closing a file or a network connection.
 
 ## Raising exceptions

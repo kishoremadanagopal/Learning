@@ -98,6 +98,8 @@ A classic bug is `nums = nums.sort()`, which sets `nums` to `None`.
 
 Assigning a list to another variable does **not** copy it. Both names refer to the same list:
 
+![b = a gives the same list two names, so appending through b changes a; a.copy() makes a separate list](../figures/list-references.svg)
+
 ```python
 a = [1, 2, 3]
 b = a

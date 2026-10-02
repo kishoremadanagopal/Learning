@@ -30,6 +30,8 @@ Python does not understand your text directly. It processes it in stages, and th
 3. **Compile**: the tree is turned into low-level instructions. Regular Python (CPython) produces *bytecode*. This course runs Python inside your browser with Brython, which produces JavaScript instead.
 4. **Run**: the instructions execute and you see the result.
 
+![Your code goes through four stages: tokens, then a tree called the AST where syntax errors are caught, then compiling, then running, where runtime errors like dividing by zero are found](figures/run-stages.svg)
+
 You don't need to memorise these stages now. Just remember that a typo is caught *before* anything runs, while a mistake like dividing by zero is only found *while* the program runs.
 
 ### Your first error
@@ -214,6 +216,8 @@ print(score)
 ```
 
 Read `score = score + 5` from right to left: Python works out `score + 5` first (15), then stores it in `score`.
+
+![A variable is a name that points to a value: name points to the string "Ada" and age points to the integer 36](figures/variables.svg)
 
 ### Naming rules
 
@@ -512,6 +516,8 @@ print("ha" * 3)
 
 Each character has a position called an **index**. Counting starts at **0**. Negative indexes count from the end.
 
+![The letters of "Python" with their positions: 0 to 5 counting from the front, and -6 to -1 counting from the end](figures/string-index.svg)
+
 ```output
  P  y  t  h  o  n
  0  1  2  3  4  5
@@ -530,6 +536,8 @@ Asking for `word[6]` causes an `IndexError` because there is no position 6.
 ### Slicing: getting part of a string
 
 `word[start:stop]` gives the characters from `start` up to, but **not including**, `stop`. Leave a side empty to mean "from the beginning" or "to the end". An optional third number is the step.
+
+![Slice positions sit between the characters: word[0:2] cuts before P and after y, giving "Py"](figures/string-slice.svg)
 
 ```python
 word = "Python"

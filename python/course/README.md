@@ -16,6 +16,7 @@ python course/build.py --test
 | `content/cheatsheet.md` | the syntax cheat sheet |
 | `page.html`, `app.js` | the sandbox page and its logic |
 | `playground.html` | the standalone playground |
+| `figures.py` | draws the lesson diagrams in `figures/` (run it after changing a diagram) |
 | `build.py` | builds everything and tests the lesson code |
 
 ## Lesson format

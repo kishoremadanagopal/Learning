@@ -55,6 +55,8 @@ print(joined.groupby("city")["revenue"].sum().sort_values(ascending=False).round
 
 When some keys don't match, the `how` argument decides what happens:
 
+![Inner, left, right and outer joins as overlapping circles: the shaded part shows which rows each join keeps](../figures/merge-joins.svg)
+
 | `how=` | Keeps | SQL |
 |---|---|---|
 | `"inner"` (default) | only rows with a match in both tables | `INNER JOIN` |

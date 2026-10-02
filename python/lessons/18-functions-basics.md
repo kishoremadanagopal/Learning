@@ -33,6 +33,8 @@ print(greet("Alan"))
 
 The values you pass in when calling (`"Ada"`) are called **arguments**.
 
+![A function is like a machine: the argument "Ada" goes into greet(name) and the return value "Hello, Ada!" comes out](../figures/function-machine.svg)
+
 ## Why functions?
 
 - **Reuse**: write once, call many times.
