@@ -102,5 +102,6 @@ learning/
 ---
 
 <p align="center">
-  Made by <a href="https://github.com/kishoremadanagopal">Kishore Madanagopal</a> · If these courses help you, give the repository a ⭐
+  Made by <a href="https://github.com/kishoremadanagopal">Kishore Madanagopal</a> · Powered by <a href="https://claude.ai">Claude</a><br>
+  <sub>If these courses help you, give the repository a ⭐</sub>
 </p>
