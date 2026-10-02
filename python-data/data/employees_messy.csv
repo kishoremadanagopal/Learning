@@ -1,0 +1,41 @@
+emp_id,name,department,salary,age,start_date,email
+101,HANA OKAFOR,HR,36000,49,2025-04-08,hana.okafor@example.com
+102,  maya khan,sales,"92,000",43,2024-09-18,maya.khan@example.com
+103,Yuki Müller  , Engineering,$66000,37,2020-04-16,yuki.müller@example.com
+104,Arjun Rossi, Engineering,"$81,000",57,,arjun.rossi@example.com
+105,Victor Cohen,Engineering,32000,,2025-01-05,victor.cohen@example.com
+106,MAYA BROWN,SALES ,"78,000",41,2016-09-12,maya.brown@example.com
+107,  aisha chen,Sales,,62,2021-09-29,aisha.chen@example.com
+108,Liam Patel  ,Marketing,"$45,000",25,2023-07-16,liam.patel@example.com
+109,Samuel Nguyen, Engineering,63000,34,2020-10-16,
+110,Mei Silva,Marketing,"74,000",26,2015-02-03,mei.silva@example.com
+111,MEI BROWN,SALES ,$79000,42,2017-08-09,mei.brown@example.com
+112,  sara brown,sales,"$56,000",230,2024-03-21,sara.brown@example.com
+113,Lina Silva  ,HR,64000,48,2020-08-08,lina.silva@example.com
+114,Amara Rossi,SALES ,"48,000",41,2019-07-25,amara.rossi@example.com
+115,Aisha Khan,sales,$73000,59,2019-05-20,aisha.khan@example.com
+116,AISHA ROSSI, Engineering,"$94,000",61,2020-12-27,
+117,  lucas haddad,Sales,92000,44,2016-10-17,lucas.haddad@example.com
+118,Mei Cohen  ,sales,"78,000",,2018-11-23,mei.cohen@example.com
+119,Yuki Khan, Engineering,,41,2023-08-09,yuki.khan@example.com
+120,Ethan Haddad,Engineering,"$76,000",31,2018-08-16,ethan.haddad@example.com
+121,ETHAN ROSSI,Engineering,49000,38,2017-05-13,ethan.rossi@example.com
+122,  fatima brown,HR,"67,000",49,,fatima.brown@example.com
+123,Jonas Cohen  ,SALES ,$64000,48,2015-02-17,jonas.cohen@example.com
+124,Mei Silva,Engineering,"$57,000",26,2017-07-25,mei.silva@example.com
+125,Tom Kim,HR,54000,-1,2020-07-12,tom.kim@example.com
+126,CHLOE SILVA,SALES ,"89,000",31,2022-10-29,chloe.silva@example.com
+127,  ravi novak,Engineering,$73000,43,2019-02-25,ravi.novak@example.com
+128,Mateo Silva  ,SALES ,"$91,000",61,2025-01-28,
+129,Diego Patel,HR,37000,46,2023-10-19,diego.patel@example.com
+130,Victor Okafor,Sales,,27,2023-01-12,victor.okafor@example.com
+131,TOM LARSEN, Engineering,$49000,43,2017-10-11,tom.larsen@example.com
+132,  isla ali,Engineering,"$91,000",54,2018-05-27,isla.ali@example.com
+133,Maya Kim  ,SALES ,70000,24,2021-03-23,
+134,Nia Smith, Engineering,"66,000",57,2024-10-25,nia.smith@example.com
+135,Victor Novak,Engineering,$89000,45,2015-03-11,victor.novak@example.com
+136,ETHAN ROSSI,HR,"$73,000",23,2024-01-21,ethan.rossi@example.com
+137,  tom okafor,marketing,65000,22,2024-12-15,tom.okafor@example.com
+104,Arjun Rossi, Engineering,"$81,000",57,,arjun.rossi@example.com
+111,MEI BROWN,SALES ,$79000,42,2017-08-09,mei.brown@example.com
+121,ETHAN ROSSI,Engineering,49000,38,2017-05-13,ethan.rossi@example.com

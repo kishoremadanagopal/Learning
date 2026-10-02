@@ -1,0 +1,9 @@
+product,category,unit_price,unit_cost,supplier
+Laptop,Electronics,899.0,640.0,TechSource
+Monitor,Electronics,249.0,170.0,TechSource
+Headphones,Electronics,79.0,38.0,SoundCo
+Desk Chair,Office,189.0,110.0,OfficeHub
+Notebook,Office,4.5,1.2,PaperWorks
+Pen Pack,Office,6.0,2.1,PaperWorks
+Coffee Maker,Home,59.0,31.0,HomeGoods
+Desk Lamp,Home,35.0,16.0,HomeGoods

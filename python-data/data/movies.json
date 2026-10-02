@@ -1,0 +1,322 @@
+[
+  {
+    "title": "Broken Station",
+    "year": 2006,
+    "genre": "Comedy",
+    "runtime_min": 117,
+    "rating": 7.6,
+    "box_office_musd": 175.5
+  },
+  {
+    "title": "Last River",
+    "year": 2022,
+    "genre": "Thriller",
+    "runtime_min": 96,
+    "rating": 7.5,
+    "box_office_musd": 103.6
+  },
+  {
+    "title": "Silent River",
+    "year": 2022,
+    "genre": "Sci-Fi",
+    "runtime_min": 162,
+    "rating": 7.4,
+    "box_office_musd": 64.8
+  },
+  {
+    "title": "Silent Voyage",
+    "year": 2011,
+    "genre": "Comedy",
+    "runtime_min": 86,
+    "rating": 6.6,
+    "box_office_musd": 174.2
+  },
+  {
+    "title": "Summer Tide",
+    "year": 2022,
+    "genre": "Sci-Fi",
+    "runtime_min": 167,
+    "rating": 6.0,
+    "box_office_musd": null
+  },
+  {
+    "title": "The Iron Echo",
+    "year": 2012,
+    "genre": "Animation",
+    "runtime_min": 103,
+    "rating": 7.9,
+    "box_office_musd": 25.6
+  },
+  {
+    "title": "Hidden Mirror",
+    "year": 2007,
+    "genre": "Animation",
+    "runtime_min": 81,
+    "rating": 5.8,
+    "box_office_musd": 129.8
+  },
+  {
+    "title": "The Wild Lanterns",
+    "year": 2015,
+    "genre": "Animation",
+    "runtime_min": 105,
+    "rating": 6.2,
+    "box_office_musd": 55.3
+  },
+  {
+    "title": "Iron Tide",
+    "year": 2009,
+    "genre": "Animation",
+    "runtime_min": 108,
+    "rating": 7.7,
+    "box_office_musd": 27.2
+  },
+  {
+    "title": "Last Station",
+    "year": 2021,
+    "genre": "Thriller",
+    "runtime_min": 121,
+    "rating": 7.0,
+    "box_office_musd": 72.3
+  },
+  {
+    "title": "The Midnight Tide",
+    "year": 2022,
+    "genre": "Sci-Fi",
+    "runtime_min": 99,
+    "rating": 7.7,
+    "box_office_musd": 218.9
+  },
+  {
+    "title": "The Electric Tide",
+    "year": 2023,
+    "genre": "Documentary",
+    "runtime_min": 151,
+    "rating": 7.3,
+    "box_office_musd": 22.0
+  },
+  {
+    "title": "Paper Frontier",
+    "year": 2007,
+    "genre": "Thriller",
+    "runtime_min": 98,
+    "rating": 6.1,
+    "box_office_musd": 25.0
+  },
+  {
+    "title": "The Lost Tide",
+    "year": 2011,
+    "genre": "Action",
+    "runtime_min": 150,
+    "rating": 6.2,
+    "box_office_musd": 105.8
+  },
+  {
+    "title": "The Northern Atlas",
+    "year": 2015,
+    "genre": "Drama",
+    "runtime_min": 126,
+    "rating": 7.4,
+    "box_office_musd": 53.6
+  },
+  {
+    "title": "The Last Frontier",
+    "year": 2012,
+    "genre": "Action",
+    "runtime_min": 122,
+    "rating": 6.7,
+    "box_office_musd": 56.2
+  },
+  {
+    "title": "The Broken Station",
+    "year": 2010,
+    "genre": "Comedy",
+    "runtime_min": 127,
+    "rating": 7.4,
+    "box_office_musd": 168.0
+  },
+  {
+    "title": "Glass River",
+    "year": 2018,
+    "genre": "Sci-Fi",
+    "runtime_min": 125,
+    "rating": 7.0,
+    "box_office_musd": 97.5
+  },
+  {
+    "title": "Electric Echo",
+    "year": 2014,
+    "genre": "Thriller",
+    "runtime_min": 115,
+    "rating": 8.0,
+    "box_office_musd": 64.7
+  },
+  {
+    "title": "Golden Kingdom",
+    "year": 2013,
+    "genre": "Animation",
+    "runtime_min": 98,
+    "rating": 8.5,
+    "box_office_musd": 18.7
+  },
+  {
+    "title": "The Summer Signal",
+    "year": 2006,
+    "genre": "Animation",
+    "runtime_min": 83,
+    "rating": 5.5,
+    "box_office_musd": 32.3
+  },
+  {
+    "title": "The Crimson Station",
+    "year": 2010,
+    "genre": "Drama",
+    "runtime_min": 83,
+    "rating": 7.5,
+    "box_office_musd": 249.6
+  },
+  {
+    "title": "Iron Frontier",
+    "year": 2019,
+    "genre": "Comedy",
+    "runtime_min": 87,
+    "rating": 6.1,
+    "box_office_musd": 95.4
+  },
+  {
+    "title": "The Glass Garden",
+    "year": 2018,
+    "genre": "Comedy",
+    "runtime_min": 145,
+    "rating": 6.4,
+    "box_office_musd": 45.9
+  },
+  {
+    "title": "The Electric Garden",
+    "year": 2024,
+    "genre": "Sci-Fi",
+    "runtime_min": 169,
+    "rating": 7.0,
+    "box_office_musd": 40.4
+  },
+  {
+    "title": "Wild River",
+    "year": 2009,
+    "genre": "Comedy",
+    "runtime_min": 162,
+    "rating": 6.4,
+    "box_office_musd": 35.8
+  },
+  {
+    "title": "Hidden Kingdom",
+    "year": 2009,
+    "genre": "Comedy",
+    "runtime_min": 110,
+    "rating": 7.3,
+    "box_office_musd": 92.2
+  },
+  {
+    "title": "Crimson Orchard",
+    "year": 2014,
+    "genre": "Documentary",
+    "runtime_min": 105,
+    "rating": 8.4,
+    "box_office_musd": null
+  },
+  {
+    "title": "Electric Harbor",
+    "year": 2023,
+    "genre": "Action",
+    "runtime_min": 121,
+    "rating": 7.3,
+    "box_office_musd": 230.9
+  },
+  {
+    "title": "Crimson Voyage",
+    "year": 2021,
+    "genre": "Action",
+    "runtime_min": 111,
+    "rating": 6.1,
+    "box_office_musd": 166.1
+  },
+  {
+    "title": "Hidden Orchard",
+    "year": 2015,
+    "genre": "Drama",
+    "runtime_min": 95,
+    "rating": 8.6,
+    "box_office_musd": 131.6
+  },
+  {
+    "title": "The Iron Comet",
+    "year": 2023,
+    "genre": "Action",
+    "runtime_min": 96,
+    "rating": 7.5,
+    "box_office_musd": 74.0
+  },
+  {
+    "title": "Crimson Atlas",
+    "year": 2017,
+    "genre": "Action",
+    "runtime_min": 168,
+    "rating": 6.8,
+    "box_office_musd": 34.6
+  },
+  {
+    "title": "The Silent Lanterns",
+    "year": 2016,
+    "genre": "Thriller",
+    "runtime_min": 168,
+    "rating": 6.9,
+    "box_office_musd": 113.9
+  },
+  {
+    "title": "The Northern Echo",
+    "year": 2005,
+    "genre": "Thriller",
+    "runtime_min": 141,
+    "rating": 8.4,
+    "box_office_musd": 72.8
+  },
+  {
+    "title": "Glass Echo",
+    "year": 2025,
+    "genre": "Documentary",
+    "runtime_min": 155,
+    "rating": 6.1,
+    "box_office_musd": 7.3
+  },
+  {
+    "title": "Hidden Frontier",
+    "year": 2008,
+    "genre": "Action",
+    "runtime_min": 87,
+    "rating": 7.9,
+    "box_office_musd": 23.3
+  },
+  {
+    "title": "The Northern Comet",
+    "year": 2016,
+    "genre": "Animation",
+    "runtime_min": 104,
+    "rating": 6.6,
+    "box_office_musd": 98.5
+  },
+  {
+    "title": "Velvet Frontier",
+    "year": 2022,
+    "genre": "Documentary",
+    "runtime_min": 134,
+    "rating": 7.4,
+    "box_office_musd": null
+  },
+  {
+    "title": "Velvet Mirror",
+    "year": 2022,
+    "genre": "Documentary",
+    "runtime_min": 128,
+    "rating": 6.4,
+    "box_office_musd": 3.0
+  }
+]
