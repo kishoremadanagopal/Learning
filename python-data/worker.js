@@ -1,7 +1,6 @@
-/* Runs Python (Pyodide) off the main thread, so long runs never freeze the page and Stop can end them. */
-"use strict";
+/* A module Web Worker that runs Python (Pyodide) off the main thread, so long runs never freeze the page and Stop can end them. */
+import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.mjs";
 const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/";
-importScripts(PYODIDE + "pyodide.js");
 
 let py = null;
 

@@ -130,7 +130,7 @@
     readyPromise = new Promise((r) => { resolveReady = r; });
     $("status").classList.remove("ready", "fail");
     $("statusText").textContent = "Loading Python and pandas (first visit takes ~15 s)…";
-    worker = new Worker("worker.js");
+    worker = new Worker("worker.js", { type: "module" });
     worker.onmessage = (e) => {
       const m = e.data;
       if (m.type === "ready") {
