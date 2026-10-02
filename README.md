@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <img alt="Learning: learn SQL and Python from scratch" src="assets/banner-light.svg" width="100%">
+    <img alt="Learning: learn SQL, Python and Java from scratch" src="assets/banner-light.svg" width="100%">
   </picture>
 </p>
 
@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <img alt="Courses: 2" src="https://img.shields.io/badge/courses-2-0e7466">
-  <img alt="Lessons: 55" src="https://img.shields.io/badge/lessons-55-2c679c">
-  <img alt="Exercises: 141" src="https://img.shields.io/badge/auto--checked%20exercises-141-e8b417">
+  <img alt="Courses: 3" src="https://img.shields.io/badge/courses-3-0e7466">
+  <img alt="Lessons: 93" src="https://img.shields.io/badge/lessons-93-2c679c">
+  <img alt="Exercises: 198" src="https://img.shields.io/badge/auto--checked%20exercises-198-e8b417">
   <img alt="Price: free" src="https://img.shields.io/badge/price-free-2f7a45">
   <img alt="Setup: none" src="https://img.shields.io/badge/setup-none%2C%20runs%20in%20your%20browser-5b697b">
 </p>
@@ -28,7 +28,7 @@
 
 <table>
   <tr>
-    <td width="50%" valign="top">
+    <td width="33%" valign="top">
       <h3>🗄️ Learn SQL from scratch</h3>
       <p>Ask questions of a real database: filtering, grouping, joins, subqueries, CTEs, window functions and a final project.</p>
       <p><b>18</b> lessons · <b>79</b> exercises · SQLite in the browser</p>
@@ -39,7 +39,7 @@
         🧾 <a href="sql/cheatsheet.md">Cheat sheet</a>
       </p>
     </td>
-    <td width="50%" valign="top">
+    <td width="33%" valign="top">
       <h3>🐍 Learn Python from scratch</h3>
       <p>Learn to program: variables, loops, collections, functions, classes, generators, decorators and a final project.</p>
       <p><b>37</b> lessons · <b>62</b> exercises · <b>87</b> quiz questions</p>
@@ -48,6 +48,18 @@
         📘 <a href="python/README.md#lessons">Lessons</a> ·
         📖 <a href="python/glossary.md">Glossary</a> ·
         🧾 <a href="python/cheatsheet.md">Cheat sheet</a>
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>☕ Learn Java from scratch</h3>
+      <p>Real Java 17 compiled in your browser: classes, inheritance, collections, generics, streams, concurrency and a final project.</p>
+      <p><b>38</b> lessons · <b>57</b> exercises · <b>103</b> quiz questions · 🎮 <b>97</b> Quest challenges</p>
+      <p>
+        <a href="https://kishoremadanagopal.github.io/learning/java/"><b>▶ Open the Java course</b></a><br>
+        🎮 <a href="https://kishoremadanagopal.github.io/learning/java/game.html">Play Java Quest</a><br>
+        📘 <a href="java/README.md#lessons">Lessons</a> ·
+        📖 <a href="java/glossary.md">Glossary</a> ·
+        🧾 <a href="java/cheatsheet.md">Cheat sheet</a>
       </p>
     </td>
   </tr>
@@ -59,7 +71,8 @@
 |---|---|---|
 | New to programming | 🐍 **Python** | It teaches how programs think: variables, decisions, loops and functions. |
 | Working with data or reports | 🗄️ **SQL** | You'll answer real questions about data from the first lesson. |
-| Heading into data, backend or AI work | **Both** | Python and SQL are used side by side almost everywhere. |
+| Heading into data or AI work | 🐍 **Python** + 🗄️ **SQL** | They're used side by side almost everywhere. |
+| Aiming for backend, Android or enterprise jobs | ☕ **Java** | It's the language of large systems and teaches object-oriented design properly. |
 
 ## ✅ How every course works
 
@@ -72,7 +85,7 @@ Every lesson has a **Common mistakes** section. Read it: you'll recognise those 
 
 ## 🗂️ What's inside
 
-Both courses share the same structure, so once you know one, you know the other.
+Every course shares the same structure, so once you know one, you know the other.
 
 ```text
 learning/
@@ -83,20 +96,28 @@ learning/
 │   ├── lessons/            18 lessons with exercises and answers
 │   ├── glossary.md         every term, A to Z
 │   └── cheatsheet.md       all the syntax on one page
-└── python/                 🐍 Learn Python from scratch
+├── python/                 🐍 Learn Python from scratch
+│   ├── README.md           course home: lesson list and how to use it
+│   ├── index.html          practice sandbox (Python in the browser)
+│   ├── lessons/            37 lessons with exercises, answers and quizzes
+│   ├── glossary.md         every term, A to Z
+│   ├── cheatsheet.md       all the syntax on one page
+│   ├── playground.html     a free editor for experimenting
+│   └── course/             sources the Python course is built from
+└── java/                   ☕ Learn Java from scratch
     ├── README.md           course home: lesson list and how to use it
-    ├── index.html          practice sandbox (Python in the browser)
-    ├── lessons/            37 lessons with exercises, answers and quizzes
+    ├── index.html          practice sandbox (real Java 17 compiler in the browser)
+    ├── game.html           🎮 Java Quest: timed fill-in-the-code challenges
+    ├── lessons/            38 lessons with exercises, answers and quizzes
     ├── glossary.md         every term, A to Z
     ├── cheatsheet.md       all the syntax on one page
-    ├── playground.html     a free editor for experimenting
-    └── course/             sources the Python course is built from
+    └── course/             sources the Java course is built from
 ```
 
 ## 💡 Good to know
 
 - **Your progress stays with you.** Completed exercises and your code are saved in your own browser.
-- **Everything runs locally.** The SQL sandbox uses SQLite and the Python sandbox uses Brython, both running inside the page. Nothing you type is sent anywhere.
+- **Everything runs locally.** The SQL sandbox uses SQLite, the Python sandbox uses Brython and the Java sandbox runs the real `javac` compiler on [CheerpJ](https://cheerpj.com), all inside the page. Nothing you type is sent anywhere.
 - **Read anywhere.** Every lesson is plain Markdown, so it reads well right here on GitHub, on your phone or offline.
 
 ---

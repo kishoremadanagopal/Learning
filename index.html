@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Learning</title>
-<meta name="description" content="Free, hands-on courses: Learn SQL and Learn Python from scratch, with in-browser practice sandboxes.">
+<meta name="description" content="Free, hands-on courses: Learn SQL, Python and Java from scratch, with in-browser practice sandboxes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -20,6 +20,9 @@
   --py: #2c679c;
   --py-soft: #e3edf7;
   --py-yellow: #f2c230;
+  --java: #c25e0a;
+  --java-soft: #fbeadb;
+  --java-blue: #3a6d96;
   --on-accent: #ffffff;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
@@ -28,29 +31,31 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1418; --surface: #161d23; --ink: #e2e8ee; --muted: #93a0ae; --line: #27313b;
-    --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --on-accent: #0b1418;
+    --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1418; --surface: #161d23; --ink: #e2e8ee; --muted: #93a0ae; --line: #27313b;
-  --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --on-accent: #0b1418;
+  --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--py); outline-offset: 3px; }
-.wrap { max-width: 980px; margin: 0 auto; padding-inline: 20px; padding-block: 56px 64px; display: grid; gap: 40px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 56px 64px; display: grid; gap: 40px; }
 header { display: grid; gap: 14px; max-width: 640px; }
 .eyebrow { font: 600 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 h1 { margin: 0; font: 800 clamp(40px, 7vw, 64px)/1 var(--display); letter-spacing: -0.035em; }
 header p { margin: 0; font-size: 18px; color: var(--muted); }
-.courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .course { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; display: grid; gap: 16px; align-content: start; position: relative; overflow: hidden; }
 .course::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: var(--accent); }
 .course.sql { --accent: var(--sql); --soft: var(--sql-soft); }
 .course.py { --accent: var(--py); --soft: var(--py-soft); }
+.course.java { --accent: var(--java); --soft: var(--java-soft); }
+.course.java::before { background: linear-gradient(90deg, var(--java) 0 60%, var(--java-blue) 60%); }
 .course.py::before { background: linear-gradient(90deg, var(--py) 0 60%, var(--py-yellow) 60%); }
 .sample { font: 500 13px/1.5 var(--mono); background: var(--soft); color: var(--ink); border-radius: 8px; padding: 12px 14px; white-space: pre; overflow-x: auto; margin: 0; }
 .sample b { color: var(--accent); font-weight: 500; }
@@ -67,6 +72,9 @@ header p { margin: 0; font-size: 18px; color: var(--muted); }
 .order b { font-size: 15px; }
 .order span { font-size: 14.5px; color: var(--muted); }
 footer { font-size: 14px; color: var(--muted); }
+@media (max-width: 1000px) {
+  .courses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
   .wrap { padding-block: 36px 48px; }
   .courses, .order { grid-template-columns: minmax(0, 1fr); }
@@ -110,12 +118,25 @@ footer { font-size: 14px; color: var(--muted); }
         <a class="secondary" href="https://github.com/kishoremadanagopal/learning/tree/main/python#lessons">Read the lessons</a>
       </div>
     </article>
+    <article class="course java">
+      <pre class="sample" aria-hidden="true"><b>record</b> Point(<b>int</b> x, <b>int</b> y) {}
+
+<b>var</b> p = <b>new</b> Point(3, 4);
+System.out.println(p);</pre>
+      <h2>Learn Java from scratch</h2>
+      <p>Real Java 17 in your browser: classes, inheritance, collections, generics, streams, concurrency and a final project. Plus the Java Quest game.</p>
+      <div class="facts"><span><b>38</b> lessons</span><span><b>57</b> exercises</span><span><b>103</b> quiz questions</span><span><b>97</b> Quest challenges</span></div>
+      <div class="actions">
+        <a class="primary" href="java/">Open the Java course</a>
+        <a class="secondary" href="java/game.html">Play Java Quest</a>
+      </div>
+    </article>
   </section>
 
   <section class="order" aria-label="Where to start">
     <div><b>New to programming?</b><span>Start with Python. It teaches how programs think: variables, decisions, loops and functions.</span></div>
     <div><b>Working with data?</b><span>Start with SQL. You'll answer real questions about data in the first lesson.</span></div>
-    <div><b>Heading into data or AI?</b><span>Do both. Python and SQL are used side by side almost everywhere.</span></div>
+    <div><b>Aiming for software jobs?</b><span>Add Java. It powers backends, Android and enterprise systems, and teaches object-oriented design properly.</span></div>
   </section>
 
   <footer>Lessons, glossaries and cheat sheets are on <a href="https://github.com/kishoremadanagopal/learning">GitHub</a>. Progress is saved in your browser.</footer>

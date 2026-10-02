@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Java Quest</title>
+<meta name="description" content="Java Quest: fill in the missing Java code before the timer runs out. 9 levels from first steps to concurrency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<style>
+/* Layout: one centred column. Screens: level select -> play -> results. */
+:root {
+  --bg: #f3f1ef;
+  --surface: #ffffff;
+  --sunken: #f8f6f4;
+  --ink: #221d1a;
+  --muted: #66605b;
+  --line: #e0dbd6;
+  --orange: #e8730c;
+  --orange-soft: #fdeedd;
+  --on-orange: #ffffff;
+  --blue: #3a6d96;
+  --blue-soft: #e4edf5;
+  --ok: #2f7a45;
+  --ok-soft: #e2f2e6;
+  --err: #b3261e;
+  --err-soft: #fbe7e5;
+  --sx-kw: #b8430d; --sx-str: #2f7a45; --sx-num: #1f5f8b; --sx-com: #8c847d; --sx-fn: #7b3fa3; --sx-bi: #187373; --sx-dec: #a1660d;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141110; --surface: #1c1816; --sunken: #171412; --ink: #ece6e1; --muted: #a39a92; --line: #332c27;
+    --orange: #ff9a3d; --orange-soft: #3a2615; --on-orange: #1e1208; --blue: #8bb8de; --blue-soft: #1c2a37;
+    --ok: #7fd197; --ok-soft: #1a3324; --err: #ff8a80; --err-soft: #3a1f1f;
+    --sx-kw: #ff9a5c; --sx-str: #a8d08d; --sx-num: #8bb8de; --sx-com: #7d746c; --sx-fn: #d4a5f0; --sx-bi: #6fd1d1; --sx-dec: #e8c06a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141110; --surface: #1c1816; --sunken: #171412; --ink: #ece6e1; --muted: #a39a92; --line: #332c27;
+  --orange: #ff9a3d; --orange-soft: #3a2615; --on-orange: #1e1208; --blue: #8bb8de; --blue-soft: #1c2a37;
+  --ok: #7fd197; --ok-soft: #1a3324; --err: #ff8a80; --err-soft: #3a1f1f;
+  --sx-kw: #ff9a5c; --sx-str: #a8d08d; --sx-num: #8bb8de; --sx-com: #7d746c; --sx-fn: #d4a5f0; --sx-bi: #6fd1d1; --sx-dec: #e8c06a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--body); }
+a { color: var(--blue); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 18px; padding-block: 22px 60px; display: grid; gap: 22px; }
+.top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.logo { font: 800 26px/1 var(--display); letter-spacing: -0.02em; text-decoration: none; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+.logo span { color: var(--orange); }
+.top nav { margin-left: auto; display: flex; gap: 16px; font-size: 14px; flex-wrap: wrap; }
+
+/* Level select */
+.intro { display: grid; gap: 8px; }
+.intro h1 { margin: 0; font: 800 clamp(30px, 5vw, 44px)/1.05 var(--display); letter-spacing: -0.03em; text-wrap: balance; }
+.intro p { margin: 0; color: var(--muted); max-width: 62ch; }
+.modes { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.modes .label { font: 600 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.mode { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 14px; font-size: 14px; }
+.mode[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.mode small { color: inherit; opacity: .7; margin-left: 4px; }
+.levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.level { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; position: relative; transition: transform .12s ease, border-color .12s ease; }
+.level:hover { transform: translateY(-2px); border-color: var(--orange); }
+.level .num { font: 700 12px/1 var(--mono); color: var(--orange); }
+.level h2 { margin: 0; font: 700 18px/1.2 var(--display); }
+.level .meta { font-size: 13px; color: var(--muted); }
+.level .best { font: 600 12px/1 var(--mono); color: var(--ok); }
+.level .best.none { color: var(--muted); font-weight: 400; }
+
+/* Play */
+.hud { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.hud .lvl { font: 700 15px/1.2 var(--display); margin-right: auto; min-width: 0; }
+.hud .lvl small { display: block; font: 500 12px/1.3 var(--body); color: var(--muted); }
+.lives { font-size: 20px; letter-spacing: 2px; }
+.lives .lost { opacity: .2; filter: grayscale(1); }
+.stat { display: grid; text-align: right; font-variant-numeric: tabular-nums; }
+.stat b { font: 700 18px/1.1 var(--mono); }
+.stat small { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.stat.streak b { color: var(--orange); }
+.timer { height: 6px; background: var(--sunken); border-radius: 3px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.timer i { display: block; height: 100%; width: 100%; background: var(--orange); transform-origin: left; }
+.timer.low i { background: var(--err); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; display: grid; gap: 14px; }
+.qhead { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.prompt { font: 600 20px/1.3 var(--display); margin: 0; text-wrap: balance; }
+.qnum { font: 500 12px/1 var(--mono); color: var(--muted); white-space: nowrap; }
+.code { margin: 0; background: var(--sunken); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font: 14px/1.7 var(--mono); white-space: pre; overflow-x: auto; }
+.code input { font: 600 14px/1 var(--mono); color: var(--ink); background: var(--orange-soft); border: 0; border-bottom: 2px solid var(--orange); border-radius: 4px 4px 0 0; padding: 3px 5px; min-width: 4ch; outline: none; }
+.code input:focus { background: var(--surface); }
+.code input.right { background: var(--ok-soft); border-color: var(--ok); }
+.code input.wrong { background: var(--err-soft); border-color: var(--err); }
+.k { color: var(--sx-kw); font-weight: 600; } .s { color: var(--sx-str); } .n { color: var(--sx-num); } .c { color: var(--sx-com); font-style: italic; } .f { color: var(--sx-fn); } .b { color: var(--sx-bi); } .d { color: var(--sx-dec); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.primary { background: var(--orange); color: var(--on-orange); border: 0; border-radius: 8px; padding: 10px 18px; font-weight: 600; }
+.ghost { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 9px 14px; font-weight: 500; }
+.ghost:hover { border-color: var(--muted); }
+.actions kbd { font: 500 11px/1 var(--mono); opacity: .7; margin-left: 6px; }
+.feedback { border-radius: 10px; padding: 12px 14px; font-size: 15px; }
+.feedback.ok { background: var(--ok-soft); color: var(--ok); }
+.feedback.bad { background: var(--err-soft); color: var(--err); }
+.feedback.hint { background: var(--blue-soft); color: var(--ink); }
+.feedback code { font: 600 14px/1 var(--mono); background: var(--surface); padding: 2px 6px; border-radius: 4px; color: var(--ink); }
+.pop { animation: pop .35s ease; }
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.shake { animation: shake .35s ease; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+/* Results */
+.result { text-align: center; display: grid; gap: 10px; justify-items: center; }
+.result h1 { margin: 0; font: 800 clamp(30px, 6vw, 46px)/1.05 var(--display); letter-spacing: -0.03em; }
+.result .big { font: 800 56px/1 var(--mono); color: var(--orange); }
+.result p { margin: 0; color: var(--muted); }
+.review { display: grid; gap: 10px; text-align: left; width: 100%; }
+.review h3 { margin: 10px 0 0; font: 700 16px/1.2 var(--display); }
+.miss { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: var(--surface); display: grid; gap: 4px; font-size: 14px; }
+.miss code { font: 600 13px/1.4 var(--mono); }
+.miss .yours { color: var(--err); }
+.miss .answer { color: var(--ok); }
+
+@media (max-width: 720px) {
+  .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hud { gap: 10px; }
+  .prompt { font-size: 18px; }
+}
+@media (max-width: 440px) { .levels { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="game.html">☕ Java <span>Quest</span></a>
+    <nav><a href="index.html">Course home</a><a href="../">All courses</a></nav>
+  </header>
+  <main id="screen"></main>
+</div>
+<script src="quest.js"></script>
+<script>
+(function () {
+  "use strict";
+  const LEVELS = (window.QUEST && window.QUEST.levels) || [];
+  const MODES = [
+    { id: "relaxed", name: "Relaxed", note: "no timer", seconds: 0 },
+    { id: "timed", name: "Timed", note: "25 s", seconds: 25 },
+    { id: "speed", name: "Speed", note: "12 s", seconds: 12 },
+  ];
+  const ROUND = 10, LIVES = 3;
+  const $ = (s) => document.querySelector(s);
+  const screen = $("#screen");
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+  /* ---- storage (per browser) ---- */
+  const KEY = "java-quest:v1";
+  let store = { best: {}, mode: "timed" };
+  try { const raw = localStorage.getItem(KEY); if (raw) store = Object.assign(store, JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) { /* ignore */ } };
+
+  /* ---- Java highlighting ---- */
+  const KW = new Set("abstract boolean break byte case catch char class continue default do double else enum extends final finally float for if implements import instanceof int interface long new private protected public return short static super switch synchronized this throw throws try void while var record sealed permits yield true false null".split(" "));
+  const BI = new Set("String System Math Integer Double List ArrayList Map HashMap TreeMap Set HashSet TreeSet Arrays Collections StringBuilder Optional Collectors Comparator Function Predicate Thread ExecutorService Executors Future AtomicInteger Files Path IOException BufferedReader StringReader Object IllegalArgumentException NumberFormatException".split(" "));
+  const RE = /(\/\/[^\n]*)|("(?:\\.|[^"\\\n])*"?|'(?:\\.|[^'\\\n])*'?)|(@[A-Za-z_]\w*)|(\b\d[\d_]*(?:\.\d+)?[lLfFdD]?\b)|([A-Za-z_$][\w$]*)/g;
+  function hl(src) {
+    let out = "", last = 0, prev = "";
+    src.replace(RE, (m, com, str, ann, num, word, i) => {
+      out += esc(src.slice(last, i)); last = i + m.length;
+      if (com) out += `<span class="c">${esc(m)}</span>`;
+      else if (str) out += `<span class="s">${esc(m)}</span>`;
+      else if (ann) out += `<span class="d">${esc(m)}</span>`;
+      else if (num) out += `<span class="n">${esc(m)}</span>`;
+      else if (KW.has(word)) out += `<span class="k">${m}</span>`;
+      else if (["class", "record", "enum", "interface"].includes(prev)) out += `<span class="f">${m}</span>`;
+      else if (BI.has(word)) out += `<span class="b">${m}</span>`;
+      else out += esc(m);
+      prev = word || ""; return m;
+    });
+    return out + esc(src.slice(last));
+  }
+
+  /* ---- answers: ignore spacing around symbols ---- */
+  const norm = (s) => s.trim().replace(/\s+/g, " ").replace(/\s*([^\w\s$])\s*/g, "$1");
+  const isRight = (typed, answers) => answers.some((a) => norm(a) === norm(typed));
+
+  /* ---- level select ---- */
+  function home() {
+    clearInterval(timerId);
+    const mode = store.mode;
+    screen.innerHTML = `
+      <section class="intro">
+        <h1>Fill in the missing Java before the cup runs dry.</h1>
+        <p>Each round has ${ROUND} challenges from one level. A wrong answer or a timeout costs a cup of coffee; lose all ${LIVES} and the round ends. Correct answers in a row build a streak that multiplies your score.</p>
+      </section>
+      <div class="modes" role="group" aria-label="Speed">
+        <span class="label">Speed</span>
+        ${MODES.map((m) => `<button class="mode" data-mode="${m.id}" aria-pressed="${m.id === mode}">${m.name}<small>${m.note}</small></button>`).join("")}
+      </div>
+      <section class="levels">
+        ${LEVELS.map((lv, i) => {
+          const best = store.best[lv.id + ":" + mode];
+          return `<button class="level" data-i="${i}">
+            <span class="num">LEVEL ${i + 1} · LESSONS ${esc(lv.lessons)}</span>
+            <h2>${esc(lv.title)}</h2>
+            <span class="meta">${lv.challenges.length} challenges</span>
+            <span class="best ${best ? "" : "none"}">${best ? "Best: " + best : "Not played yet"}</span>
+          </button>`;
+        }).join("")}
+      </section>`;
+    screen.querySelectorAll(".mode").forEach((b) => b.addEventListener("click", () => { store.mode = b.dataset.mode; save(); home(); }));
+    screen.querySelectorAll(".level").forEach((b) => b.addEventListener("click", () => start(+b.dataset.i)));
+  }
+
+  /* ---- a round ---- */
+  let game = null, timerId = null;
+  function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  function start(levelIndex) {
+    const lv = LEVELS[levelIndex];
+    const mode = MODES.find((m) => m.id === store.mode) || MODES[1];
+    game = { lv, levelIndex, mode, deck: shuffle(lv.challenges.slice()).slice(0, ROUND), q: 0, lives: LIVES, score: 0, streak: 0, best: 0, right: 0, misses: [], answered: false, hinted: false };
+    ask();
+  }
+  function multiplier() { return Math.min(3, 1 + game.streak * 0.5); }
+  function ask() {
+    clearInterval(timerId);
+    const item = game.deck[game.q];
+    game.answered = false; game.hinted = false;
+    const [before, after] = item.code.split("___");
+    const width = Math.max(4, ...item.answers.map((a) => a.length)) + 2;
+    screen.innerHTML = `
+      <div class="hud">
+        <div class="lvl">${esc(game.lv.title)}<small>Level ${game.levelIndex + 1} · ${game.mode.name}</small></div>
+        <div class="lives" aria-label="${game.lives} lives left">${"☕".repeat(LIVES).split("").map((c, i) => `<span class="${i < game.lives ? "" : "lost"}">☕</span>`).join("")}</div>
+        <div class="stat streak"><b id="mult">×${multiplier()}</b><small>streak ${game.streak}</small></div>
+        <div class="stat"><b id="score">${game.score}</b><small>score</small></div>
+      </div>
+      ${game.mode.seconds ? '<div class="timer" id="timer"><i></i></div>' : ""}
+      <section class="card" id="card">
+        <div class="qhead"><p class="prompt">${esc(item.prompt)}</p><span class="qnum">${game.q + 1} / ${game.deck.length}</span></div>
+        <pre class="code">${hl(before)}<input id="answer" aria-label="Missing code" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:${width}ch">${hl(after)}</pre>
+        <div class="actions">
+          <button class="primary" id="submit">Check<kbd>↵</kbd></button>
+          <button class="ghost" id="hint">Hint</button>
+          <button class="ghost" id="quit">Quit round</button>
+        </div>
+        <div id="feedback" hidden></div>
+      </section>`;
+    const input = $("#answer");
+    input.focus();
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); game.answered ? next() : submit(); } });
+    $("#submit").addEventListener("click", () => (game.answered ? next() : submit()));
+    $("#hint").addEventListener("click", showHint);
+    $("#quit").addEventListener("click", finish);
+    if (game.mode.seconds) startTimer(game.mode.seconds);
+  }
+  function startTimer(seconds) {
+    const bar = $("#timer i"), wrap = $("#timer");
+    const t0 = performance.now();
+    timerId = setInterval(() => {
+      const left = Math.max(0, 1 - (performance.now() - t0) / (seconds * 1000));
+      bar.style.transform = `scaleX(${left})`;
+      wrap.classList.toggle("low", left < 0.25);
+      if (left <= 0) { clearInterval(timerId); if (!game.answered) submit(true); }
+    }, 100);
+  }
+  function showHint() {
+    if (game.answered) return;
+    const item = game.deck[game.q];
+    game.hinted = true;
+    const fb = $("#feedback");
+    fb.className = "feedback hint"; fb.hidden = false;
+    fb.innerHTML = `<b>Hint:</b> ${esc(item.hint || "Think about the lesson this level covers.")} <small>(hints reset your streak for this question)</small>`;
+    $("#answer").focus();
+  }
+  function submit(timedOut) {
+    if (game.answered) return;
+    clearInterval(timerId);
+    game.answered = true;
+    const item = game.deck[game.q];
+    const input = $("#answer");
+    const typed = input.value;
+    const ok = !timedOut && isRight(typed, item.answers);
+    const fb = $("#feedback");
+    fb.hidden = false;
+    input.readOnly = true;
+    if (ok) {
+      game.streak = game.hinted ? 0 : game.streak + 1;
+      const points = Math.round(100 * multiplier());
+      game.score += points; game.right++;
+      game.best = Math.max(game.best, game.streak);
+      input.classList.add("right");
+      fb.className = "feedback ok";
+      fb.innerHTML = `<b>Correct!</b> +${points} points${game.streak > 1 ? ` · streak ${game.streak}` : ""}`;
+      $("#score").textContent = game.score; $("#score").classList.add("pop");
+    } else {
+      game.lives--; game.streak = 0;
+      input.classList.add("wrong");
+      $("#card").classList.add("shake");
+      fb.className = "feedback bad";
+      fb.innerHTML = `<b>${timedOut ? "Time's up." : "Not quite."}</b> The answer is <code>${esc(item.answers[0])}</code>${item.answers.length > 1 ? ` (also accepted: ${item.answers.slice(1).map((a) => `<code>${esc(a)}</code>`).join(", ")})` : ""}.`;
+      game.misses.push({ prompt: item.prompt, typed: timedOut ? "(time ran out)" : typed || "(blank)", answer: item.answers[0] });
+      const cups = document.querySelectorAll(".lives span");
+      if (cups[game.lives]) cups[game.lives].classList.add("lost");
+    }
+    $("#mult").textContent = "×" + multiplier();
+    const last = game.lives <= 0 || game.q + 1 >= game.deck.length;
+    $("#submit").innerHTML = (last ? "See results" : "Next") + "<kbd>↵</kbd>";
+    $("#hint").disabled = true;
+    $("#submit").focus();
+  }
+  function next() {
+    if (game.lives <= 0 || game.q + 1 >= game.deck.length) return finish();
+    game.q++;
+    ask();
+  }
+  function finish() {
+    clearInterval(timerId);
+    const key = game.lv.id + ":" + game.mode.id;
+    const prev = store.best[key] || 0;
+    const newBest = game.score > prev;
+    if (newBest) { store.best[key] = game.score; save(); }
+    const asked = game.answered ? game.q + 1 : game.q;
+    const title = game.lives <= 0 ? "Out of coffee!" : asked >= game.deck.length ? "Round complete!" : "Round ended";
+    screen.innerHTML = `
+      <section class="card result">
+        <h1>${title}</h1>
+        <div class="big">${game.score}</div>
+        <p>${game.right} of ${asked} correct · best streak ${game.best} · ${game.mode.name} mode</p>
+        <p>${newBest ? "New best score for this level!" : prev ? `Your best on this level is ${prev}.` : ""}</p>
+        <div class="actions">
+          <button class="primary" id="again">Play again</button>
+          <button class="ghost" id="levels">All levels</button>
+          <a class="ghost" href="index.html" style="text-decoration:none;color:var(--ink)">Review lessons ${esc(game.lv.lessons)}</a>
+        </div>
+        ${game.misses.length ? `<div class="review"><h3>Review your misses</h3>${game.misses.map((m) => `
+          <div class="miss"><b>${esc(m.prompt)}</b><span>You typed: <code class="yours">${esc(m.typed)}</code></span><span>Answer: <code class="answer">${esc(m.answer)}</code></span></div>`).join("")}</div>` : ""}
+      </section>`;
+    $("#again").addEventListener("click", () => start(game.levelIndex));
+    $("#levels").addEventListener("click", home);
+    $("#again").focus();
+  }
+
+  if (!LEVELS.length) {
+    screen.innerHTML = '<p>The challenge data didn\'t load. Reload the page to try again.</p>';
+  } else {
+    home();
+  }
+})();
+</script>
+</body>
+</html>
