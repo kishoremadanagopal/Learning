@@ -7,7 +7,7 @@ const L = document.getElementById('log');
 const C = document.getElementById('console');
 const log = (...a) => { L.textContent += a.join(' ') + '\n'; };
 const BASE = '/app' + location.pathname.replace(/[^/]*$/, '');
-const CP = BASE + 'runner.jar:' + BASE + 'javac17.jar';
+const CP = BASE + 'runner-v3.jar:' + BASE + 'javac17.jar';
 const enc = new TextEncoder();
 let n = 0;
 async function go(label, files, mode, timeout) {
