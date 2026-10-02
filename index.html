@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Learning</title>
-<meta name="description" content="Free, hands-on courses: Learn SQL, Python, data analysis with pandas, and Java from scratch, with in-browser practice sandboxes.">
+<meta name="description" content="Free, hands-on courses: Learn SQL, Python, data analysis with pandas, statistics and Java from scratch, with in-browser practice sandboxes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -22,6 +22,8 @@
   --py-yellow: #f2c230;
   --data: #4b3ca8;
   --data-soft: #ebe8f8;
+  --stats: #0f766e;
+  --stats-soft: #dcf1ee;
   --java: #c25e0a;
   --java-soft: #fbeadb;
   --java-blue: #3a6d96;
@@ -33,13 +35,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1418; --surface: #161d23; --ink: #e2e8ee; --muted: #93a0ae; --line: #27313b;
-    --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
+    --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --stats: #5fd3c4; --stats-soft: #15302d; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1418; --surface: #161d23; --ink: #e2e8ee; --muted: #93a0ae; --line: #27313b;
-  --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
+  --sql: #38bfa8; --sql-soft: #16332d; --py: #79aee0; --py-soft: #1b2a3b; --py-yellow: #f2c94c; --data: #a99cf0; --data-soft: #262041; --stats: #5fd3c4; --stats-soft: #15302d; --java: #f5a25d; --java-soft: #33241a; --java-blue: #79aee0; --on-accent: #0b1418;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -57,6 +59,7 @@ header p { margin: 0; font-size: 18px; color: var(--muted); }
 .course.sql { --accent: var(--sql); --soft: var(--sql-soft); }
 .course.py { --accent: var(--py); --soft: var(--py-soft); }
 .course.data { --accent: var(--data); --soft: var(--data-soft); }
+.course.stats { --accent: var(--stats); --soft: var(--stats-soft); }
 .course.java { --accent: var(--java); --soft: var(--java-soft); }
 .course.java::before { background: linear-gradient(90deg, var(--java) 0 60%, var(--java-blue) 60%); }
 .course.py::before { background: linear-gradient(90deg, var(--py) 0 60%, var(--py-yellow) 60%); }
@@ -130,6 +133,20 @@ footer { font-size: 14px; color: var(--muted); }
       <div class="actions">
         <a class="primary" href="python-data/">Open the Python for Data course</a>
         <a class="secondary" href="https://github.com/kishoremadanagopal/learning/tree/main/python-data#lessons">Read the lessons</a>
+      </div>
+    </article>
+
+    <article class="course stats">
+      <pre class="sample" aria-hidden="true"><b>from</b> scipy <b>import</b> stats
+
+stats.<b>ttest_ind</b>(a, b)
+<span>→ p = 0.008: not just luck</span></pre>
+      <h2>Statistics with Python</h2>
+      <p>Averages, spread, probability, the bell curve, confidence intervals, hypothesis tests, regression and A/B testing, with a chart for every key idea.</p>
+      <div class="facts"><span><b>23</b> lessons</span><span><b>46</b> exercises</span><span><b>69</b> quiz questions</span><span>SciPy in the browser</span></div>
+      <div class="actions">
+        <a class="primary" href="statistics/">Open the Statistics course</a>
+        <a class="secondary" href="https://github.com/kishoremadanagopal/learning/tree/main/statistics#lessons">Read the lessons</a>
       </div>
     </article>
 

@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <img alt="Learning: learn SQL, Python, data analysis and Java from scratch" src="assets/banner-light.svg" width="100%">
+    <img alt="Learning: learn SQL, Python, data analysis, statistics and Java from scratch" src="assets/banner-light.svg" width="100%">
   </picture>
 </p>
 
@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <img alt="Courses: 4" src="https://img.shields.io/badge/courses-4-0e7466">
-  <img alt="Lessons: 126" src="https://img.shields.io/badge/lessons-126-2c679c">
-  <img alt="Exercises: 294" src="https://img.shields.io/badge/auto--checked%20exercises-294-e8b417">
+  <img alt="Courses: 5" src="https://img.shields.io/badge/courses-5-0e7466">
+  <img alt="Lessons: 149" src="https://img.shields.io/badge/lessons-149-2c679c">
+  <img alt="Exercises: 340" src="https://img.shields.io/badge/auto--checked%20exercises-340-e8b417">
   <img alt="Price: free" src="https://img.shields.io/badge/price-free-2f7a45">
   <img alt="Setup: none" src="https://img.shields.io/badge/setup-none%2C%20runs%20in%20your%20browser-5b697b">
 </p>
@@ -65,6 +65,19 @@
       </p>
     </td>
     <td width="50%" valign="top">
+      <h3>📈 Statistics with Python</h3>
+      <p>Averages, spread, probability, the bell curve, confidence intervals, hypothesis tests, regression and A/B testing, with a chart for every key idea.</p>
+      <p><b>23</b> lessons · <b>46</b> exercises · <b>69</b> quiz questions · pandas, SciPy and statsmodels in the browser</p>
+      <p>
+        <a href="https://kishoremadanagopal.github.io/learning/statistics/"><b>▶ Open the Statistics course</b></a><br>
+        📘 <a href="statistics/README.md#lessons">Lessons</a> ·
+        📖 <a href="statistics/glossary.md">Glossary</a> ·
+        🧾 <a href="statistics/cheatsheet.md">Cheat sheet</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
       <h3>☕ Learn Java from scratch</h3>
       <p>Real Java 17 compiled in your browser: classes, inheritance, collections, generics, streams, concurrency and a final project.</p>
       <p><b>38</b> lessons · <b>57</b> exercises · <b>103</b> quiz questions · 🎮 <b>97</b> Quest challenges</p>
@@ -85,7 +98,7 @@
 |---|---|---|
 | New to programming | 🐍 **Python** | It teaches how programs think: variables, decisions, loops and functions. |
 | Working with data or reports | 🗄️ **SQL** | You'll answer real questions about data from the first lesson. |
-| Heading into data or AI work | 🐍 **Python** → 📊 **Python for Data** + 🗄️ **SQL** | The shared core of both the AI engineer and the data/AI analyst paths. |
+| Heading into data or AI work | 🐍 **Python** → 📊 **Python for Data** → 📈 **Statistics** + 🗄️ **SQL** | The shared core of both the AI engineer and the data/AI analyst paths. |
 | Aiming for backend, Android or enterprise jobs | ☕ **Java** | It's the language of large systems and teaches object-oriented design properly. |
 
 ## ✅ How every course works
@@ -125,6 +138,15 @@ learning/
 │   ├── data/               7 practice datasets
 │   ├── glossary.md         every term, A to Z
 │   ├── cheatsheet.md       all the syntax on one page
+│   └── course/             sources the course is built from
+├── statistics/             📈 Statistics with Python
+│   ├── README.md           course home: lesson list and how to use it
+│   ├── index.html          practice sandbox (pandas, SciPy and statsmodels in the browser)
+│   ├── lessons/            23 lessons with charts, exercises, answers and quizzes
+│   ├── figures/            the lesson charts
+│   ├── data/               practice datasets
+│   ├── glossary.md         every term, A to Z
+│   ├── cheatsheet.md       every formula and test on one page, with a "which test?" table
 │   └── course/             sources the course is built from
 └── java/                   ☕ Learn Java from scratch
     ├── README.md           course home: lesson list and how to use it
