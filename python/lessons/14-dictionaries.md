@@ -2,7 +2,7 @@
 
 **You'll learn:** key-value pairs, adding/changing/removing, `.get()`, `.items()`, counting, nested data.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#dictionaries)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#dictionaries)**: run every example and check your exercise answers.
 
 ## Key terms
 

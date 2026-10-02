@@ -2,7 +2,7 @@
 
 **You'll learn:** `=`, naming rules, `int`, `float`, `str`, `bool`, `type()`, `None`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#variables-and-types)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#variables-and-types)**: run every example and check your exercise answers.
 
 ## Key terms
 

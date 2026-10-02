@@ -2,7 +2,7 @@
 
 **You'll learn:** `upper`/`lower`, `strip`, `split`/`join`, `find`/`replace`, `isdigit`, padding.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#string-methods)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#string-methods)**: run every example and check your exercise answers.
 
 ## Key terms
 

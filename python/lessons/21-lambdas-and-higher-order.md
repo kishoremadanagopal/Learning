@@ -2,7 +2,7 @@
 
 **You'll learn:** functions as values, `lambda`, `key=` for sorting, `map`, `filter`, `any`, `all`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#lambdas-and-higher-order)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#lambdas-and-higher-order)**: run every example and check your exercise answers.
 
 ## Key terms
 

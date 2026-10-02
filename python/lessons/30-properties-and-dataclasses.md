@@ -2,7 +2,7 @@
 
 **You'll learn:** `@property`, setters, validation, `@dataclass`, `field`, `frozen`, `order`, `__post_init__`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#properties-and-dataclasses)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#properties-and-dataclasses)**: run every example and check your exercise answers.
 
 ## Key terms
 

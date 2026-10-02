@@ -2,7 +2,7 @@
 
 **You'll learn:** dataclasses, custom exceptions, CSV, generators and reports in one program.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#capstone)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#capstone)**: run every example and check your exercise answers.
 
 ## Key terms
 

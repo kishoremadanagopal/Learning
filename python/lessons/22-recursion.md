@@ -2,7 +2,7 @@
 
 **You'll learn:** base case, recursive case, the call stack, `RecursionError`, memoization.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#recursion)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#recursion)**: run every example and check your exercise answers.
 
 ## Key terms
 

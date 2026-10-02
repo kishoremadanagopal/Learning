@@ -2,7 +2,7 @@
 
 **You'll learn:** `def`, parameters, `return`, docstrings, print vs return, returning early.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#functions-basics)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#functions-basics)**: run every example and check your exercise answers.
 
 ## Key terms
 

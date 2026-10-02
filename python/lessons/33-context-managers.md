@@ -2,7 +2,7 @@
 
 **You'll learn:** `with`, `__enter__`/`__exit__`, `@contextmanager`, cleanup on errors, `suppress`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#context-managers)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#context-managers)**: run every example and check your exercise answers.
 
 ## Key terms
 

@@ -2,7 +2,7 @@
 
 **You'll learn:** `==` `!=` `<` `>`, `and` / `or` / `not`, truthiness, `in`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#booleans-and-comparisons)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#booleans-and-comparisons)**: run every example and check your exercise answers.
 
 ## Key terms
 

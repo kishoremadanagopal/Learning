@@ -2,7 +2,7 @@
 
 **You'll learn:** creating lists, indexing, `append`/`insert`/`remove`/`pop`, sorting, references, nested lists.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#lists)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#lists)**: run every example and check your exercise answers.
 
 ## Key terms
 

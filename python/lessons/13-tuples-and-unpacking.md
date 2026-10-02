@@ -2,7 +2,7 @@
 
 **You'll learn:** tuples, immutability, unpacking, starred targets, returning several values.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#tuples-and-unpacking)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#tuples-and-unpacking)**: run every example and check your exercise answers.
 
 ## Key terms
 

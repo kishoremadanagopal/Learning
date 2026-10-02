@@ -2,7 +2,7 @@
 
 **You'll learn:** what a program is, `print()`, syntax vs runtime errors, how code is compiled.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#how-python-runs)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#how-python-runs)**: run every example and check your exercise answers.
 
 ## Key terms
 

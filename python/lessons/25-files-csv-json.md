@@ -2,7 +2,7 @@
 
 **You'll learn:** `open()` and `with`, file modes, `io.StringIO`, `csv`, `json`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#files-csv-json)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#files-csv-json)**: run every example and check your exercise answers.
 
 ## Key terms
 

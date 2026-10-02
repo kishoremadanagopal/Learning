@@ -2,7 +2,7 @@
 
 **You'll learn:** `import` forms, `random`, `datetime`, `collections`, `__name__ == "__main__"`, pip.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#modules-and-stdlib)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#modules-and-stdlib)**: run every example and check your exercise answers.
 
 ## Key terms
 

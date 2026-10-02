@@ -2,7 +2,7 @@
 
 **You'll learn:** list, dict and set comprehensions, filtering with `if`, conditional values, nesting.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#comprehensions)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#comprehensions)**: run every example and check your exercise answers.
 
 ## Key terms
 

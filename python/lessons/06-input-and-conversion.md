@@ -2,7 +2,7 @@
 
 **You'll learn:** `input()`, `int()`, `float()`, `str()`, `ValueError`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#input-and-conversion)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#input-and-conversion)**: run every example and check your exercise answers.
 
 ## Key terms
 

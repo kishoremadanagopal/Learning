@@ -2,7 +2,7 @@
 
 **You'll learn:** `+ - * /`, `//`, `%`, `**`, `round()`, the `math` module.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#numbers-and-math)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#numbers-and-math)**: run every example and check your exercise answers.
 
 ## Key terms
 

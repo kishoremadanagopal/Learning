@@ -1,6 +1,6 @@
 # The practice tables
 
-Every lesson uses these three tables. They're already loaded in the [practice sandbox](https://kishoremadanagopal.github.io/learning/sql/), and you can press **Reset data** there at any time to get back to exactly this data.
+Every lesson uses these three tables. They're already loaded in the [practice sandbox](https://kishoremadanagopal.github.io/Learning/sql/), and you can press **Reset data** there at any time to get back to exactly this data.
 
 ## `customers`
 

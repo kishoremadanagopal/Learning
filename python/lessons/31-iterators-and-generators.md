@@ -2,7 +2,7 @@
 
 **You'll learn:** `iter()`/`next()`, `yield`, laziness, generator expressions, pipelines, `yield from`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#iterators-and-generators)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#iterators-and-generators)**: run every example and check your exercise answers.
 
 ## Key terms
 

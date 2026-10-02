@@ -2,7 +2,7 @@
 
 **You'll learn:** `class`, `__init__`, `self`, attributes, methods, class attributes, `@classmethod`.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#classes-and-objects)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#classes-and-objects)**: run every example and check your exercise answers.
 
 ## Key terms
 

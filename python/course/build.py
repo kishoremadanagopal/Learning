@@ -26,8 +26,8 @@ ROOT = Path(__file__).resolve().parent
 CONTENT = ROOT / "content"
 REPO_MODE = ROOT.name == "course"                  # inside the published repository
 SITE = ROOT.parent if REPO_MODE else ROOT / "site"
-SITE_URL = "https://kishoremadanagopal.github.io/learning/python/"
-REPO_BLOB = "https://github.com/kishoremadanagopal/learning/blob/main/python/"
+SITE_URL = "https://kishoremadanagopal.github.io/Learning/python/"
+REPO_BLOB = "https://github.com/kishoremadanagopal/Learning/blob/main/python/"
 
 FENCE_RE = re.compile(r"^```([\w-]*)([^\n]*)\n(.*?)\n```[ \t]*$", re.S | re.M)
 BLOCK_RE = re.compile(r"^:::(exercise|quiz)([^\n]*)\n(.*?)\n:::[ \t]*$", re.S | re.M)

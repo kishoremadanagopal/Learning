@@ -2,7 +2,7 @@
 
 **You'll learn:** defaults, keyword arguments, `*args`, `**kwargs`, unpacking, keyword-only, mutable defaults.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#parameters)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#parameters)**: run every example and check your exercise answers.
 
 ## Key terms
 

@@ -2,7 +2,7 @@
 
 **You'll learn:** local vs global, the LEGB rule, `global`, `nonlocal`, closures.
 
-▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/learning/python/#scope-and-closures)**: run every example and check your exercise answers.
+▶ **Practise this lesson in the [sandbox](https://kishoremadanagopal.github.io/Learning/python/#scope-and-closures)**: run every example and check your exercise answers.
 
 ## Key terms
 
