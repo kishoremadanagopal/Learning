@@ -5,10 +5,13 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | Term | Meaning |
 |---|---|
 | **Adaptive thinking** | The model decides per request whether and how much to think. [10] |
+| **Agent** | A system where a model decides its next action in a loop, using tools and feedback. [24] |
+| **Agent loop** | Call the model, run any requested tools, append the results, repeat until it stops. [24] |
 | **Allow-list** | A list of things explicitly permitted; everything else is refused. [16] |
 | **API key** | The secret that identifies your account to the provider; keep it in an environment variable or a secrets manager. [7] |
 | **Approximate nearest-neighbour (ANN) search** | An index that finds nearly the best matches while scoring only some vectors. [20] |
 | **Attention head** | One of several attention mechanisms run in parallel in a layer. [4] |
+| **Audit log** | A record of every action, its arguments, result and approval. [27] |
 | **Bag of words** | A vector of word counts; matches identical words but not meaning. [3] |
 | **Base64** | A way to encode binary data such as images as text, about a third larger than the original. [10] |
 | **Batch API** | Submitting many requests for asynchronous processing at a discount. [11] |
@@ -23,8 +26,13 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Chunk header** | The title and section path prepended to a chunk's text. [18] |
 | **Chunk size** | How much text goes in each chunk, usually measured in tokens. [18] |
 | **Citation** | A reference from a statement in the answer to the source that supports it. [17] |
+| **Client tool** | A tool your application executes. [23] |
+| **Compaction** | Replacing older conversation turns with a summary. [26] |
 | **Constrained decoding** | Restricting which tokens the model may generate so the output always fits a grammar or schema. [9] |
 | **Content block** | One typed piece of a message: text, image, document, tool call, tool result or thinking. [7] |
+| **Context editing** | Automatically clearing old tool results or thinking from the history. [26] |
+| **Context engineering** | Choosing what information goes into the model's context at each step. [26] |
+| **Context rot** | Degraded recall and reasoning as the context grows long and noisy. [26] |
 | **Contextual retrieval** | Prepending a short model-written context to each chunk before indexing it. [18] |
 | **Context window** | The maximum number of tokens (input plus output) a model can handle in one request. [2] |
 | **Corpus** | The whole collection of documents you search. [17] |
@@ -34,11 +42,14 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Delta** | An event carrying the next small piece of a content block. [8] |
 | **Document block** | A content block carrying a PDF or other document. [10] |
 | **Dot product** | The sum of the products of matching coordinates. [3] |
+| **Dry run** | Producing the plan of changes without applying them. [27] |
 | **Effort** | A setting that trades quality for speed and cost across all output tokens. [10] |
 | **Embedding** | A vector produced by a model so that similar meanings get similar vectors. [3] |
 | **Enum** | A fixed list of allowed values for a field. [9] |
 | **Evaluation set** | Representative examples with known good answers, used to compare models on your task. [6, 22] |
+| **Evaluator-optimiser** | One model producing and another critiquing, in a loop. [24] |
 | **Exact (brute-force) search** | Scoring every vector; perfectly accurate, linear in the corpus size. [20] |
+| **Excessive agency** | An AI system having more tools, permissions or autonomy than its task needs. [27] |
 | **Exfiltration** | Sending data out to an attacker, for example inside a URL. [16] |
 | **Exponential backoff** | Waiting twice as long after each failed attempt, up to a cap. [8] |
 | **Faithfulness (groundedness)** | Whether every claim in an answer is supported by the retrieved context. [22] |
@@ -50,6 +61,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Hallucination** | A fluent, confident output that is false or unsupported. [1] |
 | **HNSW** | A layered graph of neighbouring vectors, searched by greedy walks. [20] |
 | **Hosted model** | A model you use through a provider's API or a cloud platform. [6] |
+| **Human in the loop** | A person approving or reviewing consequential actions. [27] |
 | **Hybrid search** | Running keyword and vector search and merging their results. [21] |
 | **HyDE** | Searching with the embedding of a model-written hypothetical answer. [21] |
 | **Indirect prompt injection** | Injected instructions hidden in content the model reads, such as a web page or email. [16] |
@@ -62,7 +74,9 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Jailbreak** | A prompt crafted to get around a model's safety training. [16] |
 | **Jitter** | A random amount added to (or taken from) the wait so that clients don't retry in sync. [8] |
 | **JSON** | A text format for data made of objects, arrays, strings, numbers, booleans and null. [9] |
+| **JSON-RPC 2.0** | The request-response message format MCP uses. [25] |
 | **JSON Schema** | A standard way to describe the allowed structure and types of JSON data. [9] |
+| **Just-in-time context** | Loading information through tools only when it's needed. [26] |
 | **Knowledge cutoff** | The date after which a model has no training data. [1] |
 | **KV cache** | Stored keys and values of earlier tokens, reused while generating each new token. [4] |
 | **Large language model (LLM)** | A neural network trained on huge amounts of text to predict the next token. [1] |
@@ -72,11 +86,16 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Lethal trifecta** | Private data, untrusted content and external communication in one system. [16] |
 | **Linter** | A tool that flags likely problems using simple rules. [12] |
 | **Logit** | The raw score the model gives each vocabulary token before softmax. [4] |
+| **Long-term memory** | Information stored outside the model and loaded into later conversations. [26] |
 | **Max tokens** | The limit on how many tokens a response may contain. [5] |
+| **MCP host** | The application the user works in, which contains MCP clients. [25] |
+| **MCP server** | A program exposing tools, resources and prompts from some system. [25] |
 | **Mean reciprocal rank (MRR)** | The average of 1 ÷ the rank of the first relevant result. [22] |
 | **Media type** | The standard label for a file format, such as `image/png` or `application/pdf`. [10] |
+| **Memory tool** | A tool that lets the model create, read and update memory files. [26] |
 | **Message** | One turn in the conversation, with a role (`user` or `assistant`) and content. [7] |
 | **Min-max normalisation** | Rescaling scores to 0–1 using the list's minimum and maximum. [21] |
+| **Model Context Protocol (MCP)** | An open standard for connecting AI applications to tools and data sources. [25] |
 | **Model tier** | A provider's range from large and capable to small, fast and cheap models. [6] |
 | **nDCG** | A ranking score that rewards relevant results near the top, allowing graded relevance. [22] |
 | **Nearest-neighbour search** | Finding the stored vectors most similar to a query vector. [3] |
@@ -84,8 +103,11 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Non-greedy match** | A regex quantifier such as `.*?` that matches as little text as possible. [13] |
 | **Normalised vector** | A vector scaled to length 1. [3] |
 | **Open-weight model** | A model whose trained weights can be downloaded and run on your own hardware. [6] |
+| **Orchestrator-workers** | A lead agent splitting a task among sub-agents and combining their results. [24] |
 | **Overlap** | Text repeated at the end of one chunk and the start of the next. [18] |
+| **Parallel tool calls** | Several tool calls requested in one reply. [23] |
 | **Pass rate** | The fraction of test cases a prompt version passes. [15] |
+| **Permission policy** | Rules deciding whether each action is allowed, needs approval or is denied. [27] |
 | **PII (personally identifiable information)** | Data that identifies a person, such as an email address or phone number. [16] |
 | **Placeholder** | A marker in a template, such as `{{review}}`, replaced with a value. [15] |
 | **Postings list** | The list of documents for one word in an inverted index. [19] |
@@ -111,17 +133,21 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Regression** | Something that used to work and broke after a change. [15] |
 | **Reinforcement learning from feedback** | Improving a model by rewarding preferred or verifiably correct responses. [1] |
 | **Request ID** | The identifier of one API call, for debugging and support. [8] |
+| **Resource** | Data an MCP server offers for the application to read into context. [25] |
 | **Retrieval-augmented generation (RAG)** | Retrieving relevant passages and adding them to the prompt so the model answers from them. [17] |
 | **Retriever** | The component that finds the chunks most relevant to a query. [17] |
 | **Retry-after** | A response header telling the client how long to wait before trying again. [8] |
 | **Role prompt** | A sentence in the system prompt saying who the model is acting as and for whom. [12] |
 | **Routing** | Sending each request to a model chosen for its difficulty or type. [6, 14] |
 | **Sampling** | Choosing the next token at random according to the model's probabilities. [5] |
+| **Sandbox** | An isolated environment where code can run without access to real systems or secrets. [27] |
+| **Scoped credentials** | Access tokens limited to the minimum resources and operations. [27] |
 | **Self-attention** | Each token computing a weighted mix of other tokens' information. [4] |
 | **Self-consistency (voting)** | Asking several times and taking the most common answer. [14] |
 | **Self-verification** | Asking the model to check its answer against criteria before finishing. [14] |
 | **Semantic search** | Finding text by meaning, using embeddings, rather than by shared words. [20] |
 | **Server-sent events (SSE)** | The web standard used to push the stream of events over one HTTP response. [8] |
+| **Server tool** | A tool the provider executes, such as web search or code execution. [23] |
 | **Small-to-big retrieval** | Matching small chunks but giving the model their larger parent section. [18] |
 | **Softmax** | Turns a list of scores into probabilities that sum to 1. [4] |
 | **Stateless API** | One that remembers nothing between calls, so each request carries the full history. [7] |
@@ -139,15 +165,23 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Thinking block** | A content block holding the model's reasoning (or an omitted or summarised form of it). [10] |
 | **Token** | A chunk of text (a word, part of a word, a symbol) that the model reads and writes as one unit. [2] |
 | **Tokenizer** | The program that turns text into token IDs and back. [2] |
+| **Tool definition** | A tool's name, description and JSON Schema for its input. [23] |
+| **Tool (function) calling** | The model requesting that your code run a named function with arguments it chooses. [23] |
+| **Tool poisoning** | Malicious instructions hidden in a tool's description or results. [25] |
+| **tool_result block** | Your reply to a tool call, matched by `tool_use_id`, with the output or an error. [23] |
+| **tool_use block** | The part of a reply that names a tool, its arguments and a call id. [23] |
 | **Top-k sampling** | Sampling only from the k most likely tokens. [5] |
 | **Top-p (nucleus) sampling** | Sampling only from the smallest set of top tokens whose probabilities reach p. [5] |
 | **Transformer** | The neural-network architecture behind modern LLMs, built from attention and feed-forward layers. [4] |
 | **Transient error** | A temporary failure, such as a rate limit or an overloaded server, that may succeed on retry. [8] |
+| **Transport** | How messages travel: stdio for local subprocesses, Streamable HTTP for web services. [25] |
 | **TTL (time to live)** | How long a cached prefix lasts without being used. [11] |
+| **Turn limit** | The maximum number of model calls an agent may make for one task. [24] |
 | **Usage** | The input and output token counts the response reports, which determine its cost. [7] |
 | **Validation** | Checking that data has the required fields, types and allowed values. [9] |
 | **Vector** | A list of numbers; here, a point in a many-dimensional space. [3] |
 | **Vector database** | A store for vectors and metadata with indexes for similarity search and filtering. [20] |
 | **Vocabulary** | The fixed set of tokens a tokenizer can produce, each with an integer ID. [2] |
+| **Workflow** | A fixed sequence of model calls and tools defined by your code. [24] |
 | **XML tags** | Named markers such as `<document>…</document>` that separate the parts of a prompt. [13] |
 | **Zero-shot** | A prompt with instructions but no examples. [13] |

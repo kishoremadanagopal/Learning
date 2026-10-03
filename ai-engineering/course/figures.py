@@ -450,6 +450,111 @@ def retrieval_funnel_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 5: tools and agents
+
+@fig("tool-cycle")
+def tool_cycle_fig():
+    f, ax = diag.canvas(10.5, 5.4)
+    sbox(ax, 0.4, 4.4, 2.4, 0.7, "your app", color=BLUE, fontsize=11, bold=True)
+    sbox(ax, 7.7, 4.4, 2.4, 0.7, "model", color=PURPLE, fontsize=11, bold=True)
+    for x in (1.6, 8.9):
+        ax.plot([x, x], [0.3, 4.35], color=GREY, lw=1.2, ls="--")
+    steps = [(3.85, "1  question + tool definitions", 1.6, 8.9, INK),
+             (3.05, "2  stop_reason: tool_use\n    get_stock(sku, shop)  id t1", 8.9, 1.6, PURPLE),
+             (1.55, "4  tool_result for t1: \"6\"", 1.6, 8.9, INK),
+             (0.75, "5  final answer: \"Yes, 6 in Bath.\"", 8.9, 1.6, PURPLE)]
+    for y, text, x0, x1, color in steps:
+        arrow(ax, x0, y, x1, y, color=color)
+        label(ax, 5.25, y + 0.28, text, size=9.5, color=color)
+    sbox(ax, 0.25, 2.0, 2.7, 0.55, "3  run stock_lookup()", color=TEAL, fontsize=9.5)
+    return f
+
+
+@fig("agent-loop")
+def agent_loop_fig():
+    f, ax = diag.canvas(10.0, 4.8)
+    sbox(ax, 0.3, 2.0, 1.9, 0.8, "task", color=GREY, fontsize=10.5)
+    sbox(ax, 3.0, 2.0, 2.2, 0.8, "model call", color=PURPLE, fontsize=10.5, bold=True)
+    sbox(ax, 3.0, 0.3, 2.2, 0.8, "run tools,\nappend results", color=TEAL, fontsize=10)
+    sbox(ax, 7.3, 2.0, 2.2, 0.8, "answer", color=BLUE, fontsize=10.5, bold=True)
+    arrow(ax, 2.25, 2.4, 2.95, 2.4, color=INK)
+    arrow(ax, 5.25, 2.4, 7.25, 2.4, color=BLUE)
+    label(ax, 6.25, 2.68, "no tool calls", size=9, color=BLUE)
+    ax.add_patch(FancyArrowPatch((3.6, 1.95), (3.6, 1.15), arrowstyle="-|>", mutation_scale=13, color=TEAL, lw=1.5))
+    label(ax, 2.6, 1.55, "tool_use", size=9, color=TEAL)
+    ax.add_patch(FancyArrowPatch((4.6, 1.15), (4.6, 1.95), arrowstyle="-|>", mutation_scale=13, color=TEAL, lw=1.5))
+    label(ax, 5.55, 1.55, "repeat", size=9, color=TEAL)
+    label(ax, 0.3, 4.3, "guards on every loop", ha="left", size=10, bold=True, color=CRIMSON)
+    for i, t in enumerate(["turn limit", "token / cost budget", "repeated-call check", "timeouts"]):
+        sbox(ax, 0.3 + i * 2.35, 3.4, 2.15, 0.55, t, color=CRIMSON, fontsize=9)
+    return f
+
+
+@fig("mcp-architecture")
+def mcp_architecture_fig():
+    f, ax = diag.canvas(11.0, 5.0)
+    ax.add_patch(Rectangle((0.3, 0.4), 4.4, 4.2, facecolor=SOFT[GREY], edgecolor=GREY, lw=1.3))
+    label(ax, 2.5, 4.3, "MCP host (chat app, IDE, agent)", size=10, bold=True)
+    sbox(ax, 0.6, 3.0, 1.6, 0.8, "model", color=PURPLE, fontsize=10)
+    for i in range(3):
+        sbox(ax, 2.7, 3.0 - i * 1.1, 1.7, 0.7, f"MCP client {i + 1}", color=BLUE, fontsize=9.5)
+    servers = [("filesystem server", "stdio (local)", TEAL), ("GitHub server", "Streamable HTTP", ORANGE), ("company DB server", "Streamable HTTP", CRIMSON)]
+    for i, (name, transport, color) in enumerate(servers):
+        y = 3.0 - i * 1.1
+        arrow(ax, 4.45, y + 0.35, 7.0, y + 0.35, color=INK, style="<|-|>")
+        label(ax, 5.72, y + 0.6, transport, size=8.5, color=MUTED)
+        sbox(ax, 7.05, y, 2.4, 0.7, name, color=color, fontsize=9.5)
+    label(ax, 8.25, 4.1, "each server exposes\ntools · resources · prompts", size=9, color=INK)
+    label(ax, 5.72, 0.15, "messages: JSON-RPC 2.0", size=9, color=MUTED)
+    return f
+
+
+@fig("context-growth")
+def context_growth_fig():
+    import numpy as np
+    f, ax = plt.subplots(figsize=(7.4, 3.5))
+    turns = np.arange(0, 51)
+    rng = np.random.default_rng(5)
+    used, values = 6_000, []
+    for t in turns:
+        if t == 30:
+            used = 22_000
+        elif t > 0:
+            used += 4_000 + rng.integers(0, 4_000)
+        values.append(used)
+    values = np.array(values) / 1000
+    ax.plot(turns, values, color=BLUE, lw=2.2)
+    ax.axhline(200, color=CRIMSON, ls="--", lw=1.3)
+    ax.text(0.5, 204, "context limit", color=CRIMSON, fontsize=9)
+    ax.axvline(30, color=TEAL, ls=":", lw=1.3)
+    ax.annotate("compaction: old turns\nreplaced by a summary", xy=(30, 40), xytext=(33, 120), fontsize=9, color=TEAL,
+                arrowprops=dict(arrowstyle="->", color=TEAL))
+    ax.set_xlabel("agent turn")
+    ax.set_ylabel("tokens in context (thousands)")
+    ax.set_ylim(0, 230)
+    ax.set_xlim(0, 50)
+    f.tight_layout()
+    return f
+
+
+@fig("action-risk")
+def action_risk_fig():
+    f, ax = diag.canvas(9.4, 5.4)
+    cells_ = [(0.9, 2.6, "ASK", "edit shared docs\nopen a pull request", ORANGE),
+              (4.9, 2.6, "ASK EVERY TIME / DENY", "send emails, payments\ndelete production data, publish", CRIMSON),
+              (0.9, 0.4, "ALLOW", "read project files\nrun tests in a sandbox, draft text", TEAL),
+              (4.9, 0.4, "ASK", "irreversible but contained:\noverwrite a scratch file without backup", ORANGE)]
+    for x, y, title, note, color in cells_:
+        sbox(ax, x, y, 3.8, 2.0, "", color=color)
+        label(ax, x + 1.9, y + 1.45, title, size=11, bold=True, color=color)
+        label(ax, x + 1.9, y + 0.7, note, size=8.8, color=INK)
+    arrow(ax, 0.9, 0.15, 8.7, 0.15, color=MUTED)
+    label(ax, 4.8, -0.12, "reversible  →  irreversible", size=9.5, color=MUTED)
+    arrow(ax, 0.55, 0.4, 0.55, 4.6, color=MUTED)
+    ax.text(0.3, 2.5, "contained  →  affects others", rotation=90, ha="center", va="center", fontsize=9.5, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

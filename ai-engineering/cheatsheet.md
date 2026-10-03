@@ -68,6 +68,21 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | each retriever | top 50–150 |
 | after reranking | top 5–20 into the prompt |
 
+## Tools and agents [23–27]
+
+- **Tool calling:** define name + description + JSON Schema; on `stop_reason: "tool_use"`, append the whole reply, run each call, and return a `tool_result` for **every** `tool_use` id (errors with `is_error: true`). Descriptions are prompts.
+- **Agents:** a bounded loop: model → tools → results → repeat. Prefer a fixed workflow when the steps are known. Guard every loop with a turn limit, a budget, timeouts and repeated-call detection.
+- **MCP:** a standard way to expose tools, resources and prompts to any host, over JSON-RPC (stdio locally, Streamable HTTP remotely). Install only trusted servers; namespace tool names; enable only the servers a task needs.
+- **Context:** the smallest high-signal context wins. Write (notes, memory), select (just-in-time tools), compress (compaction, clear old tool results), isolate (sub-agents).
+- **Safety:** default deny; allow contained, reversible actions; ask before consequential ones; sandbox and scope credentials; log every action.
+
+| Action | Policy |
+|---|---|
+| read files, run tests in a sandbox | allow |
+| edit shared work, open a pull request | ask |
+| send, pay, delete production data, publish | ask every time, or deny |
+| any tool not in the policy | deny |
+
 ## Every concept at a glance
 
 Generated from the **At a glance** table at the end of each lesson. The number in brackets links to the lesson.
@@ -144,3 +159,18 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Recall and precision at k | hits in top k ÷ relevant, and ÷ k | O(queries × k) | O(k) | [22](lessons/22-evaluating-rag.md) |
 | Mean reciprocal rank | 1 ÷ rank of the first hit, averaged | O(queries × k) | O(1) | [22](lessons/22-evaluating-rag.md) |
 | Crude groundedness | content-word overlap with the best single source | O(sentences × sources × words) | O(words) | [22](lessons/22-evaluating-rag.md) |
+| Schema from a function | inspect the signature; map type hints; no default means required | O(parameters) | O(parameters) | [23](lessons/23-tool-calling.md) |
+| Execute tool calls | dispatch table; one result per call; errors as is_error results | O(calls) | O(calls) | [23](lessons/23-tool-calling.md) |
+| One tool round | reply with tool_use → run → tool_result message → call again | — | — | [23](lessons/23-tool-calling.md) |
+| Agent loop | model → tools → results → repeat; stop on a non-tool reply or the limit | O(turns) calls | O(history) | [24](lessons/24-agent-loop.md) |
+| Stuck detection | last k calls identical, or the last 2k alternate | O(k) | O(k) | [24](lessons/24-agent-loop.md) |
+| Choose a design | workflow if the steps are known; agent if they aren't | — | — | [24](lessons/24-agent-loop.md) |
+| MCP request handling | route by method; echo the id; result or error | O(1) dispatch | O(tools) for a list | [25](lessons/25-mcp.md) |
+| Namespaced tool names | server__tool; validate the pattern; reject duplicates | O(tools) | O(tools) | [25](lessons/25-mcp.md) |
+| Pick a transport | local subprocess → stdio; shared or remote → Streamable HTTP | — | — | [25](lessons/25-mcp.md) |
+| Compact history | summarise the older part; keep a recent tail starting with a user turn | O(n) + 1 call | O(n) | [26](lessons/26-memory-and-context.md) |
+| Clear old tool results | copy; replace all but the newest k results with a placeholder | O(blocks) | O(n) | [26](lessons/26-memory-and-context.md) |
+| Context strategies | write, select, compress, isolate | — | — | [26](lessons/26-memory-and-context.md) |
+| Permission decision | look up a rule (default deny); call it if it's a function; deny on error | O(1) | O(1) | [27](lessons/27-agent-safety.md) |
+| Budget | add usage after each call; raise when over a limit | O(1) per call | O(1) | [27](lessons/27-agent-safety.md) |
+| Action risk | reversible and contained → allow; consequential → ask; irreversible and external → ask or deny | — | — | [27](lessons/27-agent-safety.md) |

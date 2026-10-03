@@ -67,3 +67,18 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 |---|---|
 | each retriever | top 50–150 |
 | after reranking | top 5–20 into the prompt |
+
+## Tools and agents [23–27]
+
+- **Tool calling:** define name + description + JSON Schema; on `stop_reason: "tool_use"`, append the whole reply, run each call, and return a `tool_result` for **every** `tool_use` id (errors with `is_error: true`). Descriptions are prompts.
+- **Agents:** a bounded loop: model → tools → results → repeat. Prefer a fixed workflow when the steps are known. Guard every loop with a turn limit, a budget, timeouts and repeated-call detection.
+- **MCP:** a standard way to expose tools, resources and prompts to any host, over JSON-RPC (stdio locally, Streamable HTTP remotely). Install only trusted servers; namespace tool names; enable only the servers a task needs.
+- **Context:** the smallest high-signal context wins. Write (notes, memory), select (just-in-time tools), compress (compaction, clear old tool results), isolate (sub-agents).
+- **Safety:** default deny; allow contained, reversible actions; ask before consequential ones; sandbox and scope credentials; log every action.
+
+| Action | Policy |
+|---|---|
+| read files, run tests in a sandbox | allow |
+| edit shared work, open a pull request | ask |
+| send, pay, delete production data, publish | ask every time, or deny |
+| any tool not in the policy | deny |

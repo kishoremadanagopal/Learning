@@ -1,6 +1,6 @@
 # AI Engineering with LLMs
 
-A hands-on course on building software with large language models (LLMs): 22 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
+A hands-on course on building software with large language models (LLMs): 27 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
 
 Each idea is built from scratch in plain Python, so you see exactly what happens inside: a tokenizer, embeddings and similarity search, sampling, a retrieval pipeline, a tool-calling agent loop and an evaluation harness. Real API code (Anthropic and OpenAI) is shown alongside, ready to run on your own computer with an API key.
 
@@ -10,9 +10,9 @@ AI engineering is the core of the **AI engineer** path and increasingly part of 
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with NumPy. Nothing to install, no sign-up, and no API key needed: exercises use small stand-in models so every result is repeatable.
 
-- every lesson, with **33 examples** you can run and change
-- **43 exercises** with hidden tests, each with an approach, hints and a walkthrough
-- **88 quiz questions**, with explanations
+- every lesson, with **37 examples** you can run and change
+- **53 exercises** with hidden tests, each with an approach, hints and a walkthrough
+- **108 quiz questions**, with explanations
 - diagrams for the key ideas
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 22 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 27 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every AI engineering term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | API patterns, prompt techniques, RAG and agent recipes, and every concept at a glance |
 
@@ -77,6 +77,16 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 20 | [Vector search and vector databases](lessons/20-vector-search.md) | semantic search, embedding documents and queries, input types, using one model for both, exact search as a matrix-vector product, memory costs, reducing dimensions, quantisation, approximate nearest-neighbour search, IVF, HNSW, product quantisation, recall, metadata filtering, pre-filtering and post-filtering, access control, pgvector, FAISS and vector databases | 38–39 |
 | 21 | [Hybrid search and reranking](lessons/21-hybrid-and-reranking.md) | hybrid search, the retrieval funnel, why scores from different retrievers can't be added, reciprocal rank fusion, weighted score fusion, min-max normalisation, bi-encoders and cross-encoders, rerankers, how many chunks to pass to the model, contextual retrieval results, query rewriting, multi-query retrieval, hypothetical document embeddings (HyDE), routing | 40–41 |
 | 22 | [Evaluating RAG](lessons/22-evaluating-rag.md) | measuring retrieval and generation separately, building an evaluation set, relevant chunk labels, reference answers, unanswerable and hard questions, generated questions, hit rate, recall@k, precision@k, mean reciprocal rank, nDCG, faithfulness, answer relevance, correctness, citation accuracy, refusal accuracy, LLM graders, Ragas and DeepEval, diagnosing failures, monitoring in production | 42–43 |
+
+### Part 5: Tools and Agents (Advanced)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 23 | [Tool calling](lessons/23-tool-calling.md) | why models need tools, tool definitions with names, descriptions and JSON Schemas, the tool_use and tool_result cycle, stop_reason tool_use, returning errors with is_error, parallel tool calls, tool_choice and its limits on the newest models, strict tools, client tools and server tools, tool token overhead, designing tools a model uses well | 44–45 |
+| 24 | [The agent loop](lessons/24-agent-loop.md) | workflows versus agents, when to use an agent, the agent loop, stopping conditions, turn limits, budgets and timeouts, other stop reasons, SDK tool runners, the Claude Agent SDK and other agent frameworks, tools and environment feedback, plans and checkpoints, reading transcripts, detecting stuck agents, orchestrator-worker and evaluator-optimiser patterns | 46–47 |
+| 25 | [The Model Context Protocol (MCP)](lessons/25-mcp.md) | the integration problem, hosts, clients and servers, tools, resources and prompts, JSON-RPC 2.0 requests, responses, errors and notifications, stdio and Streamable HTTP transports, the 2026-07-28 specification, the Python SDK, connecting servers to hosts and the MCP connector, namespacing tools, too many tools and tool search, MCP security and tool poisoning, governance under the Agentic AI Foundation | 48–49 |
+| 26 | [Memory and context management](lessons/26-memory-and-context.md) | context engineering, context rot, what fills an agent's context, write, select, compress and isolate, just-in-time context, compaction and summaries, server-side compaction, clearing old tool results and context editing, sub-agents, long-term memory, the memory tool, progress files, stale memories, privacy and injected memories | 50–51 |
+| 27 | [Keeping agents safe](lessons/27-agent-safety.md) | excessive agency, classifying actions by reversibility and reach, allow, ask and deny policies, default deny, meaningful human approval, sandboxes, scoped credentials, staging and dry runs, idempotency, turn, token and cost budgets, timeouts and rate limits, injection through tool results, action review, audit logs, behavioural testing | 52–53 |
 
 ## Running it on your own computer
 

@@ -344,4 +344,4 @@ print(groundedness(answer, sources))
 </details>
 
 ---
-Previous: [Lesson 21](21-hybrid-and-reranking.md) · Back to the [course home](../README.md)
+Previous: [Lesson 21](21-hybrid-and-reranking.md) · Next: [Lesson 23: Tool calling](23-tool-calling.md)
