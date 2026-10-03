@@ -11,11 +11,30 @@ The key patterns of building with large language models in one place. The number
 - **Sampling:** temperature < 1 for focused output, ≈ 1 for varied output; top-p keeps the likely "nucleus".
 - **Choosing a model:** use the cheapest, fastest model that clears your quality bar on **your own** evaluation set.
 
+Where a model exposes sampling settings (current Claude models don't; use the prompt, structured outputs and `effort` instead):
+
 | Task | Temperature |
 |---|---|
 | extraction, classification, code | 0–0.3 |
 | general assistant | default (often 1.0) |
 | brainstorming, varied test data | ≈ 1.0 or more |
+
+## Working with LLM APIs [7–11]
+
+- A request = **model + max_tokens + system prompt + messages** (+ tools, output format, effort). The API is **stateless**: resend the history every time.
+- Read **all** text blocks, not `content[0]`, and always check the **stop reason** (`max_tokens` means cut off).
+- **Stream** long or user-facing replies. **Retry** only 429, 500, 504 and 529, with exponential backoff, jitter and `retry-after`; never retry 4xx request errors. Log the request ID.
+- **Structured output:** guaranteed schemas where available (`output_config.format`, `messages.parse`), then **validate values** and retry with the errors. Allow `null` for missing data.
+- **Thinking:** `max_tokens` includes thinking, and all thinking is billed. Steer with **effort** (`low` … `max`).
+- **Images and PDFs** are content blocks, placed **before** the question. Image tokens ≈ ⌈w ÷ 28⌉ × ⌈h ÷ 28⌉ after scaling.
+- **Prompt caching:** stable content first, variable last; the prefix must match exactly and be long enough. Reads cost about 0.1× input or less; 5-minute writes 1.25×, 1-hour writes 2×.
+- **Batches:** 50% off for work that can wait up to 24 hours; match results by `custom_id`.
+
+| Status | Retry? |
+|---|---|
+| 400, 401, 403, 404, 413 | no: fix the request, key, permissions or size |
+| 429 | yes, after `retry-after` |
+| 500, 504, 529 | yes, with backoff |
 
 ## Every concept at a glance
 
@@ -44,3 +63,18 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Choose a model | filter by quality and latency; pick the cheapest | O(models) | O(models) | [6](lessons/06-choosing-a-model.md) |
 | Monthly cost | requests × (tokens_in × price_in + tokens_out × price_out) / 1M | O(1) | O(1) | [6](lessons/06-choosing-a-model.md) |
 | Routing | classify the request; send it to a small or large model | O(1) per request | — | [6](lessons/06-choosing-a-model.md) |
+| Get the reply text | join the text blocks; skip other types | O(reply length) | O(reply length) | [7](lessons/07-messages-api.md) |
+| Keep history in budget | walk newest to oldest within a token budget; start with a user turn | O(n) | O(n) | [7](lessons/07-messages-api.md) |
+| Long-running chats | trim, summarise older turns, cache the prefix | — | — | [7](lessons/07-messages-api.md) |
+| Assemble a stream | append each text delta to its block; read stop reason from message_delta | O(events) | O(text length) | [8](lessons/08-streaming-and-retries.md) |
+| Retry decision | retryable status and attempts left | O(1) | O(1) | [8](lessons/08-streaming-and-retries.md) |
+| Backoff delay | min(cap, base × 2^(attempt − 1)), at least retry-after, plus jitter | O(1) | O(1) | [8](lessons/08-streaming-and-retries.md) |
+| Parse JSON from a reply | slice first { to last }; json.loads; catch errors | O(n) | O(n) | [9](lessons/09-structured-output.md) |
+| Validate a record | check each schema field, then extra fields | O(fields) | O(problems) | [9](lessons/09-structured-output.md) |
+| Reliable structure | structured outputs, then validate values, then retry with feedback | — | — | [9](lessons/09-structured-output.md) |
+| Image token estimate | scale to the maximum edge; ceil(w ÷ 28) × ceil(h ÷ 28); cap | O(1) | O(1) | [10](lessons/10-reasoning-and-multimodal.md) |
+| Build a multimodal message | files as blocks first, question text last | O(total bytes) | O(total bytes) | [10](lessons/10-reasoning-and-multimodal.md) |
+| Choose effort | start at the default; lower it while evaluations hold | — | — | [10](lessons/10-reasoning-and-multimodal.md) |
+| Call cost | sum of each token type × its price, per million | O(1) | O(1) | [11](lessons/11-cost-and-caching.md) |
+| Caching saving | calls × 1 − (write + (calls − 1) × read), × tokens × price | O(1) | O(1) | [11](lessons/11-cost-and-caching.md) |
+| Offline bulk work | Batch API at half price; match results by custom_id | O(requests) | O(requests) | [11](lessons/11-cost-and-caching.md) |

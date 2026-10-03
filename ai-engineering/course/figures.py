@@ -188,6 +188,75 @@ def temperature_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 2: working with LLM APIs
+
+@fig("streaming")
+def streaming_fig():
+    f, ax = diag.canvas(10.5, 3.6)
+    x0, scale = 2.2, 0.95          # 1 second = 0.95 units
+    label(ax, 0.2, 2.75, "without streaming", ha="left", size=10, bold=True)
+    label(ax, 0.2, 1.35, "with streaming", ha="left", size=10, bold=True)
+    ax.add_patch(Rectangle((x0, 2.55), 8 * scale, 0.4, facecolor=SOFT[GREY], edgecolor=GREY, linewidth=1.1))
+    label(ax, x0 + 4 * scale, 2.75, "waiting… nothing on screen", size=9, color=MUTED)
+    ax.add_patch(Rectangle((x0 + 7.75 * scale, 2.55), 0.25 * scale, 0.4, facecolor=ORANGE, edgecolor=ORANGE))
+    label(ax, x0 + 8 * scale + 0.1, 2.75, "whole reply", ha="left", size=9, color=ORANGE)
+    ax.add_patch(Rectangle((x0, 1.15), 0.5 * scale, 0.4, facecolor=SOFT[GREY], edgecolor=GREY, linewidth=1.1))
+    for i in range(15):
+        t = 0.5 + i * 0.5
+        ax.add_patch(Rectangle((x0 + t * scale, 1.15), 0.42 * scale, 0.4, facecolor=SOFT[BLUE], edgecolor=BLUE, linewidth=1.0))
+    label(ax, x0 + 0.5 * scale, 0.85, "first words at ≈0.5 s", ha="left", size=9, color=BLUE)
+    for sec in range(0, 9, 2):
+        ax.plot([x0 + sec * scale] * 2, [0.42, 0.52], color=MUTED, lw=1)
+        label(ax, x0 + sec * scale, 0.25, f"{sec} s", size=8.5, color=MUTED)
+    ax.plot([x0, x0 + 8 * scale], [0.47, 0.47], color=MUTED, lw=1)
+    return f
+
+
+@fig("backoff")
+def backoff_fig():
+    import random
+    f, ax = plt.subplots(figsize=(7.2, 3.4))
+    attempts = list(range(1, 9))
+    capped = [min(30, 2 ** (a - 1)) for a in attempts]
+    ax.plot(attempts, capped, color=BLUE, marker="o", lw=2, label="min(cap, base × 2^(attempt − 1))")
+    rng = random.Random(4)
+    xs, ys = [], []
+    for a, c in zip(attempts, capped):
+        for _ in range(12):
+            xs.append(a + rng.uniform(-0.18, 0.18)); ys.append(rng.uniform(0, c))
+    ax.scatter(xs, ys, s=12, color=ORANGE, alpha=0.7, label="with full jitter (random 0 to the curve)")
+    ax.axhline(30, color=GREY, ls="--", lw=1)
+    ax.text(1.0, 31, "cap: 30 s", color=MUTED, fontsize=9)
+    ax.set_xlabel("attempt")
+    ax.set_ylabel("wait before retrying (s)")
+    ax.set_xticks(attempts)
+    ax.set_ylim(0, 35)
+    ax.legend(loc="upper left", bbox_to_anchor=(0.0, 0.84), fontsize=9)
+    f.tight_layout()
+    return f
+
+
+@fig("prompt-caching")
+def prompt_caching_fig():
+    f, ax = diag.canvas(11.0, 3.9)
+    rows = [("call 1", "cache write · 1.25×", ORANGE, "Where is my order?"),
+            ("call 2", "cache read · 0.1×", TEAL, "Can I return a helmet?"),
+            ("call 3", "cache read · 0.1×", TEAL, "Do you price-match?")]
+    for i, (name, note, color, q) in enumerate(rows):
+        y = 2.95 - i * 1.0
+        label(ax, 0.75, y + 0.3, name, ha="right", size=10, bold=True)
+        sbox(ax, 0.95, y, 1.5, 0.6, "tools", color=color, fontsize=9.5)
+        sbox(ax, 2.5, y, 2.1, 0.6, "system prompt", color=color, fontsize=9.5)
+        sbox(ax, 4.65, y, 2.6, 0.6, "policy document", color=color, fontsize=9.5)
+        sbox(ax, 7.35, y, 2.6, 0.6, q, color=PURPLE, fontsize=9)
+        label(ax, 4.1, y - 0.15, note, size=8.5, color=color)
+    ax.plot([7.3, 7.3], [0.7, 3.75], color=INK, lw=1.3, ls="--")
+    label(ax, 7.3, 3.8, "cache breakpoint", size=9, color=INK)
+    label(ax, 4.1, 3.8, "identical prefix (stable content first)", size=9.5, bold=True)
+    label(ax, 8.65, 0.5, "new input · full price", size=9, color=PURPLE)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

@@ -24,7 +24,7 @@ There is no single best model. Each request has a quality bar, a latency budget 
 | **Max output** | the longest answer it can write in one response |
 | **Latency** | time to the first token, and tokens per second after that |
 | **Price** | per million input and output tokens; output is usually several times dearer |
-| **Reasoning / thinking** | extra thinking tokens raise quality on hard tasks, and cost and latency too |
+| **Reasoning / thinking** | extra thinking tokens raise quality on hard tasks, and cost and latency too; current Claude models think adaptively, controlled by an `effort` level |
 | **Modalities** | text, images, PDFs, audio; which inputs and outputs are supported |
 | **Tool use, structured output, caching, batch** | API features your design may rely on |
 | **Hosting** | a provider's API, a cloud platform (AWS Bedrock, Google Vertex AI, Azure), or open-weight models you run yourself |
@@ -227,4 +227,4 @@ Only medium qualifies, so it's the answer.
 </details>
 
 ---
-Previous: [Lesson 5](05-sampling.md) · Back to the [course home](../README.md)
+Previous: [Lesson 5](05-sampling.md) · Next: [Lesson 7: Requests, responses and conversations](07-messages-api.md)

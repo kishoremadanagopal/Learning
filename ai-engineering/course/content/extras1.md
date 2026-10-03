@@ -98,7 +98,7 @@ terms:
 - **Max tokens:** the limit on how many tokens a response may contain.
 mistakes:
 - Using a high temperature for extraction or classification.
-- Adjusting temperature and top-p at the same time without testing.
+- Sending temperature or top-p to current Claude models, which reject them; and adjusting both at once elsewhere without testing.
 - Assuming temperature 0 makes every output identical.
 - Setting max tokens too low, cutting answers off mid-sentence.
 

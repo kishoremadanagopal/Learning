@@ -1007,7 +1007,7 @@ print([rng.choices(list(nucleus), weights=list(nucleus.values()))[0] for _ in ra
 | **stop sequences** | strings that end generation early, such as `"\n\n"` or `"</answer>"` |
 | **seed** (some APIs) | makes sampling repeatable, although results can still vary across model versions and hardware |
 
-### Choosing settings
+### Choosing settings (where a model exposes them)
 
 | Task | Typical settings |
 |---|---|
@@ -1017,9 +1017,10 @@ print([rng.choices(list(nucleus), weights=list(nucleus.values()))[0] for _ in ra
 
 Some notes for current models:
 
+- **Current Claude models (4.7 and later) don't accept these settings at all:** sending `temperature`, `top_p` or `top_k` with a non-default value returns an error. You steer them with the prompt, structured outputs (Lesson 9) and the `effort` setting (Lesson 10) instead. Other providers' models, and open-weight models you run yourself, still expose sampling settings, and the ideas explain what every model does internally.
 - Even at temperature 0, outputs are not guaranteed to be identical every time. Design and test for some variation.
-- Many providers recommend adjusting **either** temperature **or** top-p, not both.
-- Reasoning models, and models with thinking turned on, may fix or limit sampling settings. Check the model's documentation.
+- Where both are available, providers usually recommend adjusting **either** temperature **or** top-p, not both.
+- Reasoning models, and models with thinking turned on, often fix or limit sampling settings. Check the model's documentation.
 
 :::exercise Apply a temperature
 Write `with_temperature(logits, t)` returning the probabilities after dividing every logit by temperature `t` (> 0) and applying a numerically stable softmax.
@@ -1150,11 +1151,11 @@ walkthrough:
 - Every token with probability at least 0.9
 - The 90 most likely tokens
 = The nucleus adapts to how confident the model is.
-? Which settings suit extracting fields from invoices into JSON?
+? On a model that exposes sampling settings, which suit extracting fields from invoices into JSON?
 + A low temperature, for consistent and focused output
 - A high temperature, for creativity
 - Top-k = 1 and temperature 2.0 together
-= Extraction should give the same answer every time.
+= Extraction should give the same answer every time. (On current Claude models, use structured outputs instead.)
 ? Does temperature 0 guarantee identical outputs on every call?
 + No: small variations can still occur, so systems should tolerate them
 - Yes, always
@@ -1179,7 +1180,7 @@ There is no single best model. Each request has a quality bar, a latency budget 
 | **Max output** | the longest answer it can write in one response |
 | **Latency** | time to the first token, and tokens per second after that |
 | **Price** | per million input and output tokens; output is usually several times dearer |
-| **Reasoning / thinking** | extra thinking tokens raise quality on hard tasks, and cost and latency too |
+| **Reasoning / thinking** | extra thinking tokens raise quality on hard tasks, and cost and latency too; current Claude models think adaptively, controlled by an `effort` level |
 | **Modalities** | text, images, PDFs, audio; which inputs and outputs are supported |
 | **Tool use, structured output, caching, batch** | API features your design may rely on |
 | **Hosting** | a provider's API, a cloud platform (AWS Bedrock, Google Vertex AI, Azure), or open-weight models you run yourself |

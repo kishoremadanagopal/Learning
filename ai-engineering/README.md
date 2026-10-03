@@ -1,6 +1,6 @@
 # AI Engineering with LLMs
 
-A hands-on course on building software with large language models (LLMs): 6 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
+A hands-on course on building software with large language models (LLMs): 11 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
 
 Each idea is built from scratch in plain Python, so you see exactly what happens inside: a tokenizer, embeddings and similarity search, sampling, a retrieval pipeline, a tool-calling agent loop and an evaluation harness. Real API code (Anthropic and OpenAI) is shown alongside, ready to run on your own computer with an API key.
 
@@ -10,9 +10,9 @@ AI engineering is the core of the **AI engineer** path and increasingly part of 
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with NumPy. Nothing to install, no sign-up, and no API key needed: exercises use small stand-in models so every result is repeatable.
 
-- every lesson, with **11 examples** you can run and change
-- **11 exercises** with hidden tests, each with an approach, hints and a walkthrough
-- **24 quiz questions**, with explanations
+- every lesson, with **19 examples** you can run and change
+- **21 exercises** with hidden tests, each with an approach, hints and a walkthrough
+- **44 quiz questions**, with explanations
 - diagrams for the key ideas
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 6 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 11 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every AI engineering term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | API patterns, prompt techniques, RAG and agent recipes, and every concept at a glance |
 
@@ -46,6 +46,16 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 4 | [Transformers and attention](lessons/04-attention.md) | the transformer architecture, token and position embeddings, softmax, self-attention with queries, keys and values, scaling by the square root of the dimension, causal masking, multi-head attention, the cost of long contexts, the KV cache | 7–8 |
 | 5 | [Sampling and temperature](lessons/05-sampling.md) | logits and probabilities, greedy decoding, random sampling, temperature, top-k, top-p (nucleus) sampling, max tokens, stop sequences, seeds and determinism, choosing settings by task | 9–10 |
 | 6 | [Choosing a model](lessons/06-choosing-a-model.md) | capability, context window, output limits, latency, price per input and output token, reasoning modes, modalities, hosted versus open-weight models, model tiers, a method for choosing, cost estimates, routing | 11 |
+
+### Part 2: Working with LLM APIs (Beginner)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 7 | [Requests, responses and conversations](lessons/07-messages-api.md) | the anatomy of a request (model, max tokens, system prompt, messages), content blocks, the response and its content blocks, stop reasons, token usage, stateless APIs, storing and resending conversation history, trimming and summarising history, mid-conversation system messages, other providers' APIs and multi-provider libraries, keeping API keys safe | 12–13 |
+| 8 | [Streaming, errors and retries](lessons/08-streaming-and-retries.md) | server-sent events, stream event types, text and JSON deltas, assembling a streamed message, SDK streaming helpers, HTTP status codes and error types, which errors to retry, exponential backoff, jitter, retry-after, timeouts, SDK automatic retries, request IDs, fallbacks to another model or provider | 14–15 |
+| 9 | [Getting reliable JSON out](lessons/09-structured-output.md) | why programs need structured data, asking for JSON in the prompt, defensive parsing, JSON Schema, constrained decoding and guaranteed structured outputs, output_config format, Pydantic models with the SDK, schema limitations, strict tool use, validating values, retrying with error feedback, designing schemas with descriptions, enums and nullable fields | 16–17 |
+| 10 | [Reasoning, images and documents](lessons/10-reasoning-and-multimodal.md) | reasoning models, adaptive thinking, the effort parameter, thinking tokens and billing, max tokens and thinking, thinking display options, passing thinking blocks back, model differences, image content blocks, supported image formats and limits, estimating image tokens, the Files API, PDF document blocks, how PDFs are processed, vision limitations | 18–19 |
+| 11 | [Cost, caching and batches](lessons/11-cost-and-caching.md) | where the cost of an LLM application comes from, reading usage fields, cache write and read prices, prompt caching and prefix matching, automatic caching and explicit breakpoints, cache lifetimes, minimum cacheable length, what invalidates the cache, the Message Batches API, matching batch results, token counting, routing, effort, output length and other cost levers | 20–21 |
 
 ## Running it on your own computer
 

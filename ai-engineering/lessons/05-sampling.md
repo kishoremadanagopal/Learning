@@ -82,7 +82,7 @@ print([rng.choices(list(nucleus), weights=list(nucleus.values()))[0] for _ in ra
 | **stop sequences** | strings that end generation early, such as `"\n\n"` or `"</answer>"` |
 | **seed** (some APIs) | makes sampling repeatable, although results can still vary across model versions and hardware |
 
-## Choosing settings
+## Choosing settings (where a model exposes them)
 
 | Task | Typical settings |
 |---|---|
@@ -92,9 +92,10 @@ print([rng.choices(list(nucleus), weights=list(nucleus.values()))[0] for _ in ra
 
 Some notes for current models:
 
+- **Current Claude models (4.7 and later) don't accept these settings at all:** sending `temperature`, `top_p` or `top_k` with a non-default value returns an error. You steer them with the prompt, structured outputs (Lesson 9) and the `effort` setting (Lesson 10) instead. Other providers' models, and open-weight models you run yourself, still expose sampling settings, and the ideas explain what every model does internally.
 - Even at temperature 0, outputs are not guaranteed to be identical every time. Design and test for some variation.
-- Many providers recommend adjusting **either** temperature **or** top-p, not both.
-- Reasoning models, and models with thinking turned on, may fix or limit sampling settings. Check the model's documentation.
+- Where both are available, providers usually recommend adjusting **either** temperature **or** top-p, not both.
+- Reasoning models, and models with thinking turned on, often fix or limit sampling settings. Check the model's documentation.
 
 ## At a glance
 
@@ -107,7 +108,7 @@ Some notes for current models:
 ## Common mistakes
 
 - Using a high temperature for extraction or classification.
-- Adjusting temperature and top-p at the same time without testing.
+- Sending temperature or top-p to current Claude models, which reject them; and adjusting both at once elsewhere without testing.
 - Assuming temperature 0 makes every output identical.
 - Setting max tokens too low, cutting answers off mid-sentence.
 
@@ -290,7 +291,7 @@ print(nucleus({"Paris": 0.8, "Lyon": 0.1, "Rome": 0.06, "cat": 0.04}, 0.85))
    - B) Every token with probability at least 0.9
    - C) The 90 most likely tokens
 
-3. Which settings suit extracting fields from invoices into JSON?
+3. On a model that exposes sampling settings, which suit extracting fields from invoices into JSON?
    - A) A low temperature, for consistent and focused output
    - B) A high temperature, for creativity
    - C) Top-k = 1 and temperature 2.0 together
@@ -305,7 +306,7 @@ print(nucleus({"Paris": 0.8, "Lyon": 0.1, "Rome": 0.06, "cat": 0.04}, 0.85))
 
 1. **A) Sharpens the distribution, making the most likely tokens even more likely**: Dividing logits by T < 1 widens the gaps before softmax.
 2. **A) The smallest set of most likely tokens whose probabilities add up to at least 0.9**: The nucleus adapts to how confident the model is.
-3. **A) A low temperature, for consistent and focused output**: Extraction should give the same answer every time.
+3. **A) A low temperature, for consistent and focused output**: Extraction should give the same answer every time. (On current Claude models, use structured outputs instead.)
 4. **A) No: small variations can still occur, so systems should tolerate them**: Hardware and serving details can introduce tiny differences.
 
 </details>
