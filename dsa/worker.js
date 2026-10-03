@@ -50,9 +50,9 @@ self.onmessage = async (e) => {
     // A JavaScript stack overflow kills Python for good; the page restarts the worker when it sees fatal: true.
     const fatal = /fatally failed|Maximum call stack size exceeded|fatal error/i.test(text);
     const parts = fatal
-      ? [["err", "Python ran out of stack space and is restarting. In the browser this happens when Python frees or recurses " +
-                 "through a very long chain of objects (a linked list or a tree thousands of levels deep). " +
-                 "Try a smaller input here; the same code works in Python on your computer. Your code is still in the editor."]]
+      ? [["err", "Python ran out of stack space and is restarting. In the browser this can happen with very deep recursion " +
+                 "or when Python frees a very long chain of objects (a linked list or a tree thousands of levels deep). " +
+                 "Try a smaller input or a loop instead of recursion. Your code is still in the editor."]]
       : [["err", text]];
     self.postMessage({ type: "result", id: msg.id, result: { ok: false, fatal, parts, figures: [] } });
   }

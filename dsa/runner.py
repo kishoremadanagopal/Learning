@@ -34,7 +34,65 @@ def setup(data_files=None):
         pd.set_option("display.max_colwidth", 30)
     except ImportError:
         pass
+    _install_pure_cache()
     _SETUP_DONE = True
+
+
+def _install_pure_cache():
+    """Swap functools.cache / lru_cache for pure-Python versions with the same behaviour and API.
+    In the browser, the C-coded wrapper uses a large slice of the JavaScript stack on every call, so recursion
+    through @cache crashes Python after about 450 levels. Through a pure-Python wrapper, deep recursion ends in an
+    ordinary RecursionError instead. (Used for local tests too, so both behave the same.)"""
+    import functools
+    from collections import OrderedDict
+    if getattr(functools.lru_cache, "_pure", False):
+        return
+    CacheInfo, make_key = functools._CacheInfo, functools._make_key
+
+    def lru_cache(maxsize=128, typed=False):
+        if callable(maxsize) and not isinstance(maxsize, bool):     # @lru_cache with no parentheses
+            return lru_cache(128, typed)(maxsize)
+        if maxsize is not None and maxsize < 0:
+            maxsize = 0
+
+        def decorating(user_function):
+            store = {} if maxsize is None else OrderedDict()
+            hits = misses = 0
+
+            def wrapper(*args, **kwds):
+                nonlocal hits, misses
+                key = make_key(args, kwds, typed)
+                if key in store:
+                    hits += 1
+                    if maxsize is not None:
+                        store.move_to_end(key)
+                    return store[key]
+                misses += 1
+                result = user_function(*args, **kwds)
+                if maxsize != 0:
+                    store[key] = result
+                    if maxsize is not None and len(store) > maxsize:
+                        store.popitem(last=False)
+                return result
+
+            def cache_info():
+                return CacheInfo(hits, misses, maxsize, len(store))
+
+            def cache_clear():
+                nonlocal hits, misses
+                store.clear()
+                hits = misses = 0
+
+            wrapper.cache_info, wrapper.cache_clear = cache_info, cache_clear
+            wrapper.cache_parameters = lambda: {"maxsize": maxsize, "typed": typed}
+            return functools.update_wrapper(wrapper, user_function)
+        return decorating
+
+    def cache(user_function):
+        return lru_cache(maxsize=None)(user_function)
+
+    lru_cache._pure = True
+    functools.lru_cache, functools.cache = lru_cache, cache
 
 
 def _restore_data():
