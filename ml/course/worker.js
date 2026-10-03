@@ -48,6 +48,13 @@ self.onmessage = async (e) => {
       : "json.dumps(runner.run(_src, _stdin))");
     self.postMessage({ type: "result", id: msg.id, result: JSON.parse(out) });
   } catch (err) {
-    self.postMessage({ type: "result", id: msg.id, result: { ok: false, parts: [["err", String(err && err.message || err)]], figures: [] } });
+    const text = String(err && err.message || err);
+    // A JavaScript stack overflow kills Python for good; the page restarts the worker when it sees fatal: true.
+    const fatal = /fatally failed|Maximum call stack size exceeded|fatal error/i.test(text);
+    const parts = fatal
+      ? [["err", "Python ran out of stack space and is restarting. In the browser this can happen with very deep recursion. " +
+                 "Try a smaller input or a loop instead of recursion. Your code is still in the editor."]]
+      : [["err", text]];
+    self.postMessage({ type: "result", id: msg.id, result: { ok: false, fatal, parts, figures: [] } });
   }
 };

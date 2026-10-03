@@ -142,6 +142,7 @@
         busyLabel = "loading packages";
       } else if (m.type === "result" && pending && pending.id === m.id) {
         const p = pending; pending = null; p.resolve(m.result);
+        if (m.result && m.result.fatal) { worker.terminate(); startWorker(); }   // Python can't recover: start a fresh one
       }
     };
     worker.onerror = () => {

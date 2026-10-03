@@ -31,7 +31,7 @@ Timing code with a stopwatch depends on the computer, the language and what else
 | O(n²) | quadratic | a loop inside a loop | 1,000,000 | 10¹² (hours) |
 | O(2ⁿ) | exponential | trying every subset | more than atoms in the universe | – |
 
-A computer does very roughly 10⁷–10⁸ simple Python steps per second. So O(n²) on a million items (10¹² steps) takes hours, while O(n log n) takes a second.
+Python manages very roughly 10⁷ (ten million) simple steps per second. So O(n²) on a million items (10¹² steps) would take more than a day, while O(n log n) (about 2 × 10⁷ steps) takes a couple of seconds.
 
 ## The two rules
 
