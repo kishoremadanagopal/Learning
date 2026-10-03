@@ -36,6 +36,24 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | 429 | yes, after `retry-after` |
 | 500, 504, 529 | yes, with backoff |
 
+## Prompt engineering [12–16]
+
+- **New-colleague test:** would a capable newcomer understand exactly what to do? Give **context and the reason** for rules, the output format and the edge cases.
+- Say **what to do**, not only what not to do. Write calmly: capitals and "MUST" make modern models over-apply rules.
+- **Few-shot:** 3–5 relevant, **diverse** examples in `<example>` tags. Separate instructions, documents and inputs with **XML tags**.
+- **Long inputs:** documents first, question **last**; ask for relevant quotes before the answer.
+- **Reasoning:** thinking models want goals and a self-check, not scripts. Without thinking, ask for `<thinking>` then `<answer>`; reasoning must come first.
+- **Chains:** split a task into calls you can log and check (draft → review → refine; map → combine; route). Vote across several answers for important decisions.
+- **Templates:** keep prompts in version control; fill slots in one pass (`{{name}}`, `string.Template`, Jinja), never `str.format` on prompts with JSON. Test every change on a fixed test set, and again after a model change.
+- **Injection:** any text the model reads can carry instructions. Avoid the **lethal trifecta** (private data + untrusted content + external communication); use least privilege, human confirmation, allow-listed links, escaped output and redacted logs.
+
+| Prompt part | Where |
+|---|---|
+| role, rules, format | system prompt (stable, cacheable) |
+| long documents | top of the prompt, each in tags with its source |
+| examples | `<examples>` after the documents |
+| the user's question | last |
+
 ## Every concept at a glance
 
 Generated from the **At a glance** table at the end of each lesson. The number in brackets links to the lesson.
@@ -78,3 +96,18 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Call cost | sum of each token type × its price, per million | O(1) | O(1) | [11](lessons/11-cost-and-caching.md) |
 | Caching saving | calls × 1 − (write + (calls − 1) × read), × tokens × price | O(1) | O(1) | [11](lessons/11-cost-and-caching.md) |
 | Offline bulk work | Batch API at half price; match results by custom_id | O(requests) | O(requests) | [11](lessons/11-cost-and-caching.md) |
+| Lint a prompt | split into words; set checks for shouting, vagueness, format | O(n) | O(n) | [12](lessons/12-prompt-basics.md) |
+| Check a reply | one check per rule in the spec; collect failures | O(n × rules) | O(rules) | [12](lessons/12-prompt-basics.md) |
+| Clear prompt | context and why, task, output format, edge cases | — | — | [12](lessons/12-prompt-basics.md) |
+| Few-shot prompt | instructions, examples in tags, then the input | O(text) | O(text) | [13](lessons/13-examples-and-structure.md) |
+| Extract tagged sections | re.findall with (.*?) and DOTALL | O(n) | O(matches) | [13](lessons/13-examples-and-structure.md) |
+| Long-context layout | documents first, instructions, question last | — | — | [13](lessons/13-examples-and-structure.md) |
+| Prompt chain | output of step k becomes input of step k + 1; optional gate | O(steps) calls | O(steps) | [14](lessons/14-reasoning-and-chaining.md) |
+| Majority vote | extract, normalise, count; ties go to the first seen | O(n) | O(n) | [14](lessons/14-reasoning-and-chaining.md) |
+| Map and combine | same prompt on each piece, then merge | O(pieces) calls | O(pieces) | [14](lessons/14-reasoning-and-chaining.md) |
+| Render a template | one regex pass with a callback; KeyError on missing | O(n) | O(n) | [15](lessons/15-templates-and-testing.md) |
+| Score a prompt | run every case, catch errors, record failures | O(cases) calls | O(cases) | [15](lessons/15-templates-and-testing.md) |
+| Compare versions | same test set, compare pass rates, read failures | O(versions × cases) | O(cases) | [15](lessons/15-templates-and-testing.md) |
+| Redact PII | ordered regex substitution, most specific first | O(n) | O(n) | [16](lessons/16-prompt-injection.md) |
+| Safe link check | parse; https; host equals or ends with .domain | O(len × domains) | O(1) | [16](lessons/16-prompt-injection.md) |
+| Defence in depth | label data, least privilege, confirm actions, check output | — | — | [16](lessons/16-prompt-injection.md) |

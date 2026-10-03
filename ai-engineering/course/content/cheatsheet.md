@@ -35,3 +35,21 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | 400, 401, 403, 404, 413 | no: fix the request, key, permissions or size |
 | 429 | yes, after `retry-after` |
 | 500, 504, 529 | yes, with backoff |
+
+## Prompt engineering [12–16]
+
+- **New-colleague test:** would a capable newcomer understand exactly what to do? Give **context and the reason** for rules, the output format and the edge cases.
+- Say **what to do**, not only what not to do. Write calmly: capitals and "MUST" make modern models over-apply rules.
+- **Few-shot:** 3–5 relevant, **diverse** examples in `<example>` tags. Separate instructions, documents and inputs with **XML tags**.
+- **Long inputs:** documents first, question **last**; ask for relevant quotes before the answer.
+- **Reasoning:** thinking models want goals and a self-check, not scripts. Without thinking, ask for `<thinking>` then `<answer>`; reasoning must come first.
+- **Chains:** split a task into calls you can log and check (draft → review → refine; map → combine; route). Vote across several answers for important decisions.
+- **Templates:** keep prompts in version control; fill slots in one pass (`{{name}}`, `string.Template`, Jinja), never `str.format` on prompts with JSON. Test every change on a fixed test set, and again after a model change.
+- **Injection:** any text the model reads can carry instructions. Avoid the **lethal trifecta** (private data + untrusted content + external communication); use least privilege, human confirmation, allow-listed links, escaped output and redacted logs.
+
+| Prompt part | Where |
+|---|---|
+| role, rules, format | system prompt (stable, cacheable) |
+| long documents | top of the prompt, each in tags with its source |
+| examples | `<examples>` after the documents |
+| the user's question | last |

@@ -1,6 +1,6 @@
 # AI Engineering with LLMs
 
-A hands-on course on building software with large language models (LLMs): 11 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
+A hands-on course on building software with large language models (LLMs): 16 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
 
 Each idea is built from scratch in plain Python, so you see exactly what happens inside: a tokenizer, embeddings and similarity search, sampling, a retrieval pipeline, a tool-calling agent loop and an evaluation harness. Real API code (Anthropic and OpenAI) is shown alongside, ready to run on your own computer with an API key.
 
@@ -10,9 +10,9 @@ AI engineering is the core of the **AI engineer** path and increasingly part of 
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with NumPy. Nothing to install, no sign-up, and no API key needed: exercises use small stand-in models so every result is repeatable.
 
-- every lesson, with **19 examples** you can run and change
-- **21 exercises** with hidden tests, each with an approach, hints and a walkthrough
-- **44 quiz questions**, with explanations
+- every lesson, with **27 examples** you can run and change
+- **31 exercises** with hidden tests, each with an approach, hints and a walkthrough
+- **64 quiz questions**, with explanations
 - diagrams for the key ideas
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 11 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 16 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every AI engineering term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | API patterns, prompt techniques, RAG and agent recipes, and every concept at a glance |
 
@@ -56,6 +56,16 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 9 | [Getting reliable JSON out](lessons/09-structured-output.md) | why programs need structured data, asking for JSON in the prompt, defensive parsing, JSON Schema, constrained decoding and guaranteed structured outputs, output_config format, Pydantic models with the SDK, schema limitations, strict tool use, validating values, retrying with error feedback, designing schemas with descriptions, enums and nullable fields | 16–17 |
 | 10 | [Reasoning, images and documents](lessons/10-reasoning-and-multimodal.md) | reasoning models, adaptive thinking, the effort parameter, thinking tokens and billing, max tokens and thinking, thinking display options, passing thinking blocks back, model differences, image content blocks, supported image formats and limits, estimating image tokens, the Files API, PDF document blocks, how PDFs are processed, vision limitations | 18–19 |
 | 11 | [Cost, caching and batches](lessons/11-cost-and-caching.md) | where the cost of an LLM application comes from, reading usage fields, cache write and read prices, prompt caching and prefix matching, automatic caching and explicit breakpoints, cache lifetimes, minimum cacheable length, what invalidates the cache, the Message Batches API, matching batch results, token counting, routing, effort, output length and other cost levers | 20–21 |
+
+### Part 3: Prompt Engineering (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 12 | [Writing clear prompts](lessons/12-prompt-basics.md) | what a prompt is in an application, the new-colleague test, giving context and reasons, specifying the output, positive instructions, ordered steps, matching prompt style to output style, calm wording for modern models, edge cases, roles and system prompts, prefill and sampling on the newest models, checking replies against the spec | 22–23 |
+| 13 | [Examples and structure](lessons/13-examples-and-structure.md) | zero-shot and few-shot prompting, choosing relevant and diverse examples, how many examples, examples for thinking models, XML tags for instructions, documents, examples and inputs, the layout of a long prompt, documents first and question last, document metadata, grounding answers in quotes, tagged output, extracting tags with regular expressions | 24–25 |
+| 14 | [Reasoning and prompt chains](lessons/14-reasoning-and-chaining.md) | when reasoning helps, prompting thinking models with goals, self-verification, chain-of-thought prompting with thinking and answer tags, reasoning before answering, prompt chains, sequential chains, parallel map and combine, routing, draft review and refine, gates between steps, voting and self-consistency | 26–27 |
+| 15 | [Prompt templates and testing](lessons/15-templates-and-testing.md) | prompts as code, version control and review, naming and logging prompt versions, why format and f-strings break on braces, string.Template, Mustache-style placeholders, Jinja templates, single-pass substitution and template injection, keeping stable text cacheable, prompt test sets, pass rates, comparing prompt versions, re-testing after model changes, prompt generators | 28–29 |
+| 16 | [Prompt injection and safety](lessons/16-prompt-injection.md) | direct and indirect prompt injection, jailbreaks, hidden context exposure, why prompts can't fully prevent injection, the lethal trifecta, data exfiltration through links and images, the OWASP Top 10 for LLM applications, labelling untrusted data, least privilege, human confirmation, treating output as untrusted, link allow-lists, keeping secrets out of prompts, redacting personal data, input and output screening, limits, monitoring and red-teaming | 30–31 |
 
 ## Running it on your own computer
 

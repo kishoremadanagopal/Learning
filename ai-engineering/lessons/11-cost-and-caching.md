@@ -351,4 +351,4 @@ print(round(cache_savings(10_000, 2, 2.0, ttl="1h"), 4))
 </details>
 
 ---
-Previous: [Lesson 10](10-reasoning-and-multimodal.md) · Back to the [course home](../README.md)
+Previous: [Lesson 10](10-reasoning-and-multimodal.md) · Next: [Lesson 12: Writing clear prompts](12-prompt-basics.md)
