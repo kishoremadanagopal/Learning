@@ -38,7 +38,10 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Binary tree** | A tree where each node has at most two children, left and right. [29] |
 | **Bipartite graph** | A graph whose vertices split into two sides with every edge between the sides. [40] |
 | **bisect_left / bisect_right** | The first position where x could be inserted keeping the order (before / after equal items). [24] |
+| **Bit** | A single binary digit, 0 or 1. [47] |
+| **Bitmask** | An integer whose bits record which items of a small set are present. [47] |
 | **Bitmask DP** | DP whose state includes a set of items stored as the bits of an integer. [44] |
+| **Bitwise operator** | An operator that works on each bit position: & (AND), \| (OR), ^ (XOR), ~ (NOT), << and >> (shifts). [47] |
 | **Bounds check** | Testing 0 <= r < rows and 0 <= c < cols before using a cell. [10] |
 | **Breadth-first search (BFS)** | Visiting level by level, using a queue. [29] |
 | **Bridge** | An edge whose removal disconnects the graph. [40] |
@@ -46,7 +49,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **B-tree** | A balanced search tree with many keys per node, used by databases and file systems. [31] |
 | **Bubble sort** | Repeatedly swaps neighbouring items that are out of order. [26] |
 | **Bucket** | A slot in a hash table's internal array where entries are stored. [13] |
-| **Bucket sort** | Spreads evenly distributed values into buckets, sorts each bucket, and joins them. [28] |
+| **Bucket sort** | Spreads evenly distributed values into buckets, sorts each bucket, and joins them. [28, 49] |
 | **Cache** | Fast storage that keeps recent or frequent results so they don't have to be recomputed or fetched again. [20] |
 | **Cache hit / miss** | The item was in the cache / it wasn't. [20] |
 | **Call stack** | The memory Python uses to remember function calls that haven't finished yet. [4, 17] |
@@ -54,10 +57,12 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Ceiling division** | Dividing and rounding up, `(a + b - 1) // b` for positive integers. [25] |
 | **Circular linked list** | The last node points back to the first. [15] |
 | **Circular (ring) buffer** | A fixed-size array used as a queue, with indexes that wrap around using `%`. [19] |
+| **Clue word** | A phrase in a problem that points to a technique, such as "top k" → heap. [49] |
 | **Clue words** | Phrases in a problem that point to a pattern, like "contiguous subarray" → sliding window. [2] |
 | **cmp_to_key** | Turns an old-style comparison function into a key function. [28] |
 | **Collision** | Two different keys landing in the same bucket. [13] |
 | **Combination** | A selection where order doesn't matter; choosing k of n gives C(n, k). [23] |
+| **Combination C(n, k)** | The number of ways to choose k items from n when order doesn't matter. [48] |
 | **Comparison sort** | A sort that learns about the data only by comparing pairs of items. [28] |
 | **Complement** | The value needed to complete a pair, such as target − x. [14] |
 | **Complete binary tree** | Every level full except possibly the last, which fills from the left. [29] |
@@ -93,11 +98,12 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Dutch national flag** | A one-pass, three-pointer partition into three groups. [26] |
 | **Dynamic array** | An array that grows automatically by reserving spare room; Python's list. [6] |
 | **Dynamic programming (DP)** | Solving a problem by combining stored answers to smaller versions of it, each computed once. [41] |
-| **Edge case** | An unusual input at the boundaries, such as an empty list, one item, negatives or duplicates. [1] |
+| **Edge case** | An unusual input at the boundaries, such as an empty list, one item, negatives or duplicates. [1, 49] |
 | **Edit (Levenshtein) distance** | The fewest insertions, deletions and substitutions turning one string into another. [43] |
 | **"Ending at i" state** | A DP state describing the best answer that finishes exactly at position i. [42] |
 | **End-of-word flag** | A marker on the node where a complete word ends. [33] |
 | **Enqueue / dequeue** | Add at the back / remove from the front. [19] |
+| **Euclid's algorithm** | Gcd(a, b) = gcd(b, a mod b) until b is 0. [48] |
 | **Eulerian path** | A path that uses every edge exactly once. [40] |
 | **Event** | A point where something changes, such as +1 at a meeting's start and −1 at its end. [46] |
 | **Eviction** | Removing an item from a full cache to make room. [20] |
@@ -107,15 +113,18 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Fast (binary) exponentiation** | Computing xⁿ by squaring, in O(log n) multiplications. [22] |
 | **Feasibility check** | A function that answers "does this candidate value work?" [25] |
 | **Fenwick tree (binary indexed tree)** | An array where position i stores the sum of a block ending at i, of length i & -i. [34] |
+| **Fermat's little theorem** | For a prime p and a not divisible by p, a^(p−1) ≡ 1, so a^(p−2) is a's inverse. [48] |
 | **FIFO** | First in, first out. [19] |
 | **Fixed-size window** | A window of exactly k items; one item joins and one leaves at each step. [8] |
 | **Floor / ceiling** | The largest value ≤ x / the smallest value ≥ x. [31] |
 | **Floyd's cycle detection** | The tortoise-and-hare method: if fast and slow ever meet, there's a cycle. [16] |
 | **Floyd-Warshall** | All-pairs shortest paths by allowing each vertex in turn as a stopover. [38] |
+| **Follow-up question** | An interviewer's change to the problem to see how the design adapts. [50] |
 | **Fractional knapsack** | A knapsack where items can be split; solved by value per weight. [45] |
 | **Frequency count** | How many times each item appears, usually in a dict or Counter. [14] |
 | **frozenset** | An immutable set, usable as a dict key. [13] |
 | **Function** | A named block of code that takes inputs (arguments) and returns an output. [1] |
+| **gcd / lcm** | The greatest common divisor / least common multiple of two numbers. [48] |
 | **Graph** | A set of vertices joined by edges. [35] |
 | **Greedy algorithm** | An algorithm that makes the locally best choice at each step and never reconsiders. [45] |
 | **Greedy-choice property** | Some optimal solution begins with the greedy choice. [45] |
@@ -177,7 +186,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Lower bound** | The least work any algorithm for a problem must do; Ω(n log n) for comparison sorts. [28] |
 | **Lower bound / upper bound** | The first position with a value ≥ x / > x. [24] |
 | **Lowest common ancestor (LCA)** | The deepest node that has both given nodes in its subtree. [30] |
-| **Lowest set bit** | The rightmost 1 bit of a number; `i & -i` in Python. [34] |
+| **Lowest set bit** | The rightmost 1 bit of a number; `i & -i` in Python. [34, 47] |
 | **Low-link value** | The earliest discovery time a DFS subtree can reach with one back edge. [40] |
 | **LPS table** | For each prefix of the pattern, the length of its longest proper prefix that is also a suffix. [12] |
 | **@lru_cache / @cache** | Python decorators that memoise a function (bounded with LRU eviction / unbounded). [20] |
@@ -191,7 +200,10 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Minimum cut** | The cheapest set of edges whose removal separates source from sink; equals the maximum flow. [40] |
 | **Minimum spanning tree (MST)** | A spanning tree with the smallest total weight. [39] |
 | **Mirror (invert)** | Swapping every node's left and right children. [30] |
-| **Modular arithmetic** | Working with remainders after division by a modulus, to keep numbers small. [22] |
+| **Mixed practice** | Solving problems without being told which technique they need. [50] |
+| **Mock interview** | Practising a problem under interview conditions: timed, explained aloud, tested. [50] |
+| **Modular arithmetic** | Working with remainders after division by a modulus, to keep numbers small. [22, 48] |
+| **Modular inverse** | The number b⁻¹ with b · b⁻¹ ≡ 1 (mod m); it replaces division. [48] |
 | **Monotonic** | Never changing direction: once the test says yes, it says yes for every larger value. [25] |
 | **Monotonic deque** | A deque kept in increasing or decreasing order, used for sliding-window maximums or minimums. [19] |
 | **Monotonic rule** | A rule where growing an invalid window can never make it valid again; needed for variable windows. [8] |
@@ -234,11 +246,13 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Point update** | Changing a single item of the list. [34] |
 | **Precomputation** | Doing work once up front so that many later questions are cheap. [9] |
 | **Prefix** | The beginning part of a string; "ca" is a prefix of "cat". [33, 43] |
+| **Prefix and suffix products** | Running products from the left and right, combined per position. [49] |
 | **Prefix code** | A set of codes where no code is the start of another, so decoding is unambiguous. [45] |
 | **Prefix sum** | The running total of the first k items; prefix[0] = 0. [9] |
 | **Prefix-sum count** | A dict from each prefix sum to how often it has appeared, used to count subarrays with a given sum. [14] |
 | **Preorder / inorder / postorder** | Visiting the node before, between or after its two subtrees. [29] |
 | **Previous greater element** | For each item, the nearest item to its left that is larger. [18] |
+| **Prime** | An integer greater than 1 whose only divisors are 1 and itself. [48] |
 | **Priority queue** | A queue that always serves the smallest (or most urgent) item first. [19, 32] |
 | **Producer / consumer** | One part of a program adds work to a queue while another takes it off. [19] |
 | **Proper prefix** | A prefix that isn't the whole string. [12] |
@@ -266,6 +280,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Red-black tree** | A self-balancing BST using node colours; used by many standard libraries. [31] |
 | **Reference** | A pointer to an object; a Python list stores references, not the objects themselves. [6] |
 | **Relaxation** | Updating a vertex's distance if going through a neighbouring vertex is cheaper. [38] |
+| **Reservoir sampling** | Choosing k random items from a stream in one pass with O(k) memory. [48] |
 | **Resize (rehash)** | Moving every entry into a bigger table when the load factor gets too high. [13] |
 | **Return value** | What a function gives back with `return`; tests check this, not what it prints. [1] |
 | **Reverse Polish notation (RPN)** | Writing operators after their operands, like `3 4 +`; no brackets needed. [17] |
@@ -276,6 +291,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Rotation** | Shifting every item k places, wrapping around the end. [6, 31] |
 | **Run-length encoding** | Replacing runs of a repeated character with the character and its count. [11] |
 | **Running best** | A pattern that walks through data once, remembering the best value seen so far. [1] |
+| **Running maximum** | The largest value seen so far while scanning, updated in O(1) per step. [50] |
 | **Running minimum** | The smallest value seen so far while scanning. [6] |
 | **Search space** | The range of candidate answers, from the smallest possible to the largest. [25] |
 | **Segment tree** | A binary tree where each node stores the combined value of a range of the list. [34] |
@@ -286,6 +302,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Serialise / deserialise** | Turning a tree into a string / rebuilding the tree from it. [30] |
 | **Shortest path (unweighted)** | A path with the fewest edges. [36] |
 | **Shunting-yard algorithm** | Converts infix expressions to RPN using a stack of operators and precedence rules. [17] |
+| **Sieve of Eratosthenes** | Finds all primes below n by crossing out multiples of each prime. [48] |
 | **Sift up / sift down** | Swapping an item with its parent / smaller child until the heap property holds again. [32] |
 | **Sliding window** | A contiguous range [left, right] that moves through the data and is updated instead of recomputed. [8] |
 | **Sorted** | Arranged in increasing (or decreasing) order; what makes opposite-ends pointers work. [7] |
@@ -302,6 +319,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Stock span** | The number of consecutive days, ending today, with a price at most today's. [18] |
 | **Strongly connected component (SCC)** | A maximal set of vertices in a directed graph that can all reach each other. [40] |
 | **Subarray** | A contiguous run of items in an array. [8] |
+| **Submask** | A mask whose 1 bits are a subset of another mask's 1 bits. [47] |
 | **Subsequence** | Items kept in their original order, with gaps allowed. [42] |
 | **Subset** | Any selection of items, including none and all; n items have 2ⁿ subsets. [23] |
 | **Subset sum** | Deciding whether some subset of numbers adds up to a target. [44] |
@@ -310,6 +328,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Tabulation (bottom-up)** | Filling a table of answers from the smallest cases upwards with loops. [41] |
 | **Tail** | The last node; its `next` is None. [15] |
 | **Tail call** | A recursive call that is the very last thing a function does; Python doesn't optimise these. [21] |
+| **Target complexity** | The running time the input limits allow, read from the largest n. [49] |
 | **Test case** | One input together with the expected output, used to check a function. [1] |
 | **Tie-breaker** | An extra value, such as a counter, that decides between equal priorities. [32] |
 | **Time complexity** | How an algorithm's running time grows with the input size. [3] |
@@ -324,9 +343,11 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Tree DP** | Computing each node's answer from its children's answers, usually in postorder. [44] |
 | **Trie (prefix tree)** | A tree that stores strings one character per level, sharing common prefixes. [33] |
 | **Two pointers** | Two indexes that move through the data by a rule, replacing a nested loop. [7] |
+| **Two's complement** | The usual way to store negative integers, where −x equals ~x + 1. [47] |
 | **Unbounded knapsack** | A DP where each item (such as a coin value) may be used any number of times. [42, 44] |
 | **Union by size (or rank)** | Hanging the smaller tree under the larger one. [39] |
 | **Union-find (disjoint set union)** | A structure that keeps elements in merging groups and answers "same group?". [39] |
+| **Variable-size sliding window** | A window that grows on the right until valid and shrinks on the left while it stays valid. [50] |
 | **Variable-size window** | A window that grows on the right and shrinks on the left to keep a rule true. [8] |
 | **Vertex (node) / edge** | A point in the graph / a connection between two vertices. [35] |
 | **Weighted graph** | Each edge carries a number such as a distance or cost. [35] |
@@ -334,3 +355,4 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Wildcard** | A pattern character, such as `.`, that matches any single character. [33] |
 | **Window state** | What you keep about the window (a sum, counts, a set) so updates are O(1). [8] |
 | **Worst case** | The input that makes it do the most work; the usual meaning of "the complexity". [4] |
+| **XOR (exclusive or)** | 1 where two bits differ; x ^ x = 0 and x ^ 0 = x. [47] |

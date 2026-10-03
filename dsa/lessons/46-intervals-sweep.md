@@ -402,4 +402,4 @@ Two rooms.
 </details>
 
 ---
-Previous: [Lesson 45](45-greedy.md) · Back to the [course home](../README.md)
+Previous: [Lesson 45](45-greedy.md) · Next: [Lesson 47: Bit manipulation](47-bit-manipulation.md)

@@ -721,7 +721,7 @@ def _ref(w, d):
         if days <= d: hi = mid
         else: lo = mid + 1
     return lo
-speed("ship_capacity", lambda n: ([(i * 7919) % 1_000 + 1 for i in range(2_000)], n), _ref, sizes=(1_000, 250, 2),
+speed("ship_capacity", lambda n: ([(i * 7919) % 1_000 + 1 for i in range(2_000)], n), _ref, sizes=(1_000, 150, 2),
       what="days for 2,000 packages",
       tip="Trying capacities one by one is far too slow when weights are large. If a capacity works, every bigger one works too: binary search between max(weights) and sum(weights), testing each candidate with a greedy simulation.")
 ```

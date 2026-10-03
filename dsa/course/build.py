@@ -193,9 +193,15 @@ def parse_file(path):
     return parts, lessons
 
 
+def _file_number(path):
+    """Sort part2.md before part10.md (plain name order would put part10 right after part1)."""
+    digits = re.sub(r"\D", "", path.stem)
+    return int(digits) if digits else 0
+
+
 def build(only=None):
     parts, lessons = [], []
-    for f in sorted(CONTENT.glob("part*.md")):
+    for f in sorted(CONTENT.glob("part*.md"), key=_file_number):
         if only and f.stem != only:
             continue
         p, l = parse_file(f)
@@ -207,7 +213,7 @@ def build(only=None):
         raise ValueError(f"Duplicate lesson ids: {dupes}")
 
     extras = {}
-    for f in sorted(CONTENT.glob("extras*.md")):
+    for f in sorted(CONTENT.glob("extras*.md"), key=_file_number):
         extras.update(parse_extras(f))
     missing = [i for i in ids if i not in extras]
     if missing:

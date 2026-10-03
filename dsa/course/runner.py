@@ -3,6 +3,7 @@ so lessons are tested with exactly the same rules they run under in the browser.
 import base64
 import builtins
 import io
+import math
 import os
 import re
 import sys
@@ -473,8 +474,14 @@ def _helpers(ns, output, source):
     def speed(name, make_args, reference, sizes=(1_000, 10_000, 100_000), what="items", tip=None,
               valid=None, key=None, factor=30, floor=0.3):
         """Time the learner's function against a reference solution on growing inputs.
-        Fails with a friendly "too slow" message as soon as it takes more than max(floor, factor x reference time)."""
+        Fails with a friendly "too slow" message as soon as it takes more than max(floor, factor x reference time).
+        Before each bigger size, it also predicts the learner's time from the previous sizes: with the growth rate
+        measured between the last two sizes when both timings are big enough to trust, otherwise assuming linear
+        growth (the most optimistic case for anything that reads its input). If even that prediction is far over
+        budget, it fails at once instead of making the learner wait minutes for a run that can only fail."""
         f, fname = _func(name)
+        tip = tip or "Look for a way to avoid repeating work, such as a loop inside a loop."
+        prev = before = None                          # (size, learner time) for the last two sizes
         for n in sizes:
             args = make_args(n)
             if not isinstance(args, tuple):
@@ -483,21 +490,39 @@ def _helpers(ns, output, source):
             t0 = time.perf_counter()
             expected = reference(*a_ref)
             t_ref = time.perf_counter() - t0
+            budget = max(floor, factor * t_ref)
+            ref_txt = f"{t_ref * 1000:.0f} ms" if t_ref >= 0.001 else "under 1 ms"
+            if prev and prev[1] >= 0.05 and 0 < prev[0] < n:
+                growth = 1.0                          # assume linear growth unless measured otherwise
+                if before and before[1] >= 0.005 and before[0] < prev[0]:
+                    growth = min(3.0, max(1.0, math.log(prev[1] / before[1]) / math.log(prev[0] / before[0])))
+                predicted = prev[1] * (n / prev[0]) ** growth
+                if predicted > 3 * budget:
+                    raise AssertionError(
+                        f"Correct, but too slow: with {prev[0]:,} {what} your function took {prev[1]:.2f} s, so with "
+                        f"{n:,} {what} it would take at least {_secs(predicted)}; a fast solution takes {ref_txt}.\n" + tip)
             t0 = time.perf_counter()
             try:
                 got = f(*a_you)
             except RecursionError:
                 raise AssertionError(f"With {n:,} {what}, your function hit RecursionError: the recursion is too deep for "
-                                     "Python's limit (about 1,000 nested calls).\n" + (tip or "Use a loop instead.")) from None
+                                     "Python's limit (about 1,000 nested calls).\n" + tip) from None
             t = time.perf_counter() - t0
             if not _verdict_ok(got, expected, args, valid, key):
                 raise AssertionError(f"Your function passes the small tests but gives a wrong answer on a big input ({n:,} {what}).")
-            budget = max(floor, factor * t_ref)
             if t > budget:
-                ref_txt = f"{t_ref * 1000:.0f} ms" if t_ref >= 0.001 else "under 1 ms"
                 raise AssertionError(f"Correct, but too slow: with {n:,} {what} your function took {t:.2f} s; "
-                                     f"a fast solution takes {ref_txt}.\n" + (tip or "Look for a way to avoid repeating work, such as a loop inside a loop."))
+                                     f"a fast solution takes {ref_txt}.\n" + tip)
+            before, prev = prev, (n, t)
         return True
+
+    def _secs(seconds):
+        for unit, size in (("year", 31_557_600), ("day", 86_400), ("hour", 3_600), ("minute", 60)):
+            if seconds >= 2 * size:
+                count = round(seconds / size)
+                return f"{count:,} {unit}s" if unit != "year" or count < 1_000 else "thousands of years"
+        count = max(1, round(seconds))
+        return f"{count} second{'s' if count != 1 else ''}"
 
     return {"need": need, "same": same, "printed": printed, "uses": uses, "chart": chart, "test": test, "speed": speed}
 

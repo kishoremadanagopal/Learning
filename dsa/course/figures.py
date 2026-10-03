@@ -1525,6 +1525,80 @@ def sweep_line_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 10: bits, maths and practice
+
+@fig("bit-ops")
+def bit_ops_fig():
+    f, ax = diag.canvas(8.4, 4.4)
+    rows = [("12", "1100", BLUE), ("10", "1010", BLUE), ("12 & 10", "1000", TEAL), ("12 | 10", "1110", ORANGE), ("12 ^ 10", "0110", PURPLE)]
+    w = 0.7
+    for b in range(4):
+        label(ax, 2.6 + b * w + w / 2, 4.15, f"bit {3 - b}", size=8.5, color=MUTED)
+    for r, (name, bits, col) in enumerate(rows):
+        y = 3.4 - r * 0.72 - (0.2 if r >= 2 else 0)
+        label(ax, 2.3, y + 0.25, name, ha="right", mono=True, size=10.5)
+        for b, ch in enumerate(bits):
+            sbox(ax, 2.6 + b * w, y, w - 0.08, 0.5, ch, color=col if ch == "1" else GREY, mono=True)
+        value = int(bits, 2)
+        label(ax, 2.6 + 4 * w + 0.25, y + 0.25, f"= {value}", ha="left", mono=True, size=10.5)
+    ax.plot([2.5, 5.5], [2.45, 2.45], color=MUTED, linewidth=1)
+    for r, (txt, col) in enumerate([("AND: both 1", TEAL), ("OR: either 1", ORANGE), ("XOR: they differ", PURPLE)]):
+        label(ax, 6.4, 3.4 - (r + 2) * 0.72 - 0.2 + 0.25, txt, ha="left", size=9, color=col)
+    return f
+
+
+@fig("sieve")
+def sieve_fig():
+    f, ax = diag.canvas(10.1, 3.7)
+    first = {}
+    for p in (2, 3, 5):
+        for m in range(p * p, 31, p):
+            first.setdefault(m, p)
+    cols = {2: BLUE, 3: TEAL, 5: PURPLE}
+    w, h = 0.95, 0.72
+    for idx, n in enumerate(range(2, 31)):
+        r, c = divmod(idx + 1, 10)
+        x, y = 0.3 + c * w, 2.9 - r * h
+        if n in first:
+            col = cols[first[n]]
+            ax.add_patch(Rectangle((x, y), w - 0.08, h - 0.1, facecolor=SOFT[col], edgecolor=col, linewidth=1.2))
+            label(ax, x + (w - 0.08) / 2, y + (h - 0.1) / 2, str(n), mono=True, color=MUTED)
+            ax.plot([x + 0.12, x + w - 0.2], [y + 0.12, y + h - 0.22], color=col, linewidth=1.3)
+        else:
+            ax.add_patch(Rectangle((x, y), w - 0.08, h - 0.1, facecolor=SOFT[ORANGE], edgecolor=ORANGE, linewidth=1.8))
+            label(ax, x + (w - 0.08) / 2, y + (h - 0.1) / 2, str(n), mono=True, bold=True)
+    y0 = 0.95
+    for i, (p, txt) in enumerate([(2, "multiples of 2 (from 4)"), (3, "multiples of 3 (from 9)"), (5, "multiples of 5 (from 25)")]):
+        sbox(ax, 0.3 + i * 3.1, y0 - 0.3, 0.35, 0.3, "", color=cols[p])
+        label(ax, 0.75 + i * 3.1, y0 - 0.15, txt, ha="left", size=9, color=MUTED)
+    label(ax, 0.3, 0.3, "orange: primes left uncrossed (2, 3, 5, 7, 11, 13, 17, 19, 23, 29)", ha="left", size=9.5, color=ORANGE)
+    return f
+
+
+@fig("rain-water")
+def rain_water_fig():
+    f, ax = diag.canvas(9.6, 4.2)
+    h = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+    n = len(h)
+    lm = [max(h[:i + 1]) for i in range(n)]
+    rm = [max(h[i:]) for i in range(n)]
+    w, x0, y0, u = 0.7, 0.6, 0.6, 0.8
+    total = 0
+    for i, v in enumerate(h):
+        water = min(lm[i], rm[i]) - v
+        total += water
+        if v:
+            ax.add_patch(Rectangle((x0 + i * w, y0), w, v * u, facecolor="#cbd2d9", edgecolor=MUTED, linewidth=1))
+        if water:
+            ax.add_patch(Rectangle((x0 + i * w, y0 + v * u), w, water * u, facecolor=SOFT[BLUE], edgecolor=BLUE, linewidth=1.2))
+            label(ax, x0 + i * w + w / 2, y0 + (v + water / 2) * u, str(water), size=9, color=BLUE, bold=True)
+        label(ax, x0 + i * w + w / 2, y0 - 0.25, str(v), size=9, color=MUTED, mono=True)
+    ax.plot([x0, x0 + n * w], [y0, y0], color=INK, linewidth=1.2)
+    label(ax, x0 + n * w + 0.3, 2.6, f"trapped: {total} units", ha="left", size=10.5, bold=True, color=BLUE)
+    label(ax, x0 + n * w + 0.3, 2.0, "water at i =\nmin(tallest left,\ntallest right)\n− height[i]", ha="left", size=9, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

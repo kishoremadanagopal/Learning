@@ -1,6 +1,6 @@
 # Data Structures and Algorithms in Python
 
-A hands-on DSA course for complete beginners: 46 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
+A hands-on DSA course for complete beginners: 50 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
 
 Every exercise is checked like a coding-interview site: **hidden test cases** (including the tricky edge cases) and a **speed check** that tells you when a correct answer is too slow. When you're stuck, a help ladder takes you from a **step-by-step approach**, through **three hints**, to a full **walkthrough** with a trace table that shows the code running.
 
@@ -10,9 +10,9 @@ Data structures and algorithms are part of the shared core for both the **AI eng
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with the whole standard library: `collections`, `heapq`, `bisect`, `functools` and more. Nothing to install, no sign-up.
 
-- every lesson, with **219 examples** you can run and change
-- **96 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
-- **184 quiz questions**, with explanations
+- every lesson, with **235 examples** you can run and change
+- **105 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
+- **200 quiz questions**, with explanations
 - a diagram for every data structure and pattern
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 46 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 50 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every DSA term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | Big-O of every operation, the 6-step problem-solving method, and a "clue words → pattern" table |
 
@@ -125,6 +125,15 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 44 | [Knapsacks, intervals, bitmasks and trees](lessons/44-knapsack-and-more.md) | 0/1 knapsack in 2-D and 1-D, loop direction, unbounded knapsack, rebuilding the chosen items, pseudo-polynomial time, subset sum and equal partition, the big-integer bitset trick, interval DP and matrix-chain order, bitmask DP and the travelling salesman problem, DP on trees, choosing a DP shape | 91–92 |
 | 45 | [Greedy algorithms](lessons/45-greedy.md) | the greedy-choice property, exchange arguments, activity selection, greedy counterexamples, fractional knapsack, jump games, the gas station, Huffman coding, two-pointer pairing, testing greedy rules against brute force | 93–94 |
 | 46 | [Intervals and sweep lines](lessons/46-intervals-sweep.md) | closed and half-open intervals, the overlap test, merging intervals, inserting an interval, intersecting two interval lists, fewest removals, meeting rooms with a heap or a sweep line, event sorting, difference arrays | 95–96 |
+
+### Part 10: Bits, Maths and Interview Practice (Advanced)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 47 | [Bit manipulation](lessons/47-bit-manipulation.md) | binary in Python, AND, OR, XOR, NOT and shifts, negative numbers and two's complement, setting, clearing and testing bits, the lowest set bit, powers of two, counting bits, XOR puzzles, sets as bitmasks, enumerating subsets and submasks, maximum XOR of two numbers | 97–98 |
+| 48 | [Maths for coding problems](lessons/48-number-theory.md) | gcd and lcm with Euclid's algorithm, primality by trial division, the sieve of Eratosthenes, prime factorisation, modular arithmetic, modular inverses and Fermat's little theorem, factorials, permutations and combinations, Pascal's triangle, Catalan numbers, float precision and exact arithmetic, Fisher-Yates shuffle, reservoir sampling | 99–100 |
+| 49 | [Recognising the pattern](lessons/49-problem-patterns.md) | input size and target complexity, clue words and the techniques they point to, choosing a data structure by its fastest operation, an edge-case checklist, the Python standard-library toolkit, talking through a problem in an interview | 101–102 |
+| 50 | [Mock interviews](lessons/50-mock-interviews.md) | the 6-step method in a full interview, longest consecutive sequence with a hash set, a time-based key-value store with binary search, follow-up questions, trapping rain water with two pointers, minimum window substring with a sliding window, decoding nested strings with a stack, how to keep practising | 103–105 |
 
 ## Running it on your own computer
 

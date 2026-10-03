@@ -780,7 +780,7 @@ def _ref(grid):
             if 0 <= x < R and 0 <= y < C and g[x][y] == 1:
                 g[x][y] = 2; fresh -= 1; q.append((x, y, d + 1))
     return t if fresh == 0 else -1
-speed(fn, _make, _ref, sizes=(20, 80, 300), what="rows and columns",
+speed(fn, _make, _ref, sizes=(20, 100, 300), what="rows and columns",
       tip="Re-scanning the whole grid every minute is O((rows × cols)²) in the worst case. Put every rotten orange in a queue at minute 0 and run one multi-source BFS.")
 ```
 ```python solution
