@@ -136,7 +136,7 @@ def _ref(n, steps):
     for i in range(1, n + 1):
         dp[i] = sum(dp[i - s] for s in steps if s <= i)
     return dp[n]
-speed(fn, lambda n: (n, [1, 2, 3]), _ref, sizes=(10, 23, 5_000), what="steps",
+speed(fn, lambda n: (n, [1, 2, 3]), _ref, sizes=(10, 22, 5_000), what="steps", floor=0.15,
       tip="Plain recursion recomputes the same steps exponentially often, and even memoised recursion goes n calls deep. Fill a table bottom-up: ways[i] = sum of ways[i - s] for each step size s.")
 ```
 ```python solution
@@ -920,7 +920,7 @@ def _ref(a, b):
             cur[j] = prev[j - 1] if a[i - 1] == b[j - 1] else 1 + min(prev[j], cur[j - 1], prev[j - 1])
         prev = cur
     return prev[-1]
-speed(fn, _make, _ref, sizes=(6, 13, 800), what="characters in each string",
+speed(fn, _make, _ref, sizes=(6, 12, 800), what="characters in each string",
       tip="Trying all three edits recursively is exponential. Fill a (len(a) + 1) x (len(b) + 1) table: dp[i][j] = edits between the first i characters of a and the first j of b.")
 ```
 ```python solution
