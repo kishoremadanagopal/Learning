@@ -1,6 +1,6 @@
 # AI Engineering with LLMs
 
-A hands-on course on building software with large language models (LLMs): 16 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
+A hands-on course on building software with large language models (LLMs): 22 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
 
 Each idea is built from scratch in plain Python, so you see exactly what happens inside: a tokenizer, embeddings and similarity search, sampling, a retrieval pipeline, a tool-calling agent loop and an evaluation harness. Real API code (Anthropic and OpenAI) is shown alongside, ready to run on your own computer with an API key.
 
@@ -10,9 +10,9 @@ AI engineering is the core of the **AI engineer** path and increasingly part of 
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with NumPy. Nothing to install, no sign-up, and no API key needed: exercises use small stand-in models so every result is repeatable.
 
-- every lesson, with **27 examples** you can run and change
-- **31 exercises** with hidden tests, each with an approach, hints and a walkthrough
-- **64 quiz questions**, with explanations
+- every lesson, with **33 examples** you can run and change
+- **43 exercises** with hidden tests, each with an approach, hints and a walkthrough
+- **88 quiz questions**, with explanations
 - diagrams for the key ideas
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 16 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 22 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every AI engineering term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | API patterns, prompt techniques, RAG and agent recipes, and every concept at a glance |
 
@@ -66,6 +66,17 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 14 | [Reasoning and prompt chains](lessons/14-reasoning-and-chaining.md) | when reasoning helps, prompting thinking models with goals, self-verification, chain-of-thought prompting with thinking and answer tags, reasoning before answering, prompt chains, sequential chains, parallel map and combine, routing, draft review and refine, gates between steps, voting and self-consistency | 26–27 |
 | 15 | [Prompt templates and testing](lessons/15-templates-and-testing.md) | prompts as code, version control and review, naming and logging prompt versions, why format and f-strings break on braces, string.Template, Mustache-style placeholders, Jinja templates, single-pass substitution and template injection, keeping stable text cacheable, prompt test sets, pass rates, comparing prompt versions, re-testing after model changes, prompt generators | 28–29 |
 | 16 | [Prompt injection and safety](lessons/16-prompt-injection.md) | direct and indirect prompt injection, jailbreaks, hidden context exposure, why prompts can't fully prevent injection, the lethal trifecta, data exfiltration through links and images, the OWASP Top 10 for LLM applications, labelling untrusted data, least privilege, human confirmation, treating output as untrusted, link allow-lists, keeping secrets out of prompts, redacting personal data, input and output screening, limits, monitoring and red-teaming | 30–31 |
+
+### Part 4: Retrieval-Augmented Generation (RAG) (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 17 | [The RAG pipeline](lessons/17-rag-pipeline.md) | knowledge cutoffs and private data, retrieval-augmented generation, ingestion (load, clean, chunk, index, metadata), query time (retrieve, augment, generate), a tiny end-to-end RAG system, instructions to use only the documents, saying "I don't know", citing sources, the citations API, when to put everything in the prompt instead, structured data and tools, per-user permissions | 32–33 |
+| 18 | [Chunking documents](lessons/18-chunking.md) | why documents are chunked, the chunk-size trade-off, fixed-size chunks, overlap, sentence and paragraph boundaries, recursive splitting, structure-aware chunking with headings, tables and code, chunk metadata, chunk headers, contextual retrieval, contextualised chunk embeddings, small-to-big retrieval | 34–35 |
+| 19 | [Keyword search with BM25](lessons/19-keyword-search.md) | inverted indexes and postings lists, boolean AND queries, term frequency, inverse document frequency, the BM25 formula, saturation (k1) and length normalisation (b), Lucene's IDF variant, tokenising, stop words, stemming and lemmatisation, other languages, keyword versus vector search, BM25 tools and libraries | 36–37 |
+| 20 | [Vector search and vector databases](lessons/20-vector-search.md) | semantic search, embedding documents and queries, input types, using one model for both, exact search as a matrix-vector product, memory costs, reducing dimensions, quantisation, approximate nearest-neighbour search, IVF, HNSW, product quantisation, recall, metadata filtering, pre-filtering and post-filtering, access control, pgvector, FAISS and vector databases | 38–39 |
+| 21 | [Hybrid search and reranking](lessons/21-hybrid-and-reranking.md) | hybrid search, the retrieval funnel, why scores from different retrievers can't be added, reciprocal rank fusion, weighted score fusion, min-max normalisation, bi-encoders and cross-encoders, rerankers, how many chunks to pass to the model, contextual retrieval results, query rewriting, multi-query retrieval, hypothetical document embeddings (HyDE), routing | 40–41 |
+| 22 | [Evaluating RAG](lessons/22-evaluating-rag.md) | measuring retrieval and generation separately, building an evaluation set, relevant chunk labels, reference answers, unanswerable and hard questions, generated questions, hit rate, recall@k, precision@k, mean reciprocal rank, nDCG, faithfulness, answer relevance, correctness, citation accuracy, refusal accuracy, LLM graders, Ragas and DeepEval, diagnosing failures, monitoring in production | 42–43 |
 
 ## Running it on your own computer
 

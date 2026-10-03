@@ -547,7 +547,7 @@ In practice you call an embedding model through an API (or run an open model loc
 ```py-static
 import voyageai                                     # pip install voyageai
 vo = voyageai.Client()                              # reads VOYAGE_API_KEY
-result = vo.embed(["The cat sat on the mat.", "Stock prices fell."], model="voyage-3.5", input_type="document")
+result = vo.embed(["The cat sat on the mat.", "Stock prices fell."], model="voyage-4", input_type="document")
 print(len(result.embeddings[0]))                    # the vector size
 
 from openai import OpenAI                           # pip install openai
@@ -685,7 +685,7 @@ walkthrough:
 
 **Trace** for the query [1.0, 0.0] with a: [5, 0], b: [2, 0], c: [0, 1]: scores 1, 1, 0 → sorted (−1, a), (−1, b), (0, c) → ["a", "b"].
 
-**Complexity:** O(n · d + n log n) per query. Vector databases use approximate indexes to avoid scoring every vector (Lesson 21).
+**Complexity:** O(n · d + n log n) per query. Vector databases use approximate indexes to avoid scoring every vector (Lesson 20).
 
 **Common wrong approach:** sorting with `reverse=True` on `(score, name)`, which reverses the name order too, so ties come out in reverse alphabetical order.
 :::

@@ -53,3 +53,17 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | long documents | top of the prompt, each in tags with its source |
 | examples | `<examples>` after the documents |
 | the user's question | last |
+
+## Retrieval-augmented generation [17–22]
+
+- **RAG:** retrieve relevant chunks → put them in the prompt with their sources (question last) → answer only from them, with citations, or say "I don't know". If everything fits in the prompt (with caching), skip retrieval.
+- **Chunking:** a few hundred tokens with 10–20% overlap is a starting point; split on structure (headings, paragraphs); give chunks context (headers, contextual retrieval, small-to-big).
+- **BM25:** IDF × saturated term frequency with length normalisation (k1 ≈ 1.2–2.0, b = 0.75). Best for exact terms such as codes and names; needs stemming for word variants.
+- **Vector search:** same embedding model for documents and queries; normalise, then dot product. ANN indexes (HNSW, IVF) trade a little recall for speed: measure recall. Pre-filter by metadata, and always by permissions.
+- **Hybrid:** keyword + vector, fused with **RRF** (Σ 1 ÷ (60 + rank)); then a **reranker** (cross-encoder) on the shortlist. Rewrite follow-up questions before searching.
+- **Evaluate both halves:** retrieval (recall@k, MRR) and answers (faithfulness, correctness, citations, refusals). Change one thing at a time.
+
+| Stage | Typical size |
+|---|---|
+| each retriever | top 50–150 |
+| after reranking | top 5–20 into the prompt |

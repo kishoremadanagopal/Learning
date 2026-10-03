@@ -331,6 +331,125 @@ def lethal_trifecta_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 4: RAG
+
+@fig("rag-pipeline")
+def rag_pipeline_fig():
+    f, ax = diag.canvas(11.5, 4.6)
+    label(ax, 0.2, 4.25, "ingestion (ahead of time)", ha="left", size=10.5, bold=True, color=TEAL)
+    ing = [("documents", GREY), ("load and\nclean", TEAL), ("chunk", TEAL), ("embed /\nindex", TEAL)]
+    x = 0.2
+    for i, (t, c) in enumerate(ing):
+        sbox(ax, x, 3.0, 1.75, 0.85, t, color=c, fontsize=9.5)
+        if i:
+            arrow(ax, x - 0.33, 3.42, x - 0.04, 3.42, color=INK)
+        x += 2.1
+    sbox(ax, 8.9, 2.1, 2.2, 1.0, "search index\n(chunks + metadata)", color=PURPLE, fontsize=9.5)
+    arrow(ax, x - 0.33, 3.42, 9.6, 3.14, color=INK)
+    label(ax, 0.2, 1.75, "query time (every question)", ha="left", size=10.5, bold=True, color=BLUE)
+    q = [("question", GREY), ("retrieve\ntop chunks", BLUE), ("prompt: chunks\n+ question", BLUE), ("LLM answers\nwith citations", ORANGE)]
+    x = 0.2
+    for i, (t, c) in enumerate(q):
+        sbox(ax, x, 0.45, 1.75, 0.95, t, color=c, fontsize=9.5)
+        if i:
+            arrow(ax, x - 0.33, 0.92, x - 0.04, 0.92, color=INK)
+        x += 2.1
+    ax.add_patch(FancyArrowPatch((8.9, 2.45), (3.35, 1.42), arrowstyle="-|>", mutation_scale=13, color=PURPLE,
+                                 linewidth=1.4, connectionstyle="arc3,rad=0.15"))
+    label(ax, 6.6, 2.15, "search", size=9, color=PURPLE)
+    return f
+
+
+@fig("chunk-overlap")
+def chunk_overlap_fig():
+    f, ax = diag.canvas(10.5, 3.3)
+    words = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+    w = 0.95
+    for i, word in enumerate(words):
+        shared = i in (3, 6)
+        sbox(ax, 0.3 + i * w, 2.35, w - 0.08, 0.55, word, color=ORANGE if shared else GREY, fontsize=9.5)
+    for j, (start, color) in enumerate([(0, BLUE), (3, TEAL), (6, PURPLE)]):
+        y = 1.55 - j * 0.5
+        x0 = 0.3 + start * w
+        ax.add_patch(Rectangle((x0, y), 4 * w - 0.08, 0.36, facecolor=SOFT[color], edgecolor=color, lw=1.3))
+        label(ax, x0 + 2 * w, y + 0.18, f"chunk {j + 1}: words {start + 1}–{start + 4}", size=9, color=color)
+    label(ax, 0.3, 3.1, "size 4, overlap 1  →  step = 4 − 1 = 3", ha="left", size=10, bold=True)
+    label(ax, 10.0, 2.62, "shared\nwords", ha="left", size=9, color=ORANGE)
+    return f
+
+
+@fig("bm25-saturation")
+def bm25_saturation_fig():
+    import numpy as np
+    f, ax = plt.subplots(figsize=(7.0, 3.6))
+    tf = np.linspace(0, 10, 200)
+    ax.plot(tf, tf, color=GREY, ls="--", lw=1.6, label="raw count")
+    for k1, c in ((0.5, ORANGE), (1.2, BLUE), (2.0, PURPLE)):
+        ax.plot(tf, tf * (k1 + 1) / (tf + k1), color=c, lw=2.2, label=f"BM25, k1 = {k1}")
+        ax.axhline(k1 + 1, color=c, lw=0.8, ls=":")
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 4)
+    ax.set_xlabel("times the term appears in the document")
+    ax.set_ylabel("term-frequency part of the score")
+    ax.legend(loc="lower right", fontsize=9)
+    ax.text(0.2, 3.72, "dotted lines: ceilings at k1 + 1 (average-length document)", fontsize=8.5, color=MUTED)
+    f.tight_layout()
+    return f
+
+
+@fig("ivf")
+def ivf_fig():
+    import numpy as np
+    rng = np.random.default_rng(3)
+    centres = np.array([[2.0, 2.0], [6.0, 2.2], [2.2, 6.0], [6.2, 6.1]])
+    colors = [BLUE, ORANGE, TEAL, PURPLE]
+    f, ax = plt.subplots(figsize=(6.4, 5.2))
+    pts = np.vstack([c + rng.normal(scale=0.85, size=(28, 2)) for c in centres])
+    labels = np.argmin(((pts[:, None, :] - centres[None]) ** 2).sum(-1), axis=1)
+    q = np.array([3.95, 5.35])
+    probed = int(np.argmin(((centres - q) ** 2).sum(-1)))
+    near = np.argsort(((pts - q) ** 2).sum(-1))[:3]
+    gx, gy = np.meshgrid(np.linspace(0, 8.2, 300), np.linspace(0, 8.2, 300))
+    cell = np.argmin(((np.stack([gx, gy], -1)[:, :, None, :] - centres) ** 2).sum(-1), axis=-1)
+    ax.contourf(gx, gy, (cell == probed).astype(float), levels=[0.5, 1.5], colors=[SOFT[colors[probed]]])
+    ax.contour(gx, gy, cell, levels=[0.5, 1.5, 2.5], colors=[GREY], linewidths=0.8)
+    for i, c in enumerate(colors):
+        m = labels == i
+        ax.scatter(pts[m, 0], pts[m, 1], s=18, color=c, alpha=0.8)
+        ax.scatter(*centres[i], marker="X", s=150, color=c, edgecolor="white", linewidth=1.2, zorder=4)
+    for j in near:
+        hit = labels[j] == probed
+        ax.scatter(*pts[j], s=110, facecolor="none", edgecolor=INK if hit else CRIMSON, linewidth=1.8, zorder=5)
+    ax.scatter(*q, marker="*", s=320, color=INK, zorder=6)
+    ax.text(q[0] - 0.35, q[1] - 0.6, "query", fontsize=10, color=INK, weight="bold", ha="center")
+    ax.set_xlim(0, 8.2)
+    ax.set_ylim(0, 8.2)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_title("IVF with n_probe = 1: only the shaded bucket is searched")
+    ax.text(0.15, 0.2, "circled: the query's 3 true nearest neighbours (red = missed, in an unprobed bucket)",
+            fontsize=8.3, color=MUTED)
+    f.tight_layout()
+    return f
+
+
+@fig("retrieval-funnel")
+def retrieval_funnel_fig():
+    f, ax = diag.canvas(12.0, 4.6)
+    stages = [("whole corpus: 1,000,000 chunks", GREY, 9.0),
+              ("keyword top 100  +  vector top 100", BLUE, 7.4),
+              ("fused list: ≈150 candidates (RRF)", TEAL, 5.8),
+              ("reranker keeps the best 20", ORANGE, 4.2),
+              ("20 chunks go into the prompt", PURPLE, 2.6)]
+    for i, (text, color, w) in enumerate(stages):
+        y = 3.9 - i * 0.82
+        sbox(ax, 5.25 - w / 2, y, w, 0.62, text, color=color, fontsize=9.5)
+    label(ax, 10.3, 3.9, "cheap per item", ha="left", size=9, color=MUTED)
+    label(ax, 10.3, 0.75, "costly per item,\nmore accurate", ha="left", size=9, color=MUTED)
+    arrow(ax, 10.75, 3.6, 10.75, 1.25, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

@@ -54,6 +54,20 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | examples | `<examples>` after the documents |
 | the user's question | last |
 
+## Retrieval-augmented generation [17–22]
+
+- **RAG:** retrieve relevant chunks → put them in the prompt with their sources (question last) → answer only from them, with citations, or say "I don't know". If everything fits in the prompt (with caching), skip retrieval.
+- **Chunking:** a few hundred tokens with 10–20% overlap is a starting point; split on structure (headings, paragraphs); give chunks context (headers, contextual retrieval, small-to-big).
+- **BM25:** IDF × saturated term frequency with length normalisation (k1 ≈ 1.2–2.0, b = 0.75). Best for exact terms such as codes and names; needs stemming for word variants.
+- **Vector search:** same embedding model for documents and queries; normalise, then dot product. ANN indexes (HNSW, IVF) trade a little recall for speed: measure recall. Pre-filter by metadata, and always by permissions.
+- **Hybrid:** keyword + vector, fused with **RRF** (Σ 1 ÷ (60 + rank)); then a **reranker** (cross-encoder) on the shortlist. Rewrite follow-up questions before searching.
+- **Evaluate both halves:** retrieval (recall@k, MRR) and answers (faithfulness, correctness, citations, refusals). Change one thing at a time.
+
+| Stage | Typical size |
+|---|---|
+| each retriever | top 50–150 |
+| after reranking | top 5–20 into the prompt |
+
 ## Every concept at a glance
 
 Generated from the **At a glance** table at the end of each lesson. The number in brackets links to the lesson.
@@ -111,3 +125,22 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Redact PII | ordered regex substitution, most specific first | O(n) | O(n) | [16](lessons/16-prompt-injection.md) |
 | Safe link check | parse; https; host equals or ends with .domain | O(len × domains) | O(1) | [16](lessons/16-prompt-injection.md) |
 | Defence in depth | label data, least privilege, confirm actions, check output | — | — | [16](lessons/16-prompt-injection.md) |
+| Word-overlap retrieval | score = shared distinct words; stable sort; top k | O(n · m + n log n) | O(n) | [17](lessons/17-rag-pipeline.md) |
+| Check citations | regex for [n]; split sentences; set arithmetic | O(n) | O(n) | [17](lessons/17-rag-pipeline.md) |
+| RAG query | retrieve → insert chunks with sources → question last → answer with citations | — | — | [17](lessons/17-rag-pipeline.md) |
+| Fixed-size chunks | sliding window with step size − overlap | O(n) | O(n) | [18](lessons/18-chunking.md) |
+| Split by headings | stack of open headings; flush at each heading | O(n) | O(n) | [18](lessons/18-chunking.md) |
+| Context for chunks | headers, contextual retrieval, small-to-big | — | — | [18](lessons/18-chunking.md) |
+| Build an inverted index | for each document, add its id to each distinct word's list | O(total tokens) | O(total tokens) | [19](lessons/19-keyword-search.md) |
+| AND query | intersect the postings lists | O(sum of list lengths) | O(shortest list) | [19](lessons/19-keyword-search.md) |
+| BM25 score | Σ IDF × f(k1 + 1) ÷ (f + k1(1 − b + b·len ÷ avgdl)) | O(query terms × postings) | O(documents) | [19](lessons/19-keyword-search.md) |
+| Exact vector search | normalise; matrix-vector product; argsort | O(n · d) | O(n · d) | [20](lessons/20-vector-search.md) |
+| Filtered search | pre-filter by metadata, then rank | O(n · d + m log m) | O(m) | [20](lessons/20-vector-search.md) |
+| IVF search | score centroids; search the n_probe nearest buckets | O(c · d + m · d) | O(n · d) | [20](lessons/20-vector-search.md) |
+| HNSW search | greedy walk through layered neighbour graphs | about O(log n) per query | O(n · d + links) | [20](lessons/20-vector-search.md) |
+| Reciprocal rank fusion | sum 1 ÷ (k + rank) per document; sort | O(entries + D log D) | O(D) | [21](lessons/21-hybrid-and-reranking.md) |
+| Weighted fusion | min-max each list; α·vector + (1 − α)·keyword | O(D log D) | O(D) | [21](lessons/21-hybrid-and-reranking.md) |
+| Rerank | score each shortlist item with a cross-encoder; keep the top n | O(shortlist) model calls | O(shortlist) | [21](lessons/21-hybrid-and-reranking.md) |
+| Recall and precision at k | hits in top k ÷ relevant, and ÷ k | O(queries × k) | O(k) | [22](lessons/22-evaluating-rag.md) |
+| Mean reciprocal rank | 1 ÷ rank of the first hit, averaged | O(queries × k) | O(1) | [22](lessons/22-evaluating-rag.md) |
+| Crude groundedness | content-word overlap with the best single source | O(sentences × sources × words) | O(words) | [22](lessons/22-evaluating-rag.md) |

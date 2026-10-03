@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="679.68pt" height="269.424pt" viewBox="0 0 679.68 269.424" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 269.424 
+L 679.68 269.424 
+L 679.68 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 53.2152 46.008 
+L 543.3048 46.008 
+Q 547.74 46.008 547.74 41.5728 
+L 547.74 16.0704 
+Q 547.74 11.6352 543.3048 11.6352 
+L 53.2152 11.6352 
+Q 48.78 11.6352 48.78 16.0704 
+L 48.78 41.5728 
+Q 48.78 46.008 53.2152 46.008 
+z
+" clip-path="url(#p5d87bb6dbb)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 97.5672 91.4688 
+L 498.9528 91.4688 
+Q 503.388 91.4688 503.388 87.0336 
+L 503.388 61.5312 
+Q 503.388 57.096 498.9528 57.096 
+L 97.5672 57.096 
+Q 93.132 57.096 93.132 61.5312 
+L 93.132 87.0336 
+Q 93.132 91.4688 97.5672 91.4688 
+z
+" clip-path="url(#p5d87bb6dbb)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 141.9192 136.9296 
+L 454.6008 136.9296 
+Q 459.036 136.9296 459.036 132.4944 
+L 459.036 106.992 
+Q 459.036 102.5568 454.6008 102.5568 
+L 141.9192 102.5568 
+Q 137.484 102.5568 137.484 106.992 
+L 137.484 132.4944 
+Q 137.484 136.9296 141.9192 136.9296 
+z
+" clip-path="url(#p5d87bb6dbb)" style="fill: #dcf3ee; stroke: #159a7f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 186.2712 182.3904 
+L 410.2488 182.3904 
+Q 414.684 182.3904 414.684 177.9552 
+L 414.684 152.4528 
+Q 414.684 148.0176 410.2488 148.0176 
+L 186.2712 148.0176 
+Q 181.836 148.0176 181.836 152.4528 
+L 181.836 177.9552 
+Q 181.836 182.3904 186.2712 182.3904 
+z
+" clip-path="url(#p5d87bb6dbb)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 230.6232 227.8512 
+L 365.8968 227.8512 
+Q 370.332 227.8512 370.332 223.416 
+L 370.332 197.9136 
+Q 370.332 193.4784 365.8968 193.4784 
+L 230.6232 193.4784 
+Q 226.188 193.4784 226.188 197.9136 
+L 226.188 223.416 
+Q 226.188 227.8512 230.6232 227.8512 
+z
+" clip-path="url(#p5d87bb6dbb)" style="fill: #ece6f8; stroke: #7a5ac8; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 603.18 64.639904 
+Q 603.18 127.78169 603.18 189.134622 
+" clip-path="url(#p5d87bb6dbb)" style="fill: none; stroke: #52606d; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 605.98 183.534622 
+L 603.18 189.134622 
+L 600.38 183.534622 
+z
+" clip-path="url(#p5d87bb6dbb)" style="fill: #52606d; stroke: #52606d; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="31.443006" transform="rotate(-0 298.26 31.443006)">whole corpus: 1,000,000 chunks</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="76.903806" transform="rotate(-0 298.26 76.903806)">keyword top 100  +  vector top 100</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="122.364606" transform="rotate(-0 298.26 122.364606)">fused list: ≈150 candidates (RRF)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="167.825406" transform="rotate(-0 298.26 167.825406)">reranker keeps the best 20</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="213.286206" transform="rotate(-0 298.26 213.286206)">20 chunks go into the prompt</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="578.232" y="48.491437" transform="rotate(-0 578.232 48.491437)">cheap per item</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(578.232 218.088422)">costly per item,</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(578.232 228.166453)">more accurate</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5d87bb6dbb">
+   <rect x="7.2" y="7.2" width="665.28" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>

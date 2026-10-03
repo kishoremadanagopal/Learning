@@ -322,4 +322,4 @@ print(is_safe_link("https://example.com.evil.net/x?d=SECRET", ["example.com"]))
 </details>
 
 ---
-Previous: [Lesson 15](15-templates-and-testing.md) · Back to the [course home](../README.md)
+Previous: [Lesson 15](15-templates-and-testing.md) · Next: [Lesson 17: The RAG pipeline](17-rag-pipeline.md)
