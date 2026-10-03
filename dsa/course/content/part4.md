@@ -1357,7 +1357,7 @@ def _bulk(cls_, n):
     for i in range(n // 2):
         s.pop(); total += s.get_min()
     return total
-speed(lambda n: _bulk(cls, n), lambda n: n, lambda n: _bulk(_Ref, n), sizes=(1_000, 12_000, 100_000), what="pushes",
+speed(lambda n: _bulk(cls, n), lambda n: n, lambda n: _bulk(_Ref, n), sizes=(1_000, 8_000, 100_000), what="pushes",
       tip="get_min must not scan the stack. Store, with each item, the minimum at the time it was pushed.")
 ```
 ```python solution
@@ -2397,7 +2397,7 @@ def _bulk(c_, n):
         c.put(i, i)
         total += c.get(i // 2) + c.get(i - 7)
     return total
-speed(lambda n: _bulk(cls, n), lambda n: n, lambda n: _bulk(_Ref, n), sizes=(1_000, 20_000, 100_000), what="operations",
+speed(lambda n: _bulk(cls, n), lambda n: n, lambda n: _bulk(_Ref, n), sizes=(1_000, 14_000, 100_000), what="operations",
       tip="Searching a list for the key, or for the least recent item, is O(n). The dict must map each key to its node, so moving or removing it is a few pointer changes.")
 ```
 ```python solution
