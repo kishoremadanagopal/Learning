@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="596.52pt" height="274.968pt" viewBox="0 0 596.52 274.968" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 274.968 
+L 596.52 274.968 
+L 596.52 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 227.8512 176.292 
+L 368.6688 176.292 
+Q 373.104 176.292 373.104 171.8568 
+L 373.104 125.2872 
+Q 373.104 120.852 368.6688 120.852 
+L 227.8512 120.852 
+Q 223.416 120.852 223.416 125.2872 
+L 223.416 171.8568 
+Q 223.416 176.292 227.8512 176.292 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 28.2672 101.448 
+L 196.8048 101.448 
+Q 201.24 101.448 201.24 97.0128 
+L 201.24 50.4432 
+Q 201.24 46.008 196.8048 46.008 
+L 28.2672 46.008 
+Q 23.832 46.008 23.832 50.4432 
+L 23.832 97.0128 
+Q 23.832 101.448 28.2672 101.448 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 399.7152 101.448 
+L 568.2528 101.448 
+Q 572.688 101.448 572.688 97.0128 
+L 572.688 50.4432 
+Q 572.688 46.008 568.2528 46.008 
+L 399.7152 46.008 
+Q 395.28 46.008 395.28 50.4432 
+L 395.28 97.0128 
+Q 395.28 101.448 399.7152 101.448 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #dcf3ee; stroke: #159a7f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 28.2672 256.68 
+L 196.8048 256.68 
+Q 201.24 256.68 201.24 252.2448 
+L 201.24 205.6752 
+Q 201.24 201.24 196.8048 201.24 
+L 28.2672 201.24 
+Q 23.832 201.24 23.832 205.6752 
+L 23.832 252.2448 
+Q 23.832 256.68 28.2672 256.68 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #ece6f8; stroke: #7a5ac8; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 399.7152 256.68 
+L 568.2528 256.68 
+Q 572.688 256.68 572.688 252.2448 
+L 572.688 205.6752 
+Q 572.688 201.24 568.2528 201.24 
+L 399.7152 201.24 
+Q 395.28 201.24 395.28 205.6752 
+L 395.28 252.2448 
+Q 395.28 256.68 399.7152 256.68 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #f8e1e8; stroke: #b42357; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 238.111119 117.59578 
+Q 206.787344 109.764836 177.199012 102.367753 
+" clip-path="url(#p2fd9aecfc8)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 181.95271 106.442351 
+L 177.199012 102.367753 
+L 183.31091 101.009553 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 358.408881 117.59578 
+Q 389.732656 109.764836 419.320988 102.367753 
+" clip-path="url(#p2fd9aecfc8)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 413.20909 101.009553 
+L 419.320988 102.367753 
+L 414.56729 106.442351 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 238.151725 179.696092 
+Q 206.784588 190.151804 177.114509 200.04183 
+" clip-path="url(#p2fd9aecfc8)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 183.312573 200.927268 
+L 177.114509 200.04183 
+L 181.541697 195.614642 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 358.368275 179.696092 
+Q 389.735412 190.151804 419.405491 200.04183 
+" clip-path="url(#p2fd9aecfc8)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 414.978303 195.614642 
+L 419.405491 200.04183 
+L 413.207427 200.927268 
+z
+" clip-path="url(#p2fd9aecfc8)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="151.836375" transform="rotate(-0 298.26 151.836375)">your JavaScript</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f6fb2" x="112.536" y="64.428544" transform="rotate(-0 112.536 64.428544)">web browsers</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(46.621156 82.402398)">Chrome · Edge · Firefox · Safari</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(58.153266 91.920539)">+ the page, events, fetch</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #159a7f" x="483.984" y="64.428544" transform="rotate(-0 483.984 64.428544)">server runtimes</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(440.556969 82.402398)">Node.js · Deno · Bun</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(426.564508 91.920539)">+ files, network, processes</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #7a5ac8" x="112.536" y="219.660544" transform="rotate(-0 112.536 219.660544)">desktop apps</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(65.202289 237.634398)">Electron, e.g. VS Code</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(64.232758 247.152539)">+ windows and menus</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #b42357" x="483.984" y="219.619528" transform="rotate(-0 483.984 219.619528)">serverless and edge</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(451.549195 237.634398)">cloud functions</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #52606d" transform="translate(428.491617 247.152539)">+ requests and responses</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="298.26" y="23.681406" transform="rotate(-0 298.26 23.681406)">one language (ECMAScript), many hosts, each adding its own extras</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2fd9aecfc8">
+   <rect x="7.2" y="7.2" width="582.12" height="260.568"/>
+  </clipPath>
+ </defs>
+</svg>

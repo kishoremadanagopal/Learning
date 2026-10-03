@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="596.52pt" height="247.248pt" viewBox="0 0 596.52 247.248" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 247.248 
+L 596.52 247.248 
+L 596.52 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.2672 115.308 
+L 152.4528 115.308 
+Q 156.888 115.308 156.888 110.8728 
+L 156.888 69.8472 
+Q 156.888 65.412 152.4528 65.412 
+L 28.2672 65.412 
+Q 23.832 65.412 23.832 69.8472 
+L 23.832 110.8728 
+Q 23.832 115.308 28.2672 115.308 
+z
+" clip-path="url(#pb74dc14930)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 250.0272 118.08 
+L 418.5648 118.08 
+Q 423 118.08 423 113.6448 
+L 423 67.0752 
+Q 423 62.64 418.5648 62.64 
+L 250.0272 62.64 
+Q 245.592 62.64 245.592 67.0752 
+L 245.592 113.6448 
+Q 245.592 118.08 250.0272 118.08 
+z
+" clip-path="url(#pb74dc14930)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 161.662357 90.36 
+Q 201.243055 90.36 239.034897 90.36 
+" clip-path="url(#pb74dc14930)" style="fill: none; stroke: #1f6fb2; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 233.434897 87.56 
+L 239.034897 90.36 
+L 233.434897 93.16 
+z
+" clip-path="url(#pb74dc14930)" style="fill: #1f6fb2; stroke: #1f6fb2; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 28.2672 212.328 
+L 152.4528 212.328 
+Q 156.888 212.328 156.888 207.8928 
+L 156.888 166.8672 
+Q 156.888 162.432 152.4528 162.432 
+L 28.2672 162.432 
+Q 23.832 162.432 23.832 166.8672 
+L 23.832 207.8928 
+Q 23.832 212.328 28.2672 212.328 
+z
+" clip-path="url(#pb74dc14930)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 250.0272 215.1 
+L 418.5648 215.1 
+Q 423 215.1 423 210.6648 
+L 423 164.0952 
+Q 423 159.66 418.5648 159.66 
+L 250.0272 159.66 
+Q 245.592 159.66 245.592 164.0952 
+L 245.592 210.6648 
+Q 245.592 215.1 250.0272 215.1 
+z
+" clip-path="url(#pb74dc14930)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 161.662357 187.38 
+Q 201.243055 187.38 239.034897 187.38 
+" clip-path="url(#pb74dc14930)" style="fill: none; stroke: #e07b00; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 233.434897 184.58 
+L 239.034897 187.38 
+L 233.434897 190.18 
+z
+" clip-path="url(#pb74dc14930)" style="fill: #e07b00; stroke: #e07b00; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #1f2933" x="23.832" y="23.706641" transform="rotate(-0 23.832 23.706641)">const counterA = makeCounter();   const counterB = makeCounter();</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(68.686875 87.799641)">counterA</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(38.886328 97.935047)">() =&gt; { count++ … }</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="334.296" y="78.845469" transform="rotate(-0 334.296 78.845469)">scope of call 1 to makeCounter</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f6fb2" x="334.296" y="101.711313" transform="rotate(-0 334.296 101.711313)">count = 2</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f6fb2" x="201.24" y="81.617469" transform="rotate(-0 201.24 81.617469)">remembers</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(68.686875 184.819641)">counterB</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; fill: #1f2933" transform="translate(38.886328 194.955047)">() =&gt; { count++ … }</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #52606d" x="334.296" y="175.865469" transform="rotate(-0 334.296 175.865469)">scope of call 2 to makeCounter</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #e07b00" x="334.296" y="198.731313" transform="rotate(-0 334.296 198.731313)">count = 1</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #e07b00" x="201.24" y="178.637469" transform="rotate(-0 201.24 178.637469)">remembers</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #1f6fb2" x="450.72" y="92.867344" transform="rotate(-0 450.72 92.867344)">counterA(); counterA();</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #1f6fb2" x="450.72" y="112.247438" transform="rotate(-0 450.72 112.247438)">→ its own count is 2</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: start; fill: #e07b00" x="450.72" y="189.887344" transform="rotate(-0 450.72 189.887344)">counterB();</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #e07b00" x="450.72" y="209.267438" transform="rotate(-0 450.72 209.267438)">→ a separate count: 1</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb74dc14930">
+   <rect x="7.2" y="7.2" width="582.12" height="232.848"/>
+  </clipPath>
+ </defs>
+</svg>
