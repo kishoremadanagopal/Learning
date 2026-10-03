@@ -352,3 +352,42 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Sparse table (static min / max) | two overlapping power-of-two blocks | O(n log n) build, O(1) query | O(n log n) | [34](lessons/34-segment-fenwick.md) |
 | Square-root decomposition | blocks of √n items with stored totals | O(1) update, O(√n) query | O(n) | [34](lessons/34-segment-fenwick.md) |
 | Count smaller to the right / inversions | Fenwick tree over ranks, scanning right to left | O(n log n) | O(n) | [34](lessons/34-segment-fenwick.md) |
+| Build an adjacency list | append (u, v) and (v, u) for undirected edges | O(V + E) | O(V + E) | [35](lessons/35-graphs.md) |
+| DFS (iterative) | stack + visited set | O(V + E) | O(V) | [35](lessons/35-graphs.md) |
+| BFS | queue (deque) + visited set, mark when queued | O(V + E) | O(V) | [35](lessons/35-graphs.md) |
+| Connected components | one search from every unvisited vertex | O(V + E) | O(V) | [35](lessons/35-graphs.md) |
+| Count islands in a grid | flood fill from each unvisited land cell | O(R · C) | O(R · C) | [35](lessons/35-graphs.md) |
+| Edge check with an adjacency matrix | matrix[u][v] | O(1) | O(V²) | [35](lessons/35-graphs.md) |
+| Shortest path, unweighted | BFS from the start; distance of first visit | O(V + E) | O(V) | [36](lessons/36-bfs-shortest.md) |
+| Rebuild the path | store parents; walk back from the goal; reverse | O(path length) | O(V) | [36](lessons/36-bfs-shortest.md) |
+| Grid shortest path | BFS over cells with 4 or 8 neighbours | O(R · C) | O(R · C) | [36](lessons/36-bfs-shortest.md) |
+| Distance to the nearest of many sources | multi-source BFS | O(V + E) | O(V) | [36](lessons/36-bfs-shortest.md) |
+| Weights 0 or 1 | 0-1 BFS with a deque | O(V + E) | O(V) | [36](lessons/36-bfs-shortest.md) |
+| Word ladder | BFS over words; wildcard buckets find neighbours | O(N · L²) | O(N · L) | [36](lessons/36-bfs-shortest.md) |
+| Bidirectional BFS | grow the smaller frontier until the two meet | about O(b^(d/2)) | O(b^(d/2)) | [36](lessons/36-bfs-shortest.md) |
+| Topological sort (Kahn) | queue of in-degree-0 vertices; decrement neighbours | O(V + E) | O(V + E) | [37](lessons/37-topological-sort.md) |
+| Topological sort (DFS) | reverse of the finishing order | O(V + E) | O(V) | [37](lessons/37-topological-sort.md) |
+| Directed cycle check | Kahn leaves vertices out, or DFS meets a grey vertex | O(V + E) | O(V) | [37](lessons/37-topological-sort.md) |
+| Smallest topological order | Kahn with a heap instead of a queue | O((V + E) log V) | O(V + E) | [37](lessons/37-topological-sort.md) |
+| Earliest finish (critical path) | DP in topological order: start[v] = max(start[u] + time[u]) | O(V + E) | O(V) | [37](lessons/37-topological-sort.md) |
+| Shortest path in a DAG (any weights) | relax edges in topological order | O(V + E) | O(V) | [37](lessons/37-topological-sort.md) |
+| Dijkstra (heap) | pop the closest vertex, relax its edges, skip stale entries | O((V + E) log V) | O(V + E) | [38](lessons/38-shortest-paths.md) |
+| Dijkstra (array scan, dense graphs) | pick the closest unsettled vertex by scanning | O(V²) | O(V) | [38](lessons/38-shortest-paths.md) |
+| Bellman-Ford | relax every edge V − 1 times; an extra round finds negative cycles | O(V · E) | O(V) | [38](lessons/38-shortest-paths.md) |
+| Cheapest with at most k edges | k rounds of Bellman-Ford from a copy | O(k · E) | O(V) | [38](lessons/38-shortest-paths.md) |
+| Floyd-Warshall | for k, i, j: dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]) | O(V³) | O(V²) | [38](lessons/38-shortest-paths.md) |
+| A* | heap ordered by g + h with an admissible h | ≤ Dijkstra in practice | O(V) | [38](lessons/38-shortest-paths.md) |
+| Find / union | path compression + union by size | O(α(n)) amortised, effectively O(1) | O(n) | [39](lessons/39-union-find-mst.md) |
+| Count components as edges arrive | start at n; each successful union subtracts 1 | O(E · α(V)) | O(V) | [39](lessons/39-union-find-mst.md) |
+| Undirected cycle (redundant edge) | union fails because both ends share a root | O(E · α(V)) | O(V) | [39](lessons/39-union-find-mst.md) |
+| Kruskal's MST | sort edges; add those joining different groups | O(E log E) | O(V + E) | [39](lessons/39-union-find-mst.md) |
+| Prim's MST (heap) | grow one tree; take the cheapest edge to a new vertex | O(E log V) | O(V + E) | [39](lessons/39-union-find-mst.md) |
+| Prim's MST (dense, array) | keep each outside vertex's cheapest link; scan for the minimum | O(V²) | O(V) | [39](lessons/39-union-find-mst.md) |
+| Single-linkage clustering into k groups | Kruskal, stopping at k groups | O(E log E) | O(V + E) | [39](lessons/39-union-find-mst.md) |
+| Bipartite check | BFS two-colouring; a same-colour edge means an odd cycle | O(V + E) | O(V) | [40](lessons/40-advanced-graphs.md) |
+| Undirected cycle check | DFS ignoring the parent edge, or union-find | O(V + E) | O(V) | [40](lessons/40-advanced-graphs.md) |
+| Strongly connected components | Kosaraju: finishing order, then DFS on reversed edges | O(V + E) | O(V + E) | [40](lessons/40-advanced-graphs.md) |
+| Bridges / articulation points | Tarjan: low[v] > disc[u] / low[v] ≥ disc[u] | O(V + E) | O(V) | [40](lessons/40-advanced-graphs.md) |
+| Eulerian path | Hierholzer: walk unused edges, add vertices when stuck | O(E) | O(E) | [40](lessons/40-advanced-graphs.md) |
+| Maximum flow | Edmonds-Karp: BFS augmenting paths with reverse capacities | O(V · E²) | O(V²) with a matrix | [40](lessons/40-advanced-graphs.md) |
+| Travelling salesman (exact) | bitmask DP over subsets | O(2ⁿ · n²) | O(2ⁿ · n) | [40](lessons/40-advanced-graphs.md) |

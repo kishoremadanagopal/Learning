@@ -499,4 +499,4 @@ print(count_smaller([5, 2, 6, 1]))
 </details>
 
 ---
-Previous: [Lesson 33](33-tries.md) · Back to the [course home](../README.md)
+Previous: [Lesson 33](33-tries.md) · Next: [Lesson 35: Graphs, BFS and DFS](35-graphs.md)

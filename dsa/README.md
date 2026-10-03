@@ -1,6 +1,6 @@
 # Data Structures and Algorithms in Python
 
-A hands-on DSA course for complete beginners: 34 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
+A hands-on DSA course for complete beginners: 40 lessons on how to think about a problem, how fast code really is (Big-O), and the data structures and algorithm patterns behind coding interviews: arrays and hashing, two pointers, sliding windows, stacks, queues, linked lists, recursion, binary search, sorting, trees, heaps, graphs, dynamic programming, greedy and backtracking.
 
 Every exercise is checked like a coding-interview site: **hidden test cases** (including the tricky edge cases) and a **speed check** that tells you when a correct answer is too slow. When you're stuck, a help ladder takes you from a **step-by-step approach**, through **three hints**, to a full **walkthrough** with a trace table that shows the code running.
 
@@ -10,9 +10,9 @@ Data structures and algorithms are part of the shared core for both the **AI eng
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with the whole standard library: `collections`, `heapq`, `bisect`, `functools` and more. Nothing to install, no sign-up.
 
-- every lesson, with **159 examples** you can run and change
-- **72 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
-- **136 quiz questions**, with explanations
+- every lesson, with **186 examples** you can run and change
+- **84 exercises** with hidden tests and speed checks, each with an approach, hints and a walkthrough
+- **160 quiz questions**, with explanations
 - a diagram for every data structure and pattern
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 34 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 40 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every DSA term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | Big-O of every operation, the 6-step problem-solving method, and a "clue words → pattern" table |
 
@@ -103,6 +103,17 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 32 | [Heaps and priority queues](lessons/32-heaps.md) | priority queues, the heap property, storing a complete tree in a list, sift up and sift down, heapify in O(n), heapq and its max-heap functions in Python 3.14, priorities and tie-breakers, top k, merging k sorted lists, the two-heap running median, lazy deletion | 67–68 |
 | 33 | [Tries (prefix trees)](lessons/33-tries.md) | prefix trees, nodes with children and an end flag, insert, search and starts_with, the dict-of-dicts trie, autocomplete, counting and deleting words, wildcard search, longest-prefix matching, radix trees, when to use a set or a sorted list instead | 69–70 |
 | 34 | [Segment trees and Fenwick trees](lessons/34-segment-fenwick.md) | range queries with updates, square-root decomposition, Fenwick trees and the lowest set bit, segment trees for sums, minimums and gcds, lazy propagation for range updates, sparse tables for static minimums, coordinate compression, counting smaller elements | 71–72 |
+
+### Part 8: Graphs (Intermediate)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 35 | [Graphs, BFS and DFS](lessons/35-graphs.md) | vertices and edges, directed and weighted graphs, degree, DAGs, edge lists, adjacency matrices and adjacency lists, iterative and recursive DFS, BFS with a queue, connected components, grids and other implicit graphs, counting islands | 73–74 |
+| 36 | [Shortest paths with BFS](lessons/36-bfs-shortest.md) | shortest paths in unweighted graphs, parent links and path reconstruction, grid and maze shortest paths, multi-source BFS, 0-1 BFS, word ladders and other state graphs, bidirectional BFS, choosing a shortest-path method | 75–76 |
+| 37 | [Topological sort and DAGs](lessons/37-topological-sort.md) | dependencies as directed edges, directed acyclic graphs, Kahn's algorithm, smallest-first orders with a heap, the DFS method with white, grey and black, cycle detection in directed graphs, graphlib, critical paths and DP on DAGs | 77–78 |
+| 38 | [Weighted shortest paths](lessons/38-shortest-paths.md) | weighted graphs, relaxing an edge, Dijkstra with heapq and lazy deletion, why negative weights break Dijkstra, Bellman-Ford, negative cycles, at most k edges, Floyd-Warshall, A* with admissible heuristics, choosing an algorithm | 79–80 |
+| 39 | [Union-find and minimum spanning trees](lessons/39-union-find-mst.md) | disjoint sets, find and union, path compression and union by size, the inverse Ackermann bound, counting components, detecting undirected cycles, spanning trees and the cut property, Kruskal's and Prim's algorithms, dense-graph Prim, single-linkage clustering | 81–82 |
+| 40 | [Advanced graph algorithms](lessons/40-advanced-graphs.md) | bipartite graphs and two-colouring, cycles in undirected graphs, strongly connected components with Kosaraju, bridges and articulation points with low-link values, Eulerian paths with Hierholzer, maximum flow and minimum cut with Edmonds-Karp, NP-hard graph problems, a summary of graph algorithms | 83–84 |
 
 ## Running it on your own computer
 

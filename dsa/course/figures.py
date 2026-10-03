@@ -1109,6 +1109,235 @@ def segment_tree_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 8: graphs
+
+def dedge(ax, a, b, r=0.3, color=GREY, lw=1.3, rad=0.0):
+    """A directed edge from circle a to circle b."""
+    (x1, y1), (x2, y2) = a, b
+    d = math.hypot(x2 - x1, y2 - y1)
+    ux, uy = (x2 - x1) / d, (y2 - y1) / d
+    ax.add_patch(FancyArrowPatch((x1 + ux * r, y1 + uy * r), (x2 - ux * r, y2 - uy * r), arrowstyle="-|>",
+                                 mutation_scale=12, color=color, linewidth=lw, connectionstyle=f"arc3,rad={rad}", zorder=2))
+
+
+def wlabel(ax, a, b, text, color=INK, dx=0.0, dy=0.0, size=9.5):
+    ax.text((a[0] + b[0]) / 2 + dx, (a[1] + b[1]) / 2 + dy, text, ha="center", va="center", fontsize=size, color=color,
+            zorder=5, bbox=dict(boxstyle="round,pad=0.12", facecolor="white", edgecolor="none"))
+
+
+GPOS = {0: (0.9, 2.9), 1: (2.4, 3.6), 2: (2.0, 1.6), 3: (3.9, 2.7), 4: (5.0, 1.5)}
+GEDGES = [(0, 1), (0, 2), (1, 2), (1, 3), (3, 4)]
+
+
+@fig("graph-representations")
+def graph_repr_fig():
+    f, ax = diag.canvas(13.4, 4.6)
+    for u, v in GEDGES:
+        tedge(ax, GPOS[u], GPOS[v], r=0.3)
+    for k, (x, y) in GPOS.items():
+        tnode(ax, x, y, k)
+    label(ax, 2.95, 4.35, "the graph", bold=True)
+    # matrix
+    x0, y0, w = 6.2, 3.6, 0.5
+    label(ax, x0 + 1.25, 4.35, "adjacency matrix", bold=True)
+    for i in range(5):
+        label(ax, x0 + i * w + w / 2, y0 + 0.28, str(i), size=9, color=MUTED, mono=True)
+        label(ax, x0 - 0.25, y0 - i * w - w / 2, str(i), size=9, color=MUTED, mono=True)
+        for j in range(5):
+            on = (i, j) in GEDGES or (j, i) in GEDGES
+            ax.add_patch(Rectangle((x0 + j * w, y0 - (i + 1) * w), w, w, facecolor=SOFT[BLUE] if on else "white",
+                                   edgecolor="#cbd2d9", linewidth=1))
+            label(ax, x0 + j * w + w / 2, y0 - i * w - w / 2, "1" if on else "0", size=9.5, mono=True,
+                  color=INK if on else MUTED)
+    # list
+    adj = {k: sorted([v for u, v in GEDGES if u == k] + [u for u, v in GEDGES if v == k]) for k in range(5)}
+    label(ax, 11.4, 4.35, "adjacency list", bold=True)
+    for i in range(5):
+        label(ax, 9.85, 3.35 - i * 0.5, f"{i}: {adj[i]}", ha="left", size=10, mono=True)
+    label(ax, 7.45, 0.55, "O(V²) space, O(1) edge check", size=9, color=MUTED)
+    label(ax, 11.4, 0.55, "O(V + E) space, fast neighbour loops", size=9, color=MUTED)
+    return f
+
+
+@fig("bfs-dfs")
+def bfs_dfs_fig():
+    f, ax = diag.canvas(12.4, 4.6)
+    dist = {0: 0, 1: 1, 2: 1, 3: 2, 4: 3}
+    cols = {0: ORANGE, 1: BLUE, 2: BLUE, 3: TEAL, 4: PURPLE}
+    for u, v in GEDGES:
+        tedge(ax, GPOS[u], GPOS[v], r=0.3)
+    for k, (x, y) in GPOS.items():
+        tnode(ax, x, y, k, color=cols[k])
+        label(ax, x, y - 0.5, f"d={dist[k]}", size=9, color=MUTED)
+    label(ax, 3.0, 4.35, "BFS from 0: rings by distance", bold=True)
+    dx = 6.6
+    order = {0: 1, 1: 2, 2: 3, 3: 4, 4: 5}
+    tree = [(0, 1), (1, 2), (1, 3), (3, 4)]
+    for u, v in GEDGES:
+        a, b = (GPOS[u][0] + dx, GPOS[u][1]), (GPOS[v][0] + dx, GPOS[v][1])
+        if (u, v) in tree:
+            dedge(ax, a, b, r=0.3, color=ORANGE, lw=1.8)
+        else:
+            tedge(ax, a, b, r=0.3, dashed=True)
+    for k, (x, y) in GPOS.items():
+        tnode(ax, x + dx, y, k)
+        label(ax, x + dx, y - 0.5, f"visit #{order[k]}", size=9, color=MUTED)
+    label(ax, 3.0 + dx, 4.35, "DFS from 0: dive, then back up", bold=True)
+    label(ax, 3.0 + dx, 0.45, "0 → 1 → 2, back to 1, then 3 → 4", size=9.5, color=ORANGE)
+    label(ax, 3.0, 0.45, "the queue holds one ring at a time", size=9.5, color=MUTED)
+    return f
+
+
+@fig("islands")
+def islands_fig():
+    f, ax = diag.canvas(6.2, 4.4)
+    grid = ["11000", "11000", "00100", "00011"]
+    comp = {(0, 0): BLUE, (0, 1): BLUE, (1, 0): BLUE, (1, 1): BLUE, (2, 2): ORANGE, (3, 3): TEAL, (3, 4): TEAL}
+    w = 0.7
+    for r in range(4):
+        for c in range(5):
+            col = comp.get((r, c))
+            ax.add_patch(Rectangle((0.5 + c * w, 3.4 - r * w), w, w, facecolor=SOFT[col] if col else "white",
+                                   edgecolor=col or "#cbd2d9", linewidth=1.6 if col else 1))
+            label(ax, 0.5 + c * w + w / 2, 3.4 - r * w + w / 2, grid[r][c], mono=True, color=INK if col else MUTED)
+    label(ax, 4.3, 3.6, "3 islands", bold=True, ha="left")
+    label(ax, 4.3, 3.15, "1 = land, 0 = water", ha="left", size=9.5, color=MUTED)
+    label(ax, 4.3, 2.2, "(1,1) and (2,2) only\ntouch diagonally:\nseparate islands", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("multi-source")
+def multi_source_fig():
+    f, ax = diag.canvas(6.4, 3.4)
+    d = [[0, 1, 2, 3, 2], [1, 2, 3, 2, 1], [2, 3, 2, 1, 0]]
+    shade = {0: ORANGE, 1: BLUE, 2: TEAL, 3: PURPLE}
+    w = 0.8
+    for r in range(3):
+        for c in range(5):
+            col = shade[d[r][c]]
+            ax.add_patch(Rectangle((0.4 + c * w, 2.5 - r * w), w, w, facecolor=SOFT[col], edgecolor=col, linewidth=1.4))
+            label(ax, 0.4 + c * w + w / 2, 2.5 - r * w + w / 2, "H" if d[r][c] == 0 else str(d[r][c]), mono=True, bold=d[r][c] == 0)
+    label(ax, 4.75, 3.0, "two sources (H)", ha="left", size=9.5, bold=True)
+    label(ax, 4.75, 2.55, "start together\nat distance 0", ha="left", size=9.5, color=MUTED)
+    label(ax, 4.75, 1.45, "each cell: distance\nto the nearer H", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("topological")
+def topological_fig():
+    f, ax = diag.canvas(12.6, 5.6)
+    pos = {"underwear": (1.2, 4.9), "socks": (3.6, 4.9), "shirt": (8.6, 4.9), "trousers": (2.0, 3.8), "shoes": (3.6, 2.7),
+           "belt": (5.4, 3.3), "tie": (8.6, 3.8), "jacket": (7.4, 2.7)}
+    edges = [("underwear", "trousers"), ("trousers", "shoes"), ("socks", "shoes"), ("shirt", "tie"), ("tie", "jacket"),
+             ("trousers", "belt"), ("belt", "jacket")]
+    bw, bh = 1.35, 0.42
+    for a, b in edges:
+        (x1, y1), (x2, y2) = pos[a], pos[b]
+        ax.add_patch(FancyArrowPatch((x1, y1 - bh / 2), (x2, y2 + bh / 2), arrowstyle="-|>", mutation_scale=12,
+                                     color=GREY, linewidth=1.3, shrinkA=2, shrinkB=2, zorder=1))
+    for k, (x, y) in pos.items():
+        sbox(ax, x - bw / 2, y - bh / 2, bw, bh, k, color=BLUE, fontsize=9.5)
+    order = ["underwear", "socks", "shirt", "trousers", "tie", "belt", "shoes", "jacket"]
+    label(ax, 0.3, 1.75, "one topological order: every arrow points right", ha="left", size=10, bold=True)
+    xs = {k: 0.3 + i * 1.53 for i, k in enumerate(order)}
+    for k, x in xs.items():
+        sbox(ax, x, 0.2, 1.35, bh, k, color=TEAL, fontsize=9.5)
+    for a, b in edges:
+        ax.add_patch(FancyArrowPatch((xs[a] + 0.9, 0.2 + bh), (xs[b] + 0.45, 0.2 + bh), arrowstyle="-|>", mutation_scale=10,
+                                     color=ORANGE, linewidth=1.1, connectionstyle="arc3,rad=-0.35", zorder=1))
+    return f
+
+
+@fig("dijkstra")
+def dijkstra_fig():
+    f, ax = diag.canvas(8.6, 4.9)
+    P = {"A": (1.0, 2.7), "B": (4.0, 4.0), "C": (4.0, 1.4), "D": (7.0, 2.7)}
+    E = [("A", "B", 4), ("A", "C", 1), ("C", "B", 2), ("B", "D", 1), ("C", "D", 5)]
+    tree = {("A", "C"), ("C", "B"), ("B", "D")}
+    for a, b, w in E:
+        on = (a, b) in tree
+        tedge(ax, P[a], P[b], r=0.33, color=ORANGE if on else GREY, lw=2.2 if on else 1.3)
+        wlabel(ax, P[a], P[b], str(w), color=ORANGE if on else MUTED)
+    dist = {"A": 0, "B": 3, "C": 1, "D": 4}
+    step = {"A": 1, "C": 2, "B": 3, "D": 4}
+    for k, (x, y) in P.items():
+        tnode(ax, x, y, k, color=ORANGE if k == "A" else BLUE, r=0.33)
+        oy = 0.62 if y >= 2.5 else -0.62
+        label(ax, x, y + oy, f"dist {dist[k]} (settled #{step[k]})", size=9, color=MUTED)
+    label(ax, 4.3, 0.1, "orange: shortest-path tree; B is reached via C (1 + 2 = 3), cheaper than A–B (4)", size=9, color=ORANGE)
+    return f
+
+
+@fig("union-find")
+def union_find_fig():
+    f, ax = diag.canvas(11.6, 4.6)
+    def forest(dx, parent, title, hl=()):
+        pos = {0: (1.6, 3.6), 1: (1.0, 2.6), 2: (2.4, 2.6), 3: (1.0, 1.6), 4: (1.0, 0.6), 5: (3.9, 3.6), 6: (3.9, 2.6)}
+        if title.startswith("after"):
+            pos = {0: (1.9, 3.6), 1: (0.6, 2.4), 2: (1.5, 2.4), 3: (2.4, 2.4), 4: (3.3, 2.4), 5: (4.6, 3.6), 6: (4.6, 2.4)}
+        for c, p in parent.items():
+            a, b = (pos[c][0] + dx, pos[c][1]), (pos[p][0] + dx, pos[p][1])
+            dedge(ax, a, b, r=0.28, color=ORANGE if c in hl else GREY, lw=1.8 if c in hl else 1.3)
+        for k, (x, y) in pos.items():
+            tnode(ax, x + dx, y, k, color=TEAL if k in (0, 5) else (ORANGE if k in hl else BLUE), r=0.28)
+        label(ax, dx + 2.6, 4.35, title, bold=True)
+    forest(0.2, {1: 0, 2: 0, 3: 1, 4: 3, 6: 5}, "before: find(4) walks 4 → 3 → 1 → 0", hl=(4, 3, 1))
+    forest(6.0, {1: 0, 2: 0, 3: 0, 4: 0, 6: 5}, "after path compression", hl=(4, 3, 1))
+    label(ax, 5.8, 0.15, "teal = roots (each names a group); arrows point to the parent", size=9.5, color=MUTED)
+    return f
+
+
+@fig("mst")
+def mst_fig():
+    f, ax = diag.canvas(8.4, 4.6)
+    P = {"A": (1.0, 3.6), "B": (3.4, 3.9), "C": (3.0, 1.9), "D": (5.6, 2.4), "E": (7.2, 0.9)}
+    E = [("A", "B", 1), ("B", "C", 2), ("C", "D", 3), ("D", "E", 4), ("A", "C", 5), ("B", "D", 6), ("C", "E", 7)]
+    for a, b, w in E:
+        on = w <= 4
+        tedge(ax, P[a], P[b], r=0.32, color=ORANGE if on else GREY, lw=2.4 if on else 1.2)
+        wlabel(ax, P[a], P[b], str(w), color=ORANGE if on else MUTED)
+    for k, (x, y) in P.items():
+        tnode(ax, x, y, k, r=0.32)
+    label(ax, 0.3, 0.9, "MST (orange): 1 + 2 + 3 + 4 = 10", ha="left", size=10, bold=True, color=ORANGE)
+    label(ax, 0.3, 0.45, "5, 6 and 7 would each close a cycle", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("bipartite")
+def bipartite_fig():
+    f, ax = diag.canvas(9.4, 4.0)
+    sq = {0: (1.0, 3.0), 1: (3.0, 3.0), 2: (3.0, 1.0), 3: (1.0, 1.0)}
+    for u, v in [(0, 1), (1, 2), (2, 3), (3, 0)]:
+        tedge(ax, sq[u], sq[v], r=0.3)
+    for k, (x, y) in sq.items():
+        tnode(ax, x, y, k, color=BLUE if k % 2 == 0 else ORANGE)
+    label(ax, 2.0, 3.75, "square: bipartite", bold=True)
+    label(ax, 2.0, 0.25, "{0, 2} and {1, 3}", size=9.5, color=MUTED)
+    tri = {0: (6.0, 3.0), 1: (8.2, 3.0), 2: (7.1, 1.1)}
+    for u, v in [(0, 1), (1, 2), (2, 0)]:
+        tedge(ax, tri[u], tri[v], r=0.3, color=CRIMSON if 2 in (u, v) else GREY)
+    tnode(ax, *tri[0], 0, color=BLUE)
+    tnode(ax, *tri[1], 1, color=ORANGE)
+    tnode(ax, *tri[2], "2?", color=CRIMSON, fontsize=10)
+    label(ax, 7.1, 3.75, "triangle: not bipartite", bold=True)
+    label(ax, 7.1, 0.25, "2 touches both colours (an odd cycle)", size=9.5, color=MUTED)
+    return f
+
+
+@fig("bridges")
+def bridges_fig():
+    f, ax = diag.canvas(9.6, 3.8)
+    P = {0: (0.9, 3.0), 1: (3.0, 2.0), 2: (0.9, 1.0), 3: (6.2, 2.0), 4: (8.3, 3.0), 5: (8.3, 1.0)}
+    for u, v in [(0, 1), (1, 2), (2, 0), (3, 4), (4, 5), (5, 3)]:
+        tedge(ax, P[u], P[v], r=0.3)
+    tedge(ax, P[1], P[3], r=0.3, color=CRIMSON, lw=2.6)
+    wlabel(ax, P[1], P[3], "bridge", color=CRIMSON, dy=0.3)
+    for k, (x, y) in P.items():
+        tnode(ax, x, y, k, color=ORANGE if k in (1, 3) else BLUE)
+    label(ax, 4.6, 0.35, "orange: articulation points (removing either splits the graph)", size=9.5, color=MUTED)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

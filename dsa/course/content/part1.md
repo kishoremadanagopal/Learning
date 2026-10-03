@@ -21,8 +21,8 @@ A **data structure** is a way of organising data in memory so that certain jobs 
 | **Stack** | a pile of plates | undo, matching brackets | Part 4 |
 | **Queue** | a line of people | first come, first served | Part 4 |
 | **Linked list** | a chain of boxes with arrows | inserting in the middle | Part 4 |
-| **Tree** | a family tree | sorted data, hierarchies | Part 6 |
-| **Graph** | cities and roads | networks, routes, dependencies | Part 7 |
+| **Tree** | a family tree | sorted data, hierarchies | Part 7 |
+| **Graph** | cities and roads | networks, routes, dependencies | Part 8 |
 
 ### Why it matters: the same question, two speeds
 
