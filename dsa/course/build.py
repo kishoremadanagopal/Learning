@@ -21,6 +21,7 @@ import json
 import re
 import os
 import shutil
+import signal
 import sys
 import tempfile
 import time
@@ -578,12 +579,33 @@ def show(data, lesson_id):
     print(f"No lesson with id {lesson_id!r}")
 
 
+class _Timeout(BaseException):
+    """Raised by the test timer; a BaseException so the runner's `except Exception` can't swallow it."""
+
+
+def _guarded(fn, *args, limit=20, **kw):
+    """Run one example or check with a time limit, so a hang is reported instead of stalling the whole test run."""
+    def on_alarm(signum, frame):
+        raise _Timeout()
+    old = signal.signal(signal.SIGALRM, on_alarm)
+    signal.setitimer(signal.ITIMER_REAL, limit)
+    try:
+        return fn(*args, **kw)
+    except _Timeout:
+        msg = (f"TIMED OUT after {limit} s: something hangs (often a slow solution that passes a middle speed size, "
+               "or a hidden test too big for a slow solution)")
+        return {"ok": False, "parts": [["err", msg]], "figures": [], "verdict": {"ok": False, "msg": msg}}
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, old)
+
+
 def test(data):
     _in_data_dir()
     problems = 0
     for l in data["lessons"]:
         for i, ex in enumerate(l["examples"]):
-            res = runner.run(ex["code"], ex["stdin"], encode_figures=False)
+            res = _guarded(runner.run, ex["code"], ex["stdin"], encode_figures=False)
             if res["ok"] == ex["error"]:
                 problems += 1
                 print(f"[{l['id']}] example {i}: expected {'an error' if ex['error'] else 'no error'}:\n{_text(res['parts'], 'err')[-600:]}")
@@ -593,7 +615,7 @@ def test(data):
                 print(f"[{l['id']}] example {i}: prints {len(out)} characters; keep examples' output short")
         for ex in l["exercises"]:
             t_sol = time.perf_counter()
-            res = runner.check(ex["solution"], ex["check"], ex["stdin"], encode_figures=False)
+            res = _guarded(runner.check, ex["solution"], ex["check"], ex["stdin"], encode_figures=False)
             t_sol = time.perf_counter() - t_sol
             if t_sol > 3:
                 problems += 1
@@ -601,13 +623,13 @@ def test(data):
             if not res["verdict"]["ok"]:
                 problems += 1
                 print(f"[{l['id']}] exercise {ex['title']!r}: SOLUTION FAILS: {res['verdict']['msg']}\n{_text(res['parts'], 'err')[-600:]}")
-            res = runner.check(ex["starter"], ex["check"], ex["stdin"], encode_figures=False)
+            res = _guarded(runner.check, ex["starter"], ex["check"], ex["stdin"], encode_figures=False)
             if res["verdict"]["ok"]:
                 problems += 1
                 print(f"[{l['id']}] exercise {ex['title']!r}: starter already passes")
             if ex["slow"]:
                 t_slow = time.perf_counter()
-                res = runner.check(ex["slow"], ex["check"], ex["stdin"], encode_figures=False)
+                res = _guarded(runner.check, ex["slow"], ex["check"], ex["stdin"], encode_figures=False)
                 t_slow = time.perf_counter() - t_slow
                 if t_slow > 4:
                     problems += 1

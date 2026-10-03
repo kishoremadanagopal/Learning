@@ -1338,6 +1338,193 @@ def bridges_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 9: dynamic programming and greedy
+
+@fig("stairs-dp")
+def stairs_dp_fig():
+    f, ax = diag.canvas(9.6, 4.2)
+    ways = [1, 1, 2, 3, 5, 8]
+    for i, w in enumerate(ways):
+        x, y = 0.6 + i * 1.45, 0.6 + i * 0.5
+        col = ORANGE if i == 5 else (TEAL if i in (3, 4) else BLUE)
+        sbox(ax, x, y, 1.3, 0.5, f"step {i}", color=col, fontsize=9.5)
+        label(ax, x + 0.65, y + 0.78, f"{w} way{'s' if w != 1 else ''}", size=9.5, bold=i == 5)
+    x5, y5 = 0.6 + 5 * 1.45, 0.6 + 5 * 0.5
+    ax.add_patch(FancyArrowPatch((0.6 + 4 * 1.45 + 1.0, 0.6 + 4 * 0.5 + 0.5), (x5 + 0.25, y5 + 0.5), arrowstyle="-|>", mutation_scale=12,
+                                 color=TEAL, linewidth=1.5, connectionstyle="arc3,rad=-0.5"))
+    ax.add_patch(FancyArrowPatch((0.6 + 3 * 1.45 + 0.9, 0.6 + 3 * 0.5 + 0.5), (x5 + 0.55, y5 + 0.5), arrowstyle="-|>", mutation_scale=12,
+                                 color=TEAL, linewidth=1.5, connectionstyle="arc3,rad=-0.55"))
+    label(ax, 0.6, 3.7, "ways(5) = ways(4) + ways(3) = 5 + 3 = 8", ha="left", size=10.5, bold=True, color=ORANGE)
+    label(ax, 0.6, 3.25, "the last move was a 1-step from step 4 or a 2-step from step 3", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("lis-tails")
+def lis_tails_fig():
+    f, ax = diag.canvas(10.6, 5.2)
+    nums = [10, 9, 2, 5, 3, 7, 101, 18]
+    tails, rows = [], []
+    from bisect import bisect_left
+    for x in nums:
+        i = bisect_left(tails, x)
+        act = "append" if i == len(tails) else f"replace {tails[i]}"
+        if i == len(tails):
+            tails.append(x)
+        else:
+            tails[i] = x
+        rows.append((x, act, list(tails), i))
+    for r, (x, act, t, i) in enumerate(rows):
+        y = 4.6 - r * 0.58
+        label(ax, 0.5, y + 0.2, str(x), ha="right", mono=True, bold=True)
+        label(ax, 0.75, y + 0.2, act, ha="left", size=9, color=MUTED)
+        cells(ax, 3.0, y, t, w=0.8, h=0.42, highlight={i: ORANGE}, fontsize=10)
+    label(ax, 7.2, 3.0, "tails[k] = smallest ending of\nan increasing subsequence\nof length k + 1", ha="left", size=9.5, color=MUTED)
+    label(ax, 7.2, 1.5, "final length 4 = LIS length", ha="left", size=10, bold=True, color=ORANGE)
+    return f
+
+
+@fig("lcs-table")
+def lcs_table_fig():
+    f, ax = diag.canvas(6.6, 5.4)
+    a, b = "ABCB", "BDCB"
+    m, n = len(a), len(b)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            dp[i][j] = dp[i - 1][j - 1] + 1 if a[i - 1] == b[j - 1] else max(dp[i - 1][j], dp[i][j - 1])
+    path, i, j = set(), m, n
+    while i and j:
+        if a[i - 1] == b[j - 1]:
+            path.add((i, j)); i, j = i - 1, j - 1
+        elif dp[i - 1][j] >= dp[i][j - 1]:
+            i -= 1
+        else:
+            j -= 1
+    w, x0, y0 = 0.8, 1.4, 4.2
+    for j, ch in enumerate(" " + b):
+        label(ax, x0 + j * w + w / 2, y0 + 0.35, "ε" if j == 0 else ch, mono=True, bold=True, color=MUTED if j == 0 else INK)
+    for i, ch in enumerate(" " + a):
+        label(ax, x0 - 0.3, y0 - i * w - w / 2, "ε" if i == 0 else ch, mono=True, bold=True, color=MUTED if i == 0 else INK)
+        for j in range(n + 1):
+            on = (i, j) in path
+            match = i and j and a[i - 1] == b[j - 1]
+            fill = SOFT[ORANGE] if on else (SOFT[BLUE] if match else "white")
+            ax.add_patch(Rectangle((x0 + j * w, y0 - (i + 1) * w), w, w, facecolor=fill,
+                                   edgecolor=ORANGE if on else "#cbd2d9", linewidth=1.8 if on else 1))
+            label(ax, x0 + j * w + w / 2, y0 - i * w - w / 2, str(dp[i][j]), mono=True, bold=on)
+    label(ax, 3.3, 0.0, "orange: matches on the way back from the corner → \"BCB\" (length 3)", size=9, color=ORANGE)
+    return f
+
+
+@fig("knapsack-direction")
+def knapsack_direction_fig():
+    f, ax = diag.canvas(9.6, 3.9)
+    W, wt, val = 6, 2, 3
+    down = [0] * (W + 1)
+    for w in range(W, wt - 1, -1):
+        down[w] = max(down[w], down[w - wt] + val)
+    up = [0] * (W + 1)
+    for w in range(wt, W + 1):
+        up[w] = max(up[w], up[w - wt] + val)
+    label(ax, 0.3, 3.55, "item: weight 2, value 3, added to an empty bag of capacity 6", ha="left", size=10, bold=True)
+    label(ax, 0.3, 2.65, "w downwards\n(0/1: once)", ha="left", size=9.5)
+    cells(ax, 2.4, 2.4, down, w=0.8, color=TEAL, idx="auto", idx_y=3.1)
+    label(ax, 0.3, 1.05, "w upwards\n(reused)", ha="left", size=9.5)
+    cells(ax, 2.4, 0.8, up, w=0.8, color=CRIMSON, highlight={})
+    label(ax, 8.15, 1.05, "6 = 3 + 3\n9 = 3 + 3 + 3", ha="left", size=9, color=CRIMSON)
+    label(ax, 8.15, 2.65, "at most 3", ha="left", size=9, color=TEAL)
+    return f
+
+
+@fig("activity-selection")
+def activity_selection_fig():
+    f, ax = diag.canvas(10.4, 4.8)
+    meetings = sorted([(1, 3), (2, 5), (0, 4), (3, 5), (4, 7), (6, 9), (5, 9)], key=lambda m: m[1])
+    chosen = {(1, 3), (3, 5), (6, 9)}
+    sx, x0 = 0.85, 1.4
+    for t in range(11):
+        x = x0 + t * sx
+        ax.plot([x, x], [0.55, 4.25], color="#eef1f4", linewidth=1, zorder=0)
+        label(ax, x, 0.3, str(t), size=9, color=MUTED, mono=True)
+    for r, (s, e) in enumerate(meetings):
+        y = 3.9 - r * 0.5
+        on = (s, e) in chosen
+        sbox(ax, x0 + s * sx, y - 0.17, (e - s) * sx, 0.34, f"{s}–{e}", color=ORANGE if on else GREY, fontsize=9)
+        label(ax, x0 + 10 * sx + 0.25, y, "pick" if on else "skip (overlaps)", ha="left", size=9,
+              color=ORANGE if on else MUTED, bold=on)
+    label(ax, 0.2, 4.55, "sorted by end time; orange = chosen", ha="left", size=10, bold=True)
+    return f
+
+
+@fig("huffman")
+def huffman_fig():
+    f, ax = diag.canvas(10.6, 5.2)
+    P = {"100": (5.6, 4.7), "a": (3.6, 3.7), "55": (7.6, 3.7), "25": (6.0, 2.6), "30": (9.2, 2.6),
+         "c": (5.3, 1.5), "b": (6.7, 1.5), "14": (8.4, 1.5), "d": (10.0, 1.5), "f": (7.7, 0.4), "e": (9.1, 0.4)}
+    labels = {"100": "100", "a": "a 45", "55": "55", "25": "25", "30": "30", "c": "c 12", "b": "b 13", "14": "14",
+              "d": "d 16", "f": "f 5", "e": "e 9"}
+    E = [("100", "a", "0"), ("100", "55", "1"), ("55", "25", "0"), ("55", "30", "1"), ("25", "c", "0"), ("25", "b", "1"),
+         ("30", "14", "0"), ("30", "d", "1"), ("14", "f", "0"), ("14", "e", "1")]
+    for a, b, bit in E:
+        tedge(ax, P[a][:2], P[b][:2], r=0.34)
+        wlabel(ax, P[a][:2], P[b][:2], bit, color=ORANGE, size=9)
+    for k, (x, y) in P.items():
+        leaf = not k.isdigit()
+        tnode(ax, x, y, labels[k], color=TEAL if leaf else BLUE, r=0.34, fontsize=8.5)
+    codes = "a = 0   c = 100   b = 101   f = 1100   e = 1101   d = 111"
+    label(ax, 0.3, 0.35, "merge order: 5+9, 12+13, 14+16, 25+30, 45+55", ha="left", size=9, color=MUTED)
+    label(ax, 0.3, 4.75, "left = 0, right = 1", ha="left", size=9.5, color=ORANGE)
+    label(ax, 0.3, 2.2, "codes:", ha="left", size=9.5, bold=True)
+    label(ax, 0.3, 1.8, codes.replace("   ", "\n"), ha="left", va="top", size=9, mono=True)
+    return f
+
+
+@fig("merge-intervals")
+def merge_intervals_fig():
+    f, ax = diag.canvas(10.4, 3.9)
+    ivs = [(1, 3), (2, 6), (8, 10), (9, 12), (15, 18)]
+    merged = [(1, 6), (8, 12), (15, 18)]
+    sx, x0 = 0.5, 0.6
+    for t in range(0, 20, 2):
+        label(ax, x0 + t * sx, 0.2, str(t), size=9, color=MUTED, mono=True)
+    ax.plot([x0, x0 + 19 * sx], [0.45, 0.45], color=GREY, linewidth=1)
+    for r, (s, e) in enumerate(ivs):
+        y = 3.3 - (r % 2) * 0.45 - (0.9 if r >= 2 else 0) * 0
+        sbox(ax, x0 + s * sx, 3.2 - r * 0.42, (e - s) * sx, 0.32, f"[{s}, {e}]", color=BLUE, fontsize=8.5)
+    for s, e in merged:
+        sbox(ax, x0 + s * sx, 0.7, (e - s) * sx, 0.4, f"[{s}, {e}]", color=ORANGE, fontsize=9)
+    label(ax, x0 + 19.5 * sx, 2.4, "input,\nsorted by start", ha="left", size=9.5, color=MUTED)
+    label(ax, x0 + 19.5 * sx, 0.9, "merged", ha="left", size=9.5, color=ORANGE, bold=True)
+    return f
+
+
+@fig("sweep-line")
+def sweep_line_fig():
+    f, ax = diag.canvas(10.4, 4.6)
+    meetings = [(0, 30), (5, 10), (15, 20)]
+    sx, x0 = 0.26, 0.9
+    for r, (s, e) in enumerate(meetings):
+        sbox(ax, x0 + s * sx, 3.9 - r * 0.45, (e - s) * sx, 0.34, f"[{s}, {e})", color=BLUE, fontsize=9)
+    times = [0, 5, 10, 15, 20, 30]
+    for t in times:
+        x = x0 + t * sx
+        ax.plot([x, x], [0.5, 4.3], color="#e4e7eb", linewidth=1, linestyle=":", zorder=0)
+        label(ax, x, 0.25, str(t), size=9, color=MUTED, mono=True)
+    count = {0: 1, 5: 2, 10: 1, 15: 2, 20: 1, 30: 0}
+    xs, ys = [], []
+    prev = 0
+    for t in times:
+        xs += [x0 + t * sx, x0 + t * sx]
+        ys += [0.6 + prev * 0.7, 0.6 + count[t] * 0.7]
+        prev = count[t]
+    ax.plot(xs, ys, color=ORANGE, linewidth=2.2)
+    for t in times[:-1]:
+        label(ax, x0 + t * sx + 0.12, 0.6 + count[t] * 0.7 + 0.2, str(count[t]), ha="left", size=9.5, color=ORANGE, bold=count[t] == 2)
+    label(ax, x0 + 31 * sx, 1.6, "meetings in\nprogress", ha="left", size=9.5, color=ORANGE)
+    label(ax, x0 + 31 * sx, 0.9, "peak 2 = rooms", ha="left", size=9.5, bold=True)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

@@ -391,3 +391,41 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Eulerian path | Hierholzer: walk unused edges, add vertices when stuck | O(E) | O(E) | [40](lessons/40-advanced-graphs.md) |
 | Maximum flow | Edmonds-Karp: BFS augmenting paths with reverse capacities | O(V · E²) | O(V²) with a matrix | [40](lessons/40-advanced-graphs.md) |
 | Travelling salesman (exact) | bitmask DP over subsets | O(2ⁿ · n²) | O(2ⁿ · n) | [40](lessons/40-advanced-graphs.md) |
+| Fibonacci / climbing stairs (1 or 2) | dp[i] = dp[i − 1] + dp[i − 2] | O(n) | O(1) with two variables | [41](lessons/41-dp-intro.md) |
+| Climbing with any step sizes | ways[i] = Σ ways[i − s] | O(n · k) | O(n) | [41](lessons/41-dp-intro.md) |
+| Minimum cost stairs | dp[i] = min(dp[i − 1] + cost[i − 1], dp[i − 2] + cost[i − 2]) | O(n) | O(1) | [41](lessons/41-dp-intro.md) |
+| House robber | best = max(skip: prev1, take: prev2 + x) | O(n) | O(1) | [41](lessons/41-dp-intro.md) |
+| Memoise any recursive function | @cache | O(states × work per state) | O(states) + recursion depth | [41](lessons/41-dp-intro.md) |
+| Fewest coins | dp[a] = 1 + min(dp[a − c]) | O(amount · coins) | O(amount) | [42](lessons/42-dp-sequences.md) |
+| Number of coin combinations | coins in the outer loop: dp[a] += dp[a − c] | O(amount · coins) | O(amount) | [42](lessons/42-dp-sequences.md) |
+| Maximum subarray (Kadane) | here = max(x, here + x); best = max(best, here) | O(n) | O(1) | [42](lessons/42-dp-sequences.md) |
+| LIS (simple) | dp[i] = 1 + max(dp[j]) for j < i with nums[j] < nums[i] | O(n²) | O(n) | [42](lessons/42-dp-sequences.md) |
+| LIS (fast) | tails + bisect_left | O(n log n) | O(n) | [42](lessons/42-dp-sequences.md) |
+| Word break | ok[i] = any(ok[j] and s[j:i] in words) | O(n · L) checks | O(n) | [42](lessons/42-dp-sequences.md) |
+| Decode ways | dp[i] = dp[i − 1] (valid 1 digit) + dp[i − 2] (10–26) | O(n) | O(n), or O(1) | [42](lessons/42-dp-sequences.md) |
+| Unique paths (right/down) | paths[r][c] = above + left; or C(m + n − 2, m − 1) | O(m · n) | O(n) | [43](lessons/43-dp-grids-strings.md) |
+| Minimum path sum | cost[r][c] = grid[r][c] + min(above, left) | O(m · n) | O(n) with one row | [43](lessons/43-dp-grids-strings.md) |
+| Longest common subsequence | match: diagonal + 1; else max(above, left) | O(m · n) | O(m · n), O(n) for the length only | [43](lessons/43-dp-grids-strings.md) |
+| Edit distance | match: diagonal; else 1 + min(diagonal, above, left) | O(m · n) | O(n) with two rows | [43](lessons/43-dp-grids-strings.md) |
+| Longest palindromic subsequence | LCS(s, reversed s) | O(n²) | O(n) | [43](lessons/43-dp-grids-strings.md) |
+| Longest palindromic substring | expand around 2n − 1 centres | O(n²) | O(1) | [43](lessons/43-dp-grids-strings.md) |
+| 0/1 knapsack | dp[w] = max(dp[w], dp[w − wt] + val), w downwards | O(n · W) | O(W) | [44](lessons/44-knapsack-and-more.md) |
+| Unbounded knapsack | the same with w upwards | O(n · W) | O(W) | [44](lessons/44-knapsack-and-more.md) |
+| Subset sum / equal partition | can[s] = can[s] or can[s − x], s downwards; or a big-integer bitset shifted by x | O(n · S) | O(S) | [44](lessons/44-knapsack-and-more.md) |
+| Matrix-chain order (interval DP) | dp[i][j] = min over k of dp[i][k] + dp[k+1][j] + cost | O(n³) | O(n²) | [44](lessons/44-knapsack-and-more.md) |
+| Travelling salesman (Held-Karp) | dp[mask][j] over subsets | O(2ⁿ · n²) | O(2ⁿ · n) | [44](lessons/44-knapsack-and-more.md) |
+| House robber on a tree | each node returns (take, skip) | O(n) | O(h) | [44](lessons/44-knapsack-and-more.md) |
+| Activity selection | sort by end; take each interval starting after the last end | O(n log n) | O(1) extra | [45](lessons/45-greedy.md) |
+| Fractional knapsack | sort by value / weight; take greedily, cut the last item | O(n log n) | O(1) extra | [45](lessons/45-greedy.md) |
+| Can reach the end | track the farthest reachable index | O(n) | O(1) | [45](lessons/45-greedy.md) |
+| Fewest jumps | BFS levels: count a jump when the current range ends | O(n) | O(1) | [45](lessons/45-greedy.md) |
+| Gas station | impossible if total < 0; restart after each negative tank | O(n) | O(1) | [45](lessons/45-greedy.md) |
+| Huffman coding / cheapest rope joining | heap: merge the two smallest | O(n log n) | O(n) | [45](lessons/45-greedy.md) |
+| Boats (pairs under a limit) | sort; heaviest with lightest if they fit | O(n log n) | O(1) extra | [45](lessons/45-greedy.md) |
+| Overlap test | a.start ≤ b.end and b.start ≤ a.end (strict for half-open) | O(1) | O(1) | [46](lessons/46-intervals-sweep.md) |
+| Merge intervals | sort by start; extend the last or append | O(n log n) | O(n) | [46](lessons/46-intervals-sweep.md) |
+| Insert into sorted intervals | copy before, absorb overlapping, copy after | O(n) | O(n) | [46](lessons/46-intervals-sweep.md) |
+| Intersect two sorted lists | two pointers; advance the earlier end | O(m + n) | O(m + n) | [46](lessons/46-intervals-sweep.md) |
+| Fewest removals for no overlap | n − (activity selection by end) | O(n log n) | O(1) extra | [46](lessons/46-intervals-sweep.md) |
+| Meeting rooms / maximum overlap | heap of end times, or sorted ±1 events | O(n log n) | O(n) | [46](lessons/46-intervals-sweep.md) |
+| Many range additions | difference array + one prefix sum | O(n + updates) | O(n) | [46](lessons/46-intervals-sweep.md) |

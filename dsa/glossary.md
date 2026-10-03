@@ -5,6 +5,9 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | Term | Meaning |
 |---|---|
 | **0-1 BFS** | A BFS with a deque for edge weights of 0 or 1; 0-cost neighbours go to the front. [36] |
+| **0/1 knapsack** | Choose items, each at most once, to maximise value within a weight limit. [44] |
+| **2-D DP** | A dynamic program whose state needs two indexes, dp[i][j]. [43] |
+| **Activity selection** | Choosing the most non-overlapping intervals; solved by earliest end first. [45] |
 | **Adaptive sort** | A sort that runs faster on input that is already partly sorted. [26] |
 | **Adjacency list** | For each vertex, a list of its neighbours. [35] |
 | **Adjacency matrix** | A V × V grid with a mark where two vertices are joined. [35] |
@@ -21,8 +24,9 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Average case** | The expected work over typical inputs. [4] |
 | **AVL tree** | A self-balancing BST where sibling subtree heights differ by at most 1. [31] |
 | **Backtracking** | Building candidates one choice at a time and undoing choices that can't lead to a solution. [23] |
+| **Backtracking a DP table** | Walking back from the answer cell to rebuild the actual solution. [43] |
 | **Balanced tree** | A tree whose height stays O(log n). [29] |
-| **Base case** | An input small enough to answer directly, which stops the recursion. [21] |
+| **Base case** | An input small enough to answer directly, which stops the recursion. [21, 41] |
 | **Bellman-Ford** | Relaxes every edge V − 1 times; handles negative weights and detects negative cycles. [38] |
 | **Best case** | The input that makes the algorithm do the least work. [4] |
 | **Bidirectional BFS** | Searching from the start and the goal at once until the two searches meet. [36] |
@@ -34,6 +38,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Binary tree** | A tree where each node has at most two children, left and right. [29] |
 | **Bipartite graph** | A graph whose vertices split into two sides with every edge between the sides. [40] |
 | **bisect_left / bisect_right** | The first position where x could be inserted keeping the order (before / after equal items). [24] |
+| **Bitmask DP** | DP whose state includes a set of items stored as the bits of an integer. [44] |
 | **Bounds check** | Testing 0 <= r < rows and 0 <= c < cols before using a cell. [10] |
 | **Breadth-first search (BFS)** | Visiting level by level, using a queue. [29] |
 | **Bridge** | An edge whose removal disconnects the graph. [40] |
@@ -76,7 +81,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Depth / height** | Edges from the root down to a node / edges on the longest root-to-leaf path. [29] |
 | **deque** | A double-ended queue from `collections` with O(1) adds and removals at both ends. [5, 19] |
 | **Diameter** | The number of edges on the longest path between any two nodes. [30] |
-| **Difference array** | Records where range updates start and stop; a prefix sum of it gives the final values. [9] |
+| **Difference array** | Records where range updates start and stop; a prefix sum of it gives the final values. [9, 46] |
 | **Dijkstra's algorithm** | Repeatedly settles the closest unsettled vertex; needs non-negative weights. [38] |
 | **Directed / undirected graph** | Edges go one way / both ways. [35] |
 | **Direction list** | Offsets like (−1, 0), (1, 0), (0, −1), (0, 1) used to visit neighbours in a loop. [10] |
@@ -87,11 +92,16 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Dummy (sentinel) node** | A placeholder node before the head (or after the tail) that removes special cases. [15] |
 | **Dutch national flag** | A one-pass, three-pointer partition into three groups. [26] |
 | **Dynamic array** | An array that grows automatically by reserving spare room; Python's list. [6] |
+| **Dynamic programming (DP)** | Solving a problem by combining stored answers to smaller versions of it, each computed once. [41] |
 | **Edge case** | An unusual input at the boundaries, such as an empty list, one item, negatives or duplicates. [1] |
+| **Edit (Levenshtein) distance** | The fewest insertions, deletions and substitutions turning one string into another. [43] |
+| **"Ending at i" state** | A DP state describing the best answer that finishes exactly at position i. [42] |
 | **End-of-word flag** | A marker on the node where a complete word ends. [33] |
 | **Enqueue / dequeue** | Add at the back / remove from the front. [19] |
 | **Eulerian path** | A path that uses every edge exactly once. [40] |
+| **Event** | A point where something changes, such as +1 at a meeting's start and −1 at its end. [46] |
 | **Eviction** | Removing an item from a full cache to make room. [20] |
+| **Exchange argument** | A proof that swapping the greedy choice into an optimal solution keeps it optimal. [45] |
 | **External sorting** | Sorting data too big for memory by sorting chunks and merging them. [27] |
 | **Fast and slow pointers** | Two pointers moving at different speeds (usually 2 steps and 1 step) through a list. [16] |
 | **Fast (binary) exponentiation** | Computing xⁿ by squaring, in O(log n) multiplications. [22] |
@@ -102,13 +112,17 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Floor / ceiling** | The largest value ≤ x / the smallest value ≥ x. [31] |
 | **Floyd's cycle detection** | The tortoise-and-hare method: if fast and slow ever meet, there's a cycle. [16] |
 | **Floyd-Warshall** | All-pairs shortest paths by allowing each vertex in turn as a stopover. [38] |
+| **Fractional knapsack** | A knapsack where items can be split; solved by value per weight. [45] |
 | **Frequency count** | How many times each item appears, usually in a dict or Counter. [14] |
 | **frozenset** | An immutable set, usable as a dict key. [13] |
 | **Function** | A named block of code that takes inputs (arguments) and returns an output. [1] |
 | **Graph** | A set of vertices joined by edges. [35] |
+| **Greedy algorithm** | An algorithm that makes the locally best choice at each step and never reconsiders. [45] |
+| **Greedy-choice property** | Some optimal solution begins with the greedy choice. [45] |
 | **Grey vertex** | In DFS cycle detection, a vertex on the current path; reaching one again means a directed cycle. [37] |
 | **Grid / matrix** | Values arranged in rows and columns; grid[r][c] is row r, column c. [10] |
 | **Grouping key** | A normalised form shared by everything that belongs together, like sorted letters for anagrams. [14] |
+| **Half-open interval [a, b)** | Includes a but not b, so [1, 3) and [3, 5) don't overlap. [46] |
 | **Half-open template** | `while lo < hi` with `hi = mid` and `lo = mid + 1`; ends with lo == hi. [25] |
 | **Hashable** | A value that can be a dict key or set item because it can't change, such as numbers, strings and tuples. [5] |
 | **Hash collision** | Two different inputs with the same hash value. [12] |
@@ -120,8 +134,10 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **heapq** | Python's module that treats an ordinary list as a min-heap. [32] |
 | **Heap sort** | Builds a max-heap in the array, then repeatedly moves the maximum to the end. [27] |
 | **Height-balanced** | At every node, the left and right subtree heights differ by at most 1. [30] |
+| **Held-Karp algorithm** | The O(2ⁿ · n²) bitmask DP for the travelling salesman problem. [44] |
 | **Hidden test** | A test case the checker runs without showing it to you first, like on coding-interview sites. [1] |
 | **Histogram** | A row of bars of different heights. [18] |
+| **Huffman coding** | An optimal prefix code built by repeatedly merging the two least frequent symbols. [45] |
 | **Immutable** | Can't be changed after it's created; "changing" a string makes a new one. [5, 11] |
 | **Implicit graph** | A graph whose edges are computed on the fly, such as the cells of a grid. [35] |
 | **Inclusion–exclusion** | Adding and subtracting overlapping areas so each is counted once; used by 2-D prefix sums. [9] |
@@ -133,11 +149,14 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **In-place** | Changing the existing structure instead of building a new one, using O(1) extra memory. [16] |
 | **In-place sort** | A sort that rearranges the list itself with O(1) extra memory. [26] |
 | **Insertion sort** | Grows a sorted prefix, sliding each new item left into position. [26] |
+| **Interval** | A range from a start to an end, such as a meeting or a booking. [46] |
+| **Interval DP** | DP over ranges i..j, splitting each range and combining the parts. [44] |
 | **Introsort** | Quicksort that switches to heap sort when recursion gets too deep. [27] |
 | **Invariant** | A statement that stays true on every loop pass, such as "if the target exists, it's in nums[lo..hi]". [24] |
 | **Inversion** | A pair of positions i < j whose values are out of order (nums[i] > nums[j]). [22] |
 | **itertools** | Python's module with fast permutations, combinations and product. [23] |
 | **join** | `sep.join(parts)` glues a list of strings together with sep between them, in one pass. [11] |
+| **Kadane's algorithm** | The O(n) maximum-subarray DP that tracks the best sum ending at each position. [42] |
 | **Kahn's algorithm** | Repeatedly take a vertex with in-degree 0 and remove its outgoing edges. [37] |
 | **Key function** | A function that gives the value to sort each item by, as in `sorted(items, key=len)`. [28] |
 | **KMP (Knuth–Morris–Pratt)** | A search that uses a table of the pattern's prefix-suffixes so it never re-reads the text; O(n + m). [12] |
@@ -152,6 +171,8 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Load factor** | Number of entries ÷ number of buckets; higher means more collisions. [13] |
 | **Logarithm (log₂ n)** | How many times you can halve n before reaching 1. [3] |
 | **Lomuto partition** | A partition scheme that sweeps left to right, swapping smaller items to the front. [27] |
+| **Longest common subsequence (LCS)** | The longest sequence appearing in order, with gaps allowed, in two strings. [43] |
+| **Longest increasing subsequence (LIS)** | The longest subsequence whose values strictly increase. [42] |
 | **Longest prefix match** | Finding the longest stored word that is a prefix of a given text, as routers do. [33] |
 | **Lower bound** | The least work any algorithm for a problem must do; Ω(n log n) for comparison sorts. [28] |
 | **Lower bound / upper bound** | The first position with a value ≥ x / > x. [24] |
@@ -164,6 +185,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Master theorem** | A rule for solving recurrences of the form T(n) = a·T(n/b) + O(nᵈ). [22] |
 | **Maximum flow** | The most that can be sent from a source to a sink through edges with capacities. [40] |
 | **Memoisation** | Caching a function's results by its arguments. [20, 21] |
+| **Memoisation (top-down)** | Recursion that caches each result the first time it's computed. [41] |
 | **Merge** | Combining two sorted lists into one sorted list by repeatedly taking the smaller front item. [7, 16] |
 | **Merge sort** | Sort each half recursively, then merge the sorted halves. [22] |
 | **Minimum cut** | The cheapest set of edges whose removal separates source from sink; equals the maximum flow. [40] |
@@ -191,13 +213,16 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **O(n²), quadratic time** | Typical of a loop inside a loop. [3] |
 | **Open addressing** | Handling collisions by probing other buckets until a free one is found; Python's dict does this. [13] |
 | **Opposite-ends pointers** | One pointer starts at each end and they move towards each other. [7] |
+| **Optimal substructure** | An optimal answer is built from optimal answers to subproblems. [41] |
 | **ord / chr** | Convert a character to its code number and back. [11] |
 | **OrderedDict** | A dict that remembers order and can move a key to either end in O(1). [20] |
-| **Overlapping subproblems** | When the same subproblem is needed many times; a sign to use memoisation instead. [22] |
-| **Palindrome** | Text that reads the same forwards and backwards. [7] |
+| **Overlapping subproblems** | When the same subproblem is needed many times; a sign to use memoisation instead. [22, 41] |
+| **Overlap test** | Two intervals overlap when each starts before the other ends. [46] |
+| **Palindrome** | Text that reads the same forwards and backwards. [7, 43] |
 | **Parent link** | The vertex from which another vertex was first reached; following parents rebuilds the path. [36] |
 | **Partition** | Rearranging items into groups around a value, such as smaller / equal / bigger. [26] |
 | **Path compression** | Pointing every node on a find path directly at the root. [39] |
+| **Patience sorting** | The O(n log n) LIS method that keeps the smallest tail for each length. [42] |
 | **Pattern** | A known technique that solves a family of problems, such as two pointers or a hash map. [2] |
 | **Pattern matching** | Finding where a pattern string occurs inside a text. [12] |
 | **Peak element** | An item larger than its neighbours. [24] |
@@ -208,7 +233,8 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Pointer (reference)** | A variable that refers to an object, such as `node.next`. [15] |
 | **Point update** | Changing a single item of the list. [34] |
 | **Precomputation** | Doing work once up front so that many later questions are cheap. [9] |
-| **Prefix** | The beginning part of a string; "ca" is a prefix of "cat". [33] |
+| **Prefix** | The beginning part of a string; "ca" is a prefix of "cat". [33, 43] |
+| **Prefix code** | A set of codes where no code is the start of another, so decoding is unambiguous. [45] |
 | **Prefix sum** | The running total of the first k items; prefix[0] = 0. [9] |
 | **Prefix-sum count** | A dict from each prefix sum to how often it has appeared, used to count subarrays with a given sum. [14] |
 | **Preorder / inorder / postorder** | Visiting the node before, between or after its two subtrees. [29] |
@@ -218,6 +244,7 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Proper prefix** | A prefix that isn't the whole string. [12] |
 | **Pruning** | Skipping a branch as soon as it can't lead to a valid answer. [23] |
 | **Pseudocode** | The steps of an algorithm in plain words, before writing real code. [2] |
+| **Pseudo-polynomial time** | Polynomial in a number's value (like W) rather than in the input's length. [44] |
 | **Push / pop / peek** | Add to the top / remove the top / look at the top without removing it. [17] |
 | **Query** | A question asked of the data, such as a range sum. [9] |
 | **Queue** | A collection where items join at the back and leave from the front: first in, first out. [19] |
@@ -270,12 +297,17 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Stable sort** | A sort that keeps equal items in their original relative order. [26] |
 | **Stack** | A collection where you add and remove only at the top: last in, first out. [17] |
 | **Stack frame** | The record of one function call: its local variables and where to return to. [17] |
+| **State** | What one DP table entry means, such as "dp[i] = ways to reach step i". [41] |
 | **State graph** | An implicit graph whose vertices are situations (words, lock combinations) and whose edges are moves. [36] |
 | **Stock span** | The number of consecutive days, ending today, with a price at most today's. [18] |
 | **Strongly connected component (SCC)** | A maximal set of vertices in a directed graph that can all reach each other. [40] |
 | **Subarray** | A contiguous run of items in an array. [8] |
+| **Subsequence** | Items kept in their original order, with gaps allowed. [42] |
 | **Subset** | Any selection of items, including none and all; n items have 2ⁿ subsets. [23] |
+| **Subset sum** | Deciding whether some subset of numbers adds up to a target. [44] |
 | **Substring** | A contiguous run of characters in a string. [8] |
+| **Sweep line** | Processing sorted events in order along a line while keeping a running state. [46] |
+| **Tabulation (bottom-up)** | Filling a table of answers from the smallest cases upwards with loops. [41] |
 | **Tail** | The last node; its `next` is None. [15] |
 | **Tail call** | A recursive call that is the very last thing a function does; Python doesn't optimise these. [21] |
 | **Test case** | One input together with the expected output, used to check a function. [1] |
@@ -285,11 +317,14 @@ Every term used in the course, A to Z. The number in brackets is the lesson wher
 | **Top k** | Finding the k largest or smallest items, typically with a heap of size k. [32] |
 | **Topological order** | An ordering of a directed graph's vertices where every edge points forward. [37] |
 | **Trade-off** | Gaining one thing (like speed) by giving up another (like memory). [2] |
+| **Transition (recurrence)** | The formula that computes a state from smaller states. [41] |
 | **Transpose** | Swapping rows and columns. [10] |
 | **Traversal** | Visiting every node by following `next` from the head. [15] |
 | **Tree** | A hierarchy of nodes with one root, where every other node has exactly one parent. [29] |
+| **Tree DP** | Computing each node's answer from its children's answers, usually in postorder. [44] |
 | **Trie (prefix tree)** | A tree that stores strings one character per level, sharing common prefixes. [33] |
 | **Two pointers** | Two indexes that move through the data by a rule, replacing a nested loop. [7] |
+| **Unbounded knapsack** | A DP where each item (such as a coin value) may be used any number of times. [42, 44] |
 | **Union by size (or rank)** | Hanging the smaller tree under the larger one. [39] |
 | **Union-find (disjoint set union)** | A structure that keeps elements in merging groups and answers "same group?". [39] |
 | **Variable-size window** | A window that grows on the right and shrinks on the left to keep a rule true. [8] |

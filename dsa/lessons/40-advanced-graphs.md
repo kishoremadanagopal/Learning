@@ -491,4 +491,4 @@ print(critical_connections(4, [[0, 1], [1, 2], [2, 0], [1, 3]]))
 </details>
 
 ---
-Previous: [Lesson 39](39-union-find-mst.md) · Back to the [course home](../README.md)
+Previous: [Lesson 39](39-union-find-mst.md) · Next: [Lesson 41: Dynamic programming foundations](41-dp-intro.md)
