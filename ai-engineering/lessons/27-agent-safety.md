@@ -333,4 +333,4 @@ except BudgetExceeded as e:
 </details>
 
 ---
-Previous: [Lesson 26](26-memory-and-context.md) · Back to the [course home](../README.md)
+Previous: [Lesson 26](26-memory-and-context.md) · Next: [Lesson 28: Evaluations (evals)](28-evals.md)

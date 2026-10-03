@@ -82,3 +82,19 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | edit shared work, open a pull request | ask |
 | send, pay, delete production data, publish | ask every time, or deny |
 | any tool not in the policy | deny |
+
+## Evals and production [28–33]
+
+- **Evals:** tasks + trials + graders. Use code graders where possible, model judges for judgement calls, humans for reference labels. Start with 20–50 cases from real failures; compare runs **case by case**; regression suites should pass near 100%.
+- **pass@k** (at least one of k succeeds) for "one success is enough"; **pass^k** (all k succeed) for reliability.
+- **LLM judges:** specific rubric, one criterion, reasoning before a pass/fail or 1–5 score. Swap positions in pairwise judging. Check judges against human labels with **Cohen's kappa**, not raw agreement.
+- **Hallucinations:** ground in sources, allow "I don't know", quote and cite, use tools for facts, verify tool outcomes. Detect with number and claim checks, citation checks, consistency across samples and faithfulness judges; track the rate.
+- **Observability:** trace every request (spans for model calls, retrieval, tools) with prompt version, tokens, cost, latency and feedback; redact personal data; grade a sample of live traffic; turn failures into eval cases.
+- **Cost and latency:** latency ≈ TTFT + output tokens ÷ speed, so shorten outputs first. Report p50/p95/p99. Levers: routing, effort, caching, streaming, parallel calls, batches. Plan for peak with timeouts and fallbacks.
+- **Adapting a model:** prompt → examples → RAG and tools → fine-tune. RAG changes what it knows; fine-tuning changes how it behaves. Validate data, dedupe before splitting, and beat the prompted baseline.
+
+| Grader | Use for |
+|---|---|
+| code | labels, formats, required facts, tests passing |
+| model judge | tone, helpfulness, faithfulness, reasoning quality |
+| human | reference labels, judge calibration, high-stakes review |

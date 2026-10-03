@@ -83,6 +83,22 @@ Where a model exposes sampling settings (current Claude models don't; use the pr
 | send, pay, delete production data, publish | ask every time, or deny |
 | any tool not in the policy | deny |
 
+## Evals and production [28–33]
+
+- **Evals:** tasks + trials + graders. Use code graders where possible, model judges for judgement calls, humans for reference labels. Start with 20–50 cases from real failures; compare runs **case by case**; regression suites should pass near 100%.
+- **pass@k** (at least one of k succeeds) for "one success is enough"; **pass^k** (all k succeed) for reliability.
+- **LLM judges:** specific rubric, one criterion, reasoning before a pass/fail or 1–5 score. Swap positions in pairwise judging. Check judges against human labels with **Cohen's kappa**, not raw agreement.
+- **Hallucinations:** ground in sources, allow "I don't know", quote and cite, use tools for facts, verify tool outcomes. Detect with number and claim checks, citation checks, consistency across samples and faithfulness judges; track the rate.
+- **Observability:** trace every request (spans for model calls, retrieval, tools) with prompt version, tokens, cost, latency and feedback; redact personal data; grade a sample of live traffic; turn failures into eval cases.
+- **Cost and latency:** latency ≈ TTFT + output tokens ÷ speed, so shorten outputs first. Report p50/p95/p99. Levers: routing, effort, caching, streaming, parallel calls, batches. Plan for peak with timeouts and fallbacks.
+- **Adapting a model:** prompt → examples → RAG and tools → fine-tune. RAG changes what it knows; fine-tuning changes how it behaves. Validate data, dedupe before splitting, and beat the prompted baseline.
+
+| Grader | Use for |
+|---|---|
+| code | labels, formats, required facts, tests passing |
+| model judge | tone, helpfulness, faithfulness, reasoning quality |
+| human | reference labels, judge calibration, high-stakes review |
+
 ## Every concept at a glance
 
 Generated from the **At a glance** table at the end of each lesson. The number in brackets links to the lesson.
@@ -174,3 +190,21 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Permission decision | look up a rule (default deny); call it if it's a function; deny on error | O(1) | O(1) | [27](lessons/27-agent-safety.md) |
 | Budget | add usage after each call; raise when over a limit | O(1) per call | O(1) | [27](lessons/27-agent-safety.md) |
 | Action risk | reversible and contained → allow; consequential → ask; irreversible and external → ask or deny | — | — | [27](lessons/27-agent-safety.md) |
+| pass@k and pass^k | per task: 1 − C(n − c, k) ÷ C(n, k) and C(c, k) ÷ C(n, k); average | O(trials) | O(tasks) | [28](lessons/28-evals.md) |
+| Compare runs | shared cases; rates; fixed and broken lists | O(n log n) | O(n) | [28](lessons/28-evals.md) |
+| Margin of a pass rate | about 1.96 × √(p(1 − p) ÷ n) | O(1) | O(1) | [28](lessons/28-evals.md) |
+| Cohen's kappa | (observed − chance agreement) ÷ (1 − chance agreement) | O(n × labels) | O(labels) | [29](lessons/29-llm-as-judge.md) |
+| Pairwise verdict | judge both orders; count only consistent wins | 2 judge calls | O(1) | [29](lessons/29-llm-as-judge.md) |
+| Calibrate a judge | human labels on a sample; agreement and kappa; read disagreements | O(sample) | O(sample) | [29](lessons/29-llm-as-judge.md) |
+| Unsupported numbers | extract; normalise to values; set difference with the sources | O(answer + sources) | O(numbers) | [30](lessons/30-hallucinations.md) |
+| Verify claims | normalised (subject, attribute) lookup; supported, contradicted or unverifiable | O(facts + claims) | O(facts) | [30](lessons/30-hallucinations.md) |
+| Reduce hallucination | ground, allow abstention, quote, cite, use tools, verify | — | — | [30](lessons/30-hallucinations.md) |
+| Trace tree | group spans by parent; depth-first walk from the roots | O(n) | O(n) | [31](lessons/31-observability.md) |
+| Trace summary | counts and sums with defaults; the slowest span | O(n) | O(1) | [31](lessons/31-observability.md) |
+| Production loop | trace → dashboards and alerts → sample and grade → new eval cases | — | — | [31](lessons/31-observability.md) |
+| Latency estimate | TTFT + output tokens ÷ tokens per second | O(1) | O(1) | [32](lessons/32-cost-and-latency.md) |
+| Nearest-rank percentile | sort; value at rank ceil(p ÷ 100 × n) | O(n log n) | O(n) | [32](lessons/32-cost-and-latency.md) |
+| Exact response cache | normalised key → stored time; hit if younger than the TTL | O(n) | O(distinct questions) | [32](lessons/32-cost-and-latency.md) |
+| Validate chat data | per record: structure, roles and content, alternation, final assistant | O(messages) | O(problems) | [33](lessons/33-fine-tuning-vs-rag.md) |
+| Leak-free split | dedupe normalised inputs; seeded shuffle; slice | O(n) | O(n) | [33](lessons/33-fine-tuning-vs-rag.md) |
+| Choose an approach | prompt → examples → RAG and tools → fine-tune, climbing only when evals demand it | — | — | [33](lessons/33-fine-tuning-vs-rag.md) |

@@ -1,6 +1,6 @@
 # AI Engineering with LLMs
 
-A hands-on course on building software with large language models (LLMs): 27 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
+A hands-on course on building software with large language models (LLMs): 33 lessons on how LLMs work, calling model APIs, prompt engineering, retrieval-augmented generation (RAG), tools and agents, and evaluating and running AI features in production.
 
 Each idea is built from scratch in plain Python, so you see exactly what happens inside: a tokenizer, embeddings and similarity search, sampling, a retrieval pipeline, a tool-calling agent loop and an evaluation harness. Real API code (Anthropic and OpenAI) is shown alongside, ready to run on your own computer with an API key.
 
@@ -10,9 +10,9 @@ AI engineering is the core of the **AI engineer** path and increasingly part of 
 
 The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyodide.org)), with NumPy. Nothing to install, no sign-up, and no API key needed: exercises use small stand-in models so every result is repeatable.
 
-- every lesson, with **37 examples** you can run and change
-- **53 exercises** with hidden tests, each with an approach, hints and a walkthrough
-- **108 quiz questions**, with explanations
+- every lesson, with **43 examples** you can run and change
+- **65 exercises** with hidden tests, each with an approach, hints and a walkthrough
+- **132 quiz questions**, with explanations
 - diagrams for the key ideas
 - your progress and code saved in your own browser
 
@@ -22,7 +22,7 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 
 | | |
 |---|---|
-| 📘 [Lessons](#lessons) | 27 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
+| 📘 [Lessons](#lessons) | 33 lessons, each with key terms, examples, common mistakes, exercises, walkthroughs and a quiz |
 | 📖 [Glossary](glossary.md) | every AI engineering term used in the course, defined in plain English |
 | 🧾 [Cheat sheet](cheatsheet.md) | API patterns, prompt techniques, RAG and agent recipes, and every concept at a glance |
 
@@ -87,6 +87,17 @@ The sandbox runs real Python 3.14 inside your browser (via [Pyodide](https://pyo
 | 25 | [The Model Context Protocol (MCP)](lessons/25-mcp.md) | the integration problem, hosts, clients and servers, tools, resources and prompts, JSON-RPC 2.0 requests, responses, errors and notifications, stdio and Streamable HTTP transports, the 2026-07-28 specification, the Python SDK, connecting servers to hosts and the MCP connector, namespacing tools, too many tools and tool search, MCP security and tool poisoning, governance under the Agentic AI Foundation | 48–49 |
 | 26 | [Memory and context management](lessons/26-memory-and-context.md) | context engineering, context rot, what fills an agent's context, write, select, compress and isolate, just-in-time context, compaction and summaries, server-side compaction, clearing old tool results and context editing, sub-agents, long-term memory, the memory tool, progress files, stale memories, privacy and injected memories | 50–51 |
 | 27 | [Keeping agents safe](lessons/27-agent-safety.md) | excessive agency, classifying actions by reversibility and reach, allow, ask and deny policies, default deny, meaningful human approval, sandboxes, scoped credentials, staging and dry runs, idempotency, turn, token and cost budgets, timeouts and rate limits, injection through tool results, action review, audit logs, behavioural testing | 52–53 |
+
+### Part 6: Evals and Production (Advanced)
+
+| # | Lesson | Topics | Sandbox |
+|---|---|---|---|
+| 28 | [Evaluations (evals)](lessons/28-evals.md) | why LLM features need evals, success criteria, tasks, trials, graders, transcripts and outcomes, code, model and human grading, capability and regression evals, pass@k and pass^k, how many cases to start with, noise in small samples, paired comparison of runs, eval-driven development, reading transcripts, grading outcomes rather than paths, overfitting to an eval set | 54–55 |
+| 29 | [LLM as a judge](lessons/29-llm-as-judge.md) | model-graded evaluation, judge prompts and rubrics, pass/fail and small scales, reasoning before the verdict, one criterion per judge, pointwise, reference-based and pairwise judging, position bias, length bias, self-preference, leniency, calibrating judges against human labels, raw agreement versus Cohen's kappa, judge cost | 56–57 |
+| 30 | [Catching hallucinations](lessons/30-hallucinations.md) | factual and unfaithful hallucinations, fabricated references, invented code and packages, false action reports, why models hallucinate, rewards for guessing, grounding, permission to abstain, quotes and citations, tools for facts, narrowing tasks, verification passes and chain-of-verification, checking numbers and claims against sources, consistency across samples, faithfulness judges, measuring hallucination rates | 58–59 |
+| 31 | [Tracing and monitoring](lessons/31-observability.md) | why LLM applications need observability, traces and spans, waterfalls, what to record for requests, model calls, retrieval and tools, user feedback, OpenTelemetry generative-AI conventions, LLM observability tools, privacy, redaction and retention, online evaluation of live traffic, dashboards, alerts, turning traces into eval cases | 60–61 |
+| 32 | [Cost and latency in production](lessons/32-cost-and-latency.md) | the parts of request latency, time to first token, output speed, why output length dominates, agents and tool time, percentiles and tail latency, latency and cost levers, routing, effort, prompt caching, streaming, parallel calls, exact and semantic response caches, the Batch API, rate limits, capacity planning, queues, timeouts and fallbacks, projecting monthly cost | 62–63 |
+| 33 | [Prompting, RAG or fine-tuning?](lessons/33-fine-tuning-vs-rag.md) | the ladder of ways to adapt a model, prompting, examples, retrieval and tools, fine-tuning, training from scratch, what fine-tuning changes, supervised, preference and reinforcement fine-tuning, DPO, LoRA and QLoRA, distillation, where fine-tuning is available, open-weight models, JSONL training data, data quality, validation, deduplication and leakage, comparing with a prompted baseline, ongoing costs | 64–65 |
 
 ## Running it on your own computer
 

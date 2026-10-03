@@ -555,6 +555,99 @@ def action_risk_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 6: evals and production
+
+@fig("eval-cycle")
+def eval_cycle_fig():
+    f, ax = diag.canvas(9.6, 5.8)
+    steps = [("collect cases\n(real failures, real usage)", BLUE), ("run the evals", PURPLE),
+             ("read failing\ntranscripts", ORANGE), ("change one thing\n(prompt, retrieval, model)", TEAL),
+             ("re-run and compare\ncase by case", CRIMSON)]
+    cx, cy, r = 4.8, 2.9, 2.05
+    pos = []
+    for i, (text, color) in enumerate(steps):
+        a = math.pi / 2 - i * 2 * math.pi / len(steps)
+        x, y = cx + r * 1.35 * math.cos(a), cy + r * math.sin(a)
+        pos.append((x, y))
+        sbox(ax, x - 1.25, y - 0.42, 2.5, 0.84, text, color=color, fontsize=9)
+    for i in range(len(steps)):
+        (x0, y0), (x1, y1) = pos[i], pos[(i + 1) % len(steps)]
+        dx, dy = x1 - x0, y1 - y0
+        d = math.hypot(dx, dy)
+        ax.add_patch(FancyArrowPatch((x0 + dx / d * 1.0, y0 + dy / d * 0.62), (x1 - dx / d * 1.0, y1 - dy / d * 0.62),
+                                     arrowstyle="-|>", mutation_scale=13, color=MUTED, lw=1.4, connectionstyle="arc3,rad=-0.2"))
+    label(ax, cx, cy + 0.15, "eval-driven", size=11, bold=True)
+    label(ax, cx, cy - 0.25, "development", size=11, bold=True)
+    label(ax, cx, 0.1, "passing capability cases join the regression suite", size=9, color=MUTED)
+    return f
+
+
+@fig("trace-waterfall")
+def trace_waterfall_fig():
+    f, ax = plt.subplots(figsize=(8.6, 3.6))
+    spans = [("chat request", 0.0, 3.2, GREY, 0), ("rewrite query (LLM)", 0.05, 0.45, PURPLE, 1),
+             ("retrieve", 0.5, 0.8, TEAL, 1), ("bm25 search", 0.52, 0.68, TEAL, 2), ("vector search", 0.52, 0.78, TEAL, 2),
+             ("rerank", 0.82, 1.0, ORANGE, 1), ("generate answer (LLM)", 1.0, 3.2, PURPLE, 1)]
+    for i, (name, start, end, color, depth) in enumerate(spans):
+        y = len(spans) - 1 - i
+        ax.barh(y, end - start, left=start, color=SOFT[color], edgecolor=color, height=0.62)
+        ax.text(-1.55 + 0.18 * depth, y, name, ha="left", va="center", fontsize=9, color=INK)
+        ax.text(end + 0.04, y, f"{(end - start):.2f} s", va="center", fontsize=8.5, color=MUTED)
+    ax.text(1.05, 0.38, "claude-sonnet-5-5 · 5,200 in / 350 out", fontsize=8, color=PURPLE)
+    ax.set_yticks([])
+    ax.set_xlim(-1.6, 3.6)
+    ax.set_xticks([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5])
+    ax.spines["bottom"].set_bounds(0, 3.6)
+    ax.set_xlabel("seconds since the request arrived")
+    ax.spines["left"].set_visible(False)
+    f.tight_layout()
+    return f
+
+
+@fig("latency-anatomy")
+def latency_anatomy_fig():
+    f, ax = diag.canvas(11.0, 3.0)
+    x0, scale = 0.4, 1.7
+    parts = [("network +\nqueue", 0.15, GREY), ("input processing\n(TTFT ≈ 0.6 s)", 0.45, ORANGE),
+             ("generating 400 output tokens at ≈80 tokens/s (5 s)", 5.0, PURPLE)]
+    x = x0
+    for text, secs, color in parts:
+        w = secs * scale
+        ax.add_patch(Rectangle((x, 1.2), w, 0.7, facecolor=SOFT[color], edgecolor=color, lw=1.3))
+        if secs > 1:
+            label(ax, x + w / 2, 1.55, text, size=9.5, color=INK)
+        x += w
+    label(ax, x0 + 0.15 * scale / 2, 2.3, "network + queue", size=8.5, color=MUTED)
+    label(ax, x0 + (0.15 + 0.22) * scale, 0.85, "input processing", size=8.5, color=ORANGE)
+    ttft = x0 + 0.6 * scale
+    ax.plot([ttft, ttft], [0.5, 2.5], color=BLUE, ls="--", lw=1.4)
+    label(ax, ttft + 0.1, 2.6, "first token: a streaming user starts reading", ha="left", size=9, color=BLUE)
+    ax.plot([x, x], [0.5, 2.5], color=CRIMSON, ls="--", lw=1.4)
+    label(ax, x - 0.1, 0.35, "last token: a non-streaming user sees the answer (5.6 s)", ha="right", size=9, color=CRIMSON)
+    return f
+
+
+@fig("adaptation-ladder")
+def adaptation_ladder_fig():
+    f, ax = diag.canvas(9.6, 5.6)
+    rungs = [("prompt engineering", "minutes to change · no training", BLUE),
+             ("few-shot examples", "minutes · a handful of examples", TEAL),
+             ("retrieval and tools", "adds knowledge and actions · days to build", ORANGE),
+             ("fine-tuning", "changes behaviour · hundreds to thousands of examples", PURPLE),
+             ("training from scratch", "months · enormous cost", CRIMSON)]
+    for i, (name, note, color) in enumerate(rungs):
+        y = 0.4 + i * 0.95
+        sbox(ax, 1.2, y, 5.6, 0.75, "", color=color)
+        label(ax, 1.4, y + 0.5, name, ha="left", size=10.5, bold=True, color=color)
+        label(ax, 1.4, y + 0.2, note, ha="left", size=8.6, color=MUTED)
+    ax.plot([1.0, 1.0], [0.2, 5.3], color=GREY, lw=3)
+    ax.plot([7.0, 7.0], [0.2, 5.3], color=GREY, lw=3)
+    arrow(ax, 7.6, 0.6, 7.6, 5.0, color=MUTED)
+    label(ax, 7.8, 2.8, "cost and time\nto iterate rise", ha="left", size=9, color=MUTED)
+    label(ax, 4.0, 5.45, "climb only when evals show the rung below isn't enough", size=9.5, color=INK)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:
