@@ -307,3 +307,48 @@ Generated from the **At a glance** table at the end of each lesson. The number i
 | Multi-key sort | key returns a tuple; negate numbers to reverse one key | O(n log n) | O(n) | [28](lessons/28-sorting-in-practice.md) |
 | Largest number from digits | sort strings with cmp: a + b vs b + a | O(L · n log n) | O(n · L) | [28](lessons/28-sorting-in-practice.md) |
 | Top k items | heapq.nlargest(k, items) | O(n log k) | O(k) | [28](lessons/28-sorting-in-practice.md) |
+| Preorder / inorder / postorder (recursive) | visit node before / between / after the subtrees | O(n) | O(h) | [29](lessons/29-binary-trees.md) |
+| Iterative DFS | explicit stack; push right before left for preorder | O(n) | O(h) | [29](lessons/29-binary-trees.md) |
+| Level order (BFS) | queue; pop len(queue) nodes per level | O(n) | O(w), the widest level | [29](lessons/29-binary-trees.md) |
+| Max depth | 1 + max(depth(left), depth(right)) | O(n) | O(h) | [29](lessons/29-binary-trees.md) |
+| Count / sum of nodes | 1 + count(left) + count(right) | O(n) | O(h) | [29](lessons/29-binary-trees.md) |
+| Build from a level-order list | queue of nodes waiting for children | O(n) | O(n) | [29](lessons/29-binary-trees.md) |
+| Diameter | height helper; best = max(best, left + right) | O(n) | O(h) | [30](lessons/30-tree-problems.md) |
+| Is balanced | height helper returning −1 for "unbalanced" | O(n) | O(h) | [30](lessons/30-tree-problems.md) |
+| Root-to-leaf paths with a sum | DFS passing the remaining sum down; backtrack the path | O(n) per path copy, O(n²) worst | O(h) | [30](lessons/30-tree-problems.md) |
+| Invert a tree | swap children recursively | O(n) | O(h) | [30](lessons/30-tree-problems.md) |
+| Is symmetric | compare left.left with right.right and left.right with right.left | O(n) | O(h) | [30](lessons/30-tree-problems.md) |
+| Lowest common ancestor | return p/q/None from each side; both non-None → this node | O(n) | O(h) | [30](lessons/30-tree-problems.md) |
+| Serialise / deserialise | preorder with "#" for empty children | O(n) | O(n) | [30](lessons/30-tree-problems.md) |
+| Build from preorder + inorder | next preorder value is the root; dict of inorder positions splits | O(n) | O(n) | [30](lessons/30-tree-problems.md) |
+| Search / insert | go left if smaller, right if bigger | O(h): O(log n) balanced, O(n) worst | O(1) iterative | [31](lessons/31-bst.md) |
+| Min / max | go left / right until you can't | O(h) | O(1) | [31](lessons/31-bst.md) |
+| Floor / ceiling | search, remembering the best candidate | O(h) | O(1) | [31](lessons/31-bst.md) |
+| K-th smallest | iterative inorder, stop after k | O(h + k) | O(h) | [31](lessons/31-bst.md) |
+| Delete | 0 or 1 child: return the other child; 2 children: copy the successor, delete it | O(h) | O(h) | [31](lessons/31-bst.md) |
+| Validate | pass (low, high) bounds down | O(n) | O(h) | [31](lessons/31-bst.md) |
+| LCA in a BST | go left while both are smaller, right while both are bigger | O(h) | O(1) | [31](lessons/31-bst.md) |
+| AVL / red-black insert and delete | BST operation + rotations | O(log n) | O(log n) | [31](lessons/31-bst.md) |
+| Sorted list + bisect | binary search; insort shifts items | O(log n) search, O(n) insert | O(n) | [31](lessons/31-bst.md) |
+| Push / pop | append + sift up / move last to root + sift down | O(log n) | O(1) | [32](lessons/32-heaps.md) |
+| Peek at the minimum | heap[0] | O(1) | O(1) | [32](lessons/32-heaps.md) |
+| Heapify a list | sift down from the last parent to the root | O(n) | O(1) | [32](lessons/32-heaps.md) |
+| Heap sort | heapify, then pop n times | O(n log n) | O(1) in place | [32](lessons/32-heaps.md) |
+| K largest / k closest | min-heap (or negated max-heap) of size k | O(n log k) | O(k) | [32](lessons/32-heaps.md) |
+| K-th largest | root of a size-k min-heap | O(n log k) | O(k) | [32](lessons/32-heaps.md) |
+| Merge k sorted lists | heap of (value, list, index) | O(N log k) | O(k) | [32](lessons/32-heaps.md) |
+| Running median | max-heap of the lower half + min-heap of the upper half | O(log n) add, O(1) median | O(n) | [32](lessons/32-heaps.md) |
+| Insert / search / starts_with | walk one character per level, creating nodes on insert | O(L) | O(L) per new word | [33](lessons/33-tries.md) |
+| Autocomplete (first k words) | walk the prefix, then DFS in alphabetical order, stop at k | O(L + nodes visited) | O(L) | [33](lessons/33-tries.md) |
+| Count words with a prefix | store a pass-through count in each node | O(L) | O(1) extra per node | [33](lessons/33-tries.md) |
+| Delete a word | decrement counts along the path; prune empty branches | O(L) | O(1) | [33](lessons/33-tries.md) |
+| Wildcard search | at ".", try every child | O(26^dots × L) worst | O(L) | [33](lessons/33-tries.md) |
+| Longest prefix match | walk the text, remember the last word end | O(L) | O(1) | [33](lessons/33-tries.md) |
+| Prefix range with a sorted list | bisect_left(words, prefix), read forwards | O(L log n) | O(n) | [33](lessons/33-tries.md) |
+| Fenwick: point add / prefix sum | climb with i += i & −i / descend with i −= i & −i | O(log n) each | O(n) | [34](lessons/34-segment-fenwick.md) |
+| Fenwick: range sum | prefix(r + 1) − prefix(l) | O(log n) | O(n) | [34](lessons/34-segment-fenwick.md) |
+| Segment tree (iterative, 2n list) | leaves at n..2n−1; combine pairs going up | O(log n) update and query | O(n) | [34](lessons/34-segment-fenwick.md) |
+| Segment tree with lazy propagation | stop at covering nodes, store a pending update | O(log n) range update and query | O(n) | [34](lessons/34-segment-fenwick.md) |
+| Sparse table (static min / max) | two overlapping power-of-two blocks | O(n log n) build, O(1) query | O(n log n) | [34](lessons/34-segment-fenwick.md) |
+| Square-root decomposition | blocks of √n items with stored totals | O(1) update, O(√n) query | O(n) | [34](lessons/34-segment-fenwick.md) |
+| Count smaller to the right / inversions | Fenwick tree over ranks, scanning right to left | O(n log n) | O(n) | [34](lessons/34-segment-fenwick.md) |

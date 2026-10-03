@@ -379,4 +379,4 @@ print(largest_number([3, 30, 34, 5, 9]))
 </details>
 
 ---
-Previous: [Lesson 27](27-efficient-sorts.md) · Back to the [course home](../README.md)
+Previous: [Lesson 27](27-efficient-sorts.md) · Next: [Lesson 29: Binary trees and traversals](29-binary-trees.md)

@@ -848,6 +848,267 @@ def counting_sort_fig():
     return f
 
 
+# ---------------------------------------------------------------- Part 7: trees and heaps
+
+def tnode(ax, x, y, val, color=BLUE, r=0.3, lw=1.6, fontsize=11, edge=None):
+    ax.add_patch(Circle((x, y), r, facecolor=SOFT.get(color, "white"), edgecolor=edge or color, linewidth=lw, zorder=3))
+    ax.text(x, y, str(val), ha="center", va="center", fontsize=fontsize, color=INK, family="monospace", zorder=4)
+
+
+def tedge(ax, a, b, r=0.3, color=GREY, lw=1.2, dashed=False, r2=None):
+    (x1, y1), (x2, y2) = a, b
+    r2 = r if r2 is None else r2
+    d = math.hypot(x2 - x1, y2 - y1)
+    ux, uy = (x2 - x1) / d, (y2 - y1) / d
+    ax.plot([x1 + ux * r, x2 - ux * r2], [y1 + uy * r, y2 - uy * r2], color=color, linewidth=lw, zorder=1,
+            linestyle="--" if dashed else "-")
+
+
+def draw_tree(ax, pos, edges, colors=None, r=0.3, fontsize=11, edge_colors=None, default=BLUE, lw=None):
+    """pos: {key: (x, y, label)}; edges: [(parent, child)]; colors / edge_colors / lw: per key or edge."""
+    colors, edge_colors, lw = colors or {}, edge_colors or {}, lw or {}
+    for a, b in edges:
+        c = edge_colors.get((a, b), GREY)
+        tedge(ax, pos[a][:2], pos[b][:2], r=r, color=c, lw=2.2 if c != GREY else 1.2)
+    for k, (x, y, val) in pos.items():
+        tnode(ax, x, y, val, color=colors.get(k, default), r=r, fontsize=fontsize, lw=lw.get(k, 1.6))
+
+
+@fig("binary-tree")
+def binary_tree_fig():
+    f, ax = diag.canvas(9.6, 4.3)
+    pos = {1: (4.0, 3.65, 1), 2: (2.4, 2.45, 2), 3: (5.6, 2.45, 3), 4: (1.6, 1.25, 4), 5: (3.2, 1.25, 5), 6: (6.4, 1.25, 6)}
+    draw_tree(ax, pos, [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6)], colors={1: ORANGE, 4: TEAL, 5: TEAL, 6: TEAL})
+    label(ax, 3.55, 3.65, "root", ha="right", size=9.5, color=MUTED)
+    label(ax, 1.95, 2.45, "parent of 4 and 5", ha="right", size=9.5, color=MUTED)
+    label(ax, 4.0, 0.62, "leaves (no children): 4, 5, 6", size=9.5, color=MUTED)
+    for y, d in [(3.65, 0), (2.45, 1), (1.25, 2)]:
+        ax.plot([7.1, 7.6], [y, y], color="#cbd2d9", linewidth=1, linestyle=":")
+        label(ax, 7.7, y, f"depth {d}", ha="left", size=9.5, color=MUTED)
+    label(ax, 4.0, 0.15, "height = 2 (edges on the longest root-to-leaf path)", size=9.5, color=MUTED)
+    return f
+
+
+@fig("tree-diameter")
+def tree_diameter_fig():
+    f, ax = diag.canvas(8.4, 4.6)
+    pos = {1: (4.6, 4.0, 1), 2: (3.4, 3.0, 2), 4: (2.0, 2.0, 4), 5: (4.8, 2.0, 5), 6: (1.2, 1.0, 6), 7: (5.6, 1.0, 7)}
+    path = [(2, 4), (2, 5), (4, 6), (5, 7)]
+    draw_tree(ax, pos, [(1, 2)] + path, colors={k: ORANGE for k in (2, 4, 5, 6, 7)}, edge_colors={e: ORANGE for e in path})
+    label(ax, 5.05, 4.0, "root", ha="left", size=9.5, color=MUTED)
+    label(ax, 3.4, 0.25, "diameter: 6 → 4 → 2 → 5 → 7 = 4 edges", size=10, bold=True, color=ORANGE)
+    label(ax, 6.3, 2.75, "the longest path through\nthe root has only 3 edges", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+BST_POS = {8: (4.0, 4.0), 3: (2.2, 3.0), 10: (5.8, 3.0), 1: (1.2, 2.0), 6: (3.2, 2.0), 14: (6.8, 2.0), 4: (2.6, 1.0), 7: (3.8, 1.0), 13: (6.2, 1.0)}
+BST_EDGES = [(8, 3), (8, 10), (3, 1), (3, 6), (10, 14), (6, 4), (6, 7), (14, 13)]
+
+
+def bst_tree(ax, dx=0.0, scale=1.0, colors=None, edge_colors=None, skip=(), r=0.3):
+    pos = {k: (dx + x * scale, y, k) for k, (x, y) in BST_POS.items() if k not in skip}
+    edges = [e for e in BST_EDGES if e[0] in pos and e[1] in pos]
+    draw_tree(ax, pos, edges, colors=colors, edge_colors=edge_colors, r=r, fontsize=10.5)
+    return pos
+
+
+@fig("bst")
+def bst_fig():
+    f, ax = diag.canvas(10.2, 4.6)
+    path = [(8, 3), (3, 6), (6, 7)]
+    pos = bst_tree(ax, dx=0.2, colors={8: ORANGE, 3: ORANGE, 6: ORANGE, 7: GREEN}, edge_colors={e: ORANGE for e in path})
+    for (a, b), txt in zip(path, ["7 < 8: left", "7 > 3: right", "7 > 6: right"]):
+        (x1, y1, _), (x2, y2, _) = pos[a], pos[b]
+        label(ax, (x1 + x2) / 2 + (0.25 if x2 > x1 else -0.25), (y1 + y2) / 2 + 0.1, txt,
+              ha="left" if x2 > x1 else "right", size=9, color=ORANGE)
+    label(ax, 7.6, 3.6, "search for 7:", ha="left", size=10, bold=True)
+    label(ax, 7.6, 3.15, "4 nodes visited", ha="left", size=9.5, color=MUTED)
+    label(ax, 7.6, 2.4, "left subtree < node", ha="left", size=9.5, color=MUTED)
+    label(ax, 7.6, 2.0, "right subtree > node", ha="left", size=9.5, color=MUTED)
+    label(ax, 7.6, 1.3, "inorder: 1 3 4 6 7 8 10 13 14", ha="left", size=9.5, color=MUTED, mono=True)
+    return f
+
+
+@fig("bst-delete")
+def bst_delete_fig():
+    f, ax = diag.canvas(14.0, 5.0)
+    s = 0.55
+    # 1. a leaf
+    bst_tree(ax, dx=0.0, scale=s, colors={4: CRIMSON}, r=0.24)
+    label(ax, 2.2, 4.75, "1. leaf: delete 4", bold=True, size=10.5)
+    label(ax, 2.2, 0.3, "just remove it", size=9.5, color=MUTED)
+    # 2. one child
+    dx = 4.5
+    pos = bst_tree(ax, dx=dx, scale=s, colors={10: CRIMSON, 14: TEAL}, r=0.24)
+    (x8, y8, _), (x14, y14, _) = pos[8], pos[14]
+    ax.add_patch(FancyArrowPatch((x8 + 0.2, y8 - 0.15), (x14 + 0.05, y14 + 0.25), arrowstyle="-|>", mutation_scale=12,
+                                 color=ORANGE, linewidth=1.6, linestyle="--", connectionstyle="arc3,rad=-0.45"))
+    label(ax, dx + 2.2, 4.75, "2. one child: delete 10", bold=True, size=10.5)
+    label(ax, dx + 2.2, 0.3, "8 links straight to 14", size=9.5, color=MUTED)
+    # 3. two children
+    dx = 9.8
+    pos = bst_tree(ax, dx=dx, scale=s, colors={3: CRIMSON, 4: ORANGE}, r=0.24)
+    (x3, y3, _), (x4, y4, _) = pos[3], pos[4]
+    ax.add_patch(FancyArrowPatch((x4 - 0.22, y4 + 0.05), (x3 - 0.22, y3 - 0.12), arrowstyle="-|>", mutation_scale=12,
+                                 color=ORANGE, linewidth=1.6, connectionstyle="arc3,rad=-0.5"))
+    label(ax, x4 - 0.95, (y3 + y4) / 2 - 0.05, "copy 4 up", ha="right", size=9, color=ORANGE)
+    label(ax, dx + 2.2, 4.75, "3. two children: delete 3", bold=True, size=10.5)
+    label(ax, dx + 2.2, 0.3, "successor 4 = leftmost of the right subtree;\ncopy it into 3's place, then delete the old 4", size=9.5, color=MUTED)
+    return f
+
+
+def subtree(ax, x, y, name, color=GREY, w=0.7, h=0.75):
+    from matplotlib.patches import Polygon
+    ax.add_patch(Polygon([(x, y), (x - w / 2, y - h), (x + w / 2, y - h)], closed=True, facecolor=SOFT.get(color, "#eef1f4"),
+                         edgecolor=color, linewidth=1.4, zorder=2))
+    ax.text(x, y - h * 0.62, name, ha="center", va="center", fontsize=11, color=INK, zorder=4)
+
+
+@fig("rotation")
+def rotation_fig():
+    f, ax = diag.canvas(10.6, 4.2)
+    # before
+    y_, x_ = (2.6, 3.4), (1.6, 2.4)
+    tedge(ax, y_, x_, r=0.32)
+    for (a, b) in [((x_[0], x_[1]), (0.9, 1.45)), ((x_[0], x_[1]), (2.3, 1.45)), ((y_[0], y_[1]), (3.5, 2.45))]:
+        tedge(ax, a, b, r=0.32, r2=0, color=GREY)
+    tnode(ax, *y_, "y", color=ORANGE, r=0.32)
+    tnode(ax, *x_, "x", color=BLUE, r=0.32)
+    subtree(ax, 0.9, 1.45, "A")
+    subtree(ax, 2.3, 1.45, "B", color=TEAL)
+    subtree(ax, 3.5, 2.45, "C")
+    label(ax, 2.2, 0.25, "before", bold=True)
+    arrow(ax, 4.6, 2.5, 6.0, 2.5, color=INK, text="rotate right at y", fontsize=9.5)
+    # after
+    X, Y = (7.8, 3.4), (8.8, 2.4)
+    tedge(ax, X, Y, r=0.32)
+    for (a, b) in [(X, (7.1, 2.45)), (Y, (8.1, 1.45)), (Y, (9.5, 1.45))]:
+        tedge(ax, a, b, r=0.32, r2=0, color=GREY)
+    tnode(ax, *X, "x", color=BLUE, r=0.32)
+    tnode(ax, *Y, "y", color=ORANGE, r=0.32)
+    subtree(ax, 7.1, 2.45, "A")
+    subtree(ax, 8.1, 1.45, "B", color=TEAL)
+    subtree(ax, 9.5, 1.45, "C")
+    label(ax, 8.4, 0.25, "after", bold=True)
+    label(ax, 5.3, 1.3, "inorder stays\nA  x  B  y  C", size=9.5, color=MUTED)
+    return f
+
+
+@fig("heap-array")
+def heap_array_fig():
+    f, ax = diag.canvas(10.0, 5.2)
+    vals = [1, 3, 2, 7, 4, 5, 8]
+    xs = {0: 4.6, 1: 2.8, 2: 6.4, 3: 1.9, 4: 3.7, 5: 5.5, 6: 7.3}
+    ys = {0: 4.45, 1: 3.55, 2: 3.55, 3: 2.65, 4: 2.65, 5: 2.65, 6: 2.65}
+    pos = {i: (xs[i], ys[i], vals[i]) for i in range(7)}
+    edges = [(i, c) for i in range(7) for c in (2 * i + 1, 2 * i + 2) if c < 7]
+    draw_tree(ax, pos, edges, colors={1: ORANGE, 3: TEAL, 4: TEAL}, r=0.28, fontsize=10.5)
+    for i in range(7):
+        label(ax, xs[i] + 0.36, ys[i] + 0.25, f"[{i}]", ha="left", size=8.5, color=MUTED, mono=True)
+    w, x0, y0 = 0.9, 1.45, 1.1
+    cells(ax, x0, y0, vals, w=w, highlight={1: ORANGE, 3: TEAL, 4: TEAL}, idx="auto")
+    cx = lambda i: x0 + i * w + (w - 0.06) / 2
+    arrow(ax, cx(1), y0 - 0.05, cx(3) - 0.05, y0 - 0.05, color=TEAL, lw=1.3, rad=0.5)
+    arrow(ax, cx(1) + 0.05, y0 - 0.05, cx(4), y0 - 0.05, color=TEAL, lw=1.3, rad=0.55)
+    label(ax, cx(3) + 0.2, y0 - 0.85, "children of index 1: 2·1 + 1 = 3 and 2·1 + 2 = 4", ha="left", size=9.5, color=MUTED)
+    label(ax, 8.2, 3.9, "every parent ≤ its children", ha="left", size=9.5, color=MUTED)
+    label(ax, 8.2, 3.5, "smallest at index 0", ha="left", size=9.5, color=MUTED)
+    return f
+
+
+@fig("two-heaps")
+def two_heaps_fig():
+    f, ax = diag.canvas(9.6, 4.0)
+    low = {0: (2.0, 2.9, 3), 1: (1.2, 1.9, 1), 2: (2.8, 1.9, 2)}
+    high = {0: (7.6, 2.9, 5), 1: (6.8, 1.9, 8), 2: (8.4, 1.9, 9)}
+    draw_tree(ax, low, [(0, 1), (0, 2)], colors={0: ORANGE}, default=BLUE)
+    draw_tree(ax, high, [(0, 1), (0, 2)], colors={0: ORANGE}, default=TEAL)
+    label(ax, 2.0, 3.65, "lower half: max-heap", bold=True, size=10.5)
+    label(ax, 7.6, 3.65, "upper half: min-heap", bold=True, size=10.5)
+    label(ax, 2.0, 1.25, "top = largest of the small numbers", size=9, color=MUTED)
+    label(ax, 7.6, 1.25, "top = smallest of the big numbers", size=9, color=MUTED)
+    sbox(ax, 3.4, 2.6, 2.8, 0.6, "median = (3 + 5) / 2 = 4", color=ORANGE, fontsize=9.5)
+    arrow(ax, 2.35, 2.95, 3.35, 2.92, color=ORANGE, lw=1.3)
+    arrow(ax, 7.25, 2.95, 6.25, 2.92, color=ORANGE, lw=1.3)
+    label(ax, 4.8, 0.45, "every number in the lower half ≤ every number in the upper half; sizes differ by at most 1", size=9, color=MUTED)
+    return f
+
+
+@fig("trie")
+def trie_fig():
+    f, ax = diag.canvas(8.6, 5.0)
+    pos = {"": (4.2, 4.5, "·"), "c": (2.6, 3.5, "c"), "d": (5.8, 3.5, "d"), "ca": (2.6, 2.5, "a"), "do": (5.8, 2.5, "o"),
+           "car": (1.8, 1.5, "r"), "cat": (3.4, 1.5, "t"), "dog": (5.8, 1.5, "g"), "cart": (1.8, 0.5, "t")}
+    edges = [("", "c"), ("", "d"), ("c", "ca"), ("d", "do"), ("ca", "car"), ("ca", "cat"), ("do", "dog"), ("car", "cart")]
+    words = {"car", "cat", "cart", "do", "dog"}
+    lw = {k: 3.2 for k in words}
+    colors = {k: GREEN for k in words}
+    colors[""] = GREY
+    draw_tree(ax, pos, edges, colors=colors, lw=lw, r=0.28)
+    for k in words:
+        x, y, _ = pos[k]
+        label(ax, x + 0.42, y, f'"{k}"', ha="left", size=9, color=MUTED, mono=True)
+    label(ax, 4.62, 4.5, "root (empty string)", ha="left", size=9, color=MUTED)
+    label(ax, 6.9, 0.9, "thick green border:\na word ends here", ha="left", size=9, color=GREEN)
+    return f
+
+
+@fig("fenwick")
+def fenwick_fig():
+    f, ax = diag.canvas(11.8, 5.0)
+    nums = [5, 8, 6, 3, 2, 7, 2, 6]
+    w, x0 = 1.25, 1.6
+    label(ax, 0.2, 4.55, "nums", ha="left", size=9.5, bold=True)
+    cells(ax, x0, 4.25, nums, w=w, color=BLUE, idx=list(range(1, 9)), idx_y=4.98)
+    label(ax, 0.2, 4.98, "position", ha="left", size=8.5, color=MUTED)
+    tree = [0] * 9
+    for i in range(1, 9):
+        tree[i] = sum(nums[i - (i & -i):i])
+    hl = {7, 6, 4}
+    for i in range(1, 9):
+        low = i & -i
+        level = int(math.log2(low))
+        y = 3.35 - level * 0.85
+        xa = x0 + (i - low) * w
+        xb = x0 + i * w - 0.06
+        c = ORANGE if i in hl else TEAL
+        sbox(ax, xa, y, xb - xa, 0.5, f"tree[{i}] = {tree[i]}", color=c, fontsize=8.5, mono=True)
+    label(ax, 0.2, 3.6, "covers 1", ha="left", size=8.5, color=MUTED)
+    label(ax, 0.2, 2.75, "covers 2", ha="left", size=8.5, color=MUTED)
+    label(ax, 0.2, 1.9, "covers 4", ha="left", size=8.5, color=MUTED)
+    label(ax, 0.2, 1.05, "covers 8", ha="left", size=8.5, color=MUTED)
+    label(ax, 5.9, 0.3, "prefix(7) = tree[7] + tree[6] + tree[4] = 2 + 9 + 22 = 33   (7 → 6 → 4 → 0: drop the lowest bit)",
+          size=9.5, color=ORANGE)
+    return f
+
+
+@fig("segment-tree")
+def segment_tree_fig():
+    f, ax = diag.canvas(12.4, 4.9)
+    nums = [5, 8, 6, 3, 2, 7, 2, 6]
+    w, x0 = 1.45, 0.5
+    hl = {(2, 3), (4, 5), (6, 6)}
+
+    def node(lo, hi, depth):
+        total = sum(nums[lo:hi + 1])
+        width = (hi - lo + 1) * w - 0.12
+        x = x0 + lo * w
+        y = 4.0 - depth * 1.1
+        c = ORANGE if (lo, hi) in hl else (BLUE if lo != hi else TEAL)
+        txt = f"{total}  [{lo}]" if lo == hi else f"{total}  [{lo}–{hi}]"
+        sbox(ax, x, y, width, 0.5, txt, color=c, fontsize=9.5, mono=True)
+        if lo != hi:
+            mid = (lo + hi) // 2
+            for a, b in ((lo, mid), (mid + 1, hi)):
+                cx = x0 + (a + b + 1) / 2 * w - 0.06
+                ax.plot([x + width / 2, cx], [y, y - 0.6], color=GREY, linewidth=1, zorder=1)
+            node(lo, mid, depth + 1)
+            node(mid + 1, hi, depth + 1)
+    node(0, 7, 0)
+    label(ax, 6.3, 0.3, "sum of indexes 2..6 = 9 + 9 + 2 = 20: three covering nodes instead of five leaves", size=9.5, color=ORANGE)
+    return f
+
+
 def main(names):
     OUT.mkdir(exist_ok=True)
     for name in names or FIGS:

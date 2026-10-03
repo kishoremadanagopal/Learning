@@ -322,10 +322,11 @@ def _helpers(ns, output, source):
                 return False
         return _eq(got, expected)
 
-    def test(name, cases, valid=None, key=None):
+    def test(name, cases, valid=None, key=None, show=None):
         """Run the learner's function on hidden test cases: [(args, expected, "label"), ...].
         args is a tuple of arguments (a single non-tuple value is one argument).
-        valid(got, *args) -> bool checks answers that have several right forms; key normalises both sides (e.g. sorted)."""
+        valid(got, *args) -> bool checks answers that have several right forms; key normalises both sides (e.g. sorted).
+        show is an optional format string for the call shown on failure, e.g. "max_depth(build({0}))"."""
         f, fname = _func(name)
         total = len(cases)
         for done, case in enumerate(cases):
@@ -333,7 +334,8 @@ def _helpers(ns, output, source):
             label = case[2] if len(case) > 2 else f"test {done + 1}"
             if not isinstance(args, tuple):
                 args = (args,)
-            call = f"{fname}({', '.join(_show(a, 60) for a in args)})"
+            shown = [_show(a, 60) for a in args]
+            call = show.format(*shown) if show else f"{fname}({', '.join(shown)})"
             head = f"Passed {done} of {total} tests. Fails on {label}:\n  {call}\n"
             try:
                 got = f(*copy.deepcopy(args))
