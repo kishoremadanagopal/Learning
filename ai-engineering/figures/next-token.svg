@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="624.24pt" height="247.248pt" viewBox="0 0 624.24 247.248" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 247.248 
+L 624.24 247.248 
+L 624.24 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.2672 95.904 
+L 207.8928 95.904 
+Q 212.328 95.904 212.328 91.4688 
+L 212.328 61.5312 
+Q 212.328 57.096 207.8928 57.096 
+L 28.2672 57.096 
+Q 23.832 57.096 23.832 61.5312 
+L 23.832 91.4688 
+Q 23.832 95.904 28.2672 95.904 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 255.5712 104.22 
+L 346.4928 104.22 
+Q 350.928 104.22 350.928 99.7848 
+L 350.928 53.2152 
+Q 350.928 48.78 346.4928 48.78 
+L 255.5712 48.78 
+Q 251.136 48.78 251.136 53.2152 
+L 251.136 99.7848 
+Q 251.136 104.22 255.5712 104.22 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #ece6f8; stroke: #7a5ac8; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 217.10185 76.5 
+Q 231.731177 76.5 244.571651 76.5 
+" clip-path="url(#p666ccd109d)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 238.971651 73.7 
+L 244.571651 76.5 
+L 238.971651 79.3 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 428.544 50.9976 
+L 561.15648 50.9976 
+L 561.15648 35.4744 
+L 428.544 35.4744 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 428.544 74.2824 
+L 432.86832 74.2824 
+L 432.86832 58.7592 
+L 428.544 58.7592 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 428.544 97.5672 
+L 431.42688 97.5672 
+L 431.42688 82.044 
+L 428.544 82.044 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 428.544 120.852 
+L 429.98544 120.852 
+L 429.98544 105.3288 
+L 428.544 105.3288 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 428.544 144.1368 
+L 431.42688 144.1368 
+L 431.42688 128.6136 
+L 428.544 128.6136 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #eef1f4; stroke: #9aa5b1; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 355.699819 76.5 
+Q 367.559925 76.5 377.631176 76.5 
+" clip-path="url(#p666ccd109d)" style="fill: none; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 372.031176 73.7 
+L 377.631176 76.5 
+L 372.031176 79.3 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 465.514135 171.536041 
+Q 267.720638 255.838099 120.687572 101.420807 
+" clip-path="url(#p666ccd109d)" style="fill: none; stroke: #e07b00; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 122.521424 107.407208 
+L 120.687572 101.420807 
+L 126.577003 103.545566 
+z
+" clip-path="url(#p666ccd109d)" style="fill: #e07b00; stroke: #e07b00; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="118.08" y="79.121406" transform="rotate(-0 118.08 79.121406)">text so far: "The capital of France is"</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="301.032" y="80.363125" transform="rotate(-0 301.032 80.363125)">LLM</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="423" y="45.882641" transform="rotate(-0 423 45.882641)"> Paris</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="566.70048" y="45.719438" transform="rotate(-0 566.70048 45.719438)">92%</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="423" y="69.167441" transform="rotate(-0 423 69.167441)"> a</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="438.41232" y="69.004238" transform="rotate(-0 438.41232 69.004238)">3%</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="423" y="92.452241" transform="rotate(-0 423 92.452241)"> the</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="436.97088" y="92.289038" transform="rotate(-0 436.97088 92.289038)">2%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="423" y="115.737041" transform="rotate(-0 423 115.737041)"> located</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="435.52944" y="115.573838" transform="rotate(-0 435.52944 115.573838)">1%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: end; fill: #1f2933" x="423" y="139.021841" transform="rotate(-0 423 139.021841)">…</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="436.97088" y="138.858638" transform="rotate(-0 436.97088 138.858638)">2%</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #1f2933" x="483.984" y="23.681406" transform="rotate(-0 483.984 23.681406)">next-token probabilities</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #e07b00" x="295.488" y="212.315375" transform="rotate(-0 295.488 212.315375)">pick one token (" Paris"), append it, and run again</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p666ccd109d">
+   <rect x="7.2" y="7.2" width="609.84" height="232.848"/>
+  </clipPath>
+ </defs>
+</svg>

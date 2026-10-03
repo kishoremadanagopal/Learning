@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="568.8pt" height="169.632pt" viewBox="0 0 568.8 169.632" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 169.632 
+L 568.8 169.632 
+L 568.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 33.8112 84.816 
+L 95.3496 84.816 
+Q 99.7848 84.816 99.7848 80.3808 
+L 99.7848 54.8784 
+Q 99.7848 50.4432 95.3496 50.4432 
+L 33.8112 50.4432 
+Q 29.376 50.4432 29.376 54.8784 
+L 29.376 80.3808 
+Q 29.376 84.816 33.8112 84.816 
+z
+" clip-path="url(#pcc565eda8a)" style="fill: #e3eef8; stroke: #1f6fb2; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 110.8728 84.816 
+L 193.4784 84.816 
+Q 197.9136 84.816 197.9136 80.3808 
+L 197.9136 54.8784 
+Q 197.9136 50.4432 193.4784 50.4432 
+L 110.8728 50.4432 
+Q 106.4376 50.4432 106.4376 54.8784 
+L 106.4376 80.3808 
+Q 106.4376 84.816 110.8728 84.816 
+z
+" clip-path="url(#pcc565eda8a)" style="fill: #fdecd6; stroke: #e07b00; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 209.0016 84.816 
+L 260.0064 84.816 
+Q 264.4416 84.816 264.4416 80.3808 
+L 264.4416 54.8784 
+Q 264.4416 50.4432 260.0064 50.4432 
+L 209.0016 50.4432 
+Q 204.5664 50.4432 204.5664 54.8784 
+L 204.5664 80.3808 
+Q 204.5664 84.816 209.0016 84.816 
+z
+" clip-path="url(#pcc565eda8a)" style="fill: #dcf3ee; stroke: #159a7f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 275.5296 84.816 
+L 305.4672 84.816 
+Q 309.9024 84.816 309.9024 80.3808 
+L 309.9024 54.8784 
+Q 309.9024 50.4432 305.4672 50.4432 
+L 275.5296 50.4432 
+Q 271.0944 50.4432 271.0944 54.8784 
+L 271.0944 80.3808 
+Q 271.0944 84.816 275.5296 84.816 
+z
+" clip-path="url(#pcc565eda8a)" style="fill: #f8e1e8; stroke: #b42357; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 320.9904 84.816 
+L 393.0624 84.816 
+Q 397.4976 84.816 397.4976 80.3808 
+L 397.4976 54.8784 
+Q 397.4976 50.4432 393.0624 50.4432 
+L 320.9904 50.4432 
+Q 316.5552 50.4432 316.5552 54.8784 
+L 316.5552 80.3808 
+Q 316.5552 84.816 320.9904 84.816 
+z
+" clip-path="url(#pcc565eda8a)" style="fill: #ece6f8; stroke: #7a5ac8; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 408.5856 84.816 
+L 427.9896 84.816 
+Q 432.4248 84.816 432.4248 80.3808 
+L 432.4248 54.8784 
+Q 432.4248 50.4432 427.9896 50.4432 
+L 408.5856 50.4432 
+Q 404.1504 50.4432 404.1504 54.8784 
+L 404.1504 80.3808 
+Q 404.1504 84.816 408.5856 84.816 
+z
+" clip-path="url(#pcc565eda8a)" style="fill: #e3f2e4; stroke: #2e7d32; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="64.5804" y="70.694131" transform="rotate(-0 64.5804 70.694131)">Token</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #52606d" x="64.5804" y="106.727344" transform="rotate(-0 64.5804 106.727344)">3404</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="152.1756" y="70.694131" transform="rotate(-0 152.1756 70.694131)">ization</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #52606d" x="152.1756" y="106.727344" transform="rotate(-0 152.1756 106.727344)">2065</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="234.504" y="70.557491" transform="rotate(-0 234.504 70.557491)">␣isn</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #52606d" x="234.504" y="106.727344" transform="rotate(-0 234.504 106.727344)">4536</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="290.4984" y="70.694131" transform="rotate(-0 290.4984 70.694131)">'t</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #52606d" x="290.4984" y="106.727344" transform="rotate(-0 290.4984 106.727344)">956</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="357.0264" y="70.557491" transform="rotate(-0 357.0264 70.557491)">␣magic</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #52606d" x="357.0264" y="106.727344" transform="rotate(-0 357.0264 106.727344)">11204</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #1f2933" x="418.2876" y="70.694131" transform="rotate(-0 418.2876 70.694131)">!</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace; text-anchor: middle; fill: #52606d" x="418.2876" y="106.727344" transform="rotate(-0 418.2876 106.727344)">0</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #1f2933" x="29.376" y="29.460328" transform="rotate(-0 29.376 29.460328)">"Tokenization isn't magic!"  →  6 tokens</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: start; fill: #52606d" x="29.376" y="139.879547" transform="rotate(-0 29.376 139.879547)">␣ marks a space: it usually belongs to the start of the next word. Numbers below are token IDs (illustrative).</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcc565eda8a">
+   <rect x="7.2" y="7.2" width="554.4" height="155.232"/>
+  </clipPath>
+ </defs>
+</svg>
